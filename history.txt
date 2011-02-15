@@ -1,0 +1,27 @@
+rvm 1.9.2
+rails new voting_module
+
+in 	Gemfile:
+	#add recaptcha gem
+	#add rspec and webrat
+	#define version of sqlite3
+
+bundle install
+
+rails generate rspec:install
+
+git init
+mate .gitignore #add extra path to ignore during commits
+git add .
+git commit -am "init"
+git remote add origin git@github.com:zenonal/voting_module.git
+
+gem install heroku
+heroku create
+git push heroku master
+
+#copy annotate_models;	restful_authentication; ssl_requirement
+#to vendor/plugins
+
+rake db:migrate
+
