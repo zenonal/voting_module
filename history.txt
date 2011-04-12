@@ -1,4 +1,4 @@
-rvm 1.9.2
+rvm 1.9.2@voting_module
 rails new voting_module
 
 in 	Gemfile:
@@ -20,8 +20,24 @@ gem install heroku
 heroku create
 git push heroku master
 
-#copy annotate_models;	restful_authentication; ssl_requirement
+#copy annotate_models; ssl_requirement
 #to vendor/plugins
 
 rake db:migrate
 
+#add devise to Gemfile
+bundle install
+
+rails generate devise User
+rake db:migrate
+
+#add error messages 
+rails plugin install git://github.com/rails/dynamic_form.git
+
+copy application.css from Railscast episode 261
+
+copy application.rb from Railscast episode 261
+
+copy application helper from Railscast episode 261
+
+add gem 'devise_rpx_connectable to Gemfile
