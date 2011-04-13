@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     # if params[:locale] is nil then I18n.default_locale will be used
     I18n.locale = params[:locale]
   end
+  
+  protected
+  def permission_denied
+    flash[:error] = t('custom_error.perm_denied')
+    redirect_to root_url
+  end
 end

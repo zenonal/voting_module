@@ -13,13 +13,19 @@
   <tr>
     <td><%= referendum.name %></td>
     <td><%= referendum.content %></td>
+
     <td><%= link_to 'Show', referendum %></td>
+<% if permitted_to? :edit, referendum %>
     <td><%= link_to 'Edit', edit_referendum_path(referendum) %></td>
+<% end %>
+<% if permitted_to? :destroy, referendum %>
     <td><%= link_to 'Destroy', referendum, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Referendum', new_referendum_path %>
+<% if permitted_to? :create, Referendum.new %>
+	<%= link_to 'New Referendum', new_referendum_path %>
+<% end %>

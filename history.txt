@@ -44,4 +44,10 @@ add gem 'devise_rpx_connectable to Gemfile and implement RPX (cfr. Railscast)
 
 add internationalization (passes locale as url parameter, cfr. Rails guide)
 
+generate Role and Assignment models
+Role.create(:name => 'admin')
+@u = User.find(...)
+@u.roles << Role.find_or_create_by_name("admin")
 add declarative_authorization (cfr. Railscast 188)
+
+generate Referendum scaffold
