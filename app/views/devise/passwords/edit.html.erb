@@ -1,16 +1,18 @@
-<h2>Change your password</h2>
+<% @loc = 'devise.passwords.' %>
+
+<% title(t(@loc+'title') %>
 
 <%= form_for(resource_name, resource, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
   <%= f.hidden_field :reset_password_token %>
 
-  <p><%= f.label :password %></p>
+  <p><%= f.label t(@loc+'pwd') %></p>
   <p><%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.label t(@loc+'pwd_conf') %></p>
   <p><%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit "Change my password" %></p>
+  <p><%= f.submit t(@loc+'title') %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

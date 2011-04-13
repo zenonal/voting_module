@@ -1,25 +1,27 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% @loc = 'devise.registrations.' %>
+
+<% title(t(@loc+'edit')+" "+resource_name.to_s.humanize) %>
 
 <%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
 
-  <p><%= f.label :email %></p>
+  <p><%= f.label t(@loc+'email') %></p>
   <p><%= f.text_field :email %></p>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></p>
+  <p><%= f.label t(@loc+'pwd') %> <i>(<%= t(@loc+'pwd_i') %>)</i></p>
   <p><%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.label t(@loc+'pwd_conf') %></p>
   <p><%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></p>
+  <p><%= f.label t(@loc+'cur_pwd') %> <i>(<%= t(@loc+'cur_pwd_i') %>)</i></p>
   <p><%= f.password_field :current_password %></p>
 
-  <p><%= f.submit "Update" %></p>
+  <p><%= f.submit t(@loc+'update') %></p>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3><%= t(@loc+'cancel') %></h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+<p><%= t(@loc+'unhappy') %> <%= link_to t(@loc+'cancel'), registration_path(resource_name), :confirm => t('devise.confirm'), :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+<%= link_to t('devise.back'), :back %>

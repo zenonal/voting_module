@@ -41,3 +41,5 @@ copy application.rb from Railscast episode 261
 copy application helper from Railscast episode 261
 
 add gem 'devise_rpx_connectable to Gemfile
+
+add internationalization (passes locale as url parameter)
