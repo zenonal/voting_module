@@ -1,4 +1,6 @@
 VotingModule::Application.routes.draw do
+  resources :referendums
+
   devise_for :users
   root :to => "user#index"
 

@@ -10,11 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413194036) do
+ActiveRecord::Schema.define(:version => 20110413200007) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "referendums", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

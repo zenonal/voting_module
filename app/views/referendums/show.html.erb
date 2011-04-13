@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @referendum.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @referendum.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_referendum_path(@referendum) %> |
+<%= link_to 'Back', referendums_path %>
