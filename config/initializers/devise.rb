@@ -113,4 +113,7 @@ Devise.setup do |config|
   #   end
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
+  
+  config.rpx_application_name = 'Citizens-for-Direct-Democracy'
+  RPXNow.api_key = "6e3703cfb5c81be0d369bc8c67c4d9327a8a3861"
 end
