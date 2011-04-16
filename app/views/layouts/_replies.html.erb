@@ -1,0 +1,25 @@
+<div class ="reply">
+	<table>
+			<tr>
+				<div class = "comment_header">
+					<td><%= t(:created_by) %><b><%= User.find(reply.user_id).displayName %></b></td>
+					<td><em><%= reply.created_at %></em></td>
+				</div>
+			</tr>
+		</table>
+
+		<div class = "comment_content">
+			<%= simple_format reply.content %>
+			<% unless current_user.nil? %>
+				<% if (reply.user_id == current_user.id) | permitted_to?(:delete, reply) %>
+				<%= link_to t(:delete_str), {:controller => :comments, :action => :destroy, :id => reply.id}, :confirm => t(:are_you_sure_str) %>
+			<% end %>
+			<% end %>
+			<% if reply.reply_level < 5 %>
+			<span style="float:right;"><%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri %></span>
+			<% end %>
+		</div>
+		
+		<%= render :partial => 'layouts/replies', :collection => reply.replies, :as => :reply %>
+</div>
+

@@ -1,15 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @referendum.name %>
-</p>
+<!--<%= title eval("@referendum.name_#{I18n.locale}") %>-->
+<%= image_tag @referendum.photo.url(:small) %>
+<%= raw eval("@referendum.content_#{I18n.locale}") %>
+<table style="display:inline;">
+	<tr>
+		<td>
+	<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_support' %>
 
-<p>
-  <b>Content:</b>
-  <%= @referendum.content %>
-</p>
+</td>
+<td>
 
+<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_nosupport' %>
 
-<%= link_to 'Edit', edit_referendum_path(@referendum) %> |
-<%= link_to 'Back', referendums_path %>
+</td>
+</tr>
+</table>
+
+<%= render :partial => "layouts/arguments", :locals => { :commentable => @referendum } %>
+<br>
+<%= render :partial => "layouts/comments" %>
+
+<% if permitted_to? :edit, @referendum %>
+<%= link_to t('referendums.edit'), edit_referendum_path(@referendum) %> |
+<% end %>
+<%= link_to t('referendums.back'), referendums_path %>

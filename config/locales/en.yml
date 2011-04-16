@@ -4,4 +4,45 @@
 en:
   custom_error:
     perm_denied: 'Sorry, you are not allowed to access that page.'
+  layout:
+      sign_in_phrase: 'Signed in as'
+      not_you: 'Not you?'
+      sign_out: 'Sign out'
+      sign_up: 'Sign up'
+      sign_in: 'Sign in'
   
+  submit_str: "Submit"
+  create_str: "Create"
+  update_str: "Update"
+  back_str: "Back"
+  show_str: "Show"
+  agree_str: "I AGREE"
+  disagree_str: "I DISAGREE"
+  approval_str: "approval for this argument"
+  pro_str: "PROS"
+  con_str: "CONS"
+  comments_str: "Your comments"
+  reply_to_comment_str: "Reply to this comment"
+  title_form_str: "Title"
+  content_form_str: "Content"
+  comment_title: "Discussion"
+  argument_title: "Pros and cons"
+  comment_for: "Comments for "
+  postal_code_str: "Postal code"
+  created_by: "Created by "
+  delete_str: "Delete"
+  are_you_sure_str: "Are you sure?"
+  new_comment: "Post your comment (max 1000 characters)"
+  new_pro: "Post your pro argument (max 500 characters)"
+  new_con: "Post your con argument (max 500 characters)"
+  new_reply: "Post your reply (max 1000 characters)"
+  score_str: "Score"
+  comments_created_str: "Comments created"
+  reply_title: "Reply to comment"
+  original_comment: "Original comment"
+  average_score_str: "Average score"
+  approval_rate: "Approval rate"
+  new_comment_ok: "Comment was successfully created."
+  new_comment_not_ok: "There was an error creating the comment."
+  new_argument_ok: "Argument was successfully added."
+  new_argument_not_ok: "There was an error adding this argument."

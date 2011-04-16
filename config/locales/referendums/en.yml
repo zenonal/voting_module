@@ -1,0 +1,10 @@
+en:
+  referendums:
+    title: 'List of propositions from our politicians'
+    show: "show"
+    edit: 'edit'
+    destroy: 'destroy'
+    new: 'new referendum'
+    back: 'back'
+    votes: 'votes'
+    approval: 'approval'

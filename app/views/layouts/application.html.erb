@@ -10,12 +10,27 @@
 </head>
 <body>
 	<div id="container">
+		  <table class="lang_navigation">
+				<tr>
+
+				<td><% link_to language_fra_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif">
+				<% end %></td>
+				<td><% link_to language_ndl_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif">
+				<% end %></td>
+				<td><% link_to language_eng_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif">
+				<% end %></td>
+				</tr>
+			</table>
+		
 	      <div id="user_nav">
 	        <% if user_signed_in? %>
-	          Signed in as <%= current_user.email %>. Not you?
-	          <%= link_to "Sign out", destroy_user_session_path %>
+	          <%= t('layout.sign_in_phrase') %> <%= current_user.email %>. <%= t('layout.not_you') %>
+	          <%= link_to t('layout.sign_out'), destroy_user_session_path %>
 	        <% else %>
-	          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+	          <%= link_to t('layout.sign_up'), new_user_registration_path %> or <%= link_to t('layout.sign_in'), new_user_session_path %>
 	        <% end %>
 	      </div>
 

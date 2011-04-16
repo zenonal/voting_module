@@ -1,8 +1,19 @@
 VotingModule::Application.routes.draw do
-  resources :referendums
+  
+  get "language/fra"
+
+  get "language/ndl"
+
+  get "language/eng"
+  
+  resources :referendums, :path => 'referendums' do
+    resources :comments
+    resources :arguments
+  end
 
   devise_for :users
   root :to => "user#index"
+  match ':controller(/:action(/:id(.:format)))'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,5 +70,5 @@ VotingModule::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  
 end

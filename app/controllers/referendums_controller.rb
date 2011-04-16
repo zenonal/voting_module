@@ -1,5 +1,6 @@
 class ReferendumsController < ApplicationController
   filter_resource_access
+  before_filter :authenticate_user!, :except => [:show,:index]
   
   # GET /referendums
   # GET /referendums.xml
@@ -16,7 +17,8 @@ class ReferendumsController < ApplicationController
   # GET /referendums/1.xml
   def show
     @referendum = Referendum.find(params[:id])
-
+    @commentable = @referendum
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @referendum }
@@ -82,4 +84,14 @@ class ReferendumsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def aye
+     current_user.vote_for(@referendum)
+     redirect_to(@referendum)
+  end
+  def nay
+     current_user.vote_against(@referendum)
+     redirect_to(@referendum)
+  end
+  
 end

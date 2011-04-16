@@ -1,0 +1,42 @@
+<div class ="comment">
+	<h3> <%= t(:comment_title) %></h3>
+	<% if permitted_to? :create, Comment.new %>
+		<% form_for [@commentable, Comment.new] do |f| %>
+			<p>
+				<%= f.label t(:new_comment) %><br>
+				<%= f.text_area :content %>
+			</p>
+			<p><%= f.submit t(:submit_str) %></p>
+		<% end %>
+	<% end %>
+	<% for comment in @commentable.comments %>
+	<table>
+		<tr>
+			<div class = "comment_header">
+				<td><%= t(:created_by) %><b><%= User.find(comment.user_id).displayName %></b></td>
+				<td><em><%= comment.created_at %></em></td>
+				
+			</div>
+		</tr>
+	</table>
+			
+	<div class = "comment_content">
+		<%= simple_format comment.content %>
+		<% unless current_user.nil? %>
+			<% if (comment.user_id == current_user.id) | permitted_to?(:delete, comment) %>
+				<span style="float:right;"><%= link_to t(:delete_str), polymorphic_path([@commentable,comment]), :confirm => t(:are_you_sure_str), :method => :delete %></span>
+			<% end %>
+		<% end %>
+		<% if permitted_to? :create, Comment.new %>
+		<%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => comment.id, :current_url => request.request_uri %>
+		<% end %>
+	</div>
+	
+	<%= render :partial => 'layouts/replies', :collection => comment.replies, :as => :reply %>
+		
+		
+	<% end %>
+	
+	<br><br>
+	
+</div>

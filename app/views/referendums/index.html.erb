@@ -1,25 +1,19 @@
-<h1>Listing referendums</h1>
+<% title t('referendums.title') %>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @referendums.each do |referendum| %>
   <tr>
-    <td><%= referendum.name %></td>
-    <td><%= referendum.content %></td>
-
-    <td><%= link_to 'Show', referendum %></td>
+	<td><%= image_tag referendum.photo.url(:thumbnail) %></td>
+    <td><%= eval("referendum.name_#{I18n.locale}") %></td>
+	<td>(<%= referendum.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(referendum) %>% <%= t('referendums.approval') %>)</td>
+	<td></td>
+    
+    <td><%= link_to t('referendums.show'), referendum %></td>
 <% if permitted_to? :edit, referendum %>
-    <td><%= link_to 'Edit', edit_referendum_path(referendum) %></td>
+    <td><%= link_to t('referendums.edit'), edit_referendum_path(referendum) %></td>
 <% end %>
 <% if permitted_to? :destroy, referendum %>
-    <td><%= link_to 'Destroy', referendum, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('referendums.destroy'), referendum, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
   </tr>
 <% end %>
@@ -27,5 +21,5 @@
 
 <br />
 <% if permitted_to? :create, Referendum.new %>
-	<%= link_to 'New Referendum', new_referendum_path %>
+	<%= link_to t('referendums.new'), new_referendum_path %>
 <% end %>

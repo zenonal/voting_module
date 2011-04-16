@@ -1,0 +1,27 @@
+<li>
+	<div id="pro_number"class="argument_content">
+		<%= simple_format "#{arguments_collection_counter+1}. #{argument.content}" %>
+
+	</div>
+
+	<div >
+		<%= t(:created_by) %>: <%= h User.find_by_id(argument.user_id).login %><br>
+		<table>
+			<tr>
+				<td>
+
+					<tr>
+						<td class="argument_agree"><%= link_to t(:agree_str), {:controller => :arguments, :action => :votefor, :id => argument.id}, :class => "remote-agree" %></td>
+						<td class="argument_disagree"><%= link_to t(:disagree_str), {:controller => :arguments, :action => :voteagainst, :id => argument.id}, :class => "remote-disagree" %></td>
+						<td><% if current_user.has_role?('administrator') %>
+							<%= link_to t(:delete_str), polymorphic_path([commentable,argument]), :method => :delete, :class => 'remote-delete' %>
+							<% end %></td>
+						</tr>
+
+					</td>
+
+				</tr>
+			</table>
+		</div>
+		<span id= "approval_rating<%= argument.id %>"><%= vote_tally(argument) %> % <%= t(:approval_str) %></span>
+	</li>

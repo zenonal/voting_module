@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413200007) do
+ActiveRecord::Schema.define(:version => 20110416221354) do
+
+  create_table "arguments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.boolean  "pro"
+    t.integer  "argumentable_id"
+    t.string   "argumentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -19,11 +29,28 @@ ActiveRecord::Schema.define(:version => 20110413200007) do
     t.datetime "updated_at"
   end
 
-  create_table "referendums", :force => true do |t|
-    t.string   "name"
+  create_table "comments", :force => true do |t|
     t.text     "content"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "referendums", :force => true do |t|
+    t.string   "name_en"
+    t.text     "content_en"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.text     "content_fr"
+    t.text     "content_nl"
+    t.string   "name_fr"
+    t.string   "name_nl"
   end
 
   create_table "roles", :force => true do |t|
@@ -50,10 +77,24 @@ ActiveRecord::Schema.define(:version => 20110413200007) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "rpx_identifier"
+    t.string   "displayName"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.boolean  "vote",          :default => false
+    t.integer  "voteable_id",                      :null => false
+    t.string   "voteable_type",                    :null => false
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["voteable_id", "voteable_type"], :name => "fk_voteables"
+  add_index "votes", ["voter_id", "voter_type"], :name => "fk_voters"
 
 end

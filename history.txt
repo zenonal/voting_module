@@ -51,3 +51,13 @@ Role.create(:name => 'admin')
 add declarative_authorization (cfr. Railscast 188)
 
 generate Referendum scaffold
+
+add ImageMagick locally + RMagick as a gem, to handle image resizing
+
+add PaperClip to handle picture attachments
+
+add vote_fu as a plugin (does not work as a gem), modify to allow a single vote per user and revoting
+
+add internationalization of referendums
+
+add language navigation

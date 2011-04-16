@@ -1,0 +1,50 @@
+
+	<h4 class="argument_title"> <%= t(:argument_title) %></h4>
+	<table class="argument_table">
+		<tr>
+			<td class="procon">
+				<ul id="pro">
+					<p id="pro_title"><%= t(:pro_str) %></p>
+					<div id=<%= "argument_collection_#{commentable.class.name}_#{commentable.id}_pro" %> >
+						<% commentable.arguments.all_pros.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
+					<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %><% end %>
+					</div>
+					<li>
+						<% if permitted_to? :create, Argument.new %>
+							<% form_for Argument.new, :url => {:controller => :arguments, :action => :create, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :pro => true}, :html => {:id => "new_argument_#{commentable.class.name}_#{commentable.id}_pro" } do |f| %>
+
+							<%= f.label t(:new_pro) %><br>
+							<%= f.text_area :content, :class => "argument_field" %>
+
+							<%= f.submit t(:submit_str) %>
+							<% end %>
+						<% end %>
+					</li>
+
+				</ul>
+
+			</td>
+
+
+			<td class="procon">
+
+				<ul id="con">
+					<p id="con_title"><%= t(:con_str) %></p>
+					<div id=<%= "argument_collection_#{commentable.class.name}_#{commentable.id}_con" %>>
+						<% commentable.arguments.all_cons.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
+					<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %><% end %>
+					</div>
+					<li>
+						<% if permitted_to? :create, Argument.new %>
+							<% form_for Argument.new, :url => {:controller => :arguments, :action => :create, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :pro => false}, :html => {:id => "new_argument_#{commentable.class.name}_#{commentable.id}_con" } do |f| %>
+							<%= f.label t(:new_con) %><br>
+							<%= f.text_area :content, :class => "argument_field" %>
+							<%= f.submit t(:submit_str) %>
+							<% end %>
+						<% end %>
+					</li>
+
+				</ul>
+			</td>
+		</tr>
+	</table>

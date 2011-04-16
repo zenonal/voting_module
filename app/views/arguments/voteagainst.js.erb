@@ -1,0 +1,1 @@
+$('#approval_rating<%= @init.id %>').html('<%= h(((@init.tally.to_f/@init.total.to_f)*100).to_int) %> % <%= t(:approval_str) %>');

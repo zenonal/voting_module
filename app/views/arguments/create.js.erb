@@ -1,0 +1,3 @@
+$('#argument_collection_<%= @argumentable.type.name %>_<%= @argumentable.id %>_<%= @side %>').append('<%= escape_javascript(render(:partial => "layouts/arguments_collection", :locals => { :commentable => @argumentable, :argument => @argument, :arguments_collection_counter => @index })) %>');
+$('#new_argument_<%= @argumentable.type.name %>_<%= @argumentable.id %>_<%= @side %>').before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#new_argument_<%= @argumentable.type.name %>_<%= @argumentable.id %>_<%= @side %>')[0].reset();

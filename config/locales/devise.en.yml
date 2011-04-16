@@ -41,6 +41,7 @@ en:
       edit: 'Edit'    
       title: 'Sign up'    
       email: 'email'
+      name: 'name'
       pwd: 'password'
       pwd_conf: 'password confirmation'
       pwd_i: "leave blank if you don't want to change it"

@@ -1,0 +1,27 @@
+<br><h3><%= t(:reply_title) %></h3>
+<div style="background:#DDD; padding: 10px;">
+	<h4><%= t(:original_comment) %></h4>
+	
+<table>
+	<tr>
+		<div class = "comment_header">
+			<td><%= t(:created_by) %><b><%= @author %></b></td>
+			<td><em><%= @com.created_at %></em></td>
+		</div>
+	</tr>
+</table>
+		
+<div class = "comment_content">
+	<%= simple_format @com.content %>
+</div>
+</div>
+<br><br>
+<% form_for :reply, :url => {:controller => :comments, :action => :create_reply, :id => @com.id, :back_page => @back} do |f| %>
+	<p>
+		<%= f.label t(:new_reply) %><br>
+		<%= f.text_area :content %>
+	</p>
+	<p><%= f.submit t(:submit_str) %></p>
+<% end %>
+
+<div id="back_button"><%= link_to t(:back_str), @back %></div>

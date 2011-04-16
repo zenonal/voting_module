@@ -116,6 +116,6 @@ Devise.setup do |config|
   
   config.rpx_application_name = 'citizens-for-direct-democracy'
   RPXNow.api_key = "6e3703cfb5c81be0d369bc8c67c4d9327a8a3861"
-  #config.rpx_additional_user_data = [:photo] 
+  config.rpx_additional_user_data = [:displayName] 
   #RPXNOW.language_preference = 'es';
 end
