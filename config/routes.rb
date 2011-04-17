@@ -14,7 +14,7 @@ VotingModule::Application.routes.draw do
   devise_for :users
   root :to => "user#index"
   scope "user", :as => "user" do
-    root :to =>"user#edit"
+    root :to =>"users#edit"
   end
   match ':controller(/:action(/:id(.:format)))'
 
