@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_many :assignments
   has_many :roles, :through => :assignments
-  validates_presence_of     :displayName
   before_create :define_role
   
   # Include default devise modules. Others available are:
@@ -23,6 +22,5 @@ class User < ActiveRecord::Base
    private
     def define_role
      self.roles << Role.find_or_create_by_name("registered_user")
-     redirect_to edit_path(self)
     end
 end

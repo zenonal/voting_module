@@ -13,6 +13,9 @@ VotingModule::Application.routes.draw do
 
   devise_for :users
   root :to => "user#index"
+  scope "user", :as => "user" do
+    root :to =>"user#edit"
+  end
   match ':controller(/:action(/:id(.:format)))'
 
   # The priority is based upon order of creation:
