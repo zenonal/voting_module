@@ -1,0 +1,45 @@
+<% @loc = 'devise.sessions.' %>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <% if @referendum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@referendum.errors.count, "error") %> prohibited this referendum from being saved:</h2>
+
+      <ul>
+      <% @referendum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_in_english %><br />
+    <%= f.text_field :name_en %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_english %><br />
+    <%= f.text_area :content_en %>
+  </div>
+<div class="field">
+    <%= f.label :name_in_french %><br />
+    <%= f.text_field :name_fr %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_french %><br />
+    <%= f.text_area :content_fr %>
+  </div>
+<div class="field">
+    <%= f.label :name_in_dutch %><br />
+    <%= f.text_field :name_nl %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_dutch %><br />
+    <%= f.text_area :content_nl %>
+  </div>
+  <div class="field">
+    <%= f.file_field :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

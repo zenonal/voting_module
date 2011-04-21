@@ -20,4 +20,17 @@ class ApplicationController < ActionController::Base
     flash[:error] = t('custom_error.perm_denied')
     redirect_to root_url
   end
+  
+  private
+  def after_sign_in_path_for(resource_or_scope)
+    if current_user.displayName.blank?
+      current_user.update_attribute(:displayName,'anonymous')
+      edit_user_registration_path
+    else
+      referendums_path
+    end
+  end
+  def after_update_path_for(resource_or_scope)
+      referendums_path
+  end
 end

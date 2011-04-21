@@ -38,7 +38,7 @@ en:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      edit: 'Edit'    
+      edit: 'Your account'    
       title: 'Sign up'    
       email: 'email'
       name: 'name'
@@ -53,6 +53,7 @@ en:
       signed_up: 'You have signed up successfully.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      update_name_text: 'Please choose the name you want to use on this website.'
     unlocks:
       title: 'Resend unlock instructions'
       no_instruction: "Didn't receive unlock instructions?"    

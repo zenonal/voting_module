@@ -10,13 +10,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :rpx_connectable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :displayName, :photo
   
     
   def role_symbols
     roles.map do |role|
       role.name.underscore.to_sym
     end
+  end
+  
+  def first_login?
+    self.sign_in_count==1
   end
   
    private

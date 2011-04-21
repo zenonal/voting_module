@@ -11,12 +11,10 @@ VotingModule::Application.routes.draw do
     resources :arguments
   end
 
-  devise_for :users
-  root :to => "user#index"
-  scope "user", :as => "user" do
-    root :to =>"user#index"
-  end
-  match ':controller(/:action(/:id(.:format)))'
+  devise_for :users 
+  root :to => "referendums#index"
+  
+  #match ':controller(/:action(/:id(.:format)))'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
