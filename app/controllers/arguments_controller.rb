@@ -17,7 +17,6 @@ class ArgumentsController < ApplicationController
   # POST /arguments.xml
   def create
     
-    
      @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
      if params[:pro]
        @index = @argumentable.arguments.all_pros.size
@@ -26,8 +25,13 @@ class ArgumentsController < ApplicationController
      end
      @argument = @argumentable.arguments.build(params[:argument])
      
-      if @argument.save
-         @argument.update_attributes(:user_id => current_user.id, :pro => params[:pro])
+      if @argument.save!
+         @argument.update_attribute(:user_id, current_user.id)
+         if params[:pro]
+           @argument.update_attribute(:pro, true)
+         else
+           @argument.update_attribute(:pro, false)
+         end
          flash[:notice] = t(:new_argument_ok)
          respond_to do |format|
           format.html {redirect_to(@argumentable)}
@@ -70,5 +74,16 @@ class ArgumentsController < ApplicationController
       format.html { redirect_to(arguments_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def aye
+     @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
+     current_user.vote_for(@argument)
+     redirect_to(@argumentable)
+  end
+  def nay
+    @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
+     current_user.vote_against(@argument)
+     redirect_to(@argumentable)
   end
 end

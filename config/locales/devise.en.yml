@@ -1,14 +1,19 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
 en:
   errors:
     messages:
+      expired: "has expired, please request a new one"
       not_found: "not found"
-      already_confirmed: "was already confirmed"
+      already_confirmed: "was already confirmed, please try signing in"
       not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
 
   devise:
-    back: 'back'
-    confirm: 'Are you sure?'  
     failure:
+      already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
       unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'Your account is locked.'
@@ -17,58 +22,29 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
-      title: 'Sign in'
-      email: 'email'
-      pwd: 'password'
-      pwd_conf: 'password confirmation'
-      remember: 'remember me'
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
     passwords:
-      title: 'Change your password'
-      forgot: 'Forgot your password?'    
-      pwd: 'password'
-      pwd_conf: 'password confirmation'
-      submit: 'Send me reset password instructions'
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
     confirmations:
-      title: 'Resend confirmation instructions'    
-      no_instructions: "Didn't receive confirmation instruction?"
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      edit: 'Your account'    
-      title: 'Sign up'    
-      email: 'email'
-      name: 'name'
-      pwd: 'password'
-      pwd_conf: 'password confirmation'
-      pwd_i: "leave blank if you don't want to change it"
-      cur_pwd: 'current password'
-      cur_pwd_i: 'we need your current password to confirm your changes'
-      update: 'Update'
-      cancel: 'Cancel my account'
-      unhappy: 'Unhappy?'
-      signed_up: 'You have signed up successfully.'
+      signed_up: 'Welcome! You have signed up successfully.'
+      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
-      update_name_text: 'Please choose the name you want to use on this website.'
     unlocks:
-      title: 'Resend unlock instructions'
-      no_instruction: "Didn't receive unlock instructions?"    
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
-      welcome: 'Welcome'   
-      hello: 'Hello'
-      confirm_text: 'You can confirm your account through the link below' 
-      confirm_button: 'Confirm my account'
-      confirmation_instructions: 'Confirmation instructions'
-      reset_text: 'Someone has requested a link to change your password, and you can do this through the link below.'
-      reset_button: 'Change my password'
-      reset_text2_html:   "<p>If you didn't request this, please ignore this email.</p><p>Your password won't change until you access the link above and create a new one.</p>"
-      reset_password_instructions: 'Reset password instructions'
-      unlock_text_html: "<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p><p>Click the link below to unlock your account:</p>"
-      unlock_button: 'Unlock my account'
-      unlock_instructions: 'Unlock Instructions'
+      confirmation_instructions:
+        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Reset password instructions'
+      unlock_instructions:
+        subject: 'Unlock Instructions'

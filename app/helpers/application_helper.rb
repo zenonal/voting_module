@@ -1,6 +1,10 @@
 module ApplicationHelper
   def vote_tally(voteable)
-    100*voteable.votes_for/(voteable.votes_for+voteable.votes_against)
+    if (voteable.votes_count>0)
+      100*voteable.votes_for/(voteable.votes_for+voteable.votes_against)
+    else
+      0
+    end
   end
   def title(page_title, show_title = true)
       content_for(:title) { page_title.to_s }

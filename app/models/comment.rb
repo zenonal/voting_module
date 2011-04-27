@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   validates_length_of       :content, :within => 4..1000
   
   belongs_to :commentable, :polymorphic => true
+  belongs_to :users
   has_many :comments, :as => :commentable, :dependent => :destroy
   
   def reply_level

@@ -13,7 +13,11 @@
 	<table>
 		<tr>
 			<div class = "comment_header">
+				<% if User.find(comment.user_id).nil? %>
 				<td><%= t(:created_by) %><b><%= User.find(comment.user_id).displayName %></b></td>
+				<% else %>
+				<td><%= t(:created_by) %><b>anonymous</b></td>
+				<% end %>
 				<td><em><%= comment.created_at %></em></td>
 				
 			</div>

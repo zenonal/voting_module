@@ -1,5 +1,9 @@
 VotingModule::Application.routes.draw do
-  
+
+  resources :authentications
+
+devise_for :users 
+
   get "language/fra"
 
   get "language/ndl"
@@ -11,10 +15,10 @@ VotingModule::Application.routes.draw do
     resources :arguments
   end
 
-  devise_for :users 
+  
   root :to => "referendums#index"
   
-  #match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

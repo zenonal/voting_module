@@ -2,6 +2,8 @@
 
 <% title t(@loc+'title') %>
 
+<%= t(@loc+'intro') %>
+
 <%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
   <%= f.error_messages %>
   <p><%= f.label t(@loc+'name') %></p>
@@ -19,6 +21,5 @@
   <p><%= f.submit t(@loc+'title') %></p>
 <% end %>
 
-<%= embed_rpx user_session_url %>
 
 <%= render :partial => "devise/shared/links" %>

@@ -17,4 +17,11 @@ class Argument < ActiveRecord::Base
   def self.all_cons
     find(:all, :conditions => {:pro => false})
   end
+  def score
+    if votes_count>0
+    votes_for.to_f/votes_count.to_f
+    else
+      0
+    end
+  end
 end

@@ -11,6 +11,7 @@ en:
       sign_up: 'Sign up'
       sign_in: 'Sign in'
   
+  headtitle: "Citizens for Direct Democracy: Voting Module"
   submit_str: "Submit"
   create_str: "Create"
   update_str: "Update"

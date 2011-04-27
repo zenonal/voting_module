@@ -6,8 +6,8 @@ gem 'rails', '3.0.4.rc1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
-gem 'devise', '1.1.rc0'
-gem 'devise_rpx_connectable'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'omniauth'
 gem 'declarative_authorization'
 gem "paperclip", "~> 2.3"
 

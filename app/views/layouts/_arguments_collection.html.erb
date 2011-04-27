@@ -5,15 +5,17 @@
 	</div>
 
 	<div >
-		<%= t(:created_by) %>: <%= h User.find_by_id(argument.user_id).login %><br>
+		<%= t(:created_by) %>: <%= h User.find_by_id(argument.user_id).displayName %><br>
 		<table>
 			<tr>
 				<td>
 
 					<tr>
-						<td class="argument_agree"><%= link_to t(:agree_str), {:controller => :arguments, :action => :votefor, :id => argument.id}, :class => "remote-agree" %></td>
-						<td class="argument_disagree"><%= link_to t(:disagree_str), {:controller => :arguments, :action => :voteagainst, :id => argument.id}, :class => "remote-disagree" %></td>
-						<td><% if current_user.has_role?('administrator') %>
+												
+						<td class="argument_agree"><%= link_to t(:agree_str), {:controller => :arguments, :action => :aye, :id => argument.id}, :class => "remote-agree" %></td>
+						<td class="argument_disagree"><%= link_to t(:disagree_str), {:controller => :arguments, :action => :nay, :id => argument.id}, :class => "remote-disagree" %></td>
+						
+						<td><% if permitted_to? :delete, argument %>
 							<%= link_to t(:delete_str), polymorphic_path([commentable,argument]), :method => :delete, :class => 'remote-delete' %>
 							<% end %></td>
 						</tr>
@@ -23,5 +25,5 @@
 				</tr>
 			</table>
 		</div>
-		<span id= "approval_rating<%= argument.id %>"><%= vote_tally(argument) %> % <%= t(:approval_str) %></span>
+		<td>(<%= argument.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(argument) %>% <%= t('referendums.approval') %>)</td>
 	</li>
