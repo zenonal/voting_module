@@ -1,15 +1,16 @@
 VotingModule::Application.routes.draw do
 
-  resources :authentications
+  match '/auth/:provider/callback' => 'authentications#create'
 
-devise_for :users 
+  devise_for :users 
 
   get "language/fra"
 
   get "language/ndl"
 
   get "language/eng"
-  
+  resources :authentications
+
   resources :referendums, :path => 'referendums' do
     resources :comments
     resources :arguments
