@@ -32,11 +32,13 @@
 			</table>
 		
 	      <div id="user_nav">
+			
 	        <% if user_signed_in? %>
+	<%= image_tag current_user.photo %>
 	          <%= t('layout.sign_in_phrase') %> <%= current_user.email %>. <%= t('layout.not_you') %>
 	          <%= link_to t('layout.sign_out'), destroy_user_session_path %>
 	        <% else %>
-	          <%= link_to t('layout.sign_up'), new_user_registration_path %> or <%= link_to t('layout.sign_in'), new_user_session_path %>
+	          <%= link_to t('layout.sign_in'), authentications_path %>
 	        <% end %>
 	      </div>
 

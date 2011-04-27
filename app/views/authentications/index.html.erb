@@ -1,27 +1,49 @@
-<h1>Listing authentications</h1>
+<!-- authentications/index.html.erb -->
+<% title "Sign In" %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Provider</th>
-    <th>Uid</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @authentications.each do |authentication| %>
-  <tr>
-    <td><%= authentication.user_id %></td>
-    <td><%= authentication.provider %></td>
-    <td><%= authentication.uid %></td>
-    <td><%= link_to 'Show', authentication %></td>
-    <td><%= link_to 'Edit', edit_authentication_path(authentication) %></td>
-    <td><%= link_to 'Destroy', authentication, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if @authentications %>
+  <% unless @authentications.empty? %>
+    <p><strong>You can sign in to this account using:</strong></p>
+    <div class="authentications">
+      <% for authentication in @authentications %>
+        <div class="authentication">
+          <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>
+          <div class="provider"><%= authentication.provider.titleize %></div>
+          <div class="uid"><%= authentication.uid %></div>
+          <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove" %>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+  <p><strong>Add another service to sign in with:</strong></p>
+<% else %>
+  <p><strong>Sign in through one of these services:</strong></p>
 <% end %>
-</table>
 
-<br />
+<a href="/auth/twitter" class="auth_provider">
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+  Twitter
+</a>
+<a href="/auth/facebook" class="auth_provider">
+  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+  Facebook
+</a>
+<a href="/auth/google_apps" class="auth_provider">
+  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
+  Google
+</a>
+<a href="/auth/open_id" class="auth_provider">
+  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
+  OpenID
+</a>
+<div class="clear"></div>
 
-<%= link_to 'New Authentication', new_authentication_path %>
+
+<% unless user_signed_in? %>
+  <p>
+    <strong>Don't use these services?</strong>
+    <%= link_to "Sign up", new_user_registration_path %> or
+    <%= link_to "sign in", new_user_session_path %> with a password.
+  </p>
+<% end %>

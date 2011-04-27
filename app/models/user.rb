@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   
   acts_as_voter
-  has_many :authentications
+  has_many :authentications, :dependent => :destroy
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :comments, :dependent => :destroy
@@ -16,6 +16,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me
   
+  def apply_omniauth(omniauth)
+    self.displayName = omniauth['user_info']['nickname'] if displayName.blank?
+    self.photo = omniauth['user_info']['image'] if photo.blank?
+    self.email = omniauth['user_info']['email'] if email.blank?
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
     
   def role_symbols
     roles.map do |role|
@@ -25,6 +31,10 @@ class User < ActiveRecord::Base
   
   def first_login?
     self.sign_in_count==1
+  end
+  
+  def password_required?
+    (authentications.empty? || !password.blank?) && super
   end
   
    private
