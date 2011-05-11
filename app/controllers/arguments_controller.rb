@@ -13,10 +13,19 @@ class ArgumentsController < ApplicationController
     @argument = @argumentable.arguments.build(params[:argument])
   end
 
+  def new
+    @argument = Argument.new
+    @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @argument }
+    end
+  end
+  
   # POST /arguments
   # POST /arguments.xml
   def create
-    
      @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
      if params[:pro]
        @index = @argumentable.arguments.all_pros.size
@@ -27,6 +36,7 @@ class ArgumentsController < ApplicationController
      
       if @argument.save!
          @argument.update_attribute(:user_id, current_user.id)
+         @argument.update_attribute(:language, I18n.locale)
          if params[:pro]
            @argument.update_attribute(:pro, true)
          else
@@ -86,4 +96,11 @@ class ArgumentsController < ApplicationController
      current_user.vote_against(@argument)
      redirect_to(@argumentable)
   end
+  
+  def exclude_argument
+    @exclusion = @argument.exclusions.find_or_create_by_user_id_and_excludable_id_and_excludable_type(current_user.id, @argument.id, "Argument")
+    @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
+    redirect_to(@argumentable)
+  end
+  
 end

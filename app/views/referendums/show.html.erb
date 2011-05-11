@@ -1,22 +1,33 @@
 
 <!--<%= title eval("@referendum.name_#{I18n.locale}") %>-->
-<%= image_tag @referendum.photo.url(:small) %>
-<%= raw eval("@referendum.content_#{I18n.locale}") %>
-<table style="display:inline;">
+<table>
 	<tr>
+		<td><%= image_tag @referendum.photo.url(:small) %></td>
+		
+		<% if !current_user.nil? %>
 		<td>
-	<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_support' %>
-
-</td>
-<td>
-
-<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_nosupport' %>
-
-</td>
-</tr>
+		<% if current_user.voted_for?(@referendum) %>
+			<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_support' %>
+		<% else %>
+			<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_nosupport' %>
+	    <% end %>
+			</td>
+			<td>
+		<% if current_user.voted_against?(@referendum) %>
+			<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_support' %>
+		<% else %>
+			<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_nosupport' %>
+	    <% end %>
+		</td>
+		<% end %>
+		
+		<td><%= raw score_meter(vote_tally(@referendum).to_f/100.0,120) %></td>
+	</tr>
 </table>
+<%= raw eval("@referendum.content_#{I18n.locale}") %>
 
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @referendum } %>
+
 <br>
 <%= render :partial => "layouts/comments" %>
 

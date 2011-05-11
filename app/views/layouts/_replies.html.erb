@@ -18,8 +18,16 @@
 			<% if reply.reply_level < 5 %>
 			<span style="float:right;"><%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri %></span>
 			<% end %>
+			
+			<p><%= link_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :class => "remote-disagree" %></p>
+			<% if reply.exclusion_requests > 0 %>
+			<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
+			<% reply.exclusions.each do |l| %>
+				<span style="color:#F00">X</span>
+			<%end %>
+				</p>
+			<% end %>
 		</div>
-		
 		<%= render :partial => 'layouts/replies', :collection => reply.replies, :as => :reply %>
 </div>
 

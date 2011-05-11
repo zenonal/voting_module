@@ -4,26 +4,24 @@
 <% if (current_user.displayName.blank? || current_user.displayName=='anonymous') %>
 <%= t(@loc+'update_name_text') %>
 <% end %>
-
 <%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
   <p><%= f.label t(@loc+'name') %></p>
   <p><%= f.text_field :displayName %></p>
 
-<% unless (current_user.displayName.blank? || current_user.displayName=='anonymous') %>
   <p><%= f.label t(@loc+'email') %></p>
   <p><%= f.text_field :email %></p>
 
+<% if @user.password_required? %>
   <p><%= f.label t(@loc+'pwd') %> <i>(<%= t(@loc+'pwd_i') %>)</i></p>
   <p><%= f.password_field :password %></p>
 
   <p><%= f.label t(@loc+'pwd_conf') %></p>
   <p><%= f.password_field :password_confirmation %></p>
-<% end %>
 
   <p><%= f.label t(@loc+'cur_pwd') %> <i>(<%= t(@loc+'cur_pwd_i') %>)</i></p>
   <p><%= f.password_field :current_password %></p>
-
+<% end %>
 
   <p><%= f.submit t(@loc+'update') %></p>
 <% end %>

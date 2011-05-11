@@ -1,16 +1,14 @@
 <li>
 	<div id="pro_number"class="argument_content">
-		<%= simple_format "#{arguments_collection_counter+1}. #{argument.content}" %>
-
+		<%= raw RedCloth.new("#{arguments_collection_counter+1}. #{argument.content}").to_html %>
+		
 	</div>
 
 	<div >
 		<%= t(:created_by) %>: <%= h User.find_by_id(argument.user_id).displayName %><br>
 		<table>
 			<tr>
-				<td>
-
-					<tr>
+				
 												
 						<td class="argument_agree"><%= link_to t(:agree_str), {:controller => :arguments, :action => :aye, :id => argument.id}, :class => "remote-agree" %></td>
 						<td class="argument_disagree"><%= link_to t(:disagree_str), {:controller => :arguments, :action => :nay, :id => argument.id}, :class => "remote-disagree" %></td>
@@ -18,12 +16,17 @@
 						<td><% if permitted_to? :delete, argument %>
 							<%= link_to t(:delete_str), polymorphic_path([commentable,argument]), :method => :delete, :class => 'remote-delete' %>
 							<% end %></td>
-						</tr>
-
-					</td>
-
+						
 				</tr>
 			</table>
 		</div>
-		<td>(<%= argument.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(argument) %>% <%= t('referendums.approval') %>)</td>
+		(<%= argument.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(argument) %>% <%= t('referendums.approval') %>)
+		<p><%= link_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => argument.id}, :class => "remote-disagree" %></p>
+		<% if argument.exclusion_requests > 0 %>
+		<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
+		<% argument.exclusions.each do |l| %>
+			<span style="color:#F00">X</span>
+			<%end %>
+			</p>
+		<% end %>
 	</li>

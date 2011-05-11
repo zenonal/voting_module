@@ -10,6 +10,7 @@ gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'omniauth'
 gem 'declarative_authorization'
 gem "paperclip", "~> 2.3"
+gem "RedCloth", '4.2.2'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -3,12 +3,13 @@
 <table>
 <% @referendums.each do |referendum| %>
   <tr>
-	<td><%= image_tag referendum.photo.url(:thumbnail) %></td>
-    <td><%= eval("referendum.name_#{I18n.locale}") %></td>
+	<td><%= link_to image_tag(referendum.photo.url(:thumbnail)), referendum %></td>
+    <td><%= link_to eval("referendum.name_#{I18n.locale}"), referendum %></td>
+
 	<td>(<%= referendum.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(referendum) %>% <%= t('referendums.approval') %>)</td>
-	<td></td>
+	<td><%= raw score_meter(vote_tally(referendum).to_f/100.0,120) %></td>
     
-    <td><%= link_to t('referendums.show'), referendum %></td>
+    
 <% if permitted_to? :edit, referendum %>
     <td><%= link_to t('referendums.edit'), edit_referendum_path(referendum) %></td>
 <% end %>

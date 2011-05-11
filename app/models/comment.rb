@@ -5,6 +5,10 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   belongs_to :users
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :exclusions, :as => :excludable, :dependent => :destroy
+  scope :current_lg, lambda {|l|
+    where(:language => l)
+  }
   
   def reply_level
     current_com = self
@@ -27,6 +31,9 @@ class Comment < ActiveRecord::Base
   end
   
   def replies
-    Comment.find(:all, :conditions => {:commentable_type => "Comment", :commentable_id => self.id})
+    Comment.current_lg(I18n.locale).find(:all, :conditions => {:commentable_type => "Comment", :commentable_id => self.id})
+  end
+  def exclusion_requests
+    self.exclusions.count.to_i
   end
 end

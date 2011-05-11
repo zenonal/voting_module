@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427034052) do
+ActiveRecord::Schema.define(:version => 20110507225409) do
 
   create_table "arguments", :force => true do |t|
     t.text     "content"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110427034052) do
     t.string   "argumentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "language"
   end
 
   create_table "assignments", :force => true do |t|
@@ -42,6 +43,15 @@ ActiveRecord::Schema.define(:version => 20110427034052) do
     t.integer  "user_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "language"
+  end
+
+  create_table "exclusions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "excludable_id"
+    t.string   "excludable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

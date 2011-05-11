@@ -4,6 +4,8 @@ class Argument < ActiveRecord::Base
   validates_length_of       :content, :within => 2..400
   
   belongs_to :argumentable, :polymorphic => true
+  belongs_to :users
+  has_many :exclusions, :as => :excludable, :dependent => :destroy
   
   def is_pro?
      self.pro == true
@@ -12,10 +14,10 @@ class Argument < ActiveRecord::Base
      self.pro == false
   end
   def self.all_pros
-    find(:all, :conditions => {:pro => true})
+    find(:all, :conditions => {:pro => true, :language => I18n.locale})
   end
   def self.all_cons
-    find(:all, :conditions => {:pro => false})
+    find(:all, :conditions => {:pro => false, :language => I18n.locale})
   end
   def score
     if votes_count>0
@@ -23,5 +25,8 @@ class Argument < ActiveRecord::Base
     else
       0
     end
+  end
+  def exclusion_requests
+    self.exclusions.count.to_i
   end
 end

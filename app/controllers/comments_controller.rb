@@ -54,6 +54,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comment.update_attribute(:user_id, current_user.id)
+        @comment.update_attribute(:language, I18n.locale)
         flash[:notice] = t(:new_comment_ok)
         format.html { redirect_to(@commentable) }
         format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
@@ -134,5 +135,11 @@ class CommentsController < ApplicationController
       end
     end
     nil
+  end
+  
+  
+  def exclude_comment
+    @exclusion = @comment.exclusions.find_or_create_by_user_id_and_excludable_id_and_excludable_type(current_user.id, @comment.id, "Comment")
+    redirect_to(@comment.origin.commentable_type.constantize.find(@comment.origin.commentable_id))
   end
 end

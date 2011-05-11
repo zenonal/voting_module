@@ -10,6 +10,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.2)
     abstract (1.0.0)
     actionmailer (3.0.4.rc1)
       actionpack (= 3.0.4.rc1)
@@ -163,6 +164,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth (= 4.2.2)
   declarative_authorization
   devise!
   omniauth

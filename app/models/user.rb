@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_many :authentications, :dependent => :destroy
   has_many :assignments
-  has_many :roles, :through => :assignments
+  has_many :roles, :through => :assignments, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :arguments, :dependent => :destroy
+  has_many :exclusions, :dependent => :destroy
   before_create :define_role
   
   # Include default devise modules. Others available are:
@@ -15,6 +17,16 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me
+  
+  scope :in_favor, lambda {|v|
+     joins(:votes).
+     where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",true,v.id,v.class.name)
+   }
+   scope :opposed_to, lambda {|v|
+      joins(:votes).
+      where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",false,v.id,v.class.name)
+    }
+  
   
   def apply_omniauth(omniauth)
     self.displayName = omniauth['user_info']['nickname'] if displayName.blank?

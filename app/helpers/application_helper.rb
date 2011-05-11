@@ -6,6 +6,16 @@ module ApplicationHelper
       0
     end
   end
+  def score_meter(value,size)
+    level = ((size*value)-6).to_i
+    if level < 0
+      level = 0
+    end
+    output = "<div class=\"meter\">"
+    output += image_tag("meter/meter_bkg.png", :size => "#{size}x20", :id => "meter_bkg")
+    output += image_tag("meter/meter_front.png", :size => "#{level}x20", :id => "meter_front")
+    output += "</div>"
+  end
   def title(page_title, show_title = true)
       content_for(:title) { page_title.to_s }
       @show_title = show_title
