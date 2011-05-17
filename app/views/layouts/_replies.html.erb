@@ -19,7 +19,7 @@
 			<span style="float:right;"><%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri %></span>
 			<% end %>
 			
-			<p><%= link_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :class => "remote-disagree" %></p>
+			<p><%= button_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :title => t(:com_exclude_str) %></p>
 			<% if reply.exclusion_requests > 0 %>
 			<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
 			<% reply.exclusions.each do |l| %>

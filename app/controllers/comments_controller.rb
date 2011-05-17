@@ -77,7 +77,7 @@ class CommentsController < ApplicationController
       @reply = Comment.new(params[:reply])
 
       if @reply.save!
-        @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id})
+        @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
        
         flash[:notice] = t(:new_comment_ok)
         redirect_to @back

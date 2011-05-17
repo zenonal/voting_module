@@ -17,6 +17,9 @@ VotingModule::Application.routes.draw do
     resources :comments
     resources :arguments
   end
+  resources :arguments, :path => 'arguments' do
+    resources :comments
+  end
 
   
   root :to => "referendums#index"

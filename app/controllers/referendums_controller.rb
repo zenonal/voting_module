@@ -87,10 +87,22 @@ class ReferendumsController < ApplicationController
   
   def aye
      current_user.vote_for(@referendum)
+     @arg = @referendum.arguments.find_by_user_id(current_user.id)
+     if !@arg.nil?
+       if @arg.pro==false
+         @arg.update_attribute(:pro, true)
+       end
+     end
      redirect_to(@referendum)
   end
   def nay
      current_user.vote_against(@referendum)
+     @arg = @referendum.arguments.find_by_user_id(current_user.id)
+      if !@arg.nil?
+        if @arg.pro==true
+          @arg.update_attribute(:pro, false)
+        end
+      end
      redirect_to(@referendum)
   end
   

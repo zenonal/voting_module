@@ -5,14 +5,6 @@ jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
 
-jQuery.fn.submitWithAjax = function() {
-  this.submit(function() {
-    $.post(this.action, $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
-};
-
 jQuery.fn.clickWithAjax = function() {
   	this.unbind('click', false);
 	this.click(function() {
@@ -35,16 +27,4 @@ $(document).ready(function() {
 			predelay: 400,
 			delay: 1000,
 			position: "top center"});
-	$(".argument_table").hide();
-	$(".argument_title").hover(function(){
-		$(this).css('cursor','pointer');
-	});
-	$(".argument_title").click(function(){
-	// slide toggle effect set to slow you can set it to fast too.
-	$(this).next(".argument_table").slideToggle("slow");
-	return true;});
-	$(".new_argument").submitWithAjax();
-	$('a.remote-delete').clickWithAjax();
-	$('a.remote-disagree').clickWithAjax();
-	$('a.remote-agree').clickWithAjax();
 });

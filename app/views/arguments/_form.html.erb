@@ -1,4 +1,4 @@
-<% form_for @argument, :url => {:controller => :arguments, :action => :create, :argumentable => @argumentable.class.name, :argumentable_id => @argumentable.id, :pro => true}, :html => { :method => :put } do |f| %>
+<%= form_for @argument, :url => {:action => @action, :argumentable => @argumentable.class.name, :argumentable_id => @argumentable.id} do |f| %>
 <% if @argument.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@argument.errors.count, "error") %> prohibited this argument from being saved:</h2>
@@ -9,14 +9,14 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+<% end %>
+<%= f.label t(:new_arg_title) %>:<br>
+<%= f.text_field :title %>
 
-<div class="field">
-<%= f.label t(:new_pro) %><br>
 <%= f.textile_editor :content %>
-</div>
+
 
 <%= f.submit t(:submit_str) %>
 <% end %>
-<%= raw textile_editor_initialize(:framework => :jquery) -%>
+
 

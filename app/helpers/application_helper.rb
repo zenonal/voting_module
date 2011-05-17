@@ -18,7 +18,9 @@ module ApplicationHelper
   end
   def title(page_title, show_title = true)
       content_for(:title) { page_title.to_s }
-      @show_title = show_title
+      if show_title
+        raw "<h2>#{page_title}</h2>"
+      end
     end
 
     def show_title?

@@ -6,6 +6,8 @@ class Argument < ActiveRecord::Base
   belongs_to :argumentable, :polymorphic => true
   belongs_to :users
   has_many :exclusions, :as => :excludable, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  attr_accessible :content, :title
   
   def is_pro?
      self.pro == true

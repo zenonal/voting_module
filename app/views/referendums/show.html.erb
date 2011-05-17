@@ -28,8 +28,6 @@
 
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @referendum } %>
 
-<br>
-<%= render :partial => "layouts/comments" %>
 
 <% if permitted_to? :edit, @referendum %>
 <%= link_to t('referendums.edit'), edit_referendum_path(@referendum) %> |

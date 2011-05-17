@@ -81,11 +81,22 @@ a {
   list-style: disc;
 }
 
-#user_nav {
-  float: right;
-  font-size: 12px;
+#navigation_bar {
+   	width: 100%;
+	  background-color: #ddd;
+	  padding: 10px 10px;
+	  border: solid 1px black;
+	  margin-top: 0px;
 }
 
+#user_nav {
+  font-size: 12px;
+float: right;
+}
+
+#lang_navigation {
+  font-size: 12px;
+}
 
 .authentications {
   margin-bottom: 30px;
@@ -260,18 +271,18 @@ td.procon {
 
 .comment_field {
 	height: 100px;
-	width: 873px;
+	width: 95%;
 }
 
 .comment {
 	font-size: 100%;
-	position:relative;
-	width: 880px;
+	width: 100%;
 	margin: 0px;
 	border-top:3px solid #888;
 	padding: 10px;
 	margin-left: -10px;
 	background: #E4EAF1;
+	left: -30px;
 	
 }
 

@@ -1,0 +1,16 @@
+
+
+<table>
+	<tr>
+		<td><%= title @argument.title %></td>
+		<td><%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id} %></td>
+		<td><%= @argument.votes_for-@argument.votes_against %></td>
+		<td><%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id} %></td>
+	</tr>
+</table>
+
+<%= raw RedCloth.new(@argument.content).to_html %>
+
+<%= render :partial => "layouts/comments" %>
+
+<%= link_to t('referendums.back'), @argumentable %>

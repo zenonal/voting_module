@@ -1,5 +1,3 @@
-
-	<h4 class="argument_title"> <%= t(:argument_title) %></h4>
 	<table class="argument_table">
 		<tr>
 			<td class="procon">
@@ -15,7 +13,11 @@
 					<% end %>
 					</div>
 					<li>
-						<%= link_to t(:create_con_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :pro => false} %>
+					<% if user_signed_in? %>
+						<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
+							<%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id} %>
+						<% end %>
+					<% end %>
 						
 					</li>
 
@@ -28,7 +30,7 @@
 
 				<ul id="con">
 					<p id="con_title"><%= t(:con_str) %></p>
-					<% if !commentable.arguments.all_pros.empty? %>
+					<% if !commentable.arguments.all_cons.empty? %>
 						<div id=<%= "argument_collection_#{commentable.class.name}_#{commentable.id}_con" %>>
 							<% commentable.arguments.all_cons.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
 								<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
@@ -38,9 +40,11 @@
 					<% end %>
 					</div>
 					<li>
-						
-						<%= link_to t(:create_pro_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :pro => true} %>
-						
+						<% if user_signed_in? %>
+							<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
+								<%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id} %>
+							<% end %>
+						<% end %>
 					</li>
 
 				</ul>
