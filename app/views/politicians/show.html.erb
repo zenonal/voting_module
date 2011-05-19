@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= image_tag @politician.photo.url(:small) %></p>
+
+
+<p>
+  <b>Name:</b>
+  <%= @politician.name %>
+</p>
+
+<%= link_to 'Edit', edit_politician_path(@politician) %> |
+<%= link_to 'Back', politicians_path %>

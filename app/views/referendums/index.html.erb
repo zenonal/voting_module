@@ -1,15 +1,16 @@
 <% title t('referendums.title') %>
 
-<table>
+
 <% @referendums.each do |referendum| %>
+<table  id="referendum_item">
   <tr>
 	<td><%= link_to image_tag(referendum.photo.url(:thumbnail)), referendum %></td>
     <td><%= link_to eval("referendum.name_#{I18n.locale}"), referendum %></td>
 
 	<td>(<%= referendum.votes_count %> <%= t('referendums.votes') %> , <%= vote_tally(referendum) %>% <%= t('referendums.approval') %>)</td>
 	<td><%= raw score_meter(vote_tally(referendum).to_f/100.0,120) %></td>
-    
-    
+   </tr>
+    <tr>
 <% if permitted_to? :edit, referendum %>
     <td><%= link_to t('referendums.edit'), edit_referendum_path(referendum) %></td>
 <% end %>
@@ -17,10 +18,13 @@
     <td><%= link_to t('referendums.destroy'), referendum, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
   </tr>
-<% end %>
 </table>
+<% end %>
 
 <br />
 <% if permitted_to? :create, Referendum.new %>
 	<%= link_to t('referendums.new'), new_referendum_path %>
+<% end %>
+<% if permitted_to? :index, Politician.new %>
+	<%= link_to t('politicians.index'), politicians_path %>
 <% end %>

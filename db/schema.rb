@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515170804) do
+ActiveRecord::Schema.define(:version => 20110517171337) do
 
   create_table "arguments", :force => true do |t|
     t.text     "content"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20110515170804) do
     t.datetime "updated_at"
   end
 
+  create_table "authorships", :force => true do |t|
+    t.integer  "politician_id"
+    t.integer  "referendum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -53,6 +60,16 @@ ActiveRecord::Schema.define(:version => 20110515170804) do
     t.integer  "user_id"
     t.integer  "excludable_id"
     t.string   "excludable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "politicians", :force => true do |t|
+    t.string   "name"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,11 @@
 
 <!--<%= title eval("@referendum.name_#{I18n.locale}") %>-->
+<div style="float:right;">
+	<%= t('referendums.author') %>
+	<% for p in @referendum.politicians %>
+	<%= link_to image_tag(p.photo.url(:thumbnail)), p %>
+	<% end %>
+</div>
 <table>
 	<tr>
 		<td><%= image_tag @referendum.photo.url(:small) %></td>

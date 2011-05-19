@@ -1,11 +1,11 @@
 en:
-  referendums:
-    title: 'List of propositions from our politicians'
+  politicians:
+    title: 'List of our politicians'
     show: "show"
     edit: 'edit'
     destroy: 'destroy'
-    new: 'new referendum'
+    new: 'new politician'
     back: 'back'
     votes: 'votes'
     approval: 'approval'
-    author: 'Authors:'
+    index: 'List of politicians'

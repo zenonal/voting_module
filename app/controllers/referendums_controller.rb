@@ -45,6 +45,11 @@ class ReferendumsController < ApplicationController
   # POST /referendums.xml
   def create
     @referendum = Referendum.new(params[:referendum])
+    for p in Politician.all
+      if params[p.name]
+        @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
+      end
+    end
 
     respond_to do |format|
       if @referendum.save
@@ -61,6 +66,11 @@ class ReferendumsController < ApplicationController
   # PUT /referendums/1.xml
   def update
     @referendum = Referendum.find(params[:id])
+    for p in Politician.all
+      if params[p.name]
+        @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
+      end
+    end
 
     respond_to do |format|
       if @referendum.update_attributes(params[:referendum])

@@ -1,5 +1,7 @@
 VotingModule::Application.routes.draw do
 
+  resources :politicians
+
   resources :exclusions
 
   match '/auth/:provider/callback' => 'authentications#create'

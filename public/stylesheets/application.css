@@ -321,6 +321,10 @@ td.procon {
 	left: 3px;
 }
 
+#referendum_item {
+	border:1px solid #888;
+}
+
 
 
 a.bill_support, .bill_nosupport {
