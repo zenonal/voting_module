@@ -27,6 +27,12 @@ a {
   margin-top: 20px;
 }
 
+#tutorial {
+	float: right;
+	padding: 10px;
+	border: solid 1px black;
+}
+
 #flash_notice, #flash_error {
   padding: 5px 8px;
   margin: 10px 0;
@@ -327,7 +333,7 @@ td.procon {
 
 
 
-a.bill_support, .bill_nosupport {
+.bill_support, .bill_nosupport {
 margin: 0px 15px 12px;
 display: block;
 padding-top: 31px;
@@ -338,15 +344,20 @@ overflow: hidden;
 height: 0;
 }
 
-a.nay {
+.nay {
 background: url('/images/vote_squares2.png') no-repeat left -39px;
 }
-a.nay.bill_support, a.nay:hover {
+.nay.bill_support, a.nay:hover {
 background-position: -35px -39px;
 }
-a.aye {
+.aye {
 background: url('/images/vote_squares2.png') no-repeat left 0px;
 }
-a.aye.bill_support, a.aye:hover {
+.aye.bill_support, a.aye:hover {
 background-position: -35px 0px;
+}
+
+#private_vote {
+	border:1px solid #888;
+	padding: 10px;
 }

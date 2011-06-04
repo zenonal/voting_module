@@ -10,6 +10,7 @@ class ArgumentsController < ApplicationController
   def show
     @argumentable = @argument.argumentable_type.constantize.find_by_id(@argument.argumentable.id)
     @commentable = @argument
+    @author = User.find_by_id(@argument.user_id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @referendum }

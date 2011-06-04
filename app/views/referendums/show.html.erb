@@ -9,27 +9,31 @@
 <table>
 	<tr>
 		<td><%= image_tag @referendum.photo.url(:small) %></td>
-		
-		<% if !current_user.nil? %>
-		<td>
-		<% if current_user.voted_for?(@referendum) %>
-			<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_support' %>
-		<% else %>
-			<%= link_to "aye", {:controller => :referendums, :action => :aye, :id => @referendum.id}, :class => 'aye bill_nosupport' %>
-	    <% end %>
-			</td>
-			<td>
-		<% if current_user.voted_against?(@referendum) %>
-			<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_support' %>
-		<% else %>
-			<%= link_to "nay", {:controller => :referendums, :action => :nay, :id => @referendum.id}, :class => 'nay bill_nosupport' %>
-	    <% end %>
-		</td>
-		<% end %>
-		
-		<td><%= raw score_meter(vote_tally(@referendum).to_f/100.0,120) %></td>
+		<td><%= @referendum.tally_all_votes %> <%= t('referendums.votes') %>, </td>
+		<td><%= @referendum.percent_approval.to_i %>% <%= t('referendums.approval') %></td>
+		<td><%= raw score_meter(@referendum.percent_approval/100.0,120) %></td>
 	</tr>
 </table>
+
+<% unless current_user.nil? %>
+	<p><%= t('referendums.private_vote') %>:</p>
+	<%= raw vote_options(current_user,@referendum) %>
+	<p><%= t('referendums.vote_of_delegate') %>:</p>
+	<% unless @delegated_vote.nil? %>
+		<% if @delegated_vote %>
+			<span class="aye bill_nosupport"></span> 
+		<% else %>
+			<span class="nay bill_nosupport"></span> 
+		<% end %>
+	<% end %>
+	<%= link_to t('users.delegates.change_delegate'), delegates_path %>
+
+	<% unless current_user.delegate.nil? %>
+		<p><%= t('referendums.delegate_vote') %>:</p>
+		<%= raw vote_options(current_user.delegate,@referendum) %>
+	<% end %>
+<% end %>
+
 <%= raw eval("@referendum.content_#{I18n.locale}") %>
 
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @referendum } %>

@@ -70,6 +70,65 @@ module Juixe
       
       # This module contains instance methods
       module InstanceMethods
+        def percent_approval
+          100*(self.tally_votes_for.to_f/(self.tally_all_votes))
+        end
+        def tally_all_votes
+          votes = 0;
+          self.votes.for_voter_type(Delegate.first).each do |v|
+            deleg = []
+            deleg << Delegation.find_by_delegate_id(v.voter_id)
+            unless deleg[0].nil?
+              deleg.each do |d|
+                u = User.find_by_id(d.user_id)
+                unless u.nil?
+                    unless u.voted_on?(self)
+                      votes=votes+1;
+                    end
+                end
+              end
+            end
+          end
+          votes = votes+self.votes.for_voter_type(User.first).count
+        end
+        def tally_votes_for
+          votes = 0;
+          self.votes.for_voter_type(Delegate.first).for.each do |v|
+            deleg = []
+            deleg << Delegation.find_by_delegate_id(v.voter_id)
+            unless deleg[0].nil?
+              deleg.each do |d|
+                u = User.find_by_id(d.user_id)
+                unless u.nil?
+                    unless u.voted_on?(self)
+                      votes=votes+1;
+                    end
+                end
+              end
+            end
+          end
+          votes = votes+self.votes.for_voter_type(User.first).for.count
+        end
+        def tally_votes_against
+          votes = 0;
+          self.votes.for_voter_type(Delegate.first).against.each do |v|
+            deleg = []
+            deleg << Delegation.find_by_delegate_id(v.voter_id)
+            unless deleg[0].nil?
+              deleg.each do |d|
+                u = User.find_by_id(d.user_id)
+                unless u.nil?
+                    unless u.voted_on?(self)
+                      votes=votes+1;
+                    end
+                end
+              end
+            end
+          end
+          votes = votes+self.votes.for_voter_type(User.first).against.count
+        end
+        
+        
         def votes_for
           Vote.count(:all, :conditions => [
             "voteable_id = ? AND voteable_type = ? AND vote = ?",

@@ -17,4 +17,12 @@ class LanguageController < ApplicationController
     redirect_to root_url
 	end
 
+  def tutorial
+    if (cookies[:tutorial]) == "true"
+      cookies[:tutorial] = false
+    else
+      cookies[:tutorial] = true
+    end
+    redirect_to :back
+  end
 end

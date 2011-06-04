@@ -1,0 +1,14 @@
+<%= title t('users.delegates.index') %>
+<% @delegates.each do |d| %>
+<table  id="referendum_item">
+  <tr>
+	<% @user = User.find_by_id(d.user_id) %>
+	<% unless @user.photo.blank? %>
+	<td><%= link_to image_tag(@user.photo), @user %></td>
+	<% end %>
+	<td><%= link_to @user.displayName, @user %>:</td>
+	<td><%= @user.votes.count %> <%= t('users.delegates.votes') %></td>
+	<td><%= raw(delegate_button(@user)) %></td>
+  </tr>
+</table>
+<% end %>

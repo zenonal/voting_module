@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110517171337) do
+ActiveRecord::Schema.define(:version => 20110529122738) do
 
   create_table "arguments", :force => true do |t|
     t.text     "content"
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(:version => 20110517171337) do
     t.datetime "updated_at"
   end
 
+  create_table "bios", :force => true do |t|
+    t.string   "bioable_type"
+    t.integer  "bioable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content_fr"
+    t.text     "content_nl"
+    t.text     "content_en"
+    t.string   "wiki_fr"
+    t.string   "wiki_nl"
+    t.string   "wiki_en"
+  end
+
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -56,12 +69,35 @@ ActiveRecord::Schema.define(:version => 20110517171337) do
     t.string   "language"
   end
 
+  create_table "delegates", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delegations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "delegate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exclusions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "excludable_id"
     t.string   "excludable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "parties", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "politicians", :force => true do |t|
@@ -72,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20110517171337) do
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "party_id"
   end
 
   create_table "referendums", :force => true do |t|
@@ -115,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20110517171337) do
     t.string   "rpx_identifier"
     t.string   "displayName"
     t.string   "photo"
+    t.integer  "party_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

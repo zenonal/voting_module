@@ -15,9 +15,46 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+<br/>
+<br/>
   <div class="field">
     <%= f.file_field :photo %>
   </div>
+<br/>
+  <div class="field">
+	<%= label_tag 'bio in English' %>
+	<%= text_area_tag 'bio_text_en', @politician.bios[0].content_en %>
+  </div>
+<div class="field">
+	<%= label_tag 'bio in French' %>
+	<%= text_area_tag 'bio_text_fr', @politician.bios[0].content_fr %>
+  </div>
+<div class="field">
+	<%= label_tag 'bio in Dutch' %>
+	<%= text_area_tag 'bio_text_nl', @politician.bios[0].content_nl %>
+  </div>
+<br/>
+<br/>
+  <div class="field">
+	<%= label_tag 'wiki in English' %>
+	<%= text_field_tag 'bio_wiki_en', @politician.bios[0].wiki_en %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in French' %>
+	<%= text_field_tag 'bio_wiki_fr', @politician.bios[0].wiki_fr %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in Dutch' %>
+	<%= text_field_tag 'bio_wiki_nl', @politician.bios[0].wiki_nl %>
+  </div>
+<div>
+	<% for p in Party.all %>
+	<%= label_tag p.name %>
+	<%=	radio_button_tag :party, p.name %><br/>
+	<% end %>
+  </div>
+<br/>
+<br/>
   <div class="actions">
     <%= f.submit %>
   </div>

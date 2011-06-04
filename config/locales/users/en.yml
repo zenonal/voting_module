@@ -1,0 +1,24 @@
+en:
+  users: 
+    edit: "Edit user"
+    delegates: 
+      index: "Index of delegates"
+      active_delegate: "Currently active as delegate"
+      create_delegate: "Become a delegate!"
+      destroy_delegate: "Cancel your delegate mandate"
+      votes: "votes"
+      comments: "comments"
+      point_of_view: "Posted views"
+      ref: "On"
+      confirm: "Are you sure? All your votes will become public!"
+      confirm_new: "Are you sure you want to delegate your votes to this user?"
+      choose: "Choose as delegate"
+      delegated_votes: "delegated votes"
+      votes_delegated: "Votes currently delegated to "
+      already_added: 'User already added as delegate.'
+      delegation_successful: 'You have now delegated your votes to this user.'
+      choose_delegate: 'Choose a delegate'
+      change_delegate: 'Choose another delegate'
+      cancel_delegate: 'Cancel your delegation to this user'
+      current_delegate: 'Your votes are currently delegated to this user'
+      no_vote: "You didn't vote as a delegate on this bill yet"

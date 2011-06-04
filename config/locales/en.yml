@@ -10,6 +10,9 @@ en:
       sign_out: 'Sign out'
       sign_up: 'Sign up'
       sign_in: 'Sign in'
+      add_photo: 'Add your photo'
+      activate_tutorial: "Turn the tutorial on:"
+      disactivate_tutorial: "Turn the tutorial off:"
   
   headtitle: "Citizens for Direct Democracy: Voting Module"
   submit_str: "Submit"

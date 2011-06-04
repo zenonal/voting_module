@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<%= title @party.name %>
+
+<table>
+	<tr>
+		<td>
+			<%= image_tag @party.photo.url(:small) %>
+		</td>
+		<td>
+			<table>
+			<tr>
+				<td><%= raw eval("@party.bios[0].content_#{I18n.locale}") %></td>
+			</tr>
+			<tr>
+				<td><%= link_to eval("@party.bios[0].wiki_#{I18n.locale}") %></td>
+			</tr>
+			</table>
+		</td>
+		<td>
+			<% for p in @party.politicians %>
+			<%= link_to image_tag(p.photo.url(:thumbnail)), p %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+
+<%= link_to t('parties.edit'), edit_party_path(@party) %> |
+<%= link_to t('parties.index'), parties_path %>

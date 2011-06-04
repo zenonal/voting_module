@@ -18,6 +18,14 @@ class ReferendumsController < ApplicationController
   def show
     @referendum = Referendum.find(params[:id])
     @commentable = @referendum
+    if user_signed_in?
+      deleg = Delegation.find_by_user_id(current_user.id)
+        if deleg.nil?
+          @delegated_vote = nil
+        else
+          @delegated_vote = deleg.delegate.voted_for?(@referendum)
+        end
+    end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -96,8 +104,13 @@ class ReferendumsController < ApplicationController
   end
   
   def aye
-     current_user.vote_for(@referendum)
-     @arg = @referendum.arguments.find_by_user_id(current_user.id)
+     if params[:delegated]
+       voter = current_user.delegate
+     else
+       voter = current_user
+     end
+     voter.vote_for(@referendum)
+     @arg = @referendum.arguments.find_by_user_id(voter.id)
      if !@arg.nil?
        if @arg.pro==false
          @arg.update_attribute(:pro, true)
@@ -106,8 +119,13 @@ class ReferendumsController < ApplicationController
      redirect_to(@referendum)
   end
   def nay
-     current_user.vote_against(@referendum)
-     @arg = @referendum.arguments.find_by_user_id(current_user.id)
+     if params[:delegated]
+        voter = current_user.delegate
+      else
+        voter = current_user
+      end
+     voter.vote_against(@referendum)
+     @arg = @referendum.arguments.find_by_user_id(voter.id)
       if !@arg.nil?
         if @arg.pro==true
           @arg.update_attribute(:pro, false)

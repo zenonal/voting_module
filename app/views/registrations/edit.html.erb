@@ -4,6 +4,13 @@
 <% if (current_user.displayName.blank? || current_user.displayName=='anonymous') %>
 <%= t(@loc+'update_name_text') %>
 <% end %>
+<% if @user.delegate.nil? %>
+<p><%= button_to t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id} %></p>
+<% else %>
+<p><%= t(:delegate_notice) %>
+<%= button_to t('users.delegates.destroy_delegate'), {:controller => :delegates, :action => :destroy, :user_id => @user.id} %></p>
+<% end %>
+
 <%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
   <p><%= f.label t(@loc+'name') %></p>
@@ -11,6 +18,9 @@
 
   <p><%= f.label t(@loc+'email') %></p>
   <p><%= f.text_field :email %></p>
+
+  <p><%= f.label t(@loc+'email') %></p>
+  <p><%= f.text_field :photo %></p>
 
 <% if @user.password_required? %>
   <p><%= f.label t(@loc+'pwd') %> <i>(<%= t(@loc+'pwd_i') %>)</i></p>

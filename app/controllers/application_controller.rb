@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  layout :set_layout
   protect_from_forgery
   include SslRequirement
   
   before_filter :set_locale
+  before_filter :set_mode
   before_filter {|c| Authorization.current_user = c.current_user}
   
   
@@ -16,10 +18,26 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale]
   end
   
+  def set_mode
+    if cookies[:tutorial].blank?
+      if user_signed_in?
+        if current_user.sign_in_count <= 1
+          cookies[:tutorial] = true
+        else
+          cookies[:tutorial] = false
+        end
+      end
+    end
+  end
+  
+  
   protected
   def permission_denied
     flash[:error] = t('custom_error.perm_denied')
     redirect_to root_url
   end
   
+  def set_layout
+    (cookies[:tutorial] == "true") ? "tutorial" : "application"
+  end
 end

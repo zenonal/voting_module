@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :arguments, :dependent => :destroy
   has_many :exclusions, :dependent => :destroy
+  has_one :delegate, :dependent => :destroy
+  has_one :delegation, :dependent => :destroy
+  belongs_to :party
   before_create :define_role
   
   # Include default devise modules. Others available are:

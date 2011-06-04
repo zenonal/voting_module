@@ -1,0 +1,53 @@
+<%= form_for @party, :html => { :multipart => true } do |f| %>
+  <% if @party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
+
+      <ul>
+      <% @party.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+<br/>
+  <div class="field">
+    <%= f.file_field :photo %>
+  </div>
+<br/>
+  <div class="field">
+	<%= label_tag 'bio in English' %>
+	<%= text_area_tag 'bio_text_en' %>
+  </div>
+<div class="field">
+	<%= label_tag 'bio in French' %>
+	<%= text_area_tag 'bio_text_fr' %>
+  </div>
+<div class="field">
+	<%= label_tag 'bio in Dutch' %>
+	<%= text_area_tag 'bio_text_nl' %>
+  </div>
+<br/>
+<br/>
+  <div class="field">
+	<%= label_tag 'wiki in English' %>
+	<%= text_field_tag 'bio_wiki_en' %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in French' %>
+	<%= text_field_tag 'bio_wiki_fr' %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in Dutch' %>
+	<%= text_field_tag 'bio_wiki_nl' %>
+  </div>
+<br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

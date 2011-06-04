@@ -1,10 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
+  
   def create
     super
     session[:omniauth] = nil unless @user.new_record?
   end
   
   def update
+      
       # Devise use update_with_password instead of update_attributes.
       # This is the only change we make.
       if resource.update_attributes(params[resource_name])

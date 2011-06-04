@@ -1,0 +1,11 @@
+en:
+  parties:
+    title: 'List of our parties'
+    show: "show"
+    edit: 'edit'
+    destroy: 'destroy'
+    new: 'new party'
+    back: 'back'
+    votes: 'votes'
+    approval: 'approval'
+    index: 'List of parties'

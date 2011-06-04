@@ -9,3 +9,6 @@ en:
     votes: 'votes'
     approval: 'approval'
     author: 'Authors:'
+    private_vote: 'Your private vote'
+    delegate_vote: 'Your vote as a delegate'
+    vote_of_delegate: 'Your delegate voted'

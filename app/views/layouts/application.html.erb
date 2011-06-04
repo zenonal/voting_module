@@ -5,6 +5,7 @@
   <title><%= yield(:title) || "Untitled" %></title>
   <%= stylesheet_link_tag 'application' %>
   <%= render 'layouts/scripts' %>
+<%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
   <%= yield(:head) %> 
 </head>
@@ -23,11 +24,19 @@
 				<%= link_to language_eng_url do %>
 					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif">
 				<% end %>
+				<%= t('layout.activate_tutorial') %>
+				<%= link_to language_tutorial_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
+				<% end %>
 		</span>
 		<span id="user_nav">
 						<% if user_signed_in? %>
-				<%= link_to image_tag(current_user.photo, :size => "30x30"), edit_user_registration_path %>
-				          <%= t('layout.sign_in_phrase') %> <%= link_to current_user.email, edit_user_registration_path %>. <%= t('layout.not_you') %>
+							<% if current_user.photo.blank?%>
+								<%= link_to t('layout.add_photo'), edit_user_registration_path %>
+							<% else %>
+								<%= link_to image_tag(current_user.photo, :size => "30x30"), user_path(current_user) %>
+							<% end %>
+				          <%= t('layout.sign_in_phrase') %> <%= link_to current_user.email, user_path(current_user) %>. <%= t('layout.not_you') %>
 				          <%= link_to t('layout.sign_out'), destroy_user_session_path %>
 				        <% else %>
 				          <%= link_to t('layout.sign_in'), authentications_path %>

@@ -1,11 +1,28 @@
 
+<div style="float:right;">
+	<%= t('referendums.author') %>
+	
+	<% unless @author.delegate.nil? %>
+	<%= link_to image_tag(@author.photo), user_path(@author) %>
+	<%= raw(delegate_button(@author)) %>
+	<% end %>
+</div>
 
 <table>
 	<tr>
 		<td><%= title @argument.title %></td>
-		<td><%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id} %></td>
-		<td><%= @argument.votes_for-@argument.votes_against %></td>
-		<td><%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id} %></td>
+		
+		<td><% if current_user.voted_against?(@argument) %>
+				<%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id}, :class => 'nay bill_support' %>
+			<% else %>
+				<%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id}, :class => 'nay bill_nosupport' %>
+		    <% end %></td>
+		<td><span style="font-size:24px;"><%= @argument.votes_for-@argument.votes_against %></span></td>
+		<td><% if current_user.voted_for?(@argument) %>
+				<%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id}, :class => 'aye bill_support' %>
+			<% else %>
+				<%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id}, :class => 'aye bill_nosupport' %>
+		    <% end %></td>
 	</tr>
 </table>
 

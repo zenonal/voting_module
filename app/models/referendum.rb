@@ -6,4 +6,5 @@ class Referendum < ActiveRecord::Base
   has_many :arguments, :as => :argumentable, :dependent => :destroy
   has_many :authorships
   has_many :politicians, :through => :authorships
+
 end
