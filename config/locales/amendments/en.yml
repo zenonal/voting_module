@@ -1,0 +1,33 @@
+en:
+  amendments:
+    title: 'List of alternatives proposed by other citizens'
+    show: "show"
+    edit: 'edit'
+    edit_init: 'Editing alternative'
+    destroy: 'destroy'
+    new: 'Propose your own alternative to this bill'
+    new_category: 'new category'
+    back: 'back to original bill'
+    votes: 'vote'
+    approval: 'approval'
+    author: 'Author'
+    private_vote: 'Your private vote'
+    delegate_vote: 'Your vote as a delegate'
+    delegate_no_vote: "No vote on this bill yet"
+    vote_of_delegate: 'Your delegate voted'
+    want_vote: 'If you want to vote on this'
+    index_categories: 'Index of categories'
+    categories: 'List of categories: choose on'
+    created_at: 'Created on '
+    valid: 'This alternative has been validated'
+    validate: 'Validate this alternative'
+    current_validations: "Number of current validations"
+    index: "Show me the list of validated alternatives"
+    index_drafts: "Show me the list of alternatives waiting for validation"
+    index_title: "List of validated alternatives"
+    index_drafts_title: "List of alternatives waiting for validation"
+    preview: "preview"
+    modify: "modify"
+    validated: "These alternatives have been validated"
+    not_validated: "These alternatives are not validated yet"
+    none: "There are currently no alternatives for this bill"

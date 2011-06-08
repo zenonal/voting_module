@@ -4,11 +4,11 @@
 <% @politicians.each do |politician| %>
   <tr>
 	<td><%= link_to image_tag(politician.photo.url(:thumbnail)), politician %></td>
-    <td><%= link_to politician.name, politician %></td>
+    <td><%= link_to politician.name, politician, :class => "link" %></td>
 	
     
 <% if permitted_to? :edit, politician %>
-    <td><%= link_to t('politicians.edit'), edit_politician_path(politician) %></td>
+    <td><%= link_to t('politicians.edit'), edit_politician_path(politician), :class => "button" %></td>
 <% end %>
 <% if permitted_to? :destroy, politician %>
     <td><%= button_to t('politicians.destroy'), politician, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -23,5 +23,5 @@
 <br />
 
 <% if permitted_to? :create, Politician.new %>
-	<%= link_to t('politicians.new'), new_politician_path %>
+	<%= link_to t('politicians.new'), new_politician_path, :class => "button" %>
 <% end %>

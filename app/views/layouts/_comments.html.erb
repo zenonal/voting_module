@@ -1,4 +1,4 @@
-<div class ="comment">
+<div>
 	<h3> <%= t(:comment_title) %></h3>
 	<% form_for [@commentable, Comment.new] do |f| %>
 			<p>
@@ -8,10 +8,11 @@
 			<p><%= f.submit t(:submit_str) %></p>
 	<% end %>
 	<% for comment in @commentable.comments.current_lg(I18n.locale) %>
+	
 	<table>
 		<tr>
 			<td>
-	    		
+	    		<div class = "comment">
 					<table>
 						<tr>
 							<div class = "comment_header">
@@ -20,7 +21,7 @@
 								<% else %>
 								<td><%= t(:created_by) %><b>anonymous</b></td>
 								<% end %>
-								<td><em><%= comment.created_at %></em></td>
+								<td><em><%= comment.created_at.strftime("%e %B, %Y") %></em></td>
 							</div>
 						</tr>
 					</table>
@@ -29,11 +30,11 @@
 						<%= simple_format comment.content %>
 						<% unless current_user.nil? %>
 							<% if (comment.user_id == current_user.id) | permitted_to?(:delete, comment) %>
-								<span style="float:right;"><%= link_to t(:delete_str), polymorphic_path([@commentable,comment]), :confirm => t(:are_you_sure_str), :method => :delete %></span>
+								<span style="float:right;"><%= link_to t(:delete_str), polymorphic_path([@commentable,comment]), :confirm => t(:are_you_sure_str), :method => :delete, :class => "button" %></span>
 							<% end %>
 						<% end %>
 						<% if permitted_to? :create, Comment.new %>
-							<%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => comment.id, :current_url => request.request_uri %>
+							<%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => comment.id, :current_url => request.request_uri, :class => "link" %>
 						<% end %>
 		
 						<p><%= button_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => comment.id}, :title => t(:com_exclude_str) %></p>
@@ -45,15 +46,17 @@
 						<% end %>
 					</div>
 			
+</div>
 
 	<%= render :partial => 'layouts/replies', :collection => comment.replies, :as => :reply %>
-		
-		
+	
+	
+		</td>
+		</tr>
+		</table>
+	
 	
 	<% end %>
-	<br><br>
-	</td>
-	</tr>
-	</table>
+	
 	
 </div>

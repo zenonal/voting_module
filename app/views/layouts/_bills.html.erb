@@ -1,0 +1,92 @@
+<% @controller = bill.class.name.downcase.pluralize %>
+
+<div id="bill-header">
+	<% title eval("bill.name_#{I18n.locale}") %>
+	<div id="bill-header-icon"><%= image_tag bill.photo.url(:thumbnail) %></div>
+	<div id="bill-header-name"><h1><%= eval("bill.name_#{I18n.locale}").capitalize %></h1></div>
+</div>
+
+
+<div id="bill-sidebar">
+	<div id="bill-category">
+<% unless (@controller == "amendments") || bill.category.nil?  %>
+	<p><span style="display:inline-block; vertical-align:middle;"><%= link_to image_tag(bill.category.photo.url(:thumbnail)), bill.category %>
+	<%= link_to eval("bill.category.name_#{I18n.locale}"), bill.category, :class => "link" %></span></p>
+<% end %>
+	</div>
+	<div id="bill-score">
+<% if bill.validated? %>
+	<p><%= pluralize(bill.tally_all_votes,t("#{@controller}.votes")) %>
+	<% unless bill.percent_approval.nan? %>
+		, <%= bill.percent_approval.to_i %>% <%= t("#{@controller}.approval") %></p>
+		<p><%= raw score_meter(bill.percent_approval/100.0,120) %>
+	<% end %>
+	</p>
+<% else %>
+	<p><span style="display:inline-block; vertical-align:middle;">
+		<%= t("#{@controller}.validate") %>: <%= link_to image_tag("valid.gif"), {:controller=> @controller, :action=>"validate", :id => bill.id} %></span></p>
+	<p><%= t("#{@controller}.current_validations") %>: <%= bill.validations_count %></p>
+<% end %>
+	</div>
+
+<% if bill.validated? %>
+
+<% unless current_user.nil? %>
+	<div id="bill-vote">
+	<%= t("#{@controller}.private_vote") %>
+	<%= raw vote_options(current_user,bill) %>
+	</div>
+	<div id="bill-vote">
+	<%= t("#{@controller}.vote_of_delegate") %>
+	<% if @delegated_vote.nil? %>
+	<p><%= t("#{@controller}.delegate_no_vote") %></p>
+	<% else %>
+		<% if @delegated_vote %>
+			<span class="aye bill_nosupport"></span> 
+		<% else %>
+			<span class="nay bill_nosupport"></span> 
+		<% end %>
+	<% end %>
+	<p><%= link_to t('users.delegates.change_delegate'), delegates_path, :class => "link" %></p>
+	</div>
+
+	<div id="bill-vote">
+	<% unless current_user.delegate.nil? %>
+		<%= t("#{@controller}.delegate_vote") %>:
+		<%= raw vote_options(current_user.delegate,bill) %>
+	<% end %>
+	</div>
+<% else %>
+	<p><%= t("#{@controller}.want_vote") %>: <%= link_to t('layout.sign_in'), authentications_path %></p>
+<% end %>
+
+<% end %>
+</div>
+
+<div id="bill-content">
+	<div class="border-div">
+<div class="bill-text">
+<%= raw eval("RedCloth.new(bill.content_#{I18n.locale}).to_html") %>
+</div>
+
+<% if @controller == "referendums" %>
+	<%= pluralize(bill.politicians.count,t("#{@controller}.author")) %>:
+	<% for p in bill.politicians %>
+		<%= link_to image_tag(p.photo.url(:thumbnail), :class => "user-image"), p %>
+	<% end %>
+	<%= t("#{@controller}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %>
+<% else %>
+	<p><%= t("#{@controller}.author") %>:
+	<%= link_to image_tag(bill.user.photo, :size => "40x40", :class => "user-image"), bill.user %>
+	<%= link_to bill.user.displayName, bill.user, :class => "link" %></p>
+	<p><%= t("#{@controller}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %></p>
+<% end %>
+
+<% if permitted_to? :edit, bill %>
+<%= link_to t("#{@controller}.edit"), eval("edit_#{@controller.singularize}_path(bill)"), :class => "button" %>
+<% end %>
+</div>
+</div>
+
+
+

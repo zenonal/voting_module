@@ -1,7 +1,8 @@
 authorization do
   role :admin do
-    has_permission_on [:referendums, :comments, :arguments, :users, :politicians, :parties], :to => [:index, :show, :new, :create, :edit, :update, :destroy]
-    has_permission_on :referendums, :to => [:aye,:nay]
+    has_permission_on [:initiatives, :referendums, :amendments, :comments, :arguments, :users, :politicians, :parties, :categories], :to => [:index, :show, :new, :create, :edit, :update, :destroy]
+    has_permission_on [:initiatives, :referendums, :amendments], :to => [:aye,:nay]
+    has_permission_on [:initiatives, :amendments], :to => [:validate, :index_drafts]
     has_permission_on :user, :to => [:show]
     has_permission_on :arguments, :to => [:aye,:nay,:exclude_argument,:edit, :update,:destroy]
     has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment,:edit, :update,:destroy]
@@ -10,12 +11,19 @@ authorization do
   role :registered_user do
     has_permission_on [:comments,:arguments], :to => [:index, :show, :new, :create]
     has_permission_on :referendums, :to => [:index, :show, :aye,:nay]
-    has_permission_on [:politicians,:parties], :to => [:index, :show]
+    has_permission_on [:politicians,:parties,:categories], :to => [:index, :show]
     has_permission_on :user, :to => [:show]
     has_permission_on :arguments, :to => [:aye,:nay,:exclude_argument]
     has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment]
     has_permission_on [:comments,:arguments], :to => [:edit, :update,:destroy] do
       if_attribute :user_id => is { user.id }
+    end
+    has_permission_on [:initiatives, :amendments], :to => [:index, :index_drafts, :show, :new, :create, :aye,:nay]
+    has_permission_on [:initiatives, :amendments], :to => [:edit, :update,:destroy] do
+      if_attribute :user_id => is { user.id }
+    end
+    has_permission_on [:initiatives, :amendments], :to => [:validate] do
+      if_attribute :user_id => is_not { user.id }
     end
     has_permission_on [:users], :to => [:edit, :update,:destroy] do
       if_attribute :id => is { user.id }
@@ -27,7 +35,7 @@ authorization do
     has_permission_on :delegations, :to => [:create, :update, :destroy]
   end
   role :guest do
-    has_permission_on [:comments,:arguments, :politicians, :parties, :referendums], :to =>  [:index, :show]
+    has_permission_on [:comments,:arguments, :politicians, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show]
     has_permission_on :user, :to => [:show]
   end
 end

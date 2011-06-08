@@ -13,6 +13,9 @@ en:
       add_photo: 'Add your photo'
       activate_tutorial: "Turn the tutorial on:"
       disactivate_tutorial: "Turn the tutorial off:"
+      points_of_view: "Your point of view on this bill"
+  homepage:
+      title: 'Voting module'
   
   headtitle: "Citizens for Direct Democracy: Voting Module"
   submit_str: "Submit"
@@ -24,7 +27,7 @@ en:
   arg_exclude_str: "Request exclusion"
   arg_exclude_tip: "Select this action to exclude a comment or post that you find inappropriate"
   com_exclude_str: "Request exclusion"
-  exclusion_requests_str: "Exclusions requested (argument will be suppressed after 5 exclusion requests):"
+  exclusion_requests_str: "Exclusion requests:"
   disagree_str: "I DISAGREE"
   approval_str: "approval for this argument"
   pro_str: "PROS"
@@ -42,7 +45,7 @@ en:
   delete_str: "Delete"
   are_you_sure_str: "Are you sure?"
   new_comment: "Post your comment (max 1000 characters)"
-  new_arg: "Post your point of view (max 500 characters)"
+  new_arg: "Post your point of view (max 1500 characters)"
   new_arg_title: "Title"
   create_arg: "Give your own point of view!"
   edit_arg: "Edit"
@@ -57,3 +60,7 @@ en:
   new_comment_not_ok: "There was an error creating the comment."
   new_argument_ok: "Argument was successfully added."
   new_argument_not_ok: "There was an error adding this argument."
+  english_head: "In English"
+  french_head: "En français"
+  nederland_head: "In het Nederlands"
+  point_of_view_title: "Point of view"

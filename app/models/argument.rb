@@ -1,7 +1,8 @@
 class Argument < ActiveRecord::Base
   acts_as_voteable
+  validates_uniqueness_of   :content
   validates_presence_of     :content
-  validates_length_of       :content, :within => 2..400
+  validates_length_of       :content, :within => 2..1500
   
   belongs_to :argumentable, :polymorphic => true
   belongs_to :users

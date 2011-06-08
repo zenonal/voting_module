@@ -1,0 +1,28 @@
+<div id="preview">
+	<h2><%= t('initiatives.preview') %></h2>
+	<%= image_tag bill.photo.url %>
+	<table>
+		<tr>
+			<td><%= t(:english_head) %></td>
+			<td><%= t(:french_head) %></td>
+			<td><%= t(:nederland_head) %></td>
+		</tr>
+		<tr>
+			<td>
+				<h3><%= bill.name_en %></h3>
+	   			<%= raw RedCloth.new(bill.content_en).to_html %>
+			</td>
+			<td>
+				<h3><%= bill.name_fr %></h3>
+	   			<%= raw RedCloth.new(bill.content_fr).to_html %>
+			</td>
+			<td>
+				<h3><%= bill.name_nl %></h3>
+	   			<%= raw RedCloth.new(bill.content_nl).to_html %>
+			</td>
+		</tr>
+	</table>
+</div>
+<br />
+<br />
+<h2><%= t('initiatives.modify') %></h2>

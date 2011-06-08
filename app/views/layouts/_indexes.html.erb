@@ -1,0 +1,40 @@
+<% @controller = bills[0].class.name.downcase.pluralize %>
+
+<% bills.each do |bill| %>
+<div id="index-content">
+	<div id="index-column">
+		<% unless bill.category.nil? %>
+			<%= link_to image_tag(bill.category.photo.url(:thumbnail), :title => eval("bill.category.name_#{I18n.locale}")), bill.category %>
+		<% end %>
+		
+	</div>
+	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %></div>
+    <div id="index-column">
+			<p><%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %></p>
+		
+		
+			
+	</div>
+	
+		<% unless bill.percent_approval.nan? %>
+			<div id="index-column">
+				<p><%= pluralize(bill.tally_all_votes,t("#{@controller}.votes")) %> , <%= bill.percent_approval.to_i %>% <%= t("#{@controller}.approval") %></p>
+				<p><%= raw score_meter(bill.percent_approval/100.0,120) %></p>
+			</div>
+		<% else %>
+		<div id="index-column"></div>
+		<% end %>
+		
+		<div id="index-column">
+		<p><% if permitted_to? :edit, bill %>
+		    <%= link_to t("#{@controller}.edit"), eval("edit_#{@controller.singularize}_path(bill)"), :class => "button" %>
+		<% end %>
+		<% if permitted_to? :destroy, bill %>
+		    <%= link_to t("#{@controller}.destroy"), bill, :confirm => 'Are you sure?', :method => :delete, :class => "button" %>
+		<% end %></p>
+		</div>
+		
+  <div class="clear"></div>
+</div>
+<% end %>
+

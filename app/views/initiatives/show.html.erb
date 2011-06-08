@@ -1,0 +1,12 @@
+
+<%= render :partial => "layouts/bills", :locals => { :bill => @initiative } %>
+
+<div id="bill-footer">
+<%= render :partial => "layouts/amendments_list", :locals => { :bill => @initiative } %>
+</div>
+
+<div id="bill-footer">
+<%= render :partial => "layouts/arguments", :locals => { :commentable => @initiative } %>
+</div>
+
+

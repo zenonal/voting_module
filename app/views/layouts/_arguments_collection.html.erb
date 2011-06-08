@@ -1,35 +1,10 @@
-<li>
-	
+<table style="padding-left:40px;">
+	<tr>
+<td><%= link_to image_tag(User.find_by_id(argument.user_id).photo, :size => "40x40"), User.find_by_id(argument.user_id) %></td>
 
-	<div >
-		
-		<table>
-			<tr id="pro_number"class="argument_content">
-				<td><%= link_to image_tag(User.find_by_id(argument.user_id).photo), User.find_by_id(argument.user_id) %></td>
-			
-			
-				<td><%= link_to argument.title, referendum_argument_path(commentable,argument) %></td>
-				<td><%= argument.votes_for-argument.votes_against %></td>
-			</tr>
-			<tr>
-				
-						<td><% if permitted_to? :destroy, argument %>
-							<%= button_to t(:delete_str), argument, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>
-							<% end %></td>
-			</tr>
-			<tr>
-						<td><% if permitted_to? :edit, argument %>
-							<%= link_to t(:edit_arg), edit_referendum_argument_path(argument.argumentable_type.constantize.find_by_id(argument.argumentable_id),argument) %></td><% end %>
-						
-				</tr>
-			</table>
-		</div>
-		<p><%= button_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => argument.id}, :title => t(:arg_exclude_tip) %></p>
-		<% if argument.exclusion_requests > 0 %>
-		<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
-		<% argument.exclusions.each do |l| %>
-			<span style="color:#F00">X</span>
-			<%end %>
-			</p>
-		<% end %>
-	</li>
+<td style="width:200px;"><%= link_to argument.title, argument, :class => "link" %></td>
+<td><%= pluralize(argument.tally_all_votes,t("#{@controller}.votes")) %>
+<% unless argument.percent_approval.nan? %>
+	, <%= argument.percent_approval.to_i %>% <%= t("#{@controller}.approval") %>
+<% end %>
+</td></tr></table>

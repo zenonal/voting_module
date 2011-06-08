@@ -1,33 +1,49 @@
 
-<div style="float:right;">
-	<%= t('referendums.author') %>
+<div id="bill-header">
+	<h2><%= t(:point_of_view_title) %></h2>
+	<div id="bill-header-icon"><%= link_to image_tag(@author.photo, :class => "user-image"), user_path(@author) %></div>
+	<div id="bill-header-name"><h1><%= title @argument.title.capitalize %></h1></div>
+</div>
+<div id="bill-sidebar">
+	<div id="bill-vote">
+	<% if user_signed_in? %>
+	<%= raw vote_options(current_user,@argument) %>
+	<% end %>
+	</div>
+	<div id="bill-score">
+	<%= pluralize(@argument.tally_all_votes,t("initiatives.votes")) %>
+	<% unless @argument.percent_approval.nan? %>
+		, <%= @argument.percent_approval.to_i %>% <%= t("initiatives.approval") %>
+		<%= raw score_meter(@argument.percent_approval/100.0,120) %>
+	<% end %>
+	</div>
+</div>
+<div id="bill-content">
+	<div id="bill-text">
+		<%= raw RedCloth.new(@argument.content).to_html %>
+	</div>
+	<%= button_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :title => t(:arg_exclude_tip) %>
 	
-	<% unless @author.delegate.nil? %>
-	<%= link_to image_tag(@author.photo), user_path(@author) %>
-	<%= raw(delegate_button(@author)) %>
+	<% if @argument.exclusion_requests > 0 %>
+		<%= t(:exclusion_requests_str) %>
+		<% @argument.exclusions.each do |l| %>
+			<span style="color:#F00">X</span>
+		<%end %>
+	<% end %>
+	
+	
+	<% if permitted_to? :destroy, @argument %>
+		<%= button_to t(:delete_str), @argument, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>
+	<% end %>
+
+	<% if permitted_to? :edit, @argument %>
+		<%= link_to t(:edit_arg), eval("edit_#{@argument.argumentable_type.downcase}_argument_path(@argument.argumentable_type.constantize.find_by_id(@argument.argumentable_id), @argument)"), :class => "button" %>
 	<% end %>
 </div>
+<div class="clear"></div>
 
-<table>
-	<tr>
-		<td><%= title @argument.title %></td>
-		
-		<td><% if current_user.voted_against?(@argument) %>
-				<%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id}, :class => 'nay bill_support' %>
-			<% else %>
-				<%= link_to "-", {:controller => :arguments, :action => :nay, :id => @argument.id}, :class => 'nay bill_nosupport' %>
-		    <% end %></td>
-		<td><span style="font-size:24px;"><%= @argument.votes_for-@argument.votes_against %></span></td>
-		<td><% if current_user.voted_for?(@argument) %>
-				<%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id}, :class => 'aye bill_support' %>
-			<% else %>
-				<%= link_to "+", {:controller => :arguments, :action => :aye, :id => @argument.id}, :class => 'aye bill_nosupport' %>
-		    <% end %></td>
-	</tr>
-</table>
-
-<%= raw RedCloth.new(@argument.content).to_html %>
-
+<div id="bill-footer">
 <%= render :partial => "layouts/comments" %>
+</div>
 
-<%= link_to t('referendums.back'), @argumentable %>
+<%= link_to t('referendums.back'), @argumentable, :class => "button" %>

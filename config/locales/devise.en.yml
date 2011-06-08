@@ -43,6 +43,7 @@ en:
       edit: 'Your account'    
       title: 'Sign up'    
       email: 'email'
+      photo: "Photo"
       name: 'name'
       pwd: 'password'
       pwd_conf: 'password confirmation'

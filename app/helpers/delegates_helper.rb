@@ -1,5 +1,6 @@
 module DelegatesHelper
   def delegate_button(delegate_user)
+   if user_signed_in?
      unless delegate_user.delegate.nil?
 				if current_user.delegation.nil?
 					output = button_to t('users.delegates.choose'), {:controller => :delegations, :action => :create, :delegate_id => delegate_user.delegate.id, :user_id => current_user.id} 
@@ -16,5 +17,6 @@ module DelegatesHelper
 					end
 				end
 		 end
+	 end
   end
 end

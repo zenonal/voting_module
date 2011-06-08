@@ -1,0 +1,383 @@
+@mixin rounded($radius: 10px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin shadowed($shad-size:5px, $shad-color:#555) {
+box-shadow:$shad-size $shad-size $shad-size $shad-color;
+-webkit-box-shadow:$shad-size $shad-size $shad-size $shad-color;
+-moz-box-shadow: $shad-size $shad-size $shad-size $shad-color;
+}
+
+
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+@import "blueprint/buttons";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+}
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body.main-layout {
+  #container {
+    @include container; 
+background-color: #ECECFF;
+	}
+	
+  #sidebar-left {
+	$sidebar-l-columns: floor($blueprint-grid-columns / 8);
+	@include column($sidebar-l-columns); 
+	text-align: center;
+	
+	li {
+		list-style-type: none;
+		padding: 10px;
+		}
+	}
+
+  #container2 {
+	@include column($content-columns); 
+	}
+	
+  #header {
+	@include column($content-columns);
+	text-align: center;
+   }
+
+   #flash {
+	@include column($content-columns);
+   }
+
+   #tutorial {
+	@include column($content-columns);
+   }
+
+   #content {
+	@include column($content-columns); 
+	@include shadowed;
+	text-align: center;
+	border: 1px solid $main-border-color;
+	background-color: #FFF;
+	}
+	
+	#sidebar-right {
+
+		// One third of the grid columns, rounding down. With 24 cols, this is 8.
+		$sidebar-r-columns: floor($blueprint-grid-columns / 8);
+		@include column($sidebar-r-columns, true); 
+		text-align: center;
+		padding: 10px;
+		}
+
+   #footer {
+	    @include column($blueprint-grid-columns); }
+	
+	
+   #home-content {
+		@include column($content-columns, true);
+		td {
+		text-align: center;
+		}
+		text-align: center;
+	   }
+	
+   #bill-sidebar {
+	@include column($bill-sidebar-columns);
+	padding: 10px;
+	
+   }
+
+		#bill-category {
+			width: span($bill-sidebar-columns);
+			height: 40px;
+			a {
+			padding: 10px;
+			}
+			margin-top: 30px;
+		   }
+		
+		#bill-score {
+		width: span($bill-sidebar-columns);
+		height: 60px;
+		margin: auto;
+		margin-bottom: 30px;
+		margin-top: 30px;
+		padding: auto;
+		text-align: center;
+			div.meter {
+			left: 65px;
+			}
+		}
+		
+		#bill-vote {
+		@extend #bill-score;
+		
+			ul {
+			position:relative;
+			left: 60px;
+			}
+			a.link {
+				position:relative;
+				top:-20px;
+			}
+		}
+
+   #bill-content {
+	padding: 10px;
+	@include column($bill-content-columns);
+	
+		.bill-text {
+			padding: 20px;
+			@include blueprint-typography-body(30px);
+			font-family: "Helvetica Neue";
+		 }
+   }
+	
+   .border-div {
+		border-left: 2px solid $main-border-color;
+
+   }
+   	
+
+   #bill-header {
+	@include column($content-columns);
+	border-bottom: 2px solid $main-border-color;
+   }
+
+   #bill-header-icon {
+	@include column(floor($content-columns/4));
+	padding-top: 15px;
+   }
+
+   #bill-header-name {
+	@include column(ceil(3*$content-columns/4), true);
+	padding-top: 15px;
+	text-align: left;
+   }
+
+   #bill-footer {
+border-top: 2px solid $main-border-color;
+	@include column($content-columns);
+		ul {
+		list-style-type:none;
+		}
+   }
+
+   #index-content {
+	@include column($content-columns, true);
+   }
+
+   #index-column {
+		@include column($index-columns);
+	  	height:100px; 
+	  	text-align:center; 
+		margin: 0px;
+		padding: 0px;
+		padding-top: 20px;
+		div {
+		position:relative;
+		left: 10px;
+		}
+		table tr td {
+		text-align: center;
+		padding-right: 20px;
+		}
+		p {
+		position:relative;
+		top: 20px;
+		}
+	}
+	
+	#index-large-column {
+			@extend #index-column;
+			height:150px;
+			@include column($index-columns*2);
+		}
+		
+   #last-index-column {
+		@extend #index-column;
+		@include column($index-columns, true);
+	}
+	
+	#last-index-large-column {
+		@extend #index-large-column;
+			@include column($index-columns*2, true);
+		}
+	
+	form {
+	  @include blueprint-form;
+	  }
+
+	a.button {
+	@include button-button;
+	@include button-colors;
+	@include button-active-colors;
+	@include button-hover-colors;
+	@include rounded(10px);
+	text-decoration: none;
+	}
+	
+	a.link {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+	}
+   
+   img {
+	@include rounded(5px);
+	vertical-align:middle;
+	}
+	
+	.user-image {
+	border: 2px solid #000;
+	}
+
+	div.meter {
+		position: relative;
+		left: ((($index-columns + $index-margin)*$blueprint-grid-width)/2) - 30px;
+	}
+	img.meter_bkg {
+		position: absolute;
+	}
+	img.meter_front {
+		position: absolute;
+		left: 3px;
+	}
+
+	div.referendum_item {
+		border:1px solid #888;
+	}
+	
+	.horiz-list
+	{
+	padding:0;
+	 margin:0;
+	 list-style-type:none;
+	 li {
+	margin-left:2px;
+	 float:left; /*pour IE*/
+		}
+	}
+
+	.bill_support, .bill_nosupport {
+	margin: 0px 15px 12px;
+	display: block;
+	padding-top: 31px;
+	width: 31px;
+	float: none;
+	clear: both;
+	overflow: hidden;
+	height: 0;
+	}
+
+	.nay {
+	background: url('/images/vote_squares2.png') no-repeat left -39px;
+	}
+	.nay.bill_support, a.nay:hover {
+	background-position: -35px -39px;
+	}
+	
+	.aye {
+	background: url('/images/vote_squares2.png') no-repeat left 0px;
+	}
+	.aye.bill_support, a.aye:hover {
+	background-position: -35px 0px;
+	}
+
+	#private_vote {
+		border:1px solid #888;
+		padding: 10px;
+	}
+
+	table.votes {
+		text-align: center;
+		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+		font-weight: normal;
+		font-size: 11px;
+		color: #000;
+		background-color: #fff;
+		border: 1px solid #888;
+		border-collapse: collapse;
+		border-spacing: 0px;
+	}
+
+	table.votes td.hed {
+		background-color: #fff;
+		color: #000;
+		padding: 4px;
+		text-align: left;
+		border: 1px solid #888;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	div#preview table {
+		text-align: center;
+		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+		font-weight: normal;
+		font-size: 11px;
+		color: #000;
+		background-color: #fff;
+		border: 1px solid #888;
+		border-collapse: collapse;
+		border-spacing: 0px;
+	}
+
+	div#preview table td {
+		background-color: #fff;
+		color: #000;
+		padding: 40px;
+		text-align: left;
+		border: 1px solid #888;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	
+	div.comment {
+		@include shadowed;
+		padding: 10px;
+	}
+	
+	.comment_field {
+		height: 50px;
+	}
+	
+	
+	.reply {
+		@include shadowed;
+		padding: 10px;
+		padding-right: 0px;
+		position:relative;
+		width: 95%;
+		left: 30px;
+	}
+
+	.comment_content {
+		font-size: 140%;
+		color: #555;
+		background: #fff;
+		padding: 10px;
+		padding-bottom: 0px;
+		margin-bottom: 30px;
+		margin-top: -10px;
+	}
+
+	.comment_header {
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+	}
+  
+}

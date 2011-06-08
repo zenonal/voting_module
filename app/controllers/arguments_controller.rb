@@ -41,18 +41,17 @@ class ArgumentsController < ApplicationController
      @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
      @argument = @argumentable.arguments.build(params[:argument])
      
-      if @argument.save!
+      if @argument.save
          @argument.update_attribute(:user_id, current_user.id)
          @argument.update_attribute(:language, I18n.locale)
          @argument.update_attribute(:pro, current_user.voted_for?(@argumentable))
          
          flash[:notice] = t(:new_argument_ok)
-         redirect_to referendum_path(@argumentable, :format => :html, :remote => false)
+         redirect_to @argumentable
          
       else
          flash[:error] = t(:new_argument_not_ok)
-         redirect_to new_argument(Argument.new), :remote => false
-         
+         redirect_to(:controller => :arguments, :action => :new, :argumentable => @argumentable.class.name, :argumentable_id => @argumentable.id)
       end
   end
 

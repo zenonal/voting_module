@@ -1,28 +1,12 @@
-<% title t('referendums.title') %>
+
+<%= title t("referendums.index_title") %>
+
+<%= render :partial => "layouts/indexes", :locals => { :bills => @referendums } %>
 
 
-<% @referendums.each do |referendum| %>
-<table  id="referendum_item">
-  <tr>
-	<td><%= link_to image_tag(referendum.photo.url(:thumbnail)), referendum %></td>
-    <td><%= link_to eval("referendum.name_#{I18n.locale}"), referendum %></td>
-
-	<td>(<%= referendum.tally_all_votes %> <%= t('referendums.votes') %> , <%= referendum.percent_approval.to_i %>% <%= t('referendums.approval') %>)</td>
-	<td><%= raw score_meter(referendum.percent_approval/100.0,120) %></td>
-   </tr>
-    <tr>
-<% if permitted_to? :edit, referendum %>
-    <td><%= link_to t('referendums.edit'), edit_referendum_path(referendum) %></td>
-<% end %>
-<% if permitted_to? :destroy, referendum %>
-    <td><%= link_to t('referendums.destroy'), referendum, :confirm => 'Are you sure?', :method => :delete %></td>
-<% end %>
-  </tr>
-</table>
-<% end %>
-
-<br />
 <% if permitted_to? :create, Referendum.new %>
-	<%= link_to t('referendums.new'), new_referendum_path %>
+	<%= link_to t("referendums.new"), new_referendum_path, :class => "button" %>
 <% end %>
-	
+<% if permitted_to? :create, Category.new %>
+	<%= link_to t("referendums.new_category"), new_category_path, :class => "button" %>
+<% end %>

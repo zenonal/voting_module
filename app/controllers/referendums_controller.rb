@@ -58,6 +58,12 @@ class ReferendumsController < ApplicationController
         @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
       end
     end
+    
+    for c in Category.all
+      if params[eval("c.name_#{I18n.locale}")]
+        @referendum.category = Category.find_or_create_by_name_en(c.name_en)
+      end
+    end
 
     respond_to do |format|
       if @referendum.save
@@ -77,6 +83,12 @@ class ReferendumsController < ApplicationController
     for p in Politician.all
       if params[p.name]
         @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
+      end
+    end
+    
+    for c in Category.all
+      if params[eval("c.name_#{I18n.locale}")]
+        @referendum.category = Category.find_or_create_by_name_en(c.name_en)
       end
     end
 

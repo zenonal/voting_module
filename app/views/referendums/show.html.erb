@@ -1,45 +1,9 @@
 
-<!--<%= title eval("@referendum.name_#{I18n.locale}") %>-->
-<div style="float:right;">
-	<%= t('referendums.author') %>
-	<% for p in @referendum.politicians %>
-	<%= link_to image_tag(p.photo.url(:thumbnail)), p %>
-	<% end %>
+<%= render :partial => "layouts/bills", :locals => { :bill => @referendum } %>
+
+<div id="bill-footer">
+<%= render :partial => "layouts/amendments_list", :locals => { :bill => @referendum } %>
 </div>
-<table>
-	<tr>
-		<td><%= image_tag @referendum.photo.url(:small) %></td>
-		<td><%= @referendum.tally_all_votes %> <%= t('referendums.votes') %>, </td>
-		<td><%= @referendum.percent_approval.to_i %>% <%= t('referendums.approval') %></td>
-		<td><%= raw score_meter(@referendum.percent_approval/100.0,120) %></td>
-	</tr>
-</table>
-
-<% unless current_user.nil? %>
-	<p><%= t('referendums.private_vote') %>:</p>
-	<%= raw vote_options(current_user,@referendum) %>
-	<p><%= t('referendums.vote_of_delegate') %>:</p>
-	<% unless @delegated_vote.nil? %>
-		<% if @delegated_vote %>
-			<span class="aye bill_nosupport"></span> 
-		<% else %>
-			<span class="nay bill_nosupport"></span> 
-		<% end %>
-	<% end %>
-	<%= link_to t('users.delegates.change_delegate'), delegates_path %>
-
-	<% unless current_user.delegate.nil? %>
-		<p><%= t('referendums.delegate_vote') %>:</p>
-		<%= raw vote_options(current_user.delegate,@referendum) %>
-	<% end %>
-<% end %>
-
-<%= raw eval("@referendum.content_#{I18n.locale}") %>
-
+<div id="bill-footer">
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @referendum } %>
-
-
-<% if permitted_to? :edit, @referendum %>
-<%= link_to t('referendums.edit'), edit_referendum_path(@referendum) %> |
-<% end %>
-<%= link_to t('referendums.back'), referendums_path %>
+</div>

@@ -1,53 +1,42 @@
-	<table class="argument_table">
-		<tr>
-			<td class="procon">
-				<ul id="pro">
-					<p id="pro_title"><%= t(:pro_str) %></p>
-					<% if !commentable.arguments.all_pros.empty? %>
-						<div id=<%= "argument_collection_#{commentable.class.name}_#{commentable.id}_pro" %> >
-							<% commentable.arguments.all_pros.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
-								<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
-							<% end %>
-					<% else %>
-						<%= t(:no_arg_text) %>
+<h2><%= t("layout.points_of_view") %></h2>
+	<div id="index-content">
+		<div id="index-large-column" style="height:40px;">
+					<h3 id="pro_title"><%= t(:pro_str) %></h3>
+		</div>
+		<div id="index-large-column" style="height:40px;">
+			<h3 id="con_title"><%= t(:con_str) %></h3>
+		</div>
+		<div class="clear"></div>
+		
+		<div id="index-large-column">
+			<p><% if !commentable.arguments.all_pros.empty? %>
+					<% commentable.arguments.all_pros.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
+						<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
 					<% end %>
-					</div>
-					<li>
-					<% if user_signed_in? %>
-						<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-							<%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id} %>
-						<% end %>
-					<% end %>
-						
-					</li>
+				<% else %>
+					<%= t(:no_arg_text) %>
+				<% end %></p>
+		
+			<% if user_signed_in? %>
+				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link" %></p>
+				<% end %>
+			<% end %>
 
-				</ul>
-
-			</td>
-
-
-			<td class="procon">
-
-				<ul id="con">
-					<p id="con_title"><%= t(:con_str) %></p>
-					<% if !commentable.arguments.all_cons.empty? %>
-						<div id=<%= "argument_collection_#{commentable.class.name}_#{commentable.id}_con" %>>
-							<% commentable.arguments.all_cons.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
-								<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
-							<% end %>
-					<% else %>
-						<%= t(:no_arg_text) %>
-					<% end %>
-					</div>
-					<li>
-						<% if user_signed_in? %>
-							<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-								<%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id} %>
-							<% end %>
-						<% end %>
-					</li>
-
-				</ul>
-			</td>
-		</tr>
-	</table>
+		</div>
+		<div id="last-index-large-column">
+			<p><% if !commentable.arguments.all_cons.empty? %>
+				<% commentable.arguments.all_cons.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
+					<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
+				<% end %>
+			<% else %>
+				<%= t(:no_arg_text) %>
+			<% end %></p>
+			
+			<% if user_signed_in? %>
+				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link" %></p>
+				<% end %>
+			<% end %>
+		</div><div class="clear"></div>
+</div>

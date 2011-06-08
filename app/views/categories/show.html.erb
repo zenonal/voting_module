@@ -1,0 +1,46 @@
+<div id="bill-header">
+	<div id="bill-header-icon">
+		<%= image_tag @category.photo.url(:thumbnail) %>
+	</div>
+	<div id="bill-header-name">
+		<%= title eval("@category.name_#{I18n.locale}") %>
+	</div>
+</div>
+
+<div id="index-content">
+	<br/>
+	<h3><%= t('referendums.title') %></h3>
+	<div class="clear"></div>
+	<% @referendums.each do |ref| %>
+	<div id="index-column"></div>
+  	<div id="index-column">
+		<%= link_to image_tag(ref.photo.url(:thumbnail)), ref %>
+	</div>
+	<div id="last-index-column">
+    	<p><%= link_to eval("ref.name_#{I18n.locale}"), ref, :class => "link" %></p>
+	</div>
+<% end %>
+<div class="clear"></div>
+	<h3><%= t('initiatives.title') %></h3>
+	<div class="clear"></div>
+	<% @initiatives.each do |ref| %>
+		<div id="index-column"></div>
+  		<div id="index-column">
+			<%= link_to image_tag(ref.photo.url(:thumbnail)), ref %>
+		</div>
+     	<div id="last-index-column">
+			<p><%= link_to eval("ref.name_#{I18n.locale}"), ref, :class => "link" %></p>
+		</div>
+<% end %>
+</div>
+<div class="clear"></div>
+<% if permitted_to? :create, Category.new %>
+	<%= link_to t('referendums.new_category'), new_category_path, :class => "button" %> |
+<% end %>
+<% if permitted_to? :edit, @category %>
+	<%= link_to t('referendums.edit'), edit_category_path(@category), :class => "button" %> |
+<% end %>
+<% if permitted_to? :destroy, @category %>
+	<%= link_to 'Destroy', @category, :confirm => 'Are you sure?', :method => :delete, :class => "button" %> |
+<% end %>
+<%= link_to t('referendums.index_categories'), categories_path, :class => "link" %>

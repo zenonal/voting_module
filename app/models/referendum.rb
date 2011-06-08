@@ -6,5 +6,10 @@ class Referendum < ActiveRecord::Base
   has_many :arguments, :as => :argumentable, :dependent => :destroy
   has_many :authorships
   has_many :politicians, :through => :authorships
-
+  has_many :amendments, :as => :amendmentable, :dependent => :destroy
+  belongs_to :category
+  
+  def validated?
+    true
+  end
 end

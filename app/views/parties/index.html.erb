@@ -4,11 +4,11 @@
 <% @parties.each do |party| %>
   <tr>
 	<td><%= link_to image_tag(party.photo.url(:thumbnail)), party %></td>
-    <td><%= link_to party.name, party %></td>
+    <td><%= link_to party.name, party, :class => "link" %></td>
 	
     
 <% if permitted_to? :edit, party %>
-    <td><%= link_to t('parties.edit'), edit_party_path(party) %></td>
+    <td><%= link_to t('parties.edit'), edit_party_path(party), :class => "button" %></td>
 <% end %>
 <% if permitted_to? :destroy, party %>
     <td><%= button_to t('parties.destroy'), party, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -20,5 +20,5 @@
 <br />
 
 <% if permitted_to? :create, Party.new %>
-	<%= link_to t('parties.new'), new_party_path %>
+	<%= link_to t('parties.new'), new_party_path, :class => "button" %>
 <% end %>

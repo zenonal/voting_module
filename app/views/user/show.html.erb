@@ -1,74 +1,76 @@
 
-<table>
-	<tr>
-		<td><%= title @user.displayName %></td>
+<div id="bill-header">
+	<div id="bill-header-icon">
 		<% unless @user.photo.blank? %>
-			<td><%= image_tag(@user.photo) %> </td>
-		<% end %>	
+			<p><%= image_tag(@user.photo) %> </p>
+		<% end %>
+	</div>
+	<div id="bill-header-name"><p><%= title @user.displayName %></p></div>
+</div>
+
+<div id="index-content">
+	<div id="index-large-column" style="height:50px;">
 		<% if current_user == @user %>
 			<% if @user.delegate.nil? %>
-				<td><%= link_to t('users.delegates.choose_delegate'), delegates_path %></td>
-				<td><%= button_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}, :confirm => t('users.delegates.confirm')) %></td>
+				<p><%= link_to t('users.delegates.choose_delegate'), delegates_path, :class => "link" %></p>
+				<p><%= button_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}) %></p>
 			<% else %>
-				<td><%= t('users.delegates.active_delegate') %>
-					<% if permitted_to? :destroy, @user.delegate %>
-						<%= button_to t('users.delegates.destroy_delegate'), delegate_path(@user.delegate), {:method => :delete} %></td>
-					<% end %>
+				<%= t('users.delegates.active_delegate') %>
+				<% if permitted_to? :destroy, @user.delegate %>
+					<%= button_to t('users.delegates.destroy_delegate'), delegate_path(@user.delegate), {:method => :delete} %>
+				<% end %>
 			<% end %>
 		<% else %>
-			<%= raw(delegate_button(@user)) %>
+			<div class="button"><%= raw(delegate_button(@user)) %></div>
 		<% end %>
-	</tr>
-	
-</table>
-<div>
+	</div>
+	<div id="index-large-column" style="height:50px;padding-bottom:30px;">
 	<% unless @user.delegate.blank? %>
-		<p><%= @user.delegate.delegations.count %> <%= t('users.delegates.delegated_votes') %></p>
+		<%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_votes')) %>
 	<% end %>
 	<% unless @user.delegation.blank? %>
 		<% @deleg = Delegate.find_by_id(@user.delegation.delegate_id).user %>
 		<p><%= t('users.delegates.votes_delegated') %><%= @deleg.displayName %> 
-		<% unless @deleg.photo.blank? %><%= link_to image_tag(@deleg.photo), @deleg %><% end %>
+		<% unless @deleg.photo.blank? %><%= link_to image_tag(@deleg.photo, :size => "40x40",:class => "user-image"), @deleg %><% end %>
 		</p>
 	<% end %>
-
-	<br>
+	</div>
+	<div class="clear"></div>
+	<br />
 	<% if @user.delegate.nil? %>
-		<%= @user.votes.count %> <%= t('users.delegates.votes') %>
+		<h3><%= pluralize(@user.votes.count,t('users.votes')) %></h3>
 	<% else %>
-		<p><%= t('users.delegates.votes').capitalize %>:</p>
-		<table>
-			<% Referendum.all.each do |r| %>
-			<tr>
-				<td></td>
-					<td><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r %>: </td>
-				<% unless @user.delegate.voted_on?(r) %>
-					<td><%= t('users.delegates.no_vote') %></td>
-				<% end %>
+		<h3><%= t("users.delegates.votes_as_a_delegate") %></h3>
+		<% Referendum.all.each do |r| %>
+			<div id="index-column" style="height:50px;"></div>
+			<div id="index-large-column" style="height:50px;text-align: left;"><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> </div>
+			<% unless @user.delegate.voted_on?(r) %>
+				<div id="index-column" style="height:50px;text-align: left;"><%= t('users.delegates.no_vote') %></div>
+			<% end %>
+			<div id="index-column" style="height:50px;text-align: left;">
 				<% if @user.delegate.voted_for?(r) %>
-					<td><span class="aye bill_nosupport"></span> </td>
+					<span class="aye bill_nosupport"></span> 
 				<% end %>
 				<% if @user.delegate.voted_against?(r) %>
-					<td><span class="nay bill_nosupport"></span> </td>
+					<span class="nay bill_nosupport"></span> 
 				<% end %>
-				
-			</tr>
-			<% end %>
-		</table>
+			</div>
+			<div class="clear"></div>
+		<% end %>
 	<% end %>
 </div>
-<br>
-<br>
-<div><%= @user.arguments.count %> <%= t('users.delegates.point_of_view') %>: 
-	<ul>
-		<% @user.arguments.each_with_index do |arg, index| %>
-		<li><%= link_to arg.title, arg %></li>
-		<% end %>
-	</ul>
+
+<div id="index-content" style="padding-top: 40px;">
+<h3><%= pluralize(@user.arguments.count,t('users.delegates.point_of_view')) %> </h3>
+	<% @user.arguments.each_with_index do |arg, index| %>
+		<div id="index-column" style="height:50px;"></div>
+		<div id="index-large-column" style="height:50px;text-align: left;"><%= link_to arg.title, arg, :class => "link" %></div>
+		<div class="clear"></div>
+	<% end %>
 </div>
-<br>
-<br>
-	<p><%= @user.comments.count %> <%= t('users.delegates.comments') %></p>
+<div id="index-content" style="padding-top: 40px;">
+	<h3><%= pluralize(@user.comments.count,t('users.delegates.comments')) %></h3>
 <% if permitted_to? :edit, @user %>
-	<%= link_to t('users.edit'), edit_user_registration_path %>
+	<%= link_to t('users.edit'), edit_user_registration_path, :class => "button" %>
 <% end %>
+</div>

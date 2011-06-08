@@ -10,7 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529122738) do
+ActiveRecord::Schema.define(:version => 20110605142757) do
+
+  create_table "amendments", :force => true do |t|
+    t.string   "name_en"
+    t.text     "content_en"
+    t.string   "name_fr"
+    t.text     "content_fr"
+    t.string   "name_nl"
+    t.text     "content_nl"
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "amendmentable_id"
+    t.string   "amendmentable_type"
+    t.integer  "validations_count",  :default => 0
+  end
 
   create_table "arguments", :force => true do |t|
     t.text     "content"
@@ -59,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20110529122738) do
     t.string   "wiki_en"
   end
 
+  create_table "categories", :force => true do |t|
+    t.string   "name_fr"
+    t.string   "name_en"
+    t.string   "name_nl"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -88,6 +119,24 @@ ActiveRecord::Schema.define(:version => 20110529122738) do
     t.string   "excludable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "initiatives", :force => true do |t|
+    t.string   "name_en"
+    t.text     "content_en"
+    t.string   "name_fr"
+    t.text     "content_fr"
+    t.string   "name_nl"
+    t.text     "content_nl"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "validations_count",  :default => 0
   end
 
   create_table "parties", :force => true do |t|
@@ -124,6 +173,7 @@ ActiveRecord::Schema.define(:version => 20110529122738) do
     t.text     "content_nl"
     t.string   "name_fr"
     t.string   "name_nl"
+    t.integer  "category_id"
   end
 
   create_table "roles", :force => true do |t|
@@ -158,6 +208,14 @@ ActiveRecord::Schema.define(:version => 20110529122738) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "validations", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "validable_type"
+    t.integer  "validable_id"
+  end
 
   create_table "votes", :force => true do |t|
     t.boolean  "vote",          :default => false

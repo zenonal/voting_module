@@ -1,0 +1,12 @@
+
+<%= render :partial => "layouts/bills", :locals => { :bill => @amendment } %>
+
+<% if permitted_to? :destroy, @amendment %>
+	<%= button_to t(:delete_str), @amendment, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>
+<% end %>
+
+ <div id="bill-footer">
+<%= render :partial => "layouts/arguments", :locals => { :commentable => @amendment } %>
+</div>
+
+<%= link_to t('amendments.back'), @amendmentable, :class => "button" %>

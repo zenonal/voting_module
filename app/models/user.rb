@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :arguments, :dependent => :destroy
   has_many :exclusions, :dependent => :destroy
+  has_many :initiatives
+  has_many :amendments
+  has_many :validations
   has_one :delegate, :dependent => :destroy
   has_one :delegation, :dependent => :destroy
   belongs_to :party

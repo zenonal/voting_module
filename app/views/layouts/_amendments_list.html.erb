@@ -1,0 +1,59 @@
+<% @controller = bill.class.name.downcase.pluralize %>
+
+<h2><%= t("amendments.title") %></h2>
+
+<% if bill.amendments.count > 0 %>
+	
+	<% if bill.amendments.validated.count > 0 %>
+	<h3><%= t("amendments.validated") %></h3>
+
+	
+		<% for alter in bill.amendments.validated %>
+			<div id="index-column"></div>
+			<div id="index-column">
+				<%= link_to image_tag(alter.photo.url(:thumbnail)), alter %>
+			</div>
+			<div id="index-column">
+				<%= link_to eval("alter.name_#{I18n.locale}"), alter, :class => "link" %>
+			</div>
+			<div id="index-column">
+				<p><%= pluralize(alter.tally_all_votes,t("initiatives.votes")) %>
+				<% unless alter.percent_approval.nan? %>
+					, <%= alter.percent_approval.to_i %>% <%= t("initiatives.approval") %></p>
+					<p><%= raw score_meter(alter.percent_approval/100.0,120) %>
+				<% end %>
+				</p>
+			</div>
+			<div id="last-index-column"></div>
+			<div class="clear"></div>
+		<% end %>
+	<% end %>
+
+
+	<% if bill.amendments.not_validated.count > 0 %>
+		<h3><%= t("amendments.not_validated") %></h3>
+
+		<% for alter in bill.amendments.not_validated %>
+			<div id="index-column"></div>
+			<div id="index-column">
+				<%= link_to image_tag(alter.photo.url(:thumbnail)), alter %>
+			</div>
+			<div id="index-column">
+				<%= link_to eval("alter.name_#{I18n.locale}"), alter, :class => "link" %>
+			</div>
+			<div id="index-column">
+				<p><%= t("#{@controller}.current_validations") %>: <%= alter.validations_count %></p>
+			</div>
+			<div id="last-index-column"></div>
+			<div class="clear"></div>
+		<% end %>
+	<% end %>
+
+<% else %>
+<p><%= t("amendments.none") %></p>
+<% end %>
+
+<% if permitted_to? :create, Amendment.new %>
+	<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button" %></p>
+<% end %>
+

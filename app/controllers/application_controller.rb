@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout :set_layout
+  layout "application"
   protect_from_forgery
   include SslRequirement
   

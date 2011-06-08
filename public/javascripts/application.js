@@ -28,3 +28,4 @@ $(document).ready(function() {
 			delay: 1000,
 			position: "top center"});
 });
+

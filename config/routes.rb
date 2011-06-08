@@ -1,5 +1,9 @@
 VotingModule::Application.routes.draw do
 
+  get "pages/Homepage"
+
+  resources :categories
+
   match '/auth/:provider/callback' => 'authentications#create'
 
   devise_for :users, :controllers => {:registrations => 'registrations'} 
@@ -21,6 +25,16 @@ VotingModule::Application.routes.draw do
   resources :referendums, :path => 'referendums' do
     resources :comments
     resources :arguments
+    resources :amendments
+  end
+  resources :initiatives, :path => 'initiatives' do
+    resources :comments
+    resources :arguments
+    resources :amendments
+  end
+  resources :amendments, :path => 'amendments' do
+    resources :comments
+    resources :arguments
   end
   resources :arguments, :path => 'arguments' do
     resources :comments
@@ -33,7 +47,7 @@ VotingModule::Application.routes.draw do
   resources :exclusions
 
   
-  root :to => "referendums#index"
+  root :to => "pages#homepage"
   
   match ':controller(/:action(/:id(.:format)))'
 

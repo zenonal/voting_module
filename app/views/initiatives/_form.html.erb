@@ -1,0 +1,56 @@
+<%= form_for @initiative, :html => { :multipart => true } do |f| %>
+  <% if @initiative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
+
+      <ul>
+      <% @initiative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if params[:preview_button] %>
+	<%= render :partial => "layouts/previews", :locals => { :bill => @initiative } %>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_in_english %><br />
+    <%= f.text_field :name_en %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_english %><br />
+    <%= f.textile_editor :content_en %>
+  </div>
+<div class="field">
+    <%= f.label :name_in_french %><br />
+    <%= f.text_field :name_fr %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_french %><br />
+    <%= f.textile_editor :content_fr %>
+  </div>
+<div class="field">
+    <%= f.label :name_in_dutch %><br />
+    <%= f.text_field :name_nl %>
+  </div>
+  <div class="field">
+    <%= f.label :content_in_dutch %><br />
+    <%= f.textile_editor :content_nl %>
+  </div>
+<p><%= t('initiatives.categories') %></p>
+  <div>
+	<% for c in Category.all %>
+	<%= label_tag eval("c.name_#{I18n.locale}") %>
+	<%=	check_box_tag eval("c.name_#{I18n.locale}"), eval("c.name_#{I18n.locale}"), (@initiative.category == c) %><br/>
+	<% end %>
+  </div>
+<p></p>
+  <div class="field">
+    <%= f.file_field :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+	<%= submit_tag t('initiatives.preview'), :name => 'preview_button' %>
+  </div>
+<% end %>

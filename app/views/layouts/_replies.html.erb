@@ -3,20 +3,20 @@
 			<tr>
 				<div class = "comment_header">
 					<td><%= t(:created_by) %><b><%= User.find(reply.user_id).displayName %></b></td>
-					<td><em><%= reply.created_at %></em></td>
+					<td><em><%= reply.created_at.strftime("%e %B, %Y") %></em></td>
 				</div>
 			</tr>
 		</table>
 
 		<div class = "comment_content">
 			<%= simple_format reply.content %>
+			<% if reply.reply_level < 5 %>
+			<%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri, :class => "link" %>
+			<% end %>
 			<% unless current_user.nil? %>
 				<% if (reply.user_id == current_user.id) | permitted_to?(:delete, reply) %>
-				<%= link_to t(:delete_str), {:controller => :comments, :action => :destroy, :id => reply.id}, :confirm => t(:are_you_sure_str) %>
-			<% end %>
-			<% end %>
-			<% if reply.reply_level < 5 %>
-			<span style="float:right;"><%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri %></span>
+				<span style="float:right;"><%= link_to t(:delete_str), {:controller => :comments, :action => :destroy, :id => reply.id}, :confirm => t(:are_you_sure_str), :class => "button" %></span>
+				<% end %>
 			<% end %>
 			
 			<p><%= button_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :title => t(:com_exclude_str) %></p>

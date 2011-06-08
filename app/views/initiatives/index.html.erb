@@ -1,0 +1,15 @@
+
+<%= title t("initiatives.index_title") %>
+
+<%= link_to t("initiatives.index_drafts"), {:controller => :initiatives, :action => "index_drafts", :id => Initiative.first.id}, :class => "link" %>
+
+<%= render :partial => "layouts/indexes", :locals => { :bills => @initiatives } %>
+
+<div class="clear"></div>
+
+<% if permitted_to? :create, Initiative.new %>
+	<%= link_to t("initiatives.new"), new_initiative_path, :class => "button" %>
+<% end %>
+<% if permitted_to? :create, Category.new %>
+	<%= link_to t("initiatives.new_category"), new_category_path, :class => "button" %>
+<% end %>

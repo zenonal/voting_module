@@ -317,7 +317,7 @@ td.procon {
 
 .meter {
 	position: relative;
-	top: -12px;
+	top: -10px;
 }
 #meter_bkg {
 	position: absolute;
@@ -327,7 +327,7 @@ td.procon {
 	left: 3px;
 }
 
-#referendum_item {
+div.referendum_item {
 	border:1px solid #888;
 }
 
@@ -360,4 +360,48 @@ background-position: -35px 0px;
 #private_vote {
 	border:1px solid #888;
 	padding: 10px;
+}
+
+table.votes {
+	text-align: center;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+	font-weight: normal;
+	font-size: 11px;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #888;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+table.votes td.hed {
+	background-color: #fff;
+	color: #000;
+	padding: 4px;
+	text-align: left;
+	border: 1px solid #888;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+div#preview table {
+	text-align: center;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+	font-weight: normal;
+	font-size: 11px;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #888;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+div#preview table td {
+	background-color: #fff;
+	color: #000;
+	padding: 40px;
+	text-align: left;
+	border: 1px solid #888;
+	font-size: 12px;
+	font-weight: bold;
 }
