@@ -5,9 +5,11 @@ class Referendum < ActiveRecord::Base
   else
     has_attached_file :photo, 
       :storage => :s3,
-      :bucket => 'voting-module',
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
       :path => ":attachment/:id/:style.:extension",
+      :url => ':s3_domain_url',
+      :s3_permissions => 'authenticated-read',
+      :s3_protocol => 'http',
       :styles => {:small => "150x150>", :thumbnail => "80x80>"}
   end
   
