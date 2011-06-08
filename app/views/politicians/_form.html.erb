@@ -21,9 +21,11 @@
     <%= f.file_field :photo %>
   </div>
 <br/>
+<% unless @politician.bios.blank? %>
   <div class="field">
 	<%= label_tag 'bio in English' %>
 	<%= text_area_tag 'bio_text_en', @politician.bios[0].content_en %>
+
   </div>
 <div class="field">
 	<%= label_tag 'bio in French' %>
@@ -47,6 +49,35 @@
 	<%= label_tag 'wiki in Dutch' %>
 	<%= text_field_tag 'bio_wiki_nl', @politician.bios[0].wiki_nl %>
   </div>
+<% else %>
+<div class="field">
+	<%= label_tag 'bio in English' %>
+	<%= text_area_tag 'bio_text_en', nil %>
+
+  </div>
+<div class="field">
+	<%= label_tag 'bio in French' %>
+	<%= text_area_tag 'bio_text_fr', nil %>
+  </div>
+<div class="field">
+	<%= label_tag 'bio in Dutch' %>
+	<%= text_area_tag 'bio_text_nl', nil %>
+  </div>
+<br/>
+<br/>
+  <div class="field">
+	<%= label_tag 'wiki in English' %>
+	<%= text_field_tag 'bio_wiki_en', nil %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in French' %>
+	<%= text_field_tag 'bio_wiki_fr', nil %>
+  </div>
+<div class="field">
+	<%= label_tag 'wiki in Dutch' %>
+	<%= text_field_tag 'bio_wiki_nl', nil %>
+  </div>
+<% end %>
 <div>
 	<% for p in Party.all %>
 	<%= label_tag p.name %>

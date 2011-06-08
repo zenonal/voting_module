@@ -4,7 +4,16 @@ class Initiative < ActiveRecord::Base
   validates_uniqueness_of   :name_en, :name_fr, :name_nl
   
   acts_as_voteable
-  has_attached_file :photo, :styles => {:small => "150x150>", :thumbnail => "80x80>"}
+  if Rails.env=="development"
+    has_attached_file :photo, :styles => {:small => "150x150>", :thumbnail => "80x80>"}
+  else
+    has_attached_file :photo, 
+      :storage => :s3,
+      :bucket => 'voting-module',
+      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+      :path => ":attachment/:id/:style.:extension",
+      :styles => {:small => "150x150>", :thumbnail => "80x80>"}
+  end
   
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :arguments, :as => :argumentable, :dependent => :destroy

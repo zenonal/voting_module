@@ -1,0 +1,11 @@
+development:
+  access_key_id: AKIAJDCD46LYXKNBDTKQ
+  secret_access_key: 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
+
+test:
+  access_key_id: AKIAJDCD46LYXKNBDTKQ
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAJDCD46LYXKNBDTKQ
+  secret_access_key: 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

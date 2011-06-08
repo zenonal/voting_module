@@ -2,7 +2,9 @@
 <table>
 	<tr>
 		<td><%= title @politician.name %></td>
-		<td><%= link_to image_tag(@politician.party.photo.url(:thumbnail)), @politician.party %></td>
+		<% unless @politician.party.nil? %>
+			<td><%= link_to image_tag(@politician.party.photo.url(:thumbnail)), @politician.party %></td>
+		<% end %>
 	</tr>
 </table>
 <table>
