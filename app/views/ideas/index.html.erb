@@ -1,0 +1,31 @@
+<h1>Listing ideas</h1>
+
+<table>
+  <tr>
+    <th>Brainstorm</th>
+    <th>User</th>
+    <th>Content en</th>
+    <th>Content fr</th>
+    <th>Content nl</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ideas.each do |idea| %>
+  <tr>
+    <td><%= idea.brainstorm_id %></td>
+    <td><%= idea.user_id %></td>
+    <td><%= idea.content_en %></td>
+    <td><%= idea.content_fr %></td>
+    <td><%= idea.content_nl %></td>
+    <td><%= link_to 'Show', idea %></td>
+    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
+    <td><%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Idea', new_idea_path %>

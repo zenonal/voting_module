@@ -2,7 +2,7 @@
 <div id="bill-header">
 	<div id="bill-header-icon">
 		<% unless @user.photo.blank? %>
-			<p><%= image_tag(@user.photo) %> </p>
+			<p><%= image_tag(@user.photo, :size => "80x80") %> </p>
 		<% end %>
 	</div>
 	<div id="bill-header-name"><p><%= title @user.displayName %></p></div>
@@ -42,6 +42,22 @@
 	<% else %>
 		<h3><%= t("users.delegates.votes_as_a_delegate") %></h3>
 		<% Referendum.all.each do |r| %>
+			<div id="index-column"></div>
+			<div id="index-large-column" style="text-align: left;"><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> </div>
+			<% unless @user.delegate.voted_on?(r) %>
+				<div id="index-large-column" style="text-align: left;"><%= t('users.delegates.no_vote') %></div>
+			<% end %>
+			<div id="index-column" style="text-align: left;">
+				<% if @user.delegate.voted_for?(r) %>
+					<span class="aye bill_nosupport"></span> 
+				<% end %>
+				<% if @user.delegate.voted_against?(r) %>
+					<span class="nay bill_nosupport"></span> 
+				<% end %>
+			</div>
+			<div class="clear"></div>
+		<% end %>
+		<% Initiative.validated.not_blank.all.each do |r| %>
 			<div id="index-column" style="height:50px;"></div>
 			<div id="index-large-column" style="height:50px;text-align: left;"><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> </div>
 			<% unless @user.delegate.voted_on?(r) %>
@@ -61,11 +77,63 @@
 </div>
 
 <div id="index-content" style="padding-top: 40px;">
+<h3><%= pluralize(@user.initiatives.count,t('users.delegates.initiatives')) %> </h3>
+	<% @user.initiatives.each_with_index do |arg, index| %>
+	<div id="index-element" style="padding-top: 40px;">
+		<div id="index-column" style="height:50px;">
+			<% unless arg.validated? %>
+				<%= image_tag("red-error.gif") %>
+				<%= t(:not_valid) %>
+			<% end %>
+		</div>
+		<div id="index-large-column" style="height:50px;text-align: left;">
+			<% unless eval("arg.name_#{I18n.locale}.blank?") %>
+				<%= link_to eval("arg.name_#{I18n.locale}"), arg, :class => "link" %>
+			<% else %>
+				<p><%= t('title_no_translation') %></p>
+			<% end %>
+		</div>
+		<div id="index-large-column" class="bill-text-link">
+			<% unless eval("arg.content_#{I18n.locale}.blank?") %>
+				<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(arg.content_#{I18n.locale}).to_html"), :length => 250))), arg %>"</p>
+			<% else %>
+				<p><%= t('text_no_translation') %></p>
+			<% end %>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<% end %>
+</div>
+
+<div id="index-content" style="padding-top: 40px;">
+<h3><%= pluralize(@user.amendments.count,t('users.delegates.amendments')) %> </h3>
+	<% @user.amendments.each_with_index do |arg, index| %>
+	<div id="index-element" style="padding-top: 40px;">
+		<div id="index-column" style="height:50px;">
+			<% unless arg.validated? %>
+				<%= image_tag("red-error.gif") %>
+				<%= t(:not_valid) %>
+			<% end %>
+		</div>
+		<div id="index-large-column" style="height:50px;text-align: left;"><%= link_to eval("arg.name_#{I18n.locale}"), arg, :class => "link" %></div>
+		<div id="index-large-column" class="bill-text-link">
+		<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(arg.content_#{I18n.locale}).to_html"), :length => 250))), arg %>"</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<% end %>
+</div>
+<div id="index-content" style="padding-top: 40px;">
 <h3><%= pluralize(@user.arguments.count,t('users.delegates.point_of_view')) %> </h3>
 	<% @user.arguments.each_with_index do |arg, index| %>
+	<div id="index-element" style="padding-top: 40px;">
 		<div id="index-column" style="height:50px;"></div>
 		<div id="index-large-column" style="height:50px;text-align: left;"><%= link_to arg.title, arg, :class => "link" %></div>
+		<div id="index-large-column" class="bill-text-link">
+		<p>"<%= link_to truncate(arg.content, :length => 150), arg %>"</p>
+		</div>
 		<div class="clear"></div>
+	</div>
 	<% end %>
 </div>
 <div id="index-content" style="padding-top: 40px;">

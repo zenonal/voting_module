@@ -1,5 +1,5 @@
 
-<%= render :partial => "layouts/bills", :locals => { :bill => @amendment } %>
+<%= render :partial => "layouts/bills", :locals => { :bill => @amendment, :delegated_vote => @delegated_vote  } %>
 
 <% if permitted_to? :destroy, @amendment %>
 	<%= button_to t(:delete_str), @amendment, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>

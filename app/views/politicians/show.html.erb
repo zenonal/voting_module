@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div id="index-content">
 <table>
 	<tr>
 		<td><%= title @politician.name %></td>
@@ -28,5 +28,22 @@
 </table>
 
 
+<div id="index-content">
+	<h3><%= t('referendums.politicians.title') %></h3>
+	<div class="clear"></div>
+	<% @politician.referendums.each do |ref| %>
+	<div id="index-column"></div>
+  	<div id="index-column">
+		<%= link_to image_tag(ref.photo.url(:thumbnail)), ref %>
+	</div>
+	<div id="index-large-column">
+    	<p><%= link_to eval("ref.name_#{I18n.locale}"), ref, :class => "link" %></p>
+	</div>
+	<% end %>
+	<div class="clear"></div>
+</div>
+
+
 <%= link_to t('politicians.edit'), edit_politician_path(@politician), :class => "button" %> |
 <%= link_to t('politicians.index'), politicians_path, :class => "button" %>
+</div>

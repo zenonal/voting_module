@@ -1,6 +1,6 @@
 en:
   referendums:
-    title: 'List of propositions from our politicians'
+    title: 'List of proposals from politicians'
     show: "show"
     edit: 'edit'
     destroy: 'destroy'
@@ -15,7 +15,16 @@ en:
     delegate_no_vote: "No vote on this bill yet"
     vote_of_delegate: 'Your delegate voted'
     want_vote: 'If you want to vote on this'
+    want_amendment: 'If you want to submit your own amendment'
+    want_argument: 'If you want to submit your own point of view'
     index_categories: 'Index of categories'
     created_at: 'Created on '
     index_title: 'List of propositions from our politicians'
     current_validations: "Number of current validations"
+    federal: "Federal bill"
+    regional: "Regional bill"
+    provincial: "Provincial bill"
+    communal: "Communal bill"
+    
+    politicians:
+      title: "List of proposals"

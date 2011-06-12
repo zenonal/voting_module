@@ -5,7 +5,7 @@ class ReferendumsController < ApplicationController
   # GET /referendums
   # GET /referendums.xml
   def index
-    @referendums = Referendum.all
+    @referendums = Referendum.all(:order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,10 +20,14 @@ class ReferendumsController < ApplicationController
     @commentable = @referendum
     if user_signed_in?
       deleg = Delegation.find_by_user_id(current_user.id)
-        if deleg.nil?
-          @delegated_vote = nil
+        unless deleg.nil?
+          unless deleg.delegate.voted_on?(@referendum)
+            @delegated_vote = nil
+          else
+            @delegated_vote = deleg.delegate.voted_for?(@referendum)
+          end
         else
-          @delegated_vote = deleg.delegate.voted_for?(@referendum)
+          @delegated_vote = nil
         end
     end
     

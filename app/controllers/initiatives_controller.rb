@@ -1,11 +1,12 @@
 class InitiativesController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
+  helper_method :filter_index
   
   # GET /initiatives
   # GET /initiatives.xml
   def index
-    @initiatives = Initiative.validated
+    filter_index(Initiative.not_blank.validated)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class InitiativesController < ApplicationController
   end
   
   def index_drafts
-    @initiatives = Initiative.not_validated
+    @initiatives = Initiative.not_blank.not_validated
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :action => "index_drafts" }
@@ -29,10 +30,14 @@ class InitiativesController < ApplicationController
     @commentable = @initiative
     if user_signed_in?
       deleg = Delegation.find_by_user_id(current_user.id)
-        if deleg.nil?
-          @delegated_vote = nil
+        unless deleg.nil?
+          unless deleg.delegate.voted_on?(@initiative)
+            @delegated_vote = nil
+          else
+            @delegated_vote = deleg.delegate.voted_for?(@initiative)
+          end
         else
-          @delegated_vote = deleg.delegate.voted_for?(@initiative)
+          @delegated_vote = nil
         end
     end
 
@@ -62,12 +67,8 @@ class InitiativesController < ApplicationController
   # POST /initiatives.xml
   def create
     
-    @i = Initiative.find_by_content_en(params[:initiative][:content_en])
-    if @i
-      s = @i.update_attributes(params[:initiative])
-    else
-      @initiative = Initiative.new(params[:initiative])
-
+    @iinitiative = Initiative.find_or_create_by_content_en(params[:initiative])
+    if @initiative
       for c in Category.all
         if params[eval("c.name_#{I18n.locale}")]
           @initiative.category = Category.find_or_create_by_name_en(c.name_en)
@@ -75,6 +76,18 @@ class InitiativesController < ApplicationController
       end
 
       @initiative.user = current_user
+      if @initiative.level == "communal"
+        @initiative.level_code = current_user.postal_code
+      end
+      if @initiative.level == "provincial"
+        @initiative.level_code = current_user.province.code
+      end
+      if @initiative.level == "regional"
+        @initiative.level_code = current_user.region.code
+      end
+      if @initiative.level == "federal"
+        @initiative.level_code = 1
+      end
       
       s = @initiative.save
     end
@@ -100,7 +113,20 @@ class InitiativesController < ApplicationController
         @initiative.category = Category.find_or_create_by_name_en(c.name_en)
       end
     end
-      
+    
+    if @initiative.level == "communal"
+      @initiative.level_code = @initiative.user.postal_code
+    end
+    if @initiative.level == "provincial"
+      @initiative.level_code = @initiative.user.province.code
+    end
+    if @initiative.level == "regional"
+      @initiative.level_code = @initiative.user.region.code
+    end
+    if @initiative.level == "federal"
+      @initiative.level_code = 1
+    end
+    
     u = @initiative.update_attributes(params[:initiative])
     
     respond_to do |format|
@@ -174,5 +200,6 @@ class InitiativesController < ApplicationController
     end
     redirect_to(@initiative)
   end
+  
   
 end

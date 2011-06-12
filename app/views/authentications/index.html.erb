@@ -1,5 +1,5 @@
 <!-- authentications/index.html.erb -->
-<% title "Sign In" %>
+<%= title t('layout.sign_in') %>
 
 <% if @authentications %>
   <% unless @authentications.empty? %>
@@ -20,7 +20,9 @@
 <% else %>
   <p><strong>Sign in through one of these services:</strong></p>
 <% end %>
-
+<div id="index-content">
+	<div id="index-large-column"></div>
+	<div id="index-large-column">
 <a href="/auth/twitter" class="auth_provider">
   <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
   Twitter
@@ -37,13 +39,19 @@
   <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
   OpenID
 </a>
+<a href="/auth/linkedin" class="auth_provider">
+  <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Linked In" %>
+  LinkedIn
+</a>
 <div class="clear"></div>
+</div>
+</div>
 
 
 <% unless user_signed_in? %>
   <p>
     <strong>Don't use these services?</strong>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "sign in", new_user_session_path %> with a password.
+    <%= link_to "Sign up", new_user_registration_path, :class => "button" %> or
+    <%= link_to "sign in", new_user_session_path, :class => "button" %> with a password.
   </p>
 <% end %>

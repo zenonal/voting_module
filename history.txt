@@ -61,3 +61,7 @@ add vote_fu as a plugin (does not work as a gem), modify to allow a single vote 
 add internationalization of referendums
 
 add language navigation
+
+
+
+

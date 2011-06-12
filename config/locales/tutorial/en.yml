@@ -1,4 +1,56 @@
 en:
   tutorial:
+    pages:
+      homepage: "<p>Welcome to the voting module!</p>
+                <p>This little window is here to provide you valuable information to start using this website.
+                You can deactivate it at anytime.</p>
+                <p>The objective of this website is twofold: allowing you to vote on propositions of 
+                laws or policies recently put forth by our politicians, and allowing you to submit your own proposals and vote on
+                proposals of other citizens.</p>
+                <p>If you need help on a specific icon or menu, just place your mouse cursor over it and a tooltip will appear.</p>
+                <p>Please feel free to explore this website, vote and share your ideas!</p>"
+    title: "Tutorial"
     user:
-      show: "This is your user view"    
+      show: "<p>Here you can see all the public activity of users. This can be you or any other user. 
+            Public activity includes initiatives, amendments and points of views that have been posted. It does not 
+            include the private votes of course.</p>
+            <p>If this is the profile of a user that has chosen to become a delegate, you will be able to see how this user
+             voted as a delegate on all the proposals.You can then also delegate your votes to them.
+            If you do that, you don't have to vote on each proposal anymore. Each time the delegate will vote, 
+            you will vote automatically the same. <br/> Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
+            You can also change your delegate at any time.</p>"    
+    
+    initiatives:
+        index: "<p>Here you can see all the initiatives recently proposed by other citizens.
+                  <br />This shows only the initiatives that have already passed validation, which means that
+                  they have been endorsed by enough people. Please have a look also at the initiatives waiting for validation. 
+                  You can do so by clicking on the link \"Show me the list of initiatives waiting for validation\" below.</p>
+                <p>Click on one of the proposals to see the details and vote.</p>"
+               
+        show: "<p>Here you have all the details on one of the proposals recently submitted by another citizen.
+                <br />On the left panel, you have all the vote-related information. You can see the current vote result, 
+                cast your private vote, or cast your vote as a delegate. You can change your vote at anytime.</p>
+                <p>On the right you have the text of the proposal, followed by the picture of the author of the initiative.</p>
+                <p>Under that, you can see all the alternative proposals that have been proposed by other users. 
+                You can see the details by clicking on it.</p>
+                <p>Finally, you have the points of view of other users on this proposal. You can also submit your own of course.</p>"
+      
+    referendums:
+      index: "<p>Here you can see all the propositions recently put forth by politicians.
+              <p>Click on one of them to see the details and vote.</p>"
+    
+      show: "<p>Here you have all the details on one of the proposals recently put forth by politicians.
+             <br />On the left panel, you have all the vote-related information. You can see the current vote result, 
+             cast your private vote, or cast your vote as a delegate. You can change your vote at anytime.</p>
+             <p>On the right you have the text of the proposal, followed by the picture of the politicians who proposed it.</p>
+             <p>Under that, you can see all the alternative proposals that have been proposed by users like you. 
+             You can see the details by clicking on it.</p>
+             <p>Finally, you have the points of view of other users on this proposal. You can also submit your own of course.</p>"
+             
+    delegates:
+      index: "<p>This is a list of all the users that have chosen to become a delegate. 
+                That means that you can delegate your votes to them.</p>
+                <p>If you do that, you don't have to vote on each proposal 
+                anymore. Each time the delegate will vote, you will vote automatically the same. <br/>
+                Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
+                You can also change your delegate at any time.</p><p> Give it a try...</p>"

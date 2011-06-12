@@ -19,7 +19,7 @@
 	</div>
 </div>
 <div id="bill-content">
-	<div id="bill-text">
+	<div class="bill-text">
 		<%= raw RedCloth.new(@argument.content).to_html %>
 	</div>
 	<%= button_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :title => t(:arg_exclude_tip) %>

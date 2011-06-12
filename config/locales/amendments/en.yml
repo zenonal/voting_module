@@ -31,3 +31,5 @@ en:
     validated: "These alternatives have been validated"
     not_validated: "These alternatives are not validated yet"
     none: "There are currently no alternatives for this bill"
+    original_bill: "Original bill"
+    

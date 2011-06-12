@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div id="index-content">
+	<% @ideas.each do |i| %>
+		<div id="index-column">
+			<div id="ideas" style= "font-size: <%= "#{12+2*(i.votes_for-i.votes_against)}px" %>">
+			<% unless eval("i.content_#{I18n.locale}.blank?") %>
+				<%= eval("i.content_#{I18n.locale}").capitalize %>
+			<% else %>
+				<%= t('text_no_translation') %>
+			<% end %>
+			
+			</div>
+		</div>
+		<div id="index-column"><%= raw vote_options(current_user,i) %></div>
+	<% end %>
+	<div class="clear"></div>
+</div>
+
+<h3> <%= t(:ideas_title) %></h3>
+<% form_for [@brainstorm, Idea.new] do |f| %>
+		<p>
+			<%= f.label t(:new_idea_en) %><br>
+			<%= f.text_area :content_en, :class => "idea_field" %>
+		</p>
+		<p>
+			<%= f.label t(:new_idea_fr) %><br>
+			<%= f.text_area :content_fr, :class => "idea_field" %>
+		</p>
+		<p>
+			<%= f.label t(:new_idea_nl) %><br>
+			<%= f.text_area :content_nl, :class => "idea_field" %>
+		</p>
+		<p><%= f.submit t(:submit_str) %></p>
+<% end %>

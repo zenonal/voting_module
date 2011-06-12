@@ -1,5 +1,5 @@
 
-<%= render :partial => "layouts/bills", :locals => { :bill => @initiative } %>
+<%= render :partial => "layouts/bills", :locals => { :bill => @initiative, :delegated_vote => @delegated_vote } %>
 
 <div id="bill-footer">
 <%= render :partial => "layouts/amendments_list", :locals => { :bill => @initiative } %>
@@ -9,4 +9,6 @@
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @initiative } %>
 </div>
 
-
+<% if false %>
+<%= link_to "blabla", {:controller => :brainstorms, :action => :show, :initiative_id => @initiative.id} %>
+<% end %>

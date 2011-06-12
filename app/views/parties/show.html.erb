@@ -18,11 +18,29 @@
 		</td>
 		<td>
 			<% for p in @party.politicians %>
-			<%= link_to image_tag(p.photo.url(:thumbnail)), p %>
+			<p><%= link_to image_tag(p.photo.url(:thumbnail)), p %></p>
 			<% end %>
 		</td>
 	</tr>
 </table>
+
+
+<div id="index-content">
+	<h3><%= t('referendums.politicians.title') %></h3>
+	<div class="clear"></div>
+	<% @party.politicians.each do |p| %>
+	<% p.referendums.each do |ref| %>
+	<div id="index-column"></div>
+  	<div id="index-column">
+		<%= link_to image_tag(ref.photo.url(:thumbnail)), ref %>
+	</div>
+	<div id="index-large-column">
+    	<p><%= link_to eval("ref.name_#{I18n.locale}"), ref, :class => "link" %></p>
+	</div>
+	<% end %>
+	<% end %>
+	<div class="clear"></div>
+</div>
 
 <%= link_to t('parties.edit'), edit_party_path(@party), :class => "button" %> |
 <%= link_to t('parties.index'), parties_path, :class => "button" %>

@@ -1,6 +1,6 @@
 en:
   initiatives:
-    title: 'List of propositions from citizens'
+    title: 'List of proposals from citizens'
     show: "show"
     edit: 'edit'
     edit_init: 'Editing initiative'
@@ -16,6 +16,9 @@ en:
     delegate_no_vote: "No vote on this bill yet"
     vote_of_delegate: 'Your delegate voted'
     want_vote: 'If you want to vote on this'
+    want_initiative: 'If you want to submit your own initiative'
+    want_amendment: 'If you want to submit your own amendment'
+    want_argument: 'If you want to submit your own point of view'
     index_categories: 'Index of categories'
     categories: 'List of categories: choose on'
     created_at: 'Created on '
@@ -28,3 +31,14 @@ en:
     index_drafts_title: "List of initiatives waiting for validation"
     preview: "preview"
     modify: "modify"
+    federal: "federal"
+    regional: "regional"
+    provincial: "provincial"
+    communal: "communal"
+    options: "Options"
+    geographical_level: "Geographical level"
+    no_geo: "There is no geographical restriction"
+    
+    
+    form:
+      photo: "Choose a picture for your proposal"

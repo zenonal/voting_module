@@ -1,5 +1,6 @@
 <h2><%= t("layout.points_of_view") %></h2>
 	<div id="index-content">
+		<div id="index-column" style="height:40px;"></div>
 		<div id="index-large-column" style="height:40px;">
 					<h3 id="pro_title"><%= t(:pro_str) %></h3>
 		</div>
@@ -7,7 +8,7 @@
 			<h3 id="con_title"><%= t(:con_str) %></h3>
 		</div>
 		<div class="clear"></div>
-		
+		<div id="index-column"></div>
 		<div id="index-large-column">
 			<p><% if !commentable.arguments.all_pros.empty? %>
 					<% commentable.arguments.all_pros.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
@@ -19,8 +20,10 @@
 		
 			<% if user_signed_in? %>
 				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link" %></p>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
+			<% else %>
+				<p><%= t("#{@controller}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 			<% end %>
 
 		</div>
@@ -35,8 +38,10 @@
 			
 			<% if user_signed_in? %>
 				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link" %></p>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
+			<% else %>
+					<p><%= t("#{@controller}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 			<% end %>
 		</div><div class="clear"></div>
 </div>

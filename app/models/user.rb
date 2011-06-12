@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :exclusions, :dependent => :destroy
   has_many :initiatives
   has_many :amendments
+  has_many :ideas
   has_many :validations
   has_one :delegate, :dependent => :destroy
   has_one :delegation, :dependent => :destroy
@@ -22,7 +23,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me, :postal_code
   
   scope :in_favor, lambda {|v|
      joins(:votes).
@@ -53,6 +54,28 @@ class User < ActiveRecord::Base
   
   def password_required?
     (authentications.empty? || !password.blank?) && super
+  end
+  
+  def commune
+    Commune.find_by_postal_code(self.postal_code)
+  end
+  
+  def province
+    self.commune.province
+  end
+  
+  def region
+    self.province.region
+  end
+  
+  def self.current_communal_level
+    p = current_user.postal_code
+    where("postal_code = ?", p)  
+  end
+  
+  def self.current_provincial_level
+    p = current_user.postal_code
+    where("postal_code = ?", p)  
   end
   
    private

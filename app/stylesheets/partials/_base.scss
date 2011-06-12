@@ -9,23 +9,27 @@ $blueprint-grid-margin: 10px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
-$content-columns: ceil(5*$blueprint-grid-columns / 8);
+$content-columns: ceil(6*$blueprint-grid-columns / 8) - 1;
 $bill-sidebar-columns: floor($content-columns/3);
 $bill-content-columns: ceil(2*$content-columns/3) - 1;
 $bill-footer-columns: ceil($bill-content-columns/2);
 $one-column: floor($bill-sidebar-columns/4);
 
-$index-columns: floor($content-columns/4);
+$index-columns: floor($content-columns/5);
 $index-margin: $content-columns - (4*$index-columns);
 
+$blueprint-background-color: lighten(#F4EAC1,3%);
 
 $blueprint-button-font-family: "Arial";
-$blueprint-button-border-color: #000000;
+$blueprint-button-border-color: #888;
 $blueprint-button-background-color: #454589;
-$blueprint-button-font-color: #dddddd;
+$blueprint-button-font-color: #888;
 $blueprint-button-hover-border-color: lighten($blueprint-button-border-color,20%);
 $blueprint-button-hover-background-color: lighten($blueprint-button-background-color,20%);
 $blueprint-button-hover-font-color: lighten($blueprint-button-font-color,20%);
 $blueprint-button-active-border-color: #6299c5;
 
 $main-border-color: #A6A6A6;
+$default-box-shadow-blur: 30px;
+$default-box-shadow-spread: false;
+$default-box-shadow-inset: false;

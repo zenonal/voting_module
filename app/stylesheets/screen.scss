@@ -19,22 +19,41 @@ box-shadow:$shad-size $shad-size $shad-size $shad-color;
 
 @import "blueprint/buttons";
 
+@import "compass/css3";
+
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
 
+@include font-face("Subtitles", font-files("colabreg-webfont.ttf", truetype));
+@include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
 
 body.bp {
   @include blueprint-typography(true);
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
+  
 }
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body.main-layout {
+
+  h3 {
+	font-family: "Subtitles", helvetica;
+	font-size: 22px;
+	font-style: normal;
+	text-transform: uppercase;
+	
+	}
+	
+  h2 {
+	font-family: "Titles", helvetica;
+	letter-spacing:4px
+  }
+  
   #container {
     @include container; 
-background-color: #ECECFF;
+	@include background-image(linear-gradient(top, $blueprint-background-color, white));
 	}
 	
   #sidebar-left {
@@ -53,9 +72,26 @@ background-color: #ECECFF;
 	}
 	
   #header {
-	@include column($content-columns);
+	@include column($blueprint-grid-columns, true);
 	text-align: center;
+	@include background(image-url("DD_header.png"));
+	height: 230px;
    }
+
+   .title {
+	position: relative;
+	left: 360px;
+	}
+	
+	.subtitle {
+		position: relative;
+		left: 360px;
+		top: 80px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 30px;
+		font-family: "Titles";
+		}
 
    #flash {
 	@include column($content-columns);
@@ -63,14 +99,22 @@ background-color: #ECECFF;
 
    #tutorial {
 	@include column($content-columns);
+	@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
+	width: span($content-columns) - 40px;
+	border: 1px solid $main-border-color;
+	padding: 20px;
+	margin-bottom: 20px;
+	@include background-image(linear-gradient(left, lighten(green,75%), lighten(green,70%)));
+	
    }
 
    #content {
 	@include column($content-columns); 
-	@include shadowed;
+	@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
 	text-align: center;
 	border: 1px solid $main-border-color;
-	background-color: #FFF;
+	background-color: #fff;
+	@include background-image(linear-gradient(top, white, darken(white,8%)));
 	}
 	
 	#sidebar-right {
@@ -83,7 +127,8 @@ background-color: #ECECFF;
 		}
 
    #footer {
-	    @include column($blueprint-grid-columns); }
+	    @include column($blueprint-grid-columns); 
+		height: 100px;}
 	
 	
    #home-content {
@@ -92,7 +137,13 @@ background-color: #ECECFF;
 		text-align: center;
 		}
 		text-align: center;
+		height: 500px;
 	   }
+	
+   .filter_form {
+		@include blueprint-form;
+	}
+   
 	
    #bill-sidebar {
 	@include column($bill-sidebar-columns);
@@ -134,6 +185,10 @@ background-color: #ECECFF;
 				top:-20px;
 			}
 		}
+   .link-like {
+			
+		
+		}
 
    #bill-content {
 	padding: 10px;
@@ -141,10 +196,25 @@ background-color: #ECECFF;
 	
 		.bill-text {
 			padding: 20px;
-			@include blueprint-typography-body(30px);
+			@include blueprint-typography-body(20px);
+			
+			p {
+			text-align: justify;
 			font-family: "Helvetica Neue";
+			}
 		 }
    }
+
+	.bill-text-link {
+		
+		p {
+			padding-left: 10px; 
+			text-align: justify;
+		}
+		a {
+			text-decoration:none;
+		}
+	}
 	
    .border-div {
 		border-left: 2px solid $main-border-color;
@@ -155,6 +225,7 @@ background-color: #ECECFF;
    #bill-header {
 	@include column($content-columns);
 	border-bottom: 2px solid $main-border-color;
+	padding-bottom: 10px;
    }
 
    #bill-header-icon {
@@ -176,13 +247,21 @@ border-top: 2px solid $main-border-color;
 		}
    }
 
+   #party-index {
+	padding: 20px;
+	}
+
    #index-content {
 	@include column($content-columns, true);
+	
    }
+	#index-element {
+		@include background-image(linear-gradient(top, white, darken(white, 8%)));
+		border-bottom: 2px solid darken(white, 12%);
+	}
 
    #index-column {
 		@include column($index-columns);
-	  	height:100px; 
 	  	text-align:center; 
 		margin: 0px;
 		padding: 0px;
@@ -195,15 +274,16 @@ border-top: 2px solid $main-border-color;
 		text-align: center;
 		padding-right: 20px;
 		}
-		p {
-		position:relative;
-		top: 20px;
-		}
+		
+	}
+	
+	#ideas {
+		padding-bottom: 30px;
+		font-weight: bold;
 	}
 	
 	#index-large-column {
 			@extend #index-column;
-			height:150px;
 			@include column($index-columns*2);
 		}
 		
@@ -222,18 +302,30 @@ border-top: 2px solid $main-border-color;
 	  }
 
 	a.button {
+	@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, false);
 	@include button-button;
 	@include button-colors;
 	@include button-active-colors;
 	@include button-hover-colors;
-	@include rounded(10px);
+	@include rounded(5px);
+	@include background-image(linear-gradient(top, white, darken(white, 12%)));
+	border: 1px solid #aaa;
 	text-decoration: none;
+	padding: 7px;
+	}
+	a:hover.button {
+		@include single-box-shadow($main-border-color, 0px, 0px, 0px, false, false);
 	}
 	
 	a.link {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 16px;
+	}
+	
+	a:hover img {
+		@include opacity(0.6);
+	
 	}
    
    img {
@@ -349,10 +441,16 @@ border-top: 2px solid $main-border-color;
 	div.comment {
 		@include shadowed;
 		padding: 10px;
+		background-color: white;
 	}
 	
 	.comment_field {
 		height: 50px;
+	}
+	
+	.idea_field {
+		height: 30px;
+		width: 300px;
 	}
 	
 	
@@ -379,5 +477,69 @@ border-top: 2px solid $main-border-color;
 		padding-bottom: 0px;
 		margin-bottom: 0px;
 	}
+	
+	.spacer {
+		height: 30px;
+	}
+	.authentications {
+	  margin-bottom: 30px;
+	}
+
+	.authentication {
+	  width: 130px;
+	  float: left;
+	  background-color: #EEE;
+	  border: solid 1px #999;
+	  padding: 5px 10px;
+	  -moz-border-radius: 8px;
+	  -webkit-border-radius: 8px;
+	  position: relative;
+	  margin-right: 10px;
+	}
+
+	.authentication .remove {
+	  text-decoration: none;
+	  position: absolute;
+	  top: 3px;
+	  right: 3px;
+	  color: #333;
+	  padding: 2px 4px;
+	  font-size: 10px;
+	}
+
+	.authentication .remove:hover {
+	  color: #CCC;
+	  background-color: #777;
+	  -moz-border-radius: 6px;
+	  -webkit-border-radius: 6px;
+	}
+
+	.authentication img {
+	  float: left;
+	  margin-right: 10px;
+	}
+
+	.authentication .provider {
+	  font-weight: bold;
+	}
+
+	.authentication .uid {
+	  color: #666;
+	  font-size: 11px;
+	}
+
+	.auth_provider img {
+	  display: block;
+	}
+
+	.auth_provider {
+	  float: left;
+	  text-decoration: none;
+	  margin-right: 20px;
+	  text-align: center;
+	  margin-bottom: 10px;
+	}
+
+	
   
 }

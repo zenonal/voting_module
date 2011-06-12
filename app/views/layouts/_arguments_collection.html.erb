@@ -1,3 +1,4 @@
+
 <table style="padding-left:40px;">
 	<tr>
 <td><%= link_to image_tag(User.find_by_id(argument.user_id).photo, :size => "40x40"), User.find_by_id(argument.user_id) %></td>
@@ -7,4 +8,11 @@
 <% unless argument.percent_approval.nan? %>
 	, <%= argument.percent_approval.to_i %>% <%= t("#{@controller}.approval") %>
 <% end %>
-</td></tr></table>
+</td></tr>
+<tr>
+	<td colspan=3>
+		<div class="bill-text-link"  style="position:relative;top:-10px;left:-10px;">
+		<p>"<%= link_to truncate(argument.content, :length => 150), argument %>"</p>
+		</div>
+	</td>
+</tr></table>

@@ -9,7 +9,7 @@ en:
       destroy_delegate: "Cancel your delegate mandate"
       votes: "vote as a delegate"
       comments: "comments"
-      point_of_view: "Posted views"
+      point_of_view: "Posted view"
       ref: "On"
       confirm: "Are you sure? All your votes will become public!"
       confirm_new: "Are you sure you want to delegate your votes to this user?"
@@ -23,5 +23,8 @@ en:
       change_delegate: 'Choose another delegate'
       cancel_delegate: 'Cancel your delegation to this user'
       current_delegate: 'Your votes are currently delegated to this user'
-      no_vote: "You didn't vote as a delegate on this bill yet"
+      no_vote: "No vote as a delegate on this bill yet"
       to_oneself: "You can't delegate your votes to yourself"
+      initiatives: "Submitted initiatives"
+      amendments: "Submitted amendments to other proposals"
+      

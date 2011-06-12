@@ -11,13 +11,19 @@ en:
       sign_up: 'Sign up'
       sign_in: 'Sign in'
       add_photo: 'Add your photo'
-      activate_tutorial: "Turn the tutorial on:"
-      disactivate_tutorial: "Turn the tutorial off:"
+      add_postal_code: 'Missing postal code'
+      activate_tutorial: "Turn the tutorial on"
+      disactivate_tutorial: "Click inside this window to hide the tutorial"
+      unexpose_tutorial: "Or click anywhere to continue with the tutorial on"
+      turn_tutorial_off: "I don't want the tutorial"
       points_of_view: "Your point of view on this bill"
+      how_to_switch_on_tutorial: "You can turn it back on by clicking on the question mark on the left sidebar. "
+      filter: "Select by geographical level"
+      
   homepage:
       title: 'Voting module'
   
-  headtitle: "Citizens for Direct Democracy: Voting Module"
+  headtitle: "Voting Module"
   submit_str: "Submit"
   create_str: "Create"
   update_str: "Update"
@@ -46,6 +52,10 @@ en:
   are_you_sure_str: "Are you sure?"
   new_comment: "Post your comment (max 1000 characters)"
   new_arg: "Post your point of view (max 1500 characters)"
+  new_idea_en: "Your idea in English"
+  new_idea_fr: "Your idea in French"
+  new_idea_nl: "Your idea in Dutch"
+  ideas_title: "Submit your idea"
   new_arg_title: "Title"
   create_arg: "Give your own point of view!"
   edit_arg: "Edit"
@@ -64,3 +74,8 @@ en:
   french_head: "En français"
   nederland_head: "In het Nederlands"
   point_of_view_title: "Point of view"
+  text_no_translation: "This bill content is not translated in English"
+  name_no_translation: "This bill title is not translated in English"
+  not_valid: "Not validated"
+  and: "and"
+  level: "level"

@@ -10,15 +10,15 @@ module ApplicationHelper
     del = (voter.class.name == "Delegate")
     output = "<ul class=\"horiz-list\"><li>"
     if voter.voted_for?(voteable)
-			output += link_to("aye", {:controller => voteable.class.name.pluralize.downcase, :action => :aye, :id => voteable.id, :delegated => del}, :class => 'aye bill_support')
+			output += link_to("aye", {:controller => voteable.class.name.pluralize.downcase, :action => :aye, :id => voteable.id, :delegated => del}, :class => 'aye bill_support', :title => t("tooltips.vote_yes"))
 		else
-			output += link_to("aye", {:controller => voteable.class.name.pluralize.downcase, :action => :aye, :id => voteable.id, :delegated => del}, :class => 'aye bill_nosupport')
+			output += link_to("aye", {:controller => voteable.class.name.pluralize.downcase, :action => :aye, :id => voteable.id, :delegated => del}, :class => 'aye bill_nosupport', :title => t("tooltips.vote_yes"))
 	  end
 	  output += "</li><li>"
 		if voter.voted_against?(voteable)
-			output += link_to("nay", {:controller => voteable.class.name.pluralize.downcase, :action => :nay, :id => voteable.id, :delegated => del}, :class => 'nay bill_support')
+			output += link_to("nay", {:controller => voteable.class.name.pluralize.downcase, :action => :nay, :id => voteable.id, :delegated => del}, :class => 'nay bill_support', :title => t("tooltips.vote_no"))
 		else
-			output += link_to("nay", {:controller => voteable.class.name.pluralize.downcase, :action => :nay, :id => voteable.id, :delegated => del}, :class => 'nay bill_nosupport')
+			output += link_to("nay", {:controller => voteable.class.name.pluralize.downcase, :action => :nay, :id => voteable.id, :delegated => del}, :class => 'nay bill_nosupport', :title => t("tooltips.vote_no"))
 	  end
 	  output += "</li></ul>"
   end
@@ -51,4 +51,6 @@ module ApplicationHelper
       args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
       content_for(:head) { javascript_include_tag(*args) }
     end
+    
+    
 end

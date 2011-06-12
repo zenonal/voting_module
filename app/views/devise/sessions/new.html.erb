@@ -1,8 +1,8 @@
 <% @loc = 'devise.sessions.' %>
 
-<% title t(@loc+'title') %>
+<%= title t(@loc+'title') %>
 
-<%= t(@loc+'intro') %>
+<h3><%= t(@loc+'intro') %></h3>
 
 <%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label t(@loc+'email') %><br />

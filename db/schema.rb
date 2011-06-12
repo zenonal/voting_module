@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110605142757) do
+ActiveRecord::Schema.define(:version => 20110612074332) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.string   "wiki_en"
   end
 
+  create_table "brainstorms", :force => true do |t|
+    t.string   "brainstormable_type"
+    t.integer  "brainstormable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name_fr"
     t.string   "name_en"
@@ -98,6 +105,13 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "language"
+  end
+
+  create_table "communes", :force => true do |t|
+    t.integer  "province_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "postal_code"
   end
 
   create_table "delegates", :force => true do |t|
@@ -121,6 +135,16 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.datetime "updated_at"
   end
 
+  create_table "ideas", :force => true do |t|
+    t.integer  "brainstorm_id"
+    t.integer  "user_id"
+    t.text     "content_en"
+    t.text     "content_fr"
+    t.text     "content_nl"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "initiatives", :force => true do |t|
     t.string   "name_en"
     t.text     "content_en"
@@ -137,6 +161,8 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "validations_count",  :default => 0
+    t.string   "level"
+    t.integer  "level_code"
   end
 
   create_table "parties", :force => true do |t|
@@ -160,6 +186,13 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.integer  "party_id"
   end
 
+  create_table "provinces", :force => true do |t|
+    t.integer  "region_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "code"
+  end
+
   create_table "referendums", :force => true do |t|
     t.string   "name_en"
     t.text     "content_en"
@@ -174,6 +207,14 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.string   "name_fr"
     t.string   "name_nl"
     t.integer  "category_id"
+    t.string   "level"
+    t.integer  "level_code"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "code"
   end
 
   create_table "roles", :force => true do |t|
@@ -203,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20110605142757) do
     t.string   "displayName"
     t.string   "photo"
     t.integer  "party_id"
+    t.integer  "postal_code"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

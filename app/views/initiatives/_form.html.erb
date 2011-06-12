@@ -1,4 +1,4 @@
-<%= form_for @initiative, :html => { :multipart => true } do |f| %>
+<%= form_for @initiative, :html => { :multipart => true }, :class => "bp_form" do |f| %>
   <% if @initiative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@initiative.errors.count, "error") %> prohibited this initiative from being saved:</h2>
@@ -13,7 +13,9 @@
   <% if params[:preview_button] %>
 	<%= render :partial => "layouts/previews", :locals => { :bill => @initiative } %>
   <% end %>
-
+  <div class="field">
+	<%= f.select :level, Initiative::LEVELS %>
+  </div>
   <div class="field">
     <%= f.label :name_in_english %><br />
     <%= f.text_field :name_en %>
@@ -47,8 +49,11 @@
   </div>
 <p></p>
   <div class="field">
+	<%= f.label t('initiatives.form.photo') %><br />
     <%= f.file_field :photo %>
   </div>
+<br />
+<br />
   <div class="actions">
     <%= f.submit %>
 	<%= submit_tag t('initiatives.preview'), :name => 'preview_button' %>

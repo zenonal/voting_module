@@ -1,15 +1,15 @@
 <% @controller = bill.class.name.downcase.pluralize %>
+<% @amendments = bill.amendments.not_blank %>
 
 <h2><%= t("amendments.title") %></h2>
 
-<% if bill.amendments.count > 0 %>
+<% if @amendments.count > 0 %>
 	
-	<% if bill.amendments.validated.count > 0 %>
+	<% if @amendments.validated.count > 0 %>
 	<h3><%= t("amendments.validated") %></h3>
 
 	
-		<% for alter in bill.amendments.validated %>
-			<div id="index-column"></div>
+		<% for alter in @amendments.validated %>
 			<div id="index-column">
 				<%= link_to image_tag(alter.photo.url(:thumbnail)), alter %>
 			</div>
@@ -24,17 +24,19 @@
 				<% end %>
 				</p>
 			</div>
-			<div id="last-index-column"></div>
+			<div id="index-large-column" class="bill-text-link">
+			<p>"<%= link_to truncate(eval("alter.content_#{I18n.locale}"), :length => 250), alter %>"</p>
+			</div>
 			<div class="clear"></div>
+			<div class="spacer"></div>
 		<% end %>
 	<% end %>
 
 
-	<% if bill.amendments.not_validated.count > 0 %>
+	<% if @amendments.not_validated.count > 0 %>
 		<h3><%= t("amendments.not_validated") %></h3>
 
-		<% for alter in bill.amendments.not_validated %>
-			<div id="index-column"></div>
+		<% for alter in @amendments.not_validated %>
 			<div id="index-column">
 				<%= link_to image_tag(alter.photo.url(:thumbnail)), alter %>
 			</div>
@@ -44,16 +46,21 @@
 			<div id="index-column">
 				<p><%= t("#{@controller}.current_validations") %>: <%= alter.validations_count %></p>
 			</div>
-			<div id="last-index-column"></div>
+			<div id="index-large-column" class="bill-text-link">
+			<p>"<%= link_to truncate(eval("alter.content_#{I18n.locale}"), :length => 250), alter %>"</p>
+			</div>
 			<div class="clear"></div>
+			<div class="spacer"></div>
 		<% end %>
 	<% end %>
 
 <% else %>
 <p><%= t("amendments.none") %></p>
 <% end %>
-
+<div class="spacer"></div>
 <% if permitted_to? :create, Amendment.new %>
-	<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button" %></p>
+	<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button", :title => t('tooltips.submit_amendment') %></p>
+<% else %>
+	<p><%= t("#{@controller}.want_amendment") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 <% end %>
 

@@ -3,11 +3,32 @@
 <div id="bill-header">
 	<% title eval("bill.name_#{I18n.locale}") %>
 	<div id="bill-header-icon"><%= image_tag bill.photo.url(:thumbnail) %></div>
-	<div id="bill-header-name"><h1><%= eval("bill.name_#{I18n.locale}").capitalize %></h1></div>
+	<div id="bill-header-name"><h3><%= eval("bill.name_#{I18n.locale}").capitalize %></h3></div>
 </div>
 
 
 <div id="bill-sidebar">
+	
+	<div id="bill-category">
+		<% if (@controller == "amendments") %>
+			<%= t("#{@controller}.original_bill") %>: 
+			<%= link_to eval("bill.amendmentable.name_#{I18n.locale}"), bill.amendmentable, :class => "link" %>
+		<% else %><h4>
+			<% if bill.level == "federal" %>
+				<%= t("#{@controller}.federal") %>
+			<% end %>
+			<% if bill.level == "regional" %>
+				<%= t("#{@controller}.regional") %>: <%= bill.region.name %>
+			<% end %>
+			<% if bill.level == "provincial" %>
+				<%= t("#{@controller}.provincial") %>: <%= bill.province.name %>
+			<% end %>
+			<% if bill.level == "communal" %>
+				<%= t("#{@controller}.communal") %>: <%= bill.commune.name %>
+			<% end %></h4>
+		<% end %>
+	</div>
+	
 	<div id="bill-category">
 <% unless (@controller == "amendments") || bill.category.nil?  %>
 	<p><span style="display:inline-block; vertical-align:middle;"><%= link_to image_tag(bill.category.photo.url(:thumbnail)), bill.category %>
@@ -38,16 +59,19 @@
 	</div>
 	<div id="bill-vote">
 	<%= t("#{@controller}.vote_of_delegate") %>
-	<% if @delegated_vote.nil? %>
-	<p><%= t("#{@controller}.delegate_no_vote") %></p>
+	<% if delegated_vote.nil? %>
+		<p><%= t("#{@controller}.delegate_no_vote") %></p>
 	<% else %>
-		<% if @delegated_vote %>
-			<span class="aye bill_nosupport"></span> 
+	<ul class="horiz-list"><li>
+		<% if delegated_vote %>
+			<p class="aye bill_nosupport"></p> 
 		<% else %>
-			<span class="nay bill_nosupport"></span> 
+			<p class="nay bill_nosupport"></p> 
 		<% end %>
+	</li></ul><br/><br/><br/>
 	<% end %>
-	<p><%= link_to t('users.delegates.change_delegate'), delegates_path, :class => "link" %></p>
+	<br/>
+	<p><%= link_to t('users.delegates.change_delegate'), delegates_path, :class => "link", :title => t('tooltips.choose_delegate') %></p>
 	</div>
 
 	<div id="bill-vote">
@@ -57,7 +81,7 @@
 	<% end %>
 	</div>
 <% else %>
-	<p><%= t("#{@controller}.want_vote") %>: <%= link_to t('layout.sign_in'), authentications_path %></p>
+	<p><%= t("#{@controller}.want_vote") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 <% end %>
 
 <% end %>

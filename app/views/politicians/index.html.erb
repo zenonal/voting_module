@@ -1,4 +1,5 @@
-<% title t('politicians.title') %>
+<div id="party-index">
+<%= title t('politicians.title') %>
 
 <table>
 <% @politicians.each do |politician| %>
@@ -25,3 +26,4 @@
 <% if permitted_to? :create, Politician.new %>
 	<%= link_to t('politicians.new'), new_politician_path, :class => "button" %>
 <% end %>
+</div>

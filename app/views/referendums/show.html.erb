@@ -1,5 +1,5 @@
 
-<%= render :partial => "layouts/bills", :locals => { :bill => @referendum } %>
+<%= render :partial => "layouts/bills", :locals => { :bill => @referendum, :delegated_vote => @delegated_vote } %>
 
 <div id="bill-footer">
 <%= render :partial => "layouts/amendments_list", :locals => { :bill => @referendum } %>

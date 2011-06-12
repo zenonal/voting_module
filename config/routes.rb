@@ -26,18 +26,24 @@ VotingModule::Application.routes.draw do
     resources :comments
     resources :arguments
     resources :amendments
+    resources :brainstorms
   end
   resources :initiatives, :path => 'initiatives' do
     resources :comments
     resources :arguments
     resources :amendments
+    resources :brainstorms
   end
   resources :amendments, :path => 'amendments' do
     resources :comments
     resources :arguments
+    resources :brainstorms
   end
   resources :arguments, :path => 'arguments' do
     resources :comments
+  end
+  resources :brainstorms, :path => 'brainstorms' do
+    resources :ideas
   end
   
   resources :parties

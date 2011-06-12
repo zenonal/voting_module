@@ -1,8 +1,8 @@
 <% @loc = 'devise.registrations.' %>
 
-<% title t(@loc+'title') %>
+<%= title t(@loc+'title') %>
 
-<%= t(@loc+'intro') %>
+<h3><%= t(@loc+'intro') %></h3>
 
 <%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>

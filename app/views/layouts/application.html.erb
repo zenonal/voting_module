@@ -5,6 +5,9 @@
   <title><%= yield(:title) || "Untitled" %></title>
 <%= render 'layouts/stylesheets' %>
 <%= render 'layouts/scripts' %>  
+	<% if cookies[:tutorial] == "true" %>
+		<script src="/javascripts/tutorial.js" type="text/javascript"></script>
+	<% end %>
 
   <%= csrf_meta_tag %>
   <%= yield(:head) %> 
@@ -14,68 +17,80 @@
 	
 	<div id="container">
 		
-		
+		<div id="header">
+			<%= link_to image_tag("title_#{I18n.locale}.png"), root_path, :class => "title" %>
+			<h1>
+			<%= link_to t(:headtitle), root_path, :class => "subtitle" %>
+			</h1>
+		</div>
 		<div id="sidebar-left">
-			<div style="height: 100px;"></div>
+			<div style="height: 50px;"></div>
 			<ul>
 					<%= link_to language_fra_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif"></li>
+						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif" title="French"></li>
 					<% end %>
 					<%= link_to language_ndl_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif"></li>
+						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif" title="Nederlands"></li>
 					<% end %>
 					<%= link_to language_eng_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif"></li>
+						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif" title="English"></li>
 					<% end %>
 					<%= link_to language_tutorial_url do %>
 						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial"></li>
 					<% end %>
 			</ul>
 			<ul>
-				<li><%= link_to image_tag("citoyens.jpg",:size => "60x60"), initiatives_path %></li>
-				<li><%= link_to image_tag("partis-politiques-belges.jpg",:size => "60x60"), referendums_path %></li>
+				<li><%= link_to image_tag("citoyens.jpg",:size => "60x60"), initiatives_path, :title =>t('initiatives.title') %></li>
+				<li><%= link_to image_tag("partis-politiques-belges.jpg",:size => "60x60"), referendums_path, :title =>t('referendums.title') %></li>
 			</ul>
 		</div>
 		<div id="container2">
-			<div id="header">
-				<h1>
-				<%= link_to t(:headtitle), root_path %>
-				</h1>
-			</div>
+			
 			<div id="flash">
 	      		<% flash.each do |name, msg| %>
 	        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
 	      		<% end %>
 			</div>
-			
+			<% if cookies[:tutorial] == "true" %>
 			<div id="tutorial">
-				<% if cookies[:tutorial] == "true" %>
-				<p><%= t("tutorial.#{controller.controller_name}.#{controller.action_name}") %></p>
-				<p><%= link_to t('layout.disactivate_tutorial'), language_tutorial_url %></p>
-				<% end %>
+				<h2><img width="40" height="40" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
+				<%= t('tutorial.title') %></h2>
+				<p><%= raw t("tutorial.#{controller.controller_name}.#{controller.action_name}")  %></p>
+				<p class="link-like" style="float:right;font-weight:bold;">
+					<br />-> <%= t('layout.unexpose_tutorial') %></p>
+				<p><%= link_to t('layout.turn_tutorial_off'), language_tutorial_url, :class => "link" %>
+					<br/ ><%= t('layout.how_to_switch_on_tutorial') %></p>
 			</div>
+			<% end %>
 			<div id="content">
 				<%= yield %>
 			</div>
 		  
 		</div>
 		<div id="sidebar-right">
-			<div style="height: 100px;"></div>
+			<div style="height: 50px;"></div>
 						<% if user_signed_in? %>
 						<p>
+							<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
 							<% if current_user.photo.blank?%>
 								<%= link_to t('layout.add_photo'), edit_user_registration_path, :class => "link" %>
 							<% else %>
 								<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
 							<% end %>
 							</p>
-				          	<p><%= link_to current_user.email, user_path(current_user), :class => "link" %></p>
+							<% if current_user.postal_code.blank? %>
+								<%= link_to t('layout.add_postal_code'), edit_user_registration_path, :class => "link" %>
+							<% else %>
+								<p><%= current_user.commune.name %></p>
+							<% end %>
+				          	
 				          	<p><%= link_to t('layout.sign_out'), destroy_user_session_path, :class => "button" %></p>
 				        <% else %>
 				          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 				        <% end %>
 		</div>
 		<div id="footer">
+			
 		</div>
 	 </div>
 </body>

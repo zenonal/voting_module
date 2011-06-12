@@ -5,7 +5,7 @@ class PoliticiansController < ApplicationController
   # GET /politicians
   # GET /politicians.xml
   def index
-    @politicians = Politician.all
+    @politicians = Politician.all(:order => "name")
 
     respond_to do |format|
       format.html # index.html.erb

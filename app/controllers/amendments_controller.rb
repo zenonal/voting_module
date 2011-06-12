@@ -5,7 +5,7 @@ class AmendmentsController < ApplicationController
   # GET /amendments
   # GET /amendments.xml
   def index
-    @amendments = Amendment.validated
+    @amendments = Amendment.not_blank.validated.all(:order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class AmendmentsController < ApplicationController
   end
   
   def index_drafts
-    @amendments = Amendment.not_validated
+    @amendments = Amendment.not_blank.not_validated.all(:order => "created_at")
     
     respond_to do |format|
       format.html # index.html.erb

@@ -1,0 +1,25 @@
+<%= form_for(@brainstorm) do |f| %>
+  <% if @brainstorm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brainstorm.errors.count, "error") %> prohibited this brainstorm from being saved:</h2>
+
+      <ul>
+      <% @brainstorm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :brainstormable_type %><br />
+    <%= f.text_field :brainstormable_type %>
+  </div>
+  <div class="field">
+    <%= f.label :brainstormable_id %><br />
+    <%= f.text_field :brainstormable_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
