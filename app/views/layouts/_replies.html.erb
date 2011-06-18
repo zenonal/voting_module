@@ -1,33 +1,37 @@
 <div class ="reply">
-	<table>
-			<tr>
-				<div class = "comment_header">
-					<td><%= t(:created_by) %><b><%= User.find(reply.user_id).displayName %></b></td>
-					<td><em><%= reply.created_at.strftime("%e %B, %Y") %></em></td>
-				</div>
-			</tr>
-		</table>
-
-		<div class = "comment_content">
-			<%= simple_format reply.content %>
-			<% if reply.reply_level < 5 %>
-			<%= link_to t(:reply_to_comment_str), :controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri, :class => "link" %>
+	
+	<div id = "reply-header">
+		<h4><%= link_to User.find_by_id(reply.user_id).displayName, User.find_by_id(reply.user_id), :class => "link" %></h4>
+		<%= link_to image_tag(User.find_by_id(reply.user_id).photo, :size => "60x60"), User.find_by_id(reply.user_id) %>
+		<p><em><%= reply.created_at.strftime("%e %B, %Y") %></em></p>
+	</div>
+	<div id = "reply-content">
+		<%= simple_format "'#{reply.content}'" %>
+		<% unless current_user.nil? %>
+			<% if (reply.user_id == current_user.id) | permitted_to?(:delete, reply) %>
+				<%= link_to t(:delete_comment), {:controller => :comments, :action => :destroy, :id => reply.id}, :confirm => t(:are_you_sure_str), :class => "link" %>
 			<% end %>
-			<% unless current_user.nil? %>
-				<% if (reply.user_id == current_user.id) | permitted_to?(:delete, reply) %>
-				<span style="float:right;"><%= link_to t(:delete_str), {:controller => :comments, :action => :destroy, :id => reply.id}, :confirm => t(:are_you_sure_str), :class => "button" %></span>
-				<% end %>
-			<% end %>
-			
-			<p><%= button_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :title => t(:com_exclude_str) %></p>
-			<% if reply.exclusion_requests > 0 %>
+		<% end %>
+	</div>
+	<div class="clear"></div>
+	<div id = "reply-header">
+		<% if reply.exclusion_requests > 0 %>
 			<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
 			<% reply.exclusions.each do |l| %>
-				<span style="color:#F00">X</span>
+			<span style="color:#F00">X</span></p>
 			<%end %>
-				</p>
+		<% end %>
+		&nbsp;
+	</div>
+	<div id ="reply-options">
+		<% if permitted_to? :create, Comment.new %>
+			<% if reply.reply_level < 5 %>
+			<%= link_to t(:reply_to_comment_str), {:controller => :comments, :action => :reply_to_comment, :id => reply.id, :current_url => request.request_uri }, :class => "button" %>
 			<% end %>
-		</div>
-		<%= render :partial => 'layouts/replies', :collection => reply.replies, :as => :reply %>
+		<% end %>
+		<%= link_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => reply.id}, :title => t(:com_exclude_str), :class => "button" %></p>
+	</div>
+	<div class="clear"></div>
+	<%= render :partial => 'layouts/replies', :collection => reply.replies, :as => :reply %>
 </div>
-
+	

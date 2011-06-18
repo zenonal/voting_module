@@ -1,22 +1,9 @@
 
 <%= title t("initiatives.index_title") %>
 
-<% unless Initiative.all.empty? %>
-<%= link_to t("initiatives.index_drafts"), {:controller => :initiatives, :action => "index_drafts", :id => Initiative.first.id}, :class => "link" %>
-<% end %>
+<%= render :partial => "layouts/filters", :locals => {:bill_model => Initiative } %>
 
-<%= t("initiatives.geographical_level") %>: 
-<%= @geo %>
-
-<form id="filter_form">
-<%= check_box_tag("user_level", "off", false) %>
-<%= select("filter", "level", Initiative::LEVELS) %>
-<input type="submit" value=<%=t("layout.filter") %> />
-</form>
-<%= link_to_function t('initiatives.options'), "$('filter_form').toggle();" %>
-
-
-<%= render :partial => "layouts/indexes", :locals => { :bills => @bill } %>
+<%= render :partial => "layouts/indexes" %>
 
 <div class="clear"></div>
 

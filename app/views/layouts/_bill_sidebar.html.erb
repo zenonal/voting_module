@@ -1,0 +1,157 @@
+
+<div id="bill-sidebar">	
+	
+	<% if bill.current_phase == 0 %>
+		<div id="bill-time">
+			<h4><%= t(:validation_failed) %></h4>
+		</div>
+	<% end %>
+	
+	
+	
+	
+	<% if bill.current_phase == 1 %>
+		<div id="bill-time">
+			<div id="time-spacer"></div>
+			<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_edit %></div><div class="passed_time"><%= bill.editing_time_elapsed %></div></div>
+			<div id="time-text">
+				<%= humanize_duration(bill.time_left_to_edit) %> <%= t(:left_to_edit)%>
+			</div>
+		</div>
+	<% end %>
+	
+	
+	
+	
+	<% if bill.current_phase == 2 %>
+		<div id="bill-time">
+			<div id="time-spacer"></div>
+			<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_validate %></div><div class="passed_time"><%= bill.validating_time_elapsed %></div></div>
+			<div id="time-text">
+				<%= humanize_duration(bill.time_left_to_validate) %> <%= t(:left_to_validate)%>
+			</div>
+		</div>
+		<div id="bill-score">
+			<p><span style="display:inline-block; vertical-align:middle;">
+				<%= t("#{params[:controller]}.validate") %>: <%= link_to image_tag("valid.gif"), {:controller=> params[:controller], :action=>"validate", :id => bill.id} %></span></p>
+			<p><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %></p>
+		</div>
+	<% end %>
+	
+	
+	
+	<% if bill.current_phase == 3 %>
+		<% unless bill.class.name == "Amendment" %>
+			<div id="bill-time">
+				<div id="time-spacer"></div>
+		
+				<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_amend %></div><div class="passed_time"><%= bill.amending_time_elapsed %></div></div>
+				<div id="time-text">
+					<%= humanize_duration(bill.time_left_to_amend) %> <%= t(:left_to_amend)%>
+				</div>
+				<div id="time-spacer"></div>
+				<div id="time-spacer"></div>
+				<% if permitted_to? :create, Amendment.new %>
+					<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button", :title => t('tooltips.submit_amendment') %></p>
+				<% end %>
+			</div>
+		<% else %>
+			<br/><br/>
+			<%= t("amendments.phase3").capitalize %>
+		<% end %>
+	<% end %>
+	
+	
+	
+	
+	<% if bill.current_phase == 4 %>
+		<div id="bill-time">
+			<div id="time-spacer"></div>
+
+			<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_vote %></div><div class="passed_time"><%= bill.voting_time_elapsed %></div></div>
+			<div id="time-text">
+				<%= humanize_duration(bill.time_left_to_vote) %> <%= t(:left_to_vote)%>
+			</div>
+		</div>
+		<div id="bill-vote">
+			<p><%= pluralize(Ranking.tally_all_ranks(bill),t("#{params[:controller]}.votes")) %>
+		</div>
+		<% unless current_user.nil? %>
+			<div id="bill-vote">
+				<%= link_to t("#{params[:controller]}.private_vote"), {:action => :vote, :id => bill.id}, :class => "link" %>
+			</div>
+			
+			<% unless current_user.delegate.nil? %>
+				<div id="bill-vote">
+					<%= link_to t("#{params[:controller]}.delegate_vote"), {:action => :vote, :id => bill.id, :delegated => true}, :class => "link" %>
+				</div>
+			<% end %>
+			
+			<div id="bill-vote">
+				<%= t("#{params[:controller]}.vote_of_delegate") %>
+				<% if delegated_vote.nil? %>
+					<p><%= t("#{params[:controller]}.delegate_no_vote") %></p>
+				<% else %>
+					<div id="ranking-bill-element">
+					<% delegated_vote.each do |a| %>
+						<% unless a.rankings.for_ranker(@deleg.delegate)[0].nil? %>
+						<div id="ranking-bill-score">
+							<%= a.rankings.for_ranker(@deleg.delegate)[0].rank %>
+						</div>
+						<div id="ranking-bill-column">
+							<%= link_to eval("a.name_#{I18n.locale}"), a, 
+						:class => "link vote_#{a.rankings.for_ranker(@deleg.delegate)[0].rank>0} neutral_#{a.rankings.for_ranker(@deleg.delegate)[0].rank==0}" %>
+						</div>
+						<div class="clear"></div>
+						<% end %>
+					<% end %>
+					</div>
+					
+				<% end %>
+				<br/>
+				<p><%= link_to t('users.delegates.change_delegate'), delegates_path, :class => "link", :title => t('tooltips.choose_delegate') %></p>
+			</div>
+		<% else %>
+			<p><%= t("#{params[:controller]}.want_vote") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+		<% end %>
+	<% end %>
+	
+	
+	
+	
+	<% if bill.current_phase == 5 %>
+		<div id="bill-score">
+			<h4><%= t("#{params[:controller]}.results") %></h4>
+			<% if @winner %>
+				<% unless @winner > Ranking.all_related_bills(bill).count %>
+				<div id="bill-winner">
+					<%= t("#{params[:controller]}.wins") %>:
+					<p id="approval"><%= Ranking.percent_approval(Ranking.all_related_bills(bill)[@winner - 1]).round %> 
+					% <%= t("#{params[:controller]}.approval") %></p>
+					<p><%= link_to eval("Ranking.all_related_bills(bill)[@winner - 1].name_#{I18n.locale}"), Ranking.all_related_bills(bill)[@winner - 1], :class => "link" %></p>
+				</div>
+				<div id="bill-loser">
+					<%= t("#{params[:controller]}.lost") %>:
+					<% Ranking.all_related_bills(bill).each_with_index do |b,index| %>
+						<% unless index+1 == @winner %>
+							<p><%= link_to eval("b.name_#{I18n.locale}"), b, :class => "link" %></p>
+						<% end %>
+					<% end %>
+				</div>
+				<% else %>
+					<div id="bill-loser">
+						<%= t("#{params[:controller]}.all_defeated") %>
+					</div>
+				<% end %>
+			<% else %>
+				<%= t("#{params[:controller]}.no_winner") %>
+			<% end %>
+			<br/><br/>
+			<% if params[:action] == "show" %>
+				<%= link_to t("layout.show_results"), {:action => :show_results, :id => bill.id}, :class => "link" %>
+			<% else %>
+				<%= link_to t("layout.show_bill"), bill, :class => "link" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

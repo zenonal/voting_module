@@ -1,0 +1,117 @@
+/* line 19, ../../app/stylesheets/ranking.scss */
+.ranking {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 847.083px;
+  position: relative;
+  /*** DRAG ***/
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .ranking {
+  overflow-x: hidden;
+}
+/* line 23, ../../app/stylesheets/ranking.scss */
+.ranking div ul {
+  min-height: 100px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  margin: 30px;
+}
+/* line 32, ../../app/stylesheets/ranking.scss */
+.ranking .neutral ul {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 0 0.5em #666;
+  background: #aaa;
+  padding: 20px;
+  color: #444444;
+  border: 3px solid #444444;
+  text-align: left;
+}
+/* line 40, ../../app/stylesheets/ranking.scss */
+.ranking .neutral ul li .count {
+  visibility: hidden;
+  background-color: #aaa;
+}
+/* line 46, ../../app/stylesheets/ranking.scss */
+.ranking .vote_against ul {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 0 0.5em #666;
+  background: #eaa;
+  padding: 20px;
+  color: #aa2222;
+  border: 3px solid #aa2222;
+  text-align: left;
+}
+/* line 54, ../../app/stylesheets/ranking.scss */
+.ranking .vote_against ul li .count {
+  background-color: #e88;
+}
+/* line 59, ../../app/stylesheets/ranking.scss */
+.ranking .vote_for ul {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 0 0.5em #666;
+  background: #aea;
+  padding: 20px;
+  color: #22aa22;
+  border: 3px solid #22aa22;
+  text-align: left;
+}
+/* line 67, ../../app/stylesheets/ranking.scss */
+.ranking .vote_for ul li .count {
+  background-color: #8e8;
+}
+/* line 72, ../../app/stylesheets/ranking.scss */
+.ranking li {
+  border: 2px solid #737373;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background: #fff;
+  text-align: left;
+  font-size: 1.3em;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+/* line 81, ../../app/stylesheets/ranking.scss */
+.ranking li a {
+  text-decoration: none;
+}
+/* line 86, ../../app/stylesheets/ranking.scss */
+.ranking .hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  -moz-opacity: 0.7;
+  color: #fff;
+  background-color: #cd6a76;
+}
+/* line 96, ../../app/stylesheets/ranking.scss */
+.ranking li .count {
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  padding-right: 10px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px;
+  margin-right: 20px;
+}
+/* line 106, ../../app/stylesheets/ranking.scss */
+.ranking li .original_count {
+  visibility: hidden;
+}
+
+/* line 111, ../../app/stylesheets/ranking.scss */
+#hiddenDelegated {
+  visibility: hidden;
+}

@@ -2,6 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @amendment %> |
-<%= link_to 'Back', amendments_path %>
+<%= link_to t('cancel'), @amendment, :class => "button" %>
 <%= raw textile_editor_initialize -%>

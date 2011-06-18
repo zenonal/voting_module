@@ -1,27 +1,36 @@
 <div id="preview">
-	<h2><%= t('initiatives.preview') %></h2>
-	<%= image_tag bill.photo.url %>
-	<table>
-		<tr>
-			<td><%= t(:english_head) %></td>
-			<td><%= t(:french_head) %></td>
-			<td><%= t(:nederland_head) %></td>
-		</tr>
-		<tr>
-			<td>
-				<h3><%= bill.name_en %></h3>
-	   			<%= raw RedCloth.new(bill.content_en).to_html %>
-			</td>
-			<td>
-				<h3><%= bill.name_fr %></h3>
-	   			<%= raw RedCloth.new(bill.content_fr).to_html %>
-			</td>
-			<td>
-				<h3><%= bill.name_nl %></h3>
-	   			<%= raw RedCloth.new(bill.content_nl).to_html %>
-			</td>
-		</tr>
-	</table>
+	<h3><%= t('initiatives.preview') %></h3>
+	<% unless bill.name_en.blank? %>
+		<div id="preview-header">
+			<%= image_tag bill.photo.url("small") %>
+		</div>
+		<div id="preview-content">
+			<h4><%= t(:english_head) %></h4>
+			<h3><%= bill.name_en %></h3>
+			<%= raw RedCloth.new(bill.content_en).to_html %>
+		</div>
+	<% end %>
+	<% unless bill.name_fr.blank? %>
+		<div id="preview-header">
+			<%= image_tag bill.photo.url("small") %>
+		</div>
+		<div id="preview-content">
+			<h4><%= t(:french_head) %></h4>
+			<h3><%= bill.name_fr %></h3>
+			<%= raw RedCloth.new(bill.content_fr).to_html %>
+		</div>
+	<% end %>
+	<% unless bill.name_nl.blank? %>
+		<div id="preview-header">
+			<%= image_tag bill.photo.url("small") %>
+		</div>
+		<div id="preview-content">
+			<h4><%= t(:nederland_head) %></h4>
+			<h3><%= bill.name_nl %></h3>
+			<%= raw RedCloth.new(bill.content_nl).to_html %>
+		</div>
+	<% end %>
+	<div class="clear"></div>
 </div>
 <br />
 <br />

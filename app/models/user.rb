@@ -9,12 +9,16 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :arguments, :dependent => :destroy
   has_many :exclusions, :dependent => :destroy
+  has_many :rankings, :as => :ranker, :dependent => :nullify
   has_many :initiatives
   has_many :amendments
   has_many :ideas
   has_many :validations
   has_one :delegate, :dependent => :destroy
   has_one :delegation, :dependent => :destroy
+  belongs_to :commune
+  belongs_to :province
+  belongs_to :region
   belongs_to :party
   before_create :define_role
   
@@ -23,18 +27,40 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me, :postal_code
+  attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me, :commune_id, :province_id, :region_id
   
+  scope :ranked_on, lambda {|v|
+    joins(:rankings).
+    where("rankings.rankable_type = ? AND rankings.rankable_id = ?",v.class.name, v.id)
+  }
   scope :in_favor, lambda {|v|
-     joins(:votes).
-     where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",true,v.id,v.class.name)
-   }
-   scope :opposed_to, lambda {|v|
-      joins(:votes).
-      where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",false,v.id,v.class.name)
-    }
+    joins(:votes).
+    where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",true,v.id,v.class.name)
+  }
+  scope :opposed_to, lambda {|v|
+    joins(:votes).
+    where("votes.vote = ? AND votes.voteable_id = ? AND votes.voteable_type = ?",false,v.id,v.class.name)
+  }
+  scope :from_commune, lambda {|c|
+    joins(:commune).
+    where("postal_code = ?",c.postal_code)
+  }
+  scope :from_province, lambda {|c|
+    joins(:province).
+    where("code = ?",c.code)
+  }
+  scope :from_region, lambda {|c|
+    joins(:region).
+    where("code = ?",c.code)
+  }
+  scope :logged_in_since, lambda {|t|
+    where("last_sign_in_at > ?", t)
+  }
   
-  
+  scope :logged_in_between, lambda {|t1,t2|
+    where("last_sign_in_at > ? AND last_sign_in_at < ?", t1,t2)
+  }
+
   def apply_omniauth(omniauth)
     self.displayName = omniauth['user_info']['nickname'] if displayName.blank?
     self.photo = omniauth['user_info']['image'] if photo.blank?
@@ -54,28 +80,6 @@ class User < ActiveRecord::Base
   
   def password_required?
     (authentications.empty? || !password.blank?) && super
-  end
-  
-  def commune
-    Commune.find_by_postal_code(self.postal_code)
-  end
-  
-  def province
-    self.commune.province
-  end
-  
-  def region
-    self.province.region
-  end
-  
-  def self.current_communal_level
-    p = current_user.postal_code
-    where("postal_code = ?", p)  
-  end
-  
-  def self.current_provincial_level
-    p = current_user.postal_code
-    where("postal_code = ?", p)  
   end
   
    private

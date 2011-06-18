@@ -1,0 +1,117 @@
+
+<div id="bill-content">
+	<div class="border-div">
+		<h3><%= t('layout.global_results') %></h3>
+		<div class="bill-result">
+			<div class="name">&nbsp;</div>
+			<div class="average_rank_title"><%= t('layout.average_rank') %></div>
+			<div class="percent_approval_title"><%= t('layout.percent_approval') %></div>
+			<div class="clear"></div>
+		<% bills.each do |b| %>
+			
+				<div class="name">
+					<%= link_to eval("b.name_#{I18n.locale}"), b, :class => "link" %>
+				</div>
+				<div class="average_rank">
+					<%= sprintf("%.2f",Ranking.average_rank(b)) %>
+				</div>
+				<div class="percent_approval">
+					<%= Ranking.percent_approval(b).round %>%
+				</div>
+				<div class="clear"></div>
+				<br/>
+		<% end %>
+		</div>
+		<div class="clear"></div>
+		
+		<br/>
+		<br/>
+		<h3><%= t('layout.rank_matrix') %></h3>
+		<%= t('tooltips.rank_matrix') %>
+		<table class="rank-matrix">
+			<th></th>
+			<% @matrix.each_with_index do |row,row_index| %>
+				<th class="left-bordered">
+					<span class="red">
+					<% if row_index < bills.count %>
+						<%= link_to eval("bills[row_index].name_#{I18n.locale}"), bills[row_index] %>
+					<% else %>
+						<%= t("layout.reject_all") %>
+					<% end %>
+					</span>
+				</th>
+			<% end %>
+				
+			</th>
+			<% @matrix.each_with_index do |row,row_index| %>
+			<tr class="top-bordered">
+				<% if row_index < bills.count %>
+					<td class="name"><%= link_to eval("bills[row_index].name_#{I18n.locale}"),bills[row_index] %></td>
+				<% else %>
+					<td class="name"><%= t("layout.reject_all") %></td>
+				<% end %>
+				<% row.each_with_index do |col,col_index| %>
+					<td class="scores left-bordered">
+						<%= @matrix[row_index][col_index] %>
+					</td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+		
+		<br/>
+		<br/>
+		<h3><%= t('layout.delegate_votes_list') %></h3>
+		<table class="rank-matrix">
+			<th style="width: 50px;"></th>
+			<% bills.each do |b| %>
+				<th class="left-bordered">
+					<%= eval("b.name_#{I18n.locale}") %>
+				</th>
+			<% end %>
+			
+			<% Delegate.ranked_on(bills[0]).each do |u| %>
+			<tr class="top-bordered">
+				<td>
+					<%= link_to u.user.displayName, u.user, :class => "link" %>
+					<%= t("layout.representing") %><%= pluralize(u.weight_on_bill(bills[0]), t("layout.vote") ) %>
+				</td>
+				<% bills.each do |r| %>
+				<td class="scores left-bordered">
+					<% unless r.rankings.for_ranker(u)[0].nil? %>
+						<%= r.rankings.for_ranker(u)[0].rank %>
+					<% end %>
+				</td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+		
+		<br/>
+		<br/>
+		<h3><%= t('layout.private_votes_list') %></h3>
+		<table class="rank-matrix">
+			<th style="width: 80px;"></th>
+			<% bills.each do |b| %>
+				<th class="left-bordered">
+					<%= eval("b.name_#{I18n.locale}") %>
+				</th>
+			<% end %>
+			
+			<% User.ranked_on(bills[0]).each_with_index do |u,index| %>
+			<tr class="top-bordered">
+				<td><%= t('layout.voter') %> n°<%= index+1 %></td>
+				<% bills.each do |r| %>
+				<td class="scores left-bordered">
+					<% unless r.rankings.for_ranker(u)[0].nil? %>
+						<%= r.rankings.for_ranker(u)[0].rank %>
+					<% end %>
+				</td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+		
+		
+	</div>
+</div>

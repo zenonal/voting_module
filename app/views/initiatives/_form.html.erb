@@ -14,8 +14,15 @@
 	<%= render :partial => "layouts/previews", :locals => { :bill => @initiative } %>
   <% end %>
   <div class="field">
-	<%= f.select :level, Initiative::LEVELS %>
+	<%= f.label t('layout.choose_level') %><br />
+	<%= f.select :level, Initiative::LEVELS.collect {|l| [l, Initiative::PHASES.index(l)]} %>
   </div>
+<br /><br /><br />
+<div class="field">
+	<%= f.label t('layout.choose_photo') %><br />
+    <%= f.file_field :photo %>
+  </div>
+<br /><br /><br />
   <div class="field">
     <%= f.label :name_in_english %><br />
     <%= f.text_field :name_en %>
@@ -25,19 +32,19 @@
     <%= f.textile_editor :content_en %>
   </div>
 <div class="field">
-    <%= f.label :name_in_french %><br />
+    <%= f.label :nom_en_français %><br />
     <%= f.text_field :name_fr %>
   </div>
   <div class="field">
-    <%= f.label :content_in_french %><br />
+    <%= f.label :texte_en_français %><br />
     <%= f.textile_editor :content_fr %>
   </div>
 <div class="field">
-    <%= f.label :name_in_dutch %><br />
+    <%= f.label :naam_in_het_nederlands %><br />
     <%= f.text_field :name_nl %>
   </div>
   <div class="field">
-    <%= f.label :content_in_dutch %><br />
+    <%= f.label :text_in_het_nederlands %><br />
     <%= f.textile_editor :content_nl %>
   </div>
 <p><%= t('initiatives.categories') %></p>
@@ -47,11 +54,7 @@
 	<%=	check_box_tag eval("c.name_#{I18n.locale}"), eval("c.name_#{I18n.locale}"), (@initiative.category == c) %><br/>
 	<% end %>
   </div>
-<p></p>
-  <div class="field">
-	<%= f.label t('initiatives.form.photo') %><br />
-    <%= f.file_field :photo %>
-  </div>
+
 <br />
 <br />
   <div class="actions">

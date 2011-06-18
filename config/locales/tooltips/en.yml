@@ -5,3 +5,4 @@ en:
     choose_delegate: "If you don't want to vote on each single bill, click here to delegate your vote to another user."
     submit_amendment: "You think this bill can be improved? Propose your own version by clicking here!"
     submit_argument: "Let people know what you think."
+    rank_matrix: "Each value represents the number of times the green bill beat the red bill in pairwise comparisons"

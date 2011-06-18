@@ -1,12 +1,20 @@
 
 <%= render :partial => "layouts/bills", :locals => { :bill => @initiative, :delegated_vote => @delegated_vote } %>
 
+<% if @initiative.current_phase >= 3 %>
 <div id="bill-footer">
 <%= render :partial => "layouts/amendments_list", :locals => { :bill => @initiative } %>
 </div>
+<% end %>
 
+<% if @initiative.current_phase > 1 %>
 <div id="bill-footer">
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @initiative } %>
+</div>
+<% end %>
+
+<div id="bill-footer">
+<%= render :partial => "layouts/comments", :locals => { :commentable => @initiative } %>
 </div>
 
 <% if false %>

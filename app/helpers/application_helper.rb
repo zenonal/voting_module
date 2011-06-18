@@ -52,5 +52,16 @@ module ApplicationHelper
       content_for(:head) { javascript_include_tag(*args) }
     end
     
-    
+  def tutorial_ok
+    !@tutorial_positions[params[:controller]].nil? && !@tutorial_positions[params[:controller]][params[:action]].nil?
+  end
+  
+  def humanize_duration(duration)
+    output = ""
+    output += pluralize(duration.to_i/(24*60*60), t(:days))
+    output += ", "
+    output += pluralize(duration.to_i/(60*60)%24, t(:hours)) 
+    output += ", "
+    output += pluralize(duration.to_i/(60)%60, t(:minutes))
+  end
 end

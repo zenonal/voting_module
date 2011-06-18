@@ -1,13 +1,22 @@
 @mixin rounded($radius: 10px) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
+border-radius: $radius;
+-moz-border-radius: $radius;
+-webkit-border-radius: $radius;
 }
 
 @mixin shadowed($shad-size:5px, $shad-color:#555) {
 box-shadow:$shad-size $shad-size $shad-size $shad-color;
 -webkit-box-shadow:$shad-size $shad-size $shad-size $shad-color;
 -moz-box-shadow: $shad-size $shad-size $shad-size $shad-color;
+}
+
+@mixin vertical-text {
+writing-mode: tb-rl;
+-webkit-transform: rotate(90deg);	
+-moz-transform: rotate(90deg);
+-ms-transform: rotate(90deg);
+-o-transform: rotate(90deg);
+transform: rotate(90deg);
 }
 
 
@@ -28,518 +37,819 @@ box-shadow:$shad-size $shad-size $shad-size $shad-color;
 @include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
 
 body.bp {
-  @include blueprint-typography(true);
-  @include blueprint-utilities;
-  @include blueprint-debug;
-  @include blueprint-interaction;
-  
+@include blueprint-typography(true);
+@include blueprint-utilities;
+@include blueprint-debug;
+@include blueprint-interaction;
+
 }
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body.main-layout {
 
-  h3 {
-	font-family: "Subtitles", helvetica;
-	font-size: 22px;
-	font-style: normal;
-	text-transform: uppercase;
-	
-	}
-	
-  h2 {
-	font-family: "Titles", helvetica;
-	letter-spacing:4px
-  }
-  
-  #container {
-    @include container; 
-	@include background-image(linear-gradient(top, $blueprint-background-color, white));
-	}
-	
-  #sidebar-left {
-	$sidebar-l-columns: floor($blueprint-grid-columns / 8);
-	@include column($sidebar-l-columns); 
+h3 {
+font-family: "Subtitles", helvetica;
+font-size: 22px;
+font-style: normal;
+text-transform: uppercase;
+
+}
+
+h2 {
+font-family: "Titles", helvetica;
+letter-spacing:4px
+}
+
+#container {
+@include container; 
+@include background-image(linear-gradient(top, $blueprint-background-color, white));
+}
+
+#sidebar-left {
+$sidebar-l-columns: floor($blueprint-grid-columns / 8);
+@include column($sidebar-l-columns); 
+text-align: center;
+
+li {
+list-style-type: none;
+padding: 10px;
+}
+}
+
+#container2 {
+@include column($content-columns); 
+}
+
+#header {
+@include column($blueprint-grid-columns, true);
+text-align: center;
+@include background(image-url("DD_header.png"));
+height: 230px;
+}
+
+.title {
+position: relative;
+left: 360px;
+}
+
+.subtitle {
+position: relative;
+left: 360px;
+top: 80px;
+text-decoration: none;
+font-weight: bold;
+font-size: 30px;
+font-family: "Titles";
+}
+
+#flash {
+@include column($content-columns);
+}
+
+#tutorial {
+position: absolute;
+@include opacity(.8);
+@include rounded(10px);
+@include column($content-columns);
+@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
+width: span(floor($content-columns/2)) - 40px;
+border: 1px solid $main-border-color;
+padding: 20px;
+margin-bottom: 20px;
+@include background-image(linear-gradient(left, lighten(green,75%), lighten(green,70%)));
+z-index:1;
+-webkit-transition-duration: 1s;
+-moz-transition-duration: 1s;
+-o-transition-duration: 1s;
+-ms-transition-duration: 1s;
+transition-duration: 1s;
+-webkit-transition-property: top, left, height, width, opacity;
+-moz-transition-property: top, left, height, width, opacity;
+-o-transition-property: top, left, height, width, opacity;
+-ms-transition-property: top, left, height, width, opacity;
+transition-property: top, left, height, width, opacity;
+}
+
+#content {
+@include column($content-columns); 
+@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
+text-align: center;
+border: 1px solid $main-border-color;
+background-color: #fff;
+@include background-image(linear-gradient(top, white, darken(white,8%)));
+}
+
+#sidebar-right {
+
+// One third of the grid columns, rounding down. With 24 cols, this is 8.
+$sidebar-r-columns: floor($blueprint-grid-columns / 8);
+@include column($sidebar-r-columns, true); 
+text-align: center;
+padding: 10px;
+}
+
+#footer {
+@include column($blueprint-grid-columns); 
+height: 100px;}
+
+
+#home-content {
+	@include column($content-columns, true);
+	td {
+		text-align: center;
+		}
 	text-align: center;
-	
-	li {
-		list-style-type: none;
-		padding: 10px;
+	height: 500px;
+}
+
+.filter_form {
+@include blueprint-form;
+}
+
+
+#bill-sidebar {
+@include column($bill-sidebar-columns);
+padding: 10px;
+}
+
+#bill-score {
+width: span($bill-sidebar-columns);
+margin: auto;
+margin-bottom: 30px;
+margin-top: 30px;
+padding: auto;
+text-align: center;
+	div.meter {
+		left: 65px;
 		}
-	}
-
-  #container2 {
-	@include column($content-columns); 
-	}
-	
-  #header {
-	@include column($blueprint-grid-columns, true);
-	text-align: center;
-	@include background(image-url("DD_header.png"));
-	height: 230px;
-   }
-
-   .title {
-	position: relative;
-	left: 360px;
+	#bill-winner {
+		@include rounded(5px);
+		background-color: #cfc;
+		color: #000;
+		border: 2px solid darken(#cfc, 50%);
 	}
 	
-	.subtitle {
-		position: relative;
-		left: 360px;
-		top: 80px;
-		text-decoration: none;
-		font-weight: bold;
-		font-size: 30px;
-		font-family: "Titles";
-		}
-
-   #flash {
-	@include column($content-columns);
-   }
-
-   #tutorial {
-	@include column($content-columns);
-	@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
-	width: span($content-columns) - 40px;
-	border: 1px solid $main-border-color;
-	padding: 20px;
-	margin-bottom: 20px;
-	@include background-image(linear-gradient(left, lighten(green,75%), lighten(green,70%)));
-	
-   }
-
-   #content {
-	@include column($content-columns); 
-	@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
-	text-align: center;
-	border: 1px solid $main-border-color;
-	background-color: #fff;
-	@include background-image(linear-gradient(top, white, darken(white,8%)));
+	#bill-loser {
+		@include rounded(5px);
+		background-color: #fcc;
+		color: #000;
+		border: 2px solid darken(#fcc, 50%);
+		margin-top: 15px;
 	}
 	
-	#sidebar-right {
+	#approval {
+		font-size: 20px;
+	}
+}
 
-		// One third of the grid columns, rounding down. With 24 cols, this is 8.
-		$sidebar-r-columns: floor($blueprint-grid-columns / 8);
-		@include column($sidebar-r-columns, true); 
-		text-align: center;
-		padding: 10px;
+#bill-time {
+	.time_chart {
+		@include column(1);
+		width:span(1);
+		height:span(1);
+		margin: 10px;
+		margin-left: 30px;
 		}
 
-   #footer {
-	    @include column($blueprint-grid-columns); 
-		height: 100px;}
-	
-	
-   #home-content {
-		@include column($content-columns, true);
-		td {
+	#time-text {
 		text-align: center;
+		font-size: 14px;
 		}
-		text-align: center;
-		height: 500px;
-	   }
-	
-   .filter_form {
-		@include blueprint-form;
-	}
-   
-	
-   #bill-sidebar {
-	@include column($bill-sidebar-columns);
-	padding: 10px;
-	
-   }
 
-		#bill-category {
-			width: span($bill-sidebar-columns);
-			height: 40px;
-			a {
-			padding: 10px;
-			}
-			margin-top: 30px;
-		   }
-		
-		#bill-score {
-		width: span($bill-sidebar-columns);
-		height: 60px;
-		margin: auto;
-		margin-bottom: 30px;
-		margin-top: 30px;
-		padding: auto;
-		text-align: center;
-			div.meter {
-			left: 65px;
-			}
+	#time-spacer {
+		@include column($bill-sidebar-columns);
+		height: 20px;
+		}
+}
+
+#bill-vote {
+@extend #bill-score;
+
+	ul {
+		position:relative;
+		left: 60px;
 		}
 		
-		#bill-vote {
-		@extend #bill-score;
-		
-			ul {
-			position:relative;
-			left: 60px;
-			}
-			a.link {
-				position:relative;
-				top:-20px;
-			}
-		}
-   .link-like {
-			
-		
-		}
+	a.link {
+		position:relative;
+		top:-20px;
+	}
+}
 
-   #bill-content {
+#bill-content {
 	padding: 10px;
 	@include column($bill-content-columns);
-	
-		.bill-text {
-			padding: 20px;
-			@include blueprint-typography-body(20px);
-			
-			p {
+
+	.bill-text {
+		padding: 20px;
+		@include blueprint-typography-body(20px);
+
+		p {
 			text-align: justify;
 			font-family: "Helvetica Neue";
 			}
-		 }
-   }
-
-	.bill-text-link {
+	}
 		
-		p {
-			padding-left: 10px; 
-			text-align: justify;
+	.bill-result {
+		@include column($bill-content-columns);
+		width: span($bill-content-columns - 1) - 30px;
+		margin: 20px;
+		padding: 20px;
+		@include single-box-shadow(darken($main-border-color,20%), 0px, 0px, 5px, false, false);
+		
+		.name {
+			@include column(ceil($bill-content-columns/3));
 		}
+		
+		.average_rank {
+			@include column(3);
+			color: #FFBD22;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		.percent_approval {
+			@include column(2);
+			color: #6870FF;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		.average_rank_title {
+			@include column(3);
+			color: #000;
+			font-weight: bold;
+		}
+		
+		.percent_approval_title {
+			@include column(2);
+			color: #000;
+			font-weight: bold;
+		}
+	}
+}
+
+
+table.rank-matrix {
+	@include single-box-shadow(darken($main-border-color,20%), 0px, 0px, 5px, false, false);
+	width: span($bill-content-columns) - 40px;
+	margin: 20px;
+	
+	th {
+	text-align: center;
+		.red {
+			color: #d55;
+			a{
+				text-decoration: none;
+				color:  #d55;
+			}
+		}
+		.black {
+		color: #000px;
+		}
+	}
+	
+	td {
+		font-weight: bold;
+	}
+	
+	td.scores {
+		text-align: center;
+	
+	}
+	
+	.left-bordered {
+		border-left: 2px solid lighten($main-border-color,20%);
+	}
+	
+	.top-bordered {
+		td {
+		border-top: 2px solid lighten($main-border-color,20%);
+		}
+	}
+	
+	td.name {
+	color: #5d5;
+	font-weight: bold;
 		a {
-			text-decoration:none;
+		color: #5d5;
+		text-decoration: none;
 		}
 	}
-	
-   .border-div {
-		border-left: 2px solid $main-border-color;
+}
 
-   }
-   	
+.bill-text-link {
 
-   #bill-header {
-	@include column($content-columns);
-	border-bottom: 2px solid $main-border-color;
-	padding-bottom: 10px;
-   }
+p {
+padding-left: 10px; 
+text-align: justify;
+}
+a {
+text-decoration:none;
+}
+}
 
-   #bill-header-icon {
-	@include column(floor($content-columns/4));
-	padding-top: 15px;
-   }
+.border-div {
+min-height: 600px;
+border-left: 2px solid $main-border-color;
 
-   #bill-header-name {
-	@include column(ceil(3*$content-columns/4), true);
-	padding-top: 15px;
-	text-align: left;
-   }
+}
 
-   #bill-footer {
+
+#bill-header {
+@include column($content-columns);
+border-bottom: 2px solid $main-border-color;
+padding-bottom: 10px;
+
+	#bill-header-icon {
+		@include column(floor($content-columns/4));
+		padding-top: 15px;
+		}
+
+	#bill-header-content {
+		@include column(ceil(3*$content-columns/4),true);
+		}
+
+	#bill-header-title {
+		@include column(ceil(3*$content-columns/4), true);
+		padding-top: 15px;
+		text-align: left;
+		}
+
+	#bill-geography {
+		@include column(ceil($content-columns/4));
+		text-align: left;
+		}
+
+	#bill-phase {
+		@include column(floor($content-columns/4));
+		text-align: left;
+		
+		#bill-winner {
+			font-size: 20px;
+			color: #5d5;
+		}
+
+		#bill-loser {
+			font-size: 20px;
+			color: #d55;
+		}
+		
+		}
+
+	#bill-category {
+		@include column(floor($content-columns/4),true);
+		a {
+			padding: 10px;
+			}
+		}
+}
+
+
+
+#bill-footer {
 border-top: 2px solid $main-border-color;
-	@include column($content-columns);
-		ul {
-		list-style-type:none;
-		}
-   }
+@include column($content-columns);
+ul {
+list-style-type:none;
+}
+}
 
-   #party-index {
+#party-index {
+padding: 20px;
+}
+
+#index-content {
+@include column($content-columns, true);
+
+}
+#index-element {
+@include background-image(linear-gradient(top, white, darken(white, 8%)));
+border-bottom: 2px solid darken(white, 12%);
+}
+
+
+#ranking-index-element {
+	@include column(ceil(2*$content-columns/3), true);
+	@include rounded(5px);
+	@include single-box-shadow(darken($main-border-color,10%), 0px, 0px, 5px, false, false);
 	padding: 20px;
-	}
-
-   #index-content {
-	@include column($content-columns, true);
+	text-align: left;
+	margin: 5px;
+	position: relative;
+	margin-left: 100px;
 	
-   }
-	#index-element {
-		@include background-image(linear-gradient(top, white, darken(white, 8%)));
-		border-bottom: 2px solid darken(white, 12%);
+	#ranking-index-score {
+		@include column(1);
+		@include rounded(10px);
+		border: 2px solid darken(white, 12%);
+		font-size: 20px;
+		font-weight: bold;
+		text-align:center; 
+		color: #888;
+		margin: 5px;
 	}
-
-   #index-column {
+	
+	#ranking-index-date {
+		position: absolute;
+		top: 0px;
+		left: 500px;
+		color: #888;
+	}
+	
+	.no_vote {
+		a {
+			color: #aaa;
+		}
+	}
+	
+	.vote_true {
+		color: #5d5;
+	}
+	
+	.vote_false {
+		color: #d55;
+	}
+	
+	.neutral_true {
+		color: #aaa;
+	}
+	
+	#ranking-index-column {
 		@include column($index-columns);
-	  	text-align:center; 
+		margin: 0px;
+		padding-bottom: 0px;
+		padding-top: 0px;
+		text-align:center; 
+	}
+	
+	#ranking-index-large-column {
+		@extend index-column;
+		@include column(ceil($content-columns/2), true);
+		a {
+			position: relative;
+			top: 10px;
+		}
+	}
+}
+
+#ranking-bill-element {
+	@include column(5, true);
+	@include rounded(5px);
+	@include single-box-shadow(darken($main-border-color,10%), 0px, 0px, 5px, false, false);
+	padding: 10px;
+	text-align: left;
+	margin: 0px;
+	margin-bottom: 50px;
+	
+	#ranking-bill-score {
+		@include column(1);
+		@include rounded(5px);
+		border: 2px solid darken(white, 12%);
+		font-size: 10px;
+		font-weight: bold;
+		text-align:center; 
+		color: #888;
+		margin: 0px;
+	}
+	
+	.no_vote {
+		a {
+			color: #aaa;
+		}
+	}
+	
+	.vote_true {
+		color: #5d5;
+	}
+	
+	.vote_false {
+		color: #d55;
+	}
+	
+	.neutral_true {
+		color: #aaa;
+	}
+	
+	#ranking-bill-column {
+		@include column(4);
 		margin: 0px;
 		padding: 0px;
-		padding-top: 20px;
-		div {
-		position:relative;
-		left: 10px;
-		}
-		table tr td {
-		text-align: center;
-		padding-right: 20px;
-		}
+		text-align:left;
 		
-	}
-	
-	#ideas {
-		padding-bottom: 30px;
-		font-weight: bold;
-	}
-	
-	#index-large-column {
-			@extend #index-column;
-			@include column($index-columns*2);
+		a {
+			position: relative;
+			top: -5px;
 		}
-		
-   #last-index-column {
-		@extend #index-column;
-		@include column($index-columns, true);
 	}
-	
-	#last-index-large-column {
-		@extend #index-large-column;
-			@include column($index-columns*2, true);
-		}
-	
-	form {
-	  @include blueprint-form;
-	  }
+}
 
-	a.button {
-	@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, false);
-	@include button-button;
-	@include button-colors;
-	@include button-active-colors;
-	@include button-hover-colors;
-	@include rounded(5px);
-	@include background-image(linear-gradient(top, white, darken(white, 12%)));
-	border: 1px solid #aaa;
-	text-decoration: none;
-	padding: 7px;
+#index-column {
+@include column($index-columns);
+text-align:center; 
+margin: 0px;
+padding: 0px;
+padding-top: 20px;
+div {
+position:relative;
+left: 10px;
+}
+table tr td {
+text-align: center;
+padding-right: 20px;
+}
+
+}
+
+#ideas {
+padding-bottom: 30px;
+font-weight: bold;
+}
+
+#index-large-column {
+@extend #index-column;
+@include column($index-columns*2);
+}
+
+#last-index-column {
+@extend #index-column;
+@include column($index-columns, true);
+}
+
+#last-index-large-column {
+@extend #index-large-column;
+@include column($index-columns*2, true);
+}
+
+form {
+@include blueprint-form;
+}
+
+a.button {
+@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, false);
+@include button-button;
+@include button-colors;
+@include button-active-colors;
+@include button-hover-colors;
+@include rounded(5px);
+@include background-image(linear-gradient(top, white, darken(white, 12%)));
+border: 1px solid #aaa;
+text-decoration: none;
+padding: 7px;
+}
+a:hover.button {
+@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, true);
+position: relative;
+padding-top: 9px;
+padding-bottom: 5px;
+}
+
+a.link {
+text-decoration: none;
+font-weight: bold;
+font-size: 16px;
+}
+
+a:hover img {
+@include opacity(0.6);
+
+}
+
+img {
+@include rounded(5px);
+vertical-align:middle;
+}
+
+.user-image {
+border: 2px solid #000;
+}
+
+div.meter {
+position: relative;
+left: ((($index-columns + $index-margin)*$blueprint-grid-width)/2) - 30px;
+}
+img.meter_bkg {
+position: absolute;
+}
+img.meter_front {
+position: absolute;
+left: 3px;
+}
+
+div.referendum_item {
+border:1px solid #888;
+}
+
+.horiz-list
+{
+padding:0;
+margin:0;
+list-style-type:none;
+li {
+margin-left:2px;
+float:left; /*pour IE*/
+}
+}
+
+.bill_support, .bill_nosupport {
+margin: 0px 15px 12px;
+display: block;
+padding-top: 31px;
+width: 31px;
+float: none;
+clear: both;
+overflow: hidden;
+height: 0;
+}
+
+.nay {
+background: url('/images/vote_squares2.png') no-repeat left -39px;
+}
+.nay.bill_support, a.nay:hover {
+background-position: -35px -39px;
+}
+
+.aye {
+background: url('/images/vote_squares2.png') no-repeat left 0px;
+}
+.aye.bill_support, a.aye:hover {
+background-position: -35px 0px;
+}
+
+#private_vote {
+border:1px solid #888;
+padding: 10px;
+}
+
+table.votes {
+text-align: center;
+font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+font-weight: normal;
+font-size: 11px;
+color: #000;
+background-color: #fff;
+border: 1px solid #888;
+border-collapse: collapse;
+border-spacing: 0px;
+}
+
+table.votes td.hed {
+background-color: #fff;
+color: #000;
+padding: 4px;
+text-align: left;
+border: 1px solid #888;
+font-size: 12px;
+font-weight: bold;
+}
+
+#preview {
+	#preview-header {
+		@include column(4);
 	}
-	a:hover.button {
-		@include single-box-shadow($main-border-color, 0px, 0px, 0px, false, false);
+	#preview-content {
+		@include column($content-columns - 5);
+		text-align: left;
 	}
-	
-	a.link {
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 16px;
-	}
-	
-	a:hover img {
-		@include opacity(0.6);
-	
-	}
-   
-   img {
-	@include rounded(5px);
-	vertical-align:middle;
-	}
-	
-	.user-image {
-	border: 2px solid #000;
+}
+
+#comments-discussion {
+background-color: #fff;
+
+}
+
+.comment {
+@include column($content-columns - 1);
+
+padding: 10px;
+margin: 10px;
+background-color: #F5F5F5;
+
+	#comment-header {
+		@include column(4);
 	}
 
-	div.meter {
+	#comment-content {
+		text-align: left;
+	}
+	
+	#comment-options {
+		@include column($content-columns - 6);
 		position: relative;
-		left: ((($index-columns + $index-margin)*$blueprint-grid-width)/2) - 30px;
+		top: -30px;
 	}
-	img.meter_bkg {
-		position: absolute;
-	}
-	img.meter_front {
-		position: absolute;
-		left: 3px;
+}
+
+.comment-reply {
+@include column($content-columns - 1);
+padding: 10px;
+margin: 10px;
+	#comment-header {
+		@include column(4);
 	}
 
-	div.referendum_item {
-		border:1px solid #888;
-	}
-	
-	.horiz-list
-	{
-	padding:0;
-	 margin:0;
-	 list-style-type:none;
-	 li {
-	margin-left:2px;
-	 float:left; /*pour IE*/
-		}
-	}
-
-	.bill_support, .bill_nosupport {
-	margin: 0px 15px 12px;
-	display: block;
-	padding-top: 31px;
-	width: 31px;
-	float: none;
-	clear: both;
-	overflow: hidden;
-	height: 0;
-	}
-
-	.nay {
-	background: url('/images/vote_squares2.png') no-repeat left -39px;
-	}
-	.nay.bill_support, a.nay:hover {
-	background-position: -35px -39px;
-	}
-	
-	.aye {
-	background: url('/images/vote_squares2.png') no-repeat left 0px;
-	}
-	.aye.bill_support, a.aye:hover {
-	background-position: -35px 0px;
-	}
-
-	#private_vote {
-		border:1px solid #888;
-		padding: 10px;
-	}
-
-	table.votes {
-		text-align: center;
-		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
-		font-weight: normal;
-		font-size: 11px;
-		color: #000;
-		background-color: #fff;
-		border: 1px solid #888;
-		border-collapse: collapse;
-		border-spacing: 0px;
-	}
-
-	table.votes td.hed {
-		background-color: #fff;
-		color: #000;
-		padding: 4px;
+	#comment-content {
 		text-align: left;
-		border: 1px solid #888;
-		font-size: 12px;
-		font-weight: bold;
+	}
+}
+
+.reply {
+position:relative;
+@include column($content-columns - 1);
+width: 93%;
+left: 30px;
+top: -50px;
+border-left: 1px solid $main-border-color;
+padding: 10px;
+margin: 10px;
+margin-bottom: 0px;
+background-color: #F5F5F5;
+
+	#reply-header {
+		@include column(4);
 	}
 
-	div#preview table {
-		text-align: center;
-		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
-		font-weight: normal;
-		font-size: 11px;
-		color: #000;
-		background-color: #fff;
-		border: 1px solid #888;
-		border-collapse: collapse;
-		border-spacing: 0px;
-	}
-
-	div#preview table td {
-		background-color: #fff;
-		color: #000;
-		padding: 40px;
-		text-align: left;
-		border: 1px solid #888;
-		font-size: 12px;
-		font-weight: bold;
-	}
-	
-	div.comment {
-		@include shadowed;
-		padding: 10px;
-		background-color: white;
-	}
-	
-	.comment_field {
-		height: 50px;
-	}
-	
-	.idea_field {
-		height: 30px;
-		width: 300px;
-	}
-	
-	
-	.reply {
-		@include shadowed;
-		padding: 10px;
-		padding-right: 0px;
+	#reply-content {
 		position:relative;
-		width: 95%;
-		left: 30px;
-	}
-
-	.comment_content {
-		font-size: 140%;
-		color: #555;
-		background: #fff;
-		padding: 10px;
-		padding-bottom: 0px;
-		margin-bottom: 30px;
-		margin-top: -10px;
-	}
-
-	.comment_header {
-		padding-bottom: 0px;
-		margin-bottom: 0px;
+		text-align: left;
+		width: 93%;
 	}
 	
-	.spacer {
-		height: 30px;
+	#reply-options {
+	@include column($content-columns - 10);
+		position: relative;
+		top: -30px;
 	}
-	.authentications {
-	  margin-bottom: 30px;
-	}
+}
 
-	.authentication {
-	  width: 130px;
-	  float: left;
-	  background-color: #EEE;
-	  border: solid 1px #999;
-	  padding: 5px 10px;
-	  -moz-border-radius: 8px;
-	  -webkit-border-radius: 8px;
-	  position: relative;
-	  margin-right: 10px;
-	}
+.comment_field {
+height: 50px;
+}
 
-	.authentication .remove {
-	  text-decoration: none;
-	  position: absolute;
-	  top: 3px;
-	  right: 3px;
-	  color: #333;
-	  padding: 2px 4px;
-	  font-size: 10px;
-	}
+.idea_field {
+height: 30px;
+width: 300px;
+}
 
-	.authentication .remove:hover {
-	  color: #CCC;
-	  background-color: #777;
-	  -moz-border-radius: 6px;
-	  -webkit-border-radius: 6px;
-	}
+.spacer {
+height: 30px;
+}
+.authentications {
+margin-bottom: 30px;
+}
 
-	.authentication img {
-	  float: left;
-	  margin-right: 10px;
-	}
+.authentication {
+width: 130px;
+float: left;
+background-color: #EEE;
+border: solid 1px #999;
+padding: 5px 10px;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+position: relative;
+margin-right: 10px;
+}
 
-	.authentication .provider {
-	  font-weight: bold;
-	}
+.authentication .remove {
+text-decoration: none;
+position: absolute;
+top: 3px;
+right: 3px;
+color: #333;
+padding: 2px 4px;
+font-size: 10px;
+}
 
-	.authentication .uid {
-	  color: #666;
-	  font-size: 11px;
-	}
+.authentication .remove:hover {
+color: #CCC;
+background-color: #777;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+}
 
-	.auth_provider img {
-	  display: block;
-	}
+.authentication img {
+float: left;
+margin-right: 10px;
+}
 
-	.auth_provider {
-	  float: left;
-	  text-decoration: none;
-	  margin-right: 20px;
-	  text-align: center;
-	  margin-bottom: 10px;
-	}
+.authentication .provider {
+font-weight: bold;
+}
 
-	
-  
+.authentication .uid {
+color: #666;
+font-size: 11px;
+}
+
+.auth_provider img {
+display: block;
+}
+
+.auth_provider {
+float: left;
+text-decoration: none;
+margin-right: 20px;
+text-align: center;
+margin-bottom: 10px;
+}
 }

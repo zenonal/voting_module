@@ -18,10 +18,13 @@ class LanguageController < ApplicationController
 	end
 
   def tutorial
-    if (cookies[:tutorial]) == "true"
-      cookies[:tutorial] = false
+    if cookies[:tutorial_active] == "true"
+      cookies[:tutorial_active] = false
     else
-      cookies[:tutorial] = true
+      cookies[:tutorial_active] = true
+      if defined?(cookies[:tutorial_index]).nil?
+        cookies[:tutorial_index] = 1
+      end
     end
     redirect_to :back
   end

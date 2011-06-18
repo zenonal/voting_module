@@ -13,34 +13,36 @@
   <% if params[:preview_button] %>
 	<%= render :partial => "layouts/previews", :locals => { :bill => @amendment } %>
   <% end %>
-
+<div class="field">
+	<%= f.label t('layout.choose_photo') %><br />
+    <%= f.file_field :photo %>
+  </div>
+<br /><br /><br />
   <div class="field">
-    <%= f.label :name_en %><br />
+    <%= f.label :name_in_english %><br />
     <%= f.text_field :name_en %>
   </div>
   <div class="field">
-    <%= f.label :content_en %><br />
+    <%= f.label :content_in_english %><br />
     <%= f.textile_editor :content_en %>
   </div>
-  <div class="field">
-    <%= f.label :name_fr %><br />
+<div class="field">
+    <%= f.label :nom_en_français %><br />
     <%= f.text_field :name_fr %>
   </div>
   <div class="field">
-    <%= f.label :content_fr %><br />
+    <%= f.label :texte_en_français %><br />
     <%= f.textile_editor :content_fr %>
   </div>
-  <div class="field">
-    <%= f.label :name_nl %><br />
+<div class="field">
+    <%= f.label :naam_in_het_nederlands %><br />
     <%= f.text_field :name_nl %>
   </div>
   <div class="field">
-    <%= f.label :content_nl %><br />
+    <%= f.label :text_in_het_nederlands %><br />
     <%= f.textile_editor :content_nl %>
   </div>
-  <div class="field">
-    <%= f.file_field :photo %>
-  </div>
+<br /><br /><br />
   <div class="actions">
     <%= f.submit %>
 	<%= submit_tag t('initiatives.preview'), :name => 'preview_button' %>

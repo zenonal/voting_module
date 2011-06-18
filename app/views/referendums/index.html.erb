@@ -1,7 +1,9 @@
 
 <%= title t("referendums.index_title") %>
 
-<%= render :partial => "layouts/indexes", :locals => { :bills => @referendums } %>
+<%= render :partial => "layouts/filters", :locals => {:bill_model => Referendum } %>
+
+<%= render :partial => "layouts/indexes" %>
 
 
 <% if permitted_to? :create, Referendum.new %>

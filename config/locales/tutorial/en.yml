@@ -1,14 +1,18 @@
 en:
   tutorial:
     pages:
-      homepage: "<p>Welcome to the voting module!</p>
+      homepage: 
+        step1: "<p>Welcome to the voting module!</p>
                 <p>This little window is here to provide you valuable information to start using this website.
                 You can deactivate it at anytime.</p>
                 <p>The objective of this website is twofold: allowing you to vote on propositions of 
                 laws or policies recently put forth by our politicians, and allowing you to submit your own proposals and vote on
                 proposals of other citizens.</p>
-                <p>If you need help on a specific icon or menu, just place your mouse cursor over it and a tooltip will appear.</p>
                 <p>Please feel free to explore this website, vote and share your ideas!</p>"
+        step2: "<p>You can use these icons to change the language used on this website at anytime.</p>
+                <p>Clicking on the question mark toggles the tutorial on and off.</p>
+                <p>If you need help on a specific icon or menu, just place your mouse cursor over it and a tooltip will appear!</p>"
+        
     title: "Tutorial"
     user:
       show: "<p>Here you can see all the public activity of users. This can be you or any other user. 
@@ -54,3 +58,4 @@ en:
                 anymore. Each time the delegate will vote, you will vote automatically the same. <br/>
                 Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
                 You can also change your delegate at any time.</p><p> Give it a try...</p>"
+                

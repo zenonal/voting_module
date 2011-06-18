@@ -1,27 +1,23 @@
-<br><h3><%= t(:reply_title) %></h3>
-<div style="background:#DDD; padding: 10px;">
+<%= title t(:reply_title) %>
+<div class="comment-reply">
 	<h4><%= t(:original_comment) %></h4>
-	
-<table>
-	<tr>
-		<div class = "comment_header">
-			<td><%= t(:created_by) %><b><%= @author %></b></td>
-			<td><em><%= @com.created_at %></em></td>
-		</div>
-	</tr>
-</table>
-		
-<div class = "comment_content">
-	<%= simple_format @com.content %>
-</div>
+	<div id = "comment-header">
+			<h4><%= link_to User.find_by_id(@com.user_id).displayName, User.find_by_id(@com.user_id), :class => "link" %></h4>
+			<%= link_to image_tag(User.find_by_id(@com.user_id).photo, :size => "60x60"), User.find_by_id(@com.user_id) %>
+			<p><em><%= @com.created_at.strftime("%e %B, %Y") %></em></p>
+	</div>
+	<br/>
+	<div class = "comment-content">
+		<%= simple_format "'#{@com.content}'" %>
+	</div>
 </div>
 <br><br>
 <% form_for :reply, :url => {:controller => :comments, :action => :create_reply, :id => @com.id, :back_page => @back} do |f| %>
 	<p>
 		<%= f.label t(:new_reply) %><br>
-		<%= f.text_area :content %>
+		<%= f.text_area :content, :class => "comment_field" %>
 	</p>
 	<p><%= f.submit t(:submit_str) %></p>
 <% end %>
 
-<div id="back_button"><%= link_to t(:back_str), @back %></div>
+<div id="back_button"><%= link_to t(:back_str), @back, :class => "button" %></div>

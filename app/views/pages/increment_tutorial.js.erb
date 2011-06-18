@@ -1,0 +1,2 @@
+$j("#tutorial").html("<%= escape_javascript(render(:partial => "layouts/tutorial")) %>");
+$j("#tutorial").css({"left" : '<%= "#{cookies[:tutorial_hposition]}px" %>', "top" : '<%= "#{cookies[:tutorial_vposition]}px" %>'});

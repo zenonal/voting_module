@@ -43,7 +43,7 @@
 <div class="clear"></div>
 
 <div id="bill-footer">
-<%= render :partial => "layouts/comments" %>
+<%= render :partial => "layouts/comments", :locals => { :commentable => @argument } %>
 </div>
 
 <%= link_to t('referendums.back'), @argumentable, :class => "button" %>

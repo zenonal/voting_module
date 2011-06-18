@@ -1,12 +1,14 @@
 
 <%= render :partial => "layouts/bills", :locals => { :bill => @amendment, :delegated_vote => @delegated_vote  } %>
 
-<% if permitted_to? :destroy, @amendment %>
-	<%= button_to t(:delete_str), @amendment, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>
-<% end %>
-
+<% if @amendment.current_phase > 1 %>
  <div id="bill-footer">
 <%= render :partial => "layouts/arguments", :locals => { :commentable => @amendment } %>
+</div>
+<% end %>
+
+<div id="bill-footer">
+<%= render :partial => "layouts/comments", :locals => { :commentable => @amendment } %>
 </div>
 
 <%= link_to t('amendments.back'), @amendmentable, :class => "button" %>

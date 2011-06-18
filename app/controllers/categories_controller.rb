@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @referendums = @category.referendums
-    @initiatives = @category.initiatives.validated
+    @initiatives = @category.initiatives
 
     respond_to do |format|
       format.html # show.html.erb

@@ -5,7 +5,7 @@
   <title><%= yield(:title) || "Untitled" %></title>
 <%= render 'layouts/stylesheets' %>
 <%= render 'layouts/scripts' %>  
-	<% if cookies[:tutorial] == "true" %>
+	<% if (cookies[:tutorial_active] == "true") && tutorial_ok %>
 		<script src="/javascripts/tutorial.js" type="text/javascript"></script>
 	<% end %>
 
@@ -13,8 +13,6 @@
   <%= yield(:head) %> 
 </head>
 <body class="bp main-layout">
-
-	
 	<div id="container">
 		
 		<div id="header">
@@ -51,22 +49,18 @@
 	        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
 	      		<% end %>
 			</div>
-			<% if cookies[:tutorial] == "true" %>
-			<div id="tutorial">
-				<h2><img width="40" height="40" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
-				<%= t('tutorial.title') %></h2>
-				<p><%= raw t("tutorial.#{controller.controller_name}.#{controller.action_name}")  %></p>
-				<p class="link-like" style="float:right;font-weight:bold;">
-					<br />-> <%= t('layout.unexpose_tutorial') %></p>
-				<p><%= link_to t('layout.turn_tutorial_off'), language_tutorial_url, :class => "link" %>
-					<br/ ><%= t('layout.how_to_switch_on_tutorial') %></p>
+			<% if (cookies[:tutorial_active] == "true") && tutorial_ok %>
+			<div id="tutorial" style=<%= "left:#{cookies[:tutorial_hposition]}px; top:#{cookies[:tutorial_vposition]}px;" %>>
+				<%= render :partial => "layouts/tutorial" %>
 			</div>
 			<% end %>
 			<div id="content">
+				<%= @thresh %>
 				<%= yield %>
 			</div>
 		  
 		</div>
+		
 		<div id="sidebar-right">
 			<div style="height: 50px;"></div>
 						<% if user_signed_in? %>
@@ -78,7 +72,7 @@
 								<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
 							<% end %>
 							</p>
-							<% if current_user.postal_code.blank? %>
+							<% if current_user.commune.nil? %>
 								<%= link_to t('layout.add_postal_code'), edit_user_registration_path, :class => "link" %>
 							<% else %>
 								<p><%= current_user.commune.name %></p>

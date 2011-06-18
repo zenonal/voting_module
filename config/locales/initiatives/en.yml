@@ -11,10 +11,10 @@ en:
     votes: 'vote'
     approval: 'approval'
     author: 'Author'
-    private_vote: 'Your private vote'
-    delegate_vote: 'Your vote as a delegate'
+    private_vote: 'Submit your private vote'
+    delegate_vote: 'Submit your vote as a delegate'
     delegate_no_vote: "No vote on this bill yet"
-    vote_of_delegate: 'Your delegate voted'
+    vote_of_delegate: 'Your delegate ranked this bill'
     want_vote: 'If you want to vote on this'
     want_initiative: 'If you want to submit your own initiative'
     want_amendment: 'If you want to submit your own amendment'
@@ -31,14 +31,26 @@ en:
     index_drafts_title: "List of initiatives waiting for validation"
     preview: "preview"
     modify: "modify"
-    federal: "federal"
-    regional: "regional"
-    provincial: "provincial"
-    communal: "communal"
+    level4: "federal"
+    level3: "regional"
+    level2: "provincial"
+    level1: "communal"
     options: "Options"
     geographical_level: "Geographical level"
+    current_phase: "Initiatives currently in the phase"
     no_geo: "There is no geographical restriction"
-    
+    phase0: "validation failed"
+    phase1: "currently being edited"
+    phase2: "currently gathering validations"
+    phase3: "currently open to amendments"
+    phase4: "currently being voted on"
+    phase5: "already voted on"
+    phase_default: "validation passed"
+    wins: "Winner of the vote"
+    lost: "These bills were defeated"
+    results: "Results of the vote"
+    all_defeated: "All the bills have been defeated"
+    no_winner: "None of the bills passed the criteria to win"
     
     form:
       photo: "Choose a picture for your proposal"

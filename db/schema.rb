@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612074332) do
+ActiveRecord::Schema.define(:version => 20110618084915) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20110612074332) do
     t.integer  "amendmentable_id"
     t.string   "amendmentable_type"
     t.integer  "validations_count",  :default => 0
+    t.boolean  "validated",          :default => false
+    t.datetime "validation_date"
   end
 
   create_table "arguments", :force => true do |t|
@@ -163,6 +165,8 @@ ActiveRecord::Schema.define(:version => 20110612074332) do
     t.integer  "validations_count",  :default => 0
     t.string   "level"
     t.integer  "level_code"
+    t.boolean  "validated",          :default => false
+    t.datetime "validation_date"
   end
 
   create_table "parties", :force => true do |t|
@@ -193,6 +197,16 @@ ActiveRecord::Schema.define(:version => 20110612074332) do
     t.integer  "code"
   end
 
+  create_table "rankings", :force => true do |t|
+    t.string   "rankable_type"
+    t.integer  "rankable_id"
+    t.integer  "rank"
+    t.string   "ranker_type"
+    t.integer  "ranker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "referendums", :force => true do |t|
     t.string   "name_en"
     t.text     "content_en"
@@ -215,6 +229,15 @@ ActiveRecord::Schema.define(:version => 20110612074332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "code"
+  end
+
+  create_table "results", :force => true do |t|
+    t.integer  "condorcet_winner"
+    t.string   "resultable_type"
+    t.integer  "resultable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "winner"
   end
 
   create_table "roles", :force => true do |t|
@@ -244,7 +267,9 @@ ActiveRecord::Schema.define(:version => 20110612074332) do
     t.string   "displayName"
     t.string   "photo"
     t.integer  "party_id"
-    t.integer  "postal_code"
+    t.integer  "province_id"
+    t.integer  "commune_id"
+    t.integer  "region_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -1,0 +1,37 @@
+<div id="hiddenDelegated"><%= params[:delegated] %></div>
+<div class="ranking">
+	<div class="vote_for">
+		<ul ><%= t("layout.vote_for") %>
+
+		</ul>
+	</div>
+	<div class="neutral">
+		<ul><%= t("layout.vote_neutral") %>
+			<li><div id="index-column">
+				<%= link_to image_tag(@referendum.photo.url(:thumbnail)), @referendum %>
+			</div>
+			<div id="index-column">
+				<%= link_to eval("@referendum.name_#{I18n.locale}"), @referendum, :class => "link" %>
+			</div>
+			<div class="clear"></div>
+		</li>
+		<% for alter in @amendments %>
+		<li>
+			<div id="index-column">
+				<%= link_to image_tag(alter.photo.url(:thumbnail)), alter %>
+			</div>
+			<div id="index-column">
+				<%= link_to eval("alter.name_#{I18n.locale}"), alter, :class => "link" %>
+			</div>
+			<div class="clear"></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<div class="vote_against">
+	<ul ><%= t("layout.vote_against") %>
+
+	</ul>
+</div>
+</div>
+<div class="submit_ranking"><a class="button"><%= t('layout.submit') %></a></div>

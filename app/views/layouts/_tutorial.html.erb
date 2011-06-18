@@ -1,0 +1,5 @@
+
+<h2><img width="40" height="40" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
+<%= t('tutorial.title') %></h2>
+<p><%= raw t("tutorial.#{cookies[:tutorial_controller]}.#{cookies[:tutorial_action]}.step#{cookies[:tutorial_index]}")  %></p>
+<p><%= link_to t('layout.turn_tutorial_off'), language_tutorial_url, :class => "link" %>&nbsp; | &nbsp;<%= link_to t('layout.go_on_tutorial'), {:controller => :pages, :action => :increment_tutorial }, :remote => true, :class => "link" %></p>

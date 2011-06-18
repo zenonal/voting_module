@@ -23,7 +23,7 @@
 					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
 			<% else %>
-				<p><%= t("#{@controller}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+				<p><%= t("#{params[:controller]}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 			<% end %>
 
 		</div>
@@ -41,7 +41,7 @@
 					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
 			<% else %>
-					<p><%= t("#{@controller}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+					<p><%= t("#{params[:controller]}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 			<% end %>
 		</div><div class="clear"></div>
 </div>

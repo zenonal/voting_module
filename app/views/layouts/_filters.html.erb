@@ -1,0 +1,18 @@
+<h4><%= t("#{bill_model.name.downcase.pluralize}.geographical_level") %>: 
+<%= @geo %></h4>
+<h4><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %>: 
+<%= @phase %></h4>
+
+<div id="filter_options">
+<form>
+<%= label_tag t("user_geo_limit") %>
+<%= check_box_tag("user_level", "off", false) %><br/>
+<%= label_tag t("user_geo_select") %>
+<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}) %>
+<p><%= label_tag t("user_phase_select") %>
+<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}) %>
+</p>
+<input type="submit" value=<%=t("layout.filter") %> />
+</form>
+</div>
+<a id="options_toggle" class="button"><%= t("#{bill_model.name.downcase.pluralize}.options") %></a>

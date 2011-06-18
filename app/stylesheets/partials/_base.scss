@@ -24,9 +24,9 @@ $blueprint-button-font-family: "Arial";
 $blueprint-button-border-color: #888;
 $blueprint-button-background-color: #454589;
 $blueprint-button-font-color: #888;
-$blueprint-button-hover-border-color: lighten($blueprint-button-border-color,20%);
-$blueprint-button-hover-background-color: lighten($blueprint-button-background-color,20%);
-$blueprint-button-hover-font-color: lighten($blueprint-button-font-color,20%);
+$blueprint-button-hover-border-color: $blueprint-button-border-color;
+$blueprint-button-hover-background-color: $blueprint-button-background-color;
+$blueprint-button-hover-font-color: $blueprint-button-font-color;
 $blueprint-button-active-border-color: #6299c5;
 
 $main-border-color: #A6A6A6;

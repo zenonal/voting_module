@@ -1,0 +1,19 @@
+<div id="bill-header">
+	<div id="bill-header-icon"><%= image_tag @initiative.photo.url(:thumbnail) %></div>
+	<%= title(t("layout.results_for")+eval("@initiative.name_#{I18n.locale}")) %>
+	<div id="bill-phase" style="margin-left: 200px;">
+	<% if @initiative.result.winner %>
+		<div id="bill-winner">
+			<%= t("layout.bill_won") %>
+		</div>
+	<% else %>
+		<div id="bill-loser">
+			<%= t("layout.bill_lost") %>
+		</div>
+	<% end %>
+	</div>
+</div>
+<%= render :partial => "layouts/bill_sidebar", :locals => { :bill => @initiative } %>
+<div id="bill-content">
+<%= render :partial => "layouts/show_results", :locals => { :bills => Ranking.all_related_bills(@initiative) } %>
+</div>

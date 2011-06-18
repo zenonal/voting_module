@@ -40,41 +40,57 @@
 	<% if @user.delegate.nil? %>
 		<h3><%= pluralize(@user.votes.count,t('users.votes')) %></h3>
 	<% else %>
+	
 		<h3><%= t("users.delegates.votes_as_a_delegate") %></h3>
-		<% Referendum.all.each do |r| %>
-			<div id="index-column"></div>
-			<div id="index-large-column" style="text-align: left;"><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> </div>
-			<% unless @user.delegate.voted_on?(r) %>
-				<div id="index-large-column" style="text-align: left;"><%= t('users.delegates.no_vote') %></div>
-			<% end %>
-			<div id="index-column" style="text-align: left;">
-				<% if @user.delegate.voted_for?(r) %>
-					<span class="aye bill_nosupport"></span> 
-				<% end %>
-				<% if @user.delegate.voted_against?(r) %>
-					<span class="nay bill_nosupport"></span> 
-				<% end %>
+		<% Referendum.filter_phase(Referendum.all,4,5).each do |r| %>
+		<div id="ranking-index-element">
+			<% if r.rankings.for_ranker(@user.delegate).empty? %>
+			<div id="ranking-index-large-column" class="no_vote">
+				<%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> <p><%= t('users.delegates.no_vote') %></p>
 			</div>
-			<div class="clear"></div>
-		<% end %>
-		<% Initiative.validated.not_blank.all.each do |r| %>
-			<div id="index-column" style="height:50px;"></div>
-			<div id="index-large-column" style="height:50px;text-align: left;"><%= t('users.delegates.ref') %> <%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> </div>
-			<% unless @user.delegate.voted_on?(r) %>
-				<div id="index-column" style="height:50px;text-align: left;"><%= t('users.delegates.no_vote') %></div>
+			<% else %>
+				<div id="ranking-index-date"><%= r.rankings.for_ranker(@user.delegate)[0].updated_at.strftime("%e %B, %Y") %></div>
+					<% Ranking.all_related_bills_sorted(r,@user.delegate).each do |a| %>
+						<% unless a.rankings.for_ranker(@user.delegate)[0].nil? %>
+						<div id="ranking-index-large-column">
+							<div id="ranking-index-score"><%= a.rankings.for_ranker(@user.delegate)[0].rank %></div>
+							<%= link_to eval("a.name_#{I18n.locale}"), a, 
+							:class => "link vote_#{a.rankings.for_ranker(@user.delegate)[0].rank>0} neutral_#{a.rankings.for_ranker(@user.delegate)[0].rank==0}" %>
+						</div>
+						<div class="clear"></div>
+						<% end %>
+					<% end %>
+						
 			<% end %>
-			<div id="index-column" style="height:50px;text-align: left;">
-				<% if @user.delegate.voted_for?(r) %>
-					<span class="aye bill_nosupport"></span> 
-				<% end %>
-				<% if @user.delegate.voted_against?(r) %>
-					<span class="nay bill_nosupport"></span> 
-				<% end %>
-			</div>
 			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
 		<% end %>
+	
+		
+		<% Initiative.filter_phase(Initiative.all,4,5).each do |r| %>
+		<div id="ranking-index-element">
+			<% if r.rankings.for_ranker(@user.delegate).empty? %>
+			<div id="ranking-index-large-column" class="no_vote">
+				<%= link_to eval("r.name_#{I18n.locale}"), r, :class => "link" %> <p><%= t('users.delegates.no_vote') %></p>
+			</div>
+			<% else %>
+			<div id="ranking-index-date"><%= r.rankings.for_ranker(@user.delegate)[0].updated_at.strftime("%e %B, %Y") %></div>
+					<% Ranking.all_related_bills_sorted(r,@user.delegate).each do |a| %>
+						<div id="ranking-index-large-column">
+							<div id="ranking-index-score"><%= a.rankings.for_ranker(@user.delegate)[0].rank %></div>
+							<%= link_to eval("a.name_#{I18n.locale}"), a, 
+							:class => "link vote_#{a.rankings.for_ranker(@user.delegate)[0].rank>0} neutral_#{a.rankings.for_ranker(@user.delegate)[0].rank==0}" %>
+						</div>
+						<div class="clear"></div>
+					<% end %>
+			<% end %>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<% end %>
+		
 	<% end %>
-</div>
 
 <div id="index-content" style="padding-top: 40px;">
 <h3><%= pluralize(@user.initiatives.count,t('users.delegates.initiatives')) %> </h3>
@@ -141,4 +157,5 @@
 <% if permitted_to? :edit, @user %>
 	<%= link_to t('users.edit'), edit_user_registration_path, :class => "button" %>
 <% end %>
+</div>
 </div>

@@ -1,0 +1,113 @@
+@mixin rounded($radius: 10px) {
+border-radius: $radius;
+-moz-border-radius: $radius;
+-webkit-border-radius: $radius;
+}
+
+@mixin shadowed($shad-size:5px, $shad-color:#555) {
+box-shadow:$shad-size $shad-size $shad-size $shad-color;
+-webkit-box-shadow:$shad-size $shad-size $shad-size $shad-color;
+-moz-box-shadow: $shad-size $shad-size $shad-size $shad-color;
+}
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+@import "blueprint";
+@import "compass/css3";
+@import "blueprint/buttons";
+
+.ranking{
+@include column($content-columns, true);
+position:relative;
+
+div ul{
+min-height:100px;
+margin:0;
+padding:0;
+list-style:none;
+position:relative;
+margin:30px;
+}
+
+.neutral ul {
+@include rounded(5px);
+-moz-box-shadow:0 0 0.5em #666;
+background:#aaa;
+padding: 20px;
+color: darken(#aaa,40%);
+border: 3px solid darken(#aaa,40%);
+text-align: left;
+	li .count{
+		visibility:hidden;
+		background-color:#aaa;
+	}
+}
+
+.vote_against ul {
+@include rounded(5px);
+-moz-box-shadow:0 0 0.5em #666;
+background:#eaa;
+padding: 20px;
+color: darken(#eaa,40%);
+border: 3px solid darken(#eaa,40%);
+text-align: left;
+	li .count{
+		background-color:#e88;
+	}
+}
+
+.vote_for ul {
+@include rounded(5px);
+-moz-box-shadow:0 0 0.5em #666;
+background:#aea;
+padding: 20px;
+color: darken(#aea,40%);
+border: 3px solid darken(#aea,40%);
+text-align: left;
+	li .count{
+		background-color:#8e8;
+	}
+}
+
+li{
+border: 2px solid darken($main-border-color,20%);
+@include rounded(5px);
+background:#fff;
+text-align: left;
+font-size:1.3em;
+padding: 10px;
+margin: 10px;
+cursor:pointer;
+	a {
+	text-decoration: none;
+	}
+}
+
+.hover{
+opacity:0.7;
+filter : alpha(opacity=70);
+-moz-opacity : 0.7;
+color:#fff;
+background-color:#cd6a76
+}
+
+/*** DRAG ***/
+
+li .count{
+	@include rounded(20px);
+	padding-right: 10px;
+	font-size: 20px;
+	color: #fff; 
+	font-weight: bold;
+	padding: 15px;
+	margin-right: 20px;
+}
+
+li .original_count{
+visibility:hidden;
+}
+
+}
+#hiddenDelegated {
+visibility:hidden;
+}

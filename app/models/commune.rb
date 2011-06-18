@@ -1,4 +1,5 @@
 class Commune < ActiveRecord::Base
+  has_many :users
   belongs_to :province
   
   def name

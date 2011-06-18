@@ -1,5 +1,5 @@
 class Referendum < ActiveRecord::Base
-  validates_length_of :content_en, :content_fr, :content_nl, :maximum=>3000
+  validates_length_of :content_en, :content_fr, :content_nl, :maximum=>4000
   acts_as_voteable
   if Rails.env=="development"
     has_attached_file :photo, :styles => {:small => "150x150>", :thumbnail => "80x80>"}
@@ -19,11 +19,90 @@ class Referendum < ActiveRecord::Base
   has_many :authorships
   has_many :politicians, :through => :authorships
   has_many :amendments, :as => :amendmentable, :dependent => :destroy
+  has_many :rankings, :as => :rankable, :dependent => :destroy
+  has_one :result, :as => :resultable, :dependent => :destroy
   belongs_to :category
   
+  LEVELS = ["", I18n.t("referendums.level1"), I18n.t("referendums.level2"), I18n.t("referendums.level3"), I18n.t("referendums.level4")]
+  PHASES = ["", I18n.t("referendums.phase3"),I18n.t("referendums.phase4"),I18n.t("referendums.phase5")]
+  
   scope :user_geographical_level, lambda { |user, level|
-      where(["level = ? & level_code = ?", level, user.postal_code])
+    if level == 1
+      where(["level = ? AND level_code = ?", level, user.commune.postal_code])
+    else
+      if level == 2
+        where(["level = ? AND level_code = ?", level, user.province.code])
+      else
+        if level == 3
+          where(["level = ? AND level_code = ?", level, user.region.code])
+        else
+          if level == 4
+            where(["level = ?", level])
+          else
+            nil
+          end
+        end
+      end
+    end
   }
+  
+  scope :not_blank, where(["content_#{I18n.locale} != \"\""])
+  
+  def time_elapsed
+    Time.now()-self.created_at
+  end
+  
+  def editing_time_elapsed
+    time_elapsed
+  end
+  
+  def amending_time_elapsed
+    time_elapsed-BILL_EDITING_DURATION
+  end
+  
+  def voting_time_elapsed
+    time_elapsed-(BILL_EDITING_DURATION+BILL_AMENDMENTS_DURATION)
+  end
+  
+  def time_left_to_edit
+    BILL_EDITING_DURATION-self.editing_time_elapsed
+  end
+  
+  def time_left_to_amend
+    BILL_AMENDMENTS_DURATION-self.amending_time_elapsed
+  end
+  
+  def time_left_to_vote
+    BILL_VOTING_DURATION-self.voting_time_elapsed
+  end
+  
+  def current_phase
+    if editing_time_elapsed < BILL_EDITING_DURATION
+      return 1
+    else
+      if amending_time_elapsed < BILL_AMENDMENTS_DURATION
+        return 3
+      else
+        if voting_time_elapsed < BILL_VOTING_DURATION
+          return 4
+        else
+          return 5
+        end
+      end
+    end
+  end
+  
+  def self.filter_phase(ar,*ph)
+    list = []
+    ar.each do |a|
+      for phase in ph
+        if a.current_phase == phase
+          list << a
+        end
+      end
+    end
+    return list
+  end
   
   def commune
     Commune.find_by_postal_code(self.user.postal_code).name
