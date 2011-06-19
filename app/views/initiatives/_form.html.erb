@@ -15,48 +15,60 @@
   <% end %>
   <div class="field">
 	<%= f.label t('layout.choose_level') %><br />
-	<%= f.select :level, Initiative::LEVELS.collect {|l| [l, Initiative::PHASES.index(l)]} %>
+	<%= f.select :level, Initiative::LEVELS.collect {|l| [l, Initiative::LEVELS.index(l)]} %>
   </div>
 <br /><br /><br />
-<div class="field">
+<div class="photo-field">
 	<%= f.label t('layout.choose_photo') %><br />
     <%= f.file_field :photo %>
   </div>
 <br /><br /><br />
+
+
   <div class="field">
-    <%= f.label :name_in_english %><br />
-    <%= f.text_field :name_en %>
+    <%= f.label t("name_#{I18n.locale}") %><br />
+    <%= f.text_field "name_#{I18n.locale}" %><br />
+  
+    <%= f.label t("content_#{I18n.locale}") %><br />
+    <%= f.textile_editor "content_#{I18n.locale}" %>
   </div>
-  <div class="field">
-    <%= f.label :content_in_english %><br />
-    <%= f.textile_editor :content_en %>
-  </div>
+<br /><br /><br />
+
+<div id="translations_show_container"><a id="translations_show" class="button"><%= t("layout.show_translations") %></a></div>
+<div id="translations_hide_container"><a id="translations_hide" class="button"><%= t("layout.hide_translations") %></a></div>
+
+<div id="bill_translation">
+<% @not_lang.each do |l| %>
 <div class="field">
-    <%= f.label :nom_en_français %><br />
-    <%= f.text_field :name_fr %>
+    <%= f.label t("name_#{l}") %><br />
+    <%= f.text_field "name_#{l}" %><br />
+ 
+    <%= f.label t("content_#{l}") %><br />
+    <%= f.textile_editor "content_#{l}" %>
   </div>
-  <div class="field">
-    <%= f.label :texte_en_français %><br />
-    <%= f.textile_editor :content_fr %>
-  </div>
-<div class="field">
-    <%= f.label :naam_in_het_nederlands %><br />
-    <%= f.text_field :name_nl %>
-  </div>
-  <div class="field">
-    <%= f.label :text_in_het_nederlands %><br />
-    <%= f.textile_editor :content_nl %>
-  </div>
-<p><%= t('initiatives.categories') %></p>
-  <div>
-	<% for c in Category.all %>
-	<%= label_tag eval("c.name_#{I18n.locale}") %>
-	<%=	check_box_tag eval("c.name_#{I18n.locale}"), eval("c.name_#{I18n.locale}"), (@initiative.category == c) %><br/>
+<br /><br /><br />
+<% end %>
+</div>
+
+<div class="checkboxes-field">
+<h4><%= t('initiatives.categories') %></h4>
+<div class="list">
+  <% for c in Category.all %>
+	<%=	radio_button_tag "category", eval("c.name_#{I18n.locale}"), (@initiative.category == c) %>
+	<%= label_tag eval("c.name_#{I18n.locale}"),image_tag(c.photo.url("thumbnail"))  %>
+	<%= eval("c.name_#{I18n.locale}") %>
+	<br/><br/>
 	<% end %>
-  </div>
+</div>
+</div>
 
 <br />
 <br />
+<div class="field">
+	<div class="recaptcha">
+<%= recaptcha_tags %>
+</div>
+</div>
   <div class="actions">
     <%= f.submit %>
 	<%= submit_tag t('initiatives.preview'), :name => 'preview_button' %>

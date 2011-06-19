@@ -1,14 +1,16 @@
 <% @loc = 'devise.passwords.' %>
 
-<% title(t(@loc+'forgot') %>
-
+<% title t(@loc+'forgot') %>
+<br/><br/><br/>
 <%= form_for(resource_name, resource, :url => password_path(resource_name)) do |f| %>
   <%= f.error_messages %>
-
+<div class="field">
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>
-
+</div>
+<div class="actions">
   <p><%= f.submit t(@loc+'submit') %></p>
+</div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

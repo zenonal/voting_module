@@ -1,11 +1,11 @@
 <div id="preview">
 	<h3><%= t('initiatives.preview') %></h3>
 	<% unless bill.name_en.blank? %>
+		<h4><%= t(:english_head) %></h4>
 		<div id="preview-header">
 			<%= image_tag bill.photo.url("small") %>
 		</div>
 		<div id="preview-content">
-			<h4><%= t(:english_head) %></h4>
 			<h3><%= bill.name_en %></h3>
 			<%= raw RedCloth.new(bill.content_en).to_html %>
 		</div>
@@ -34,4 +34,9 @@
 </div>
 <br />
 <br />
+<% if permitted_to? :destroy, bill %>
+	<%= link_to t(:cancel_bill), bill, :method => :delete, :class => "button" %>
+<% end %>
+<br/>
+<br/>
 <h2><%= t('initiatives.modify') %></h2>

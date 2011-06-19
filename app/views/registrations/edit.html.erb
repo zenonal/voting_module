@@ -4,9 +4,10 @@
 <% if (current_user.displayName.blank? || current_user.displayName=='anonymous') %>
 <%= t(@loc+'update_name_text') %>
 <% end %>
-
-<%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<br/><br/>
+<%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
   <%= f.error_messages %>
+<div class="field">
   <p><%= f.label t(@loc+'name') %></p>
   <p><%= f.text_field :displayName %></p>
 
@@ -14,27 +15,43 @@
   <p><%= f.text_field :email %></p>
 
   <p><%= label_tag t(@loc+'postalcode') %></p>
-  <p><%= text_field_tag :postal_code %></p>
+<% unless current_user.commune.nil? %>
+  <p><%= text_field_tag :postal_code, current_user.commune.postal_code %></p>
+<% else %>
+<p><%= text_field_tag :postal_code %></p>
+<% end %>
 
-  <p><%= f.label t(@loc+'photo') %></p>
-  <p><%= f.text_field :photo %></p>
+	<%= f.label t('layout.choose_user_photo') %><br /><br/>
+    <%= f.file_field :uploadedPhoto %>
+<br /><br/>
+</div>
+<br /><br /><br />
 
-<% if @user.password_required? %>
+<% unless current_user.has_no_password? %>
+<a id="pwd_toggle" class="button"><%= t("layout.change_pwd") %></a>
+<div id="pwd_options">
+<div class="field">
   <p><%= f.label t(@loc+'pwd') %> <i>(<%= t(@loc+'pwd_i') %>)</i></p>
   <p><%= f.password_field :password %></p>
 
   <p><%= f.label t(@loc+'pwd_conf') %></p>
   <p><%= f.password_field :password_confirmation %></p>
-
+</div>
+<br/><br/>
+</div>
+<br/><br/>
+<div class="field">
   <p><%= f.label t(@loc+'cur_pwd') %> <i>(<%= t(@loc+'cur_pwd_i') %>)</i></p>
   <p><%= f.password_field :current_password %></p>
+</div>
 <% end %>
 
+<div class="actions">
   <p><%= f.submit t(@loc+'update') %></p>
 <% end %>
-
+</div>
 <h3><%= t(@loc+'cancel') %></h3>
 
-<p><%= t(@loc+'unhappy') %> <%= link_to t(@loc+'cancel'), registration_path(resource_name), :confirm => t('devise.confirm'), :method => :delete %>.</p>
+<p><%= t(@loc+'unhappy') %> <%= link_to t(@loc+'cancel'), registration_path(resource_name), :confirm => t('devise.confirm'), :method => :delete, :class => "button" %>.</p>
 
-<%= link_to t('devise.back'), :back %>
+<%= link_to t('devise.back'), current_user, :class => "button" %>

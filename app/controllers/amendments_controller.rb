@@ -2,17 +2,6 @@ class AmendmentsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
   
-  # GET /amendments
-  # GET /amendments.xml
-  def index
-    filter_index(Amendment.not_blank)
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @amendments }
-    end
-  end
-  
   # GET /amendments/1
   # GET /amendments/1.xml
   def show
@@ -61,6 +50,8 @@ class AmendmentsController < ApplicationController
   def new
     @amendment = Amendment.new
     @amendmentable = find_amendmentable
+    @not_lang = not_current_languages
+    
     if (@amendmentable.current_phase == 3)
       respond_to do |format|
         format.html # new.html.erb
@@ -75,6 +66,8 @@ class AmendmentsController < ApplicationController
   def edit
     @amendment = Amendment.find(params[:id])
     @amendmentable = find_amendmentable
+    @not_lang = not_current_languages
+    
     unless (@amendment.current_phase == 1)
       redirect_to(@amendment)
     end
@@ -84,48 +77,63 @@ class AmendmentsController < ApplicationController
   # POST /amendments.xml
   def create
     @amendmentable = find_amendmentable
-    if (@amendmentable.current_phase == 3)
-
-      @amendment = Amendment.find_by_content_en(params[:amendment][:content_en])
-      if @amendment
-        s = @amendment.update_attributes(params[:amendment])
-      else
-        @amendment = @amendmentable.amendments.build(params[:amendment])
-        @amendment.user = current_user
-        s = @amendment.save
-      end
-
-      respond_to do |format|
-        if params[:preview_button] || !s
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @amendment.errors, :status => :unprocessable_entity }
+    @not_lang = not_current_languages
+    
+    if  verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      if (@amendmentable.current_phase == 3)
+        @amendment = Amendment.find_by_id(params[:id])
+        if @amendment
+          s = @amendment.update_attributes(params[:amendment])
         else
-          format.html { redirect_to(@amendment, :notice => 'Amendment was successfully created.') }
-          format.xml  { render :xml => @amendment, :status => :created, :location => @amendment }
+          @amendment = @amendmentable.amendments.build(params[:amendment])
+          @amendment.user = current_user
+          s = @amendment.save
         end
+
+        respond_to do |format|
+          if params[:preview_button] || !s
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @amendment.errors, :status => :unprocessable_entity }
+          else
+            format.html { redirect_to(@amendment, :notice => t("amendments.created")) }
+            format.xml  { render :xml => @amendment, :status => :created, :location => @amendment }
+          end
+        end
+      else
+        redirect_to(@amendmentable)
       end
     else
-      redirect_to(@amendmentable)
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "new"
     end
   end
 
   # PUT /amendments/1
   # PUT /amendments/1.xml
   def update
-    @amendment = Amendment.find(params[:id])
+    @not_lang = not_current_languages
 
-    if (current_user.roles[0].name=="admin") || (@amendment.current_phase == 1)
-      respond_to do |format|
-        if  params[:preview_button] || !@amendment.update_attributes(params[:amendment])
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @amendment.errors, :status => :unprocessable_entity }
-        else
-          format.html { redirect_to(@amendment, :notice => 'Amendment was successfully updated.') }
-          format.xml  { head :ok }
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      if (current_user.roles[0].name=="admin") || (@amendment.current_phase == 1)
+        respond_to do |format|
+          if  params[:preview_button] || !@amendment.update_attributes(params[:amendment])
+            format.html { render :action => "edit" }
+            format.xml  { render :xml => @amendment.errors, :status => :unprocessable_entity }
+          else
+            format.html { redirect_to(@amendment, :notice => t("initiatives.updated")) }
+            format.xml  { head :ok }
+          end
         end
+      else
+        redirect_to(@amendment)
       end
     else
-      redirect_to(@amendment)
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "edit"
     end
   end
 

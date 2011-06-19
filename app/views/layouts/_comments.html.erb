@@ -1,10 +1,15 @@
-<h4> <%= t(:comment_title) %></h4>
+<h2> <%= t(:comment_title) %></h2>
 <% form_for [commentable, Comment.new] do |f| %>
-		<p>
+		<div class="field">
 			<%= f.label t(:new_comment) %><br>
 			<%= f.text_area :content, :class => "comment_field" %>
-		</p>
-		<p><%= f.submit t(:submit_str) %></p>
+			<div class="recaptcha">
+		<%= recaptcha_tags %>
+		</div>
+		</div>
+		<div class="actions">
+		<%= f.submit t(:submit_str) %>
+		</div>
 <% end %>
 
 <div id="comments-discussion">

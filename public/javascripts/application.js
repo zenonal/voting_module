@@ -6,9 +6,25 @@ $j(document).ready(function() {
 	$j(".ranking" ).ranking();
 	$j('#filter_options').hide();
 	$j("#options_toggle").click(function() {
-
 			// perform exposing for the clicked element
-			$j('#filter_options').toggle();
+			$j('#filter_options').toggle("slow");
+		});	
+	$j('#pwd_options').hide();	
+	$j("#pwd_toggle").click(function() {
+			// perform exposing for the clicked element
+			$j('#pwd_options').toggle("slow");
+		});	
+	$j('#bill_translation').hide();
+	$j('#translations_hide_container').hide();
+	$j('#translations_show').click(function(){
+		$j('#bill_translation').show("slow");
+		$j('#translations_show_container').hide();
+		$j('#translations_hide_container').show();
+		});
+	$j('#translations_hide').click(function(){
+		$j('#bill_translation').hide("slow");
+		$j('#translations_show_container').show();
+		$j('#translations_hide_container').hide();
 		});
 	
 	$j(".time_chart").each(function(){

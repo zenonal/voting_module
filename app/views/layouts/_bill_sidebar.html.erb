@@ -52,7 +52,7 @@
 				<div id="time-spacer"></div>
 				<div id="time-spacer"></div>
 				<% if permitted_to? :create, Amendment.new %>
-					<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button", :title => t('tooltips.submit_amendment') %></p>
+					<p style="position:relative;top:-20px;left:10px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button", :title => t('tooltips.submit_amendment') %></p>
 				<% end %>
 			</div>
 		<% else %>

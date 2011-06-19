@@ -1,5 +1,8 @@
-<h1>New referendum</h1>
+<div id="bill-header">
+<%= title t('referendums.new').capitalize %>
+</div>
 
 <%= render 'form' %>
 
 <%= link_to t(:back_str), referendums_path, :class => "button" %>
+<%= raw textile_editor_initialize -%>

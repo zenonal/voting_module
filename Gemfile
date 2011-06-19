@@ -14,6 +14,7 @@ gem "RedCloth", '4.2.2'
 gem "compass", '0.11.1'
 gem 'haml' # for SASS
 gem 'aws-s3'
+gem 'recaptcha'
 
 # Use unicorn as the web server
 # gem 'unicorn'

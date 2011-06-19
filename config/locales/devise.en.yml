@@ -17,7 +17,7 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
-      intro: 'Sign in easily through one of these social network accounts or enter your email and password below'
+      intro: 'Please enter your email and password below'
       title: 'Sign in'
       email: 'email'
       pwd: 'password'

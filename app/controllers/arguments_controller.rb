@@ -38,21 +38,27 @@ class ArgumentsController < ApplicationController
   # POST /arguments
   # POST /arguments.xml
   def create
-     @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
-     @argument = @argumentable.arguments.build(params[:argument])
-     
+    @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
+    @argument = @argumentable.arguments.build(params[:argument])
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
       if @argument.save
-         @argument.update_attribute(:user_id, current_user.id)
-         @argument.update_attribute(:language, I18n.locale)
-         @argument.update_attribute(:pro, current_user.voted_for?(@argumentable))
-         
-         flash[:notice] = t(:new_argument_ok)
-         redirect_to @argumentable
-         
+        @argument.update_attribute(:user_id, current_user.id)
+        @argument.update_attribute(:language, I18n.locale)
+        @argument.update_attribute(:pro, current_user.voted_for?(@argumentable))
+
+        flash[:notice] = t(:new_argument_ok)
+        redirect_to @argumentable
+
       else
-         flash[:error] = t(:new_argument_not_ok)
-         redirect_to(:controller => :arguments, :action => :new, :argumentable => @argumentable.class.name, :argumentable_id => @argumentable.id)
+        flash[:error] = t(:new_argument_not_ok)
+        redirect_to(:controller => :arguments, :action => :new, :argumentable => @argumentable.class.name, :argumentable_id => @argumentable.id)
       end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "new"
+    end
   end
 
   # PUT /arguments/1
@@ -60,18 +66,25 @@ class ArgumentsController < ApplicationController
   def update
     @argumentable = params[:argumentable].constantize.find(params[:argumentable_id])
     @argument = Argument.find(params[:id])
-  
-    respond_to do |format|
-      if @argument.update_attributes(params[:argument])
-        format.html { redirect_to(@argumentable, :notice => 'Argument was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @argument.errors, :status => :unprocessable_entity }
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      respond_to do |format|
+        if @argument.update_attributes(params[:argument])
+          format.html { redirect_to(@argumentable, :notice => 'Argument was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @argument.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "edit"
     end
   end
-
+  
+  
   # DELETE /arguments/1
   # DELETE /arguments/1.xml
   def destroy

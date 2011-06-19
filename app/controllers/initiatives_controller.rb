@@ -7,6 +7,7 @@ class InitiativesController < ApplicationController
   # GET /initiatives.xml
   def index
     restart_tutorial
+    @categories = [""] + Category.all.collect {|l| [eval("l.name_#{I18n.locale}")]}
     filter_index(Initiative.not_blank)
     
     respond_to do |format|
@@ -63,6 +64,7 @@ class InitiativesController < ApplicationController
   def new
     restart_tutorial
     @initiative = Initiative.new
+    @not_lang = not_current_languages
 
     respond_to do |format|
       format.html # new.html.erb
@@ -74,6 +76,8 @@ class InitiativesController < ApplicationController
   def edit
     restart_tutorial
     @initiative = Initiative.find(params[:id])
+    @not_lang = not_current_languages
+    
     unless (@initiative.current_phase == 1)
       redirect_to(@initiative)
     end
@@ -82,30 +86,29 @@ class InitiativesController < ApplicationController
   # POST /initiatives
   # POST /initiatives.xml
   def create
-    
-    @iinitiative = Initiative.find_or_create_by_content_en(params[:initiative])
-    if @initiative
-      for c in Category.all
-        if params[eval("c.name_#{I18n.locale}")]
-          @initiative.category = Category.find_or_create_by_name_en(c.name_en)
-        end
-      end
-
+    @not_lang = not_current_languages
+    if @initiative && verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      @initiative.category = Category.find_or_create_by_name_en(params[:category])
+      
       @initiative.user = current_user
-      if @initiative.level == 1
-        @initiative.level_code = current_user.postal_code
+      if @initiative.level == "1"
+        @initiative.level_code = current_user.commune.postal_code
       end
-      if @initiative.level == 2
+      if @initiative.level == "2"
         @initiative.level_code = current_user.province.code
       end
-      if @initiative.level == 3
+      if @initiative.level == "3"
         @initiative.level_code = current_user.region.code
       end
-      if @initiative.level == 4
+      if @initiative.level == "4"
         @initiative.level_code = 1
       end
-      
       s = @initiative.save
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      s = false
     end
   
     respond_to do |format|
@@ -113,7 +116,7 @@ class InitiativesController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @initiative.errors, :status => :unprocessable_entity }
       else
-        format.html { redirect_to(@initiative, :notice => 'Initiative was successfully created.') }
+        format.html { redirect_to(@initiative, :notice => t("initiatives.created")) }
         format.xml  { render :xml => @initiative, :status => :created, :location => @initiative }
       end
     end
@@ -122,37 +125,40 @@ class InitiativesController < ApplicationController
   # PUT /initiatives/1
   # PUT /initiatives/1.xml
   def update
-    if (current_user.roles[0].name=="admin") || (@initiative.current_phase == 1)
-      @initiative = Initiative.find(params[:id])
+    @not_lang = not_current_languages
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      if (current_user.roles[0].name=="admin") || (@initiative.current_phase == 1)
+        u = @initiative.update_attributes(params[:initiative])
+        @initiative.update_attribute(:category, Category.find_or_create_by_name_en(params[:category]))
 
-      for c in Category.all
-        if params[eval("c.name_#{I18n.locale}")]
-          @initiative.category = Category.find_or_create_by_name_en(c.name_en)
+        l=true
+        if @initiative.level == "1"
+          l = @initiative.update_attribute(:level_code, @initiative.user.commune.postal_code)
         end
+        if @initiative.level == "2"
+          l = @initiative.update_attribute(:level_code, @initiative.user.province.code)
+        end
+        if @initiative.level == "3"
+          l = @initiative.update_attribute(:level_code, @initiative.user.region.code)
+        end
+        if @initiative.level == "4"
+          l = @initiative.update_attribute(:level_code, 1)
+        end
+      else
+        u = false
       end
-
-      if @initiative.level == 1
-        @initiative.level_code = @initiative.user.postal_code
-      end
-      if @initiative.level == 2
-        @initiative.level_code = @initiative.user.province.code
-      end
-      if @initiative.level == 3
-        @initiative.level_code = @initiative.user.region.code
-      end
-      if @initiative.level == 4
-        @initiative.level_code = 1
-      end
-
-      u = @initiative.update_attributes(params[:initiative])
     else
       u = false
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
     end
+    u = u&l
 
     if  params[:preview_button] || !u
       render :action => "edit"
     else
-      redirect_to(@initiative, :notice => 'Initiative was successfully updated.')
+      redirect_to(@initiative, :notice => t("initiatives.updated"))
     end
 
   end
@@ -169,10 +175,10 @@ class InitiativesController < ApplicationController
 
     respond_to do |format|
       if d
-        format.html { redirect_to(initiatives_url, :notice => 'Initiative was successfully destroyed.') }
+        format.html { redirect_to(initiatives_url, :notice => t("initiatives.destroyed")) }
         format.xml  { head :ok }
       else
-        format.html { redirect_to(@initiative, :notice => 'You are not authorized to delete this initiative.') }
+        format.html { redirect_to(@initiative, :notice => t("layout.not_authorized")) }
         format.xml  { head :ok }
       end
     end
@@ -212,25 +218,35 @@ class InitiativesController < ApplicationController
     if params[:delegated]
       user_id = current_user.delegate.id
       user_type = "Delegate"
+      allowed = @initiative.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
     else
       user_id = current_user.id
       user_type = "User"
+      allowed = true
     end
-    rank[0] = @initiative.rankings.
+    if allowed
+      rank[0] = @initiative.rankings.
       find_or_create_by_rankable_id_and_ranker_id_and_rankable_type_and_ranker_type(@initiative.id,user_id,"Initiative",user_type)
-    rank[0].update_attribute(:rank, @parsed_json[0])
-    @amendments.each_with_index do |a, index|
-      rank[index+1] = a.rankings.
+      rank[0].update_attribute(:rank, @parsed_json[0])
+      @amendments.each_with_index do |a, index|
+        rank[index+1] = a.rankings.
         find_or_create_by_rankable_id_and_ranker_id_and_rankable_type_and_ranker_type(a.id,user_id,"Amendment",user_type)
-      rank[index+1].update_attribute(:rank, @parsed_json[index+1])
-    end
-
-    respond_to do |format|
-      format.html { redirect_to initiative_url(@initiative,:rankings => @parsed_json) }
-      format.js { render(:update) { |page| page.redirect_to initiative_url(@initiative,:rankings => @parsed_json)}}
+        rank[index+1].update_attribute(:rank, @parsed_json[index+1])
+      end
+      respond_to do |format|
+        format.html { redirect_to initiative_url(@initiative,:rankings => @parsed_json) }
+        format.js { render(:update) { |page| page.redirect_to initiative_url(@initiative,:rankings => @parsed_json)}}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to initiative_url(@initiative,:rankings => @parsed_json) }
+        format.js { render(:update) { |page| page.redirect_to initiative_url(@initiative,:rankings => @parsed_json)}
+                    flash[:alert] = t("initiatives.not_allowed")
+        }
+      end
     end
   end
-  
+
   def aye
      if @initiative.current_phase == 4
        if params[:delegated]

@@ -1,10 +1,12 @@
-
+<div id="bill-header">
 <%= title t("referendums.index_title") %>
 
 <%= render :partial => "layouts/filters", :locals => {:bill_model => Referendum } %>
+</div>
 
 <%= render :partial => "layouts/indexes" %>
 
+<div class="clear"></div>
 
 <% if permitted_to? :create, Referendum.new %>
 	<%= link_to t("referendums.new"), new_referendum_path, :class => "button" %>

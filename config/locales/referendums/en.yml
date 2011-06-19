@@ -1,6 +1,7 @@
 en:
   referendums:
     title: 'List of proposals from politicians'
+    title2: "Referendums"
     show: "show"
     edit: 'edit'
     destroy: 'destroy'
@@ -28,17 +29,27 @@ en:
     options: "Options"
     geographical_level: "Geographical level"
     current_phase: "Referendums currently in the phase"
+    current_category: "Referendums belonging to category"
     no_geo: "There is no geographical restriction"
-    phase1: "Referendums being edited"
-    phase3: "Referendums open to amendments"
-    phase4: "Referendums being currently voted on"
-    phase5: "Referendums which have been voted on"
-    phase_default: "All phases"
+    phase1: "Currently being edited"
+    phase3: "Currently open to amendments"
+    phase4: "Currently being voted on"
+    phase5: "Already voted on"
+    phase_default: "All phases after editing phase"
+    category_default: "All categories"
     wins: "Winner of the vote"
     lost: "These bills were defeated"
     results: "Results of the vote"
     all_defeated: "All the bills have been defeated"
     no_winner: "None of the bills passed the criteria to win"
+    categories: 'List of categories: choose one'
+    preview: "preview"
+    politician: "Choose the politicians that are authors of this bill"
+    created: "Your referendum was successfully created"
+    updated: "Your referendum was successfully updated"
+    destroyed: "Your referendum was successfully deleted"
+    no_bill: "There are currently no referendums corresponding to your selection criteria"
+    not_allowed: "A delegate cannot change his vote more than one day after it has been cast"
     
     politicians:
       title: "List of proposals"

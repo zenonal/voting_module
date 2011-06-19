@@ -6,6 +6,7 @@ class ReferendumsController < ApplicationController
   # GET /referendums.xml
   def index
     filter_index(Referendum.not_blank)
+    @categories = [""] + Category.all.collect {|l| [eval("l.name_#{I18n.locale}")]}
     
     respond_to do |format|
       format.html # index.html.erb
@@ -59,6 +60,7 @@ class ReferendumsController < ApplicationController
   # GET /referendums/new.xml
   def new
     @referendum = Referendum.new
+    @not_lang = not_current_languages
 
     respond_to do |format|
       format.html # new.html.erb
@@ -68,6 +70,8 @@ class ReferendumsController < ApplicationController
 
   # GET /referendums/1/edit
   def edit
+    @not_lang = not_current_languages
+    
     @referendum = Referendum.find(params[:id])
     unless (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
       redirect_to(@referendum)
@@ -78,83 +82,97 @@ class ReferendumsController < ApplicationController
   # POST /referendums.xml
   def create
     @referendum = Referendum.new(params[:referendum])
-    for p in Politician.all
-      if params[p.name]
-        @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
-      end
-    end
-    
-    for c in Category.all
-      if params[eval("c.name_#{I18n.locale}")]
-        @referendum.category = Category.find_or_create_by_name_en(c.name_en)
-      end
-    end
-    
-    if @referendum.level == 1
-      @referendum.level_code = current_user.postal_code
-    end
-    if @referendum.level == 2
-      @referendum.level_code = current_user.province.code
-    end
-    if @referendum.level == 3
-      @referendum.level_code = current_user.region.code
-    end
-    if @referendum.level == 4
-      @referendum.level_code = 1
-    end
+    @not_lang = not_current_languages
+    if @initiative && verify_recaptcha()
+      flash.delete(:recaptcha_error)
 
-    respond_to do |format|
-      if @referendum.save
-        format.html { redirect_to(@referendum, :notice => 'Referendum was successfully created.') }
-        format.xml  { render :xml => @referendum, :status => :created, :location => @referendum }
+      if @referendum
+        for p in Politician.all
+          if params[p.name]
+            @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
+          end
+        end
+
+        @referendum.category = Category.find_or_create_by_name_en(params[:category])
+
+        if @referendum.level == "1"
+          @referendum.level_code = current_user.commune.postal_code
+        end
+        if @referendum.level == "2"
+          @referendum.level_code = current_user.province.code
+        end
+        if @referendum.level == "3"
+          @referendum.level_code = current_user.region.code
+        end
+        if @referendum.level == "4"
+          @referendum.level_code = 1
+        end
+
+        s = @referendum.save
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @referendum.errors, :status => :unprocessable_entity }
+        s=false
       end
+
+      respond_to do |format|
+        if params[:preview_button] || !s
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @referendum.errors, :status => :unprocessable_entity }
+        else
+          format.html { redirect_to(@referendum, :notice => t("referendums.created")) }
+          format.xml  { render :xml => @referendum, :status => :created, :location => @referendum }
+        end
+      end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "new"
     end
   end
 
   # PUT /referendums/1
   # PUT /referendums/1.xml
   def update
-    if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
-      @referendum = Referendum.find(params[:id])
-      for p in Politician.all
-        if params[p.name]
-          @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
-        end
-      end
+    @not_lang = not_current_languages
+    if @initiative && verify_recaptcha()
+      flash.delete(:recaptcha_error)
 
-      for c in Category.all
-        if params[eval("c.name_#{I18n.locale}")]
-          @referendum.category = Category.find_or_create_by_name_en(c.name_en)
+      if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
+        u = @referendum.update_attributes(params[:referendum])
+        @referendum.update_attribute(:category, Category.find_or_create_by_name_en(params[:category]))
+        @referendum.authorships = []
+        for p in Politician.all
+          if params[p.name]
+            @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
+          end
         end
-      end
 
-      if @referendum.level == 1
-        @referendum.level_code = current_user.postal_code
-      end
-      if @referendum.level == 2
-        @referendum.level_code = current_user.province.code
-      end
-      if @referendum.level == 3
-        @referendum.level_code = current_user.region.code
-      end
-      if @referendum.level == 4
-        @referendum.level_code = 1
-      end
-
-      respond_to do |format|
-        if @referendum.update_attributes(params[:referendum])
-          format.html { redirect_to(@referendum, :notice => 'Referendum was successfully updated.') }
-          format.xml  { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @referendum.errors, :status => :unprocessable_entity }
+        l=true
+        if @referendum.level == "1"
+          l = @referendum.update_attribute(:level_code, @referendum.user.commune.postal_code)
         end
+        if @referendum.level == "2"
+          l = @referendum.update_attribute(:level_code, @referendum.user.province.code)
+        end
+        if @referendum.level == "3"
+          l = @referendum.update_attribute(:level_code, @referendum.user.region.code)
+        end
+        if @referendum.level == "4"
+          l = @referendum.update_attribute(:level_code, 1)
+        end
+      else
+        u = false
+      end
+      u = u&l
+
+      if  params[:preview_button] || !u
+        render :action => "edit"
+      else
+        redirect_to(@referendum, :notice => t("referendums.created"))
       end
     else
-      redirect_to(@referendum)
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "edit"
     end
   end
 
@@ -196,7 +214,7 @@ class ReferendumsController < ApplicationController
         format.xml  { render :xml => @referendum }
       end
     else
-        redirect_to @initiative
+        redirect_to @referendum
     end
   end
   
@@ -208,23 +226,35 @@ class ReferendumsController < ApplicationController
     if params[:delegated] && current_user.delegate
       user_id = current_user.delegate.id
       user_type = "Delegate"
+      allowed = @referendum.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
     else
       user_id = current_user.id
       user_type = "User"
+      allowed = true
     end
-    rank[0] = @referendum.rankings.
-      find_or_create_by_rankable_id_and_ranker_id_and_rankable_type_and_ranker_type(@referendum.id,user_id,"Referendum",user_type)
-    rank[0].update_attribute(:rank, @parsed_json[0])
-    @amendments.each_with_index do |a, index|
+    if allowed
+      rank[0] = @referendum.rankings.
+        find_or_create_by_rankable_id_and_ranker_id_and_rankable_type_and_ranker_type(@referendum.id,user_id,"Referendum",user_type)
+      rank[0].update_attribute(:rank, @parsed_json[0])
+      @amendments.each_with_index do |a, index|
       rank[index+1] = a.rankings.
         find_or_create_by_rankable_id_and_ranker_id_and_rankable_type_and_ranker_type(a.id,user_id,"Amendment",user_type)
       rank[index+1].update_attribute(:rank, @parsed_json[index+1])
-    end
-
-    respond_to do |format|
-      format.html { redirect_to referendum_url(@referendum,:rankings => @parsed_json) }
-      format.js { render(:update) { |page| page.redirect_to referendum_url(@referendum,:rankings => @parsed_json)}}
-    end
+      end
+      respond_to do |format|
+        format.html { redirect_to referendum_url(@referendum,:rankings => @parsed_json) }
+        format.js { render(:update) { |page| page.redirect_to referendum_url(@referendum,:rankings => @parsed_json)}}
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to referendum_url(@referendum,:rankings => @parsed_json) }
+        format.js { render(:update) { |page| page.redirect_to referendum_url(@referendum,:rankings => @parsed_json)}
+                    flash[:alert] = t("referendums.not_allowed")
+        }
+      end
+      
+    end 
+    
   end
   
   def aye

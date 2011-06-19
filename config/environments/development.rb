@@ -25,5 +25,8 @@ VotingModule::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  ENV['RECAPTCHA_PUBLIC_KEY'] = '6LfWaMUSAAAAAEM2QqDWlkSLoA7zgUbYhgavP8nm'
+  ENV['RECAPTCHA_PRIVATE_KEY'] = '6LfWaMUSAAAAAKt8q64-f3-X0ptR3ar7A-ZIfu88'
 end
 

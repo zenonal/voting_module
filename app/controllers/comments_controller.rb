@@ -49,20 +49,27 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      @comment = @commentable.comments.build(params[:comment])
 
-    respond_to do |format|
-      if @comment.save
-        @comment.update_attribute(:user_id, current_user.id)
-        @comment.update_attribute(:language, I18n.locale)
-        flash[:notice] = t(:new_comment_ok)
-        format.html { redirect_to(@commentable) }
-        format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
-      else
-        flash[:error] = t(:new_comment_not_ok)
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @comment.save
+          @comment.update_attribute(:user_id, current_user.id)
+          @comment.update_attribute(:language, I18n.locale)
+          flash[:notice] = t(:new_comment_ok)
+          format.html { redirect_to(@commentable) }
+          format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
+        else
+          flash[:error] = t(:new_comment_not_ok)
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      redirect_to @commentable
     end
   end
 
@@ -71,38 +78,48 @@ class CommentsController < ApplicationController
     @com = Comment.find(params[:id])
     @origin = @com.origin
     @back = @origin.commentable_type.constantize.find(@origin.commentable_id)
-    
-    if @com.reply_level < 5
-    
-      @reply = Comment.new(params[:reply])
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      if @com.reply_level < 5
 
-      if @reply.save!
-        @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
-       
-        flash[:notice] = t(:new_comment_ok)
-        redirect_to @back
-        
+        @reply = Comment.new(params[:reply])
+
+        if @reply.save!
+          @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
+
+          flash[:notice] = t(:new_comment_ok)
+          redirect_to @back
+        else
+          flash[:error] = t(:new_comment_not_ok)
+          redirect_to @back
+        end
       end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      redirect_to @commentable
     end
-
-    rescue ActiveRecord::RecordInvalid
-      flash[:error] = t(:new_comment_not_ok)
-      redirect_to @back
   end
   
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+    if verify_recaptcha()
+      flash.delete(:recaptcha_error)
+      respond_to do |format|
+        if @comment.update_attributes(params[:comment])
+          format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      flash.now[:alert] = t(:recaptcha_error)
+      flash.delete(:recaptcha_error)
+      render :action => "edit"
     end
   end
 

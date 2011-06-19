@@ -22,12 +22,25 @@ class User < ActiveRecord::Base
   belongs_to :party
   before_create :define_role
   
+  if Rails.env=="development"
+    has_attached_file :uploadedPhoto, :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
+  else
+    has_attached_file :uploadedPhoto, 
+      :storage => :s3,
+      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+      :path => ":attachment/:id/:style.:extension",
+      :url => ':s3_domain_url',
+      :s3_permissions => 'authenticated-read',
+      :s3_protocol => 'http',
+      :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
+  end
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :displayName, :photo, :remember_me, :commune_id, :province_id, :region_id
+  attr_accessible :email, :displayName, :photo, :remember_me, :commune_id, :province_id, :region_id, :password, :password_confirmation, :uploadedPhoto
   
   scope :ranked_on, lambda {|v|
     joins(:rankings).
@@ -81,9 +94,14 @@ class User < ActiveRecord::Base
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end
+
+  def has_no_password?
+    self.encrypted_password.blank?
+  end
   
    private
     def define_role
      self.roles << Role.find_or_create_by_name("registered_user")
     end
+    
 end

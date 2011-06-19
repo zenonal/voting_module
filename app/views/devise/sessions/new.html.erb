@@ -5,6 +5,7 @@
 <h3><%= t(@loc+'intro') %></h3>
 
 <%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
+<div class="field">
   <p><%= f.label t(@loc+'email') %><br />
   <%= f.text_field :email %></p>
 
@@ -14,8 +15,9 @@
   <% if devise_mapping.rememberable? -%>
     <p><%= f.check_box :remember_me %> <%= f.label t(@loc+'remember') %></p>
   <% end -%>
-
+</div>
+<div class="actions">
   <p><%= f.submit t(@loc+'title') %></p>
 <% end %>
-
+</div>
 <%= render :partial => "devise/shared/links" %>

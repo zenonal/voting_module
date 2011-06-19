@@ -10,56 +10,78 @@
       </ul>
     </div>
   <% end %>
+<% if params[:preview_button] %>
+	<%= render :partial => "layouts/previews", :locals => { :bill => @referendum } %>
+  <% end %>
+
   <div class="field">
 	<%= f.label t('layout.choose_level') %><br />
-	<%= f.select :level, Referendum::LEVELS.collect {|l| [l, Referendum::PHASES.index(l)]} %>
+	<%= f.select :level, Referendum::LEVELS.collect {|l| [l, Referendum::LEVELS.index(l)]} %>
   </div>
 <br /><br /><br />
-<div class="field">
+<div class="photo-field">
 	<%= f.label t('layout.choose_photo') %><br />
     <%= f.file_field :photo %>
   </div>
 <br /><br /><br />
-  <div class="field">
-    <%= f.label :name_in_english %><br />
-    <%= f.text_field :name_en %>
+
+
+ <div class="field">
+    <%= f.label t("name_#{I18n.locale}") %><br />
+    <%= f.text_field "name_#{I18n.locale}" %><br />
+  
+    <%= f.label t("content_#{I18n.locale}") %><br />
+    <%= f.textile_editor "content_#{I18n.locale}" %>
   </div>
-  <div class="field">
-    <%= f.label :content_in_english %><br />
-    <%= f.text_area :content_en %>
-  </div>
+<br /><br /><br />
+
+<div id="translations_show_container"><a id="translations_show" class="button"><%= t("layout.show_translations") %></a></div>
+<div id="translations_hide_container"><a id="translations_hide" class="button"><%= t("layout.hide_translations") %></a></div>
+
+<div id="bill_translation">
+<% @not_lang.each do |l| %>
 <div class="field">
-    <%= f.label :nom_en_français %><br />
-    <%= f.text_field :name_fr %>
+    <%= f.label t("name_#{l}") %><br />
+    <%= f.text_field "name_#{l}" %><br />
+ 
+    <%= f.label t("content_#{l}") %><br />
+    <%= f.textile_editor "content_#{l}" %>
   </div>
-  <div class="field">
-    <%= f.label :texte_en_français %><br />
-    <%= f.text_area :content_fr %>
-  </div>
+<br /><br /><br />
+<% end %>
+</div>
+
 <div class="field">
-    <%= f.label :naam_in_het_nederlands %><br />
-    <%= f.text_field :name_nl %>
-  </div>
-  <div class="field">
-    <%= f.label :text_in_het_nederlands %><br />
-    <%= f.text_area :content_nl %>
-  </div>
-<p>Politicians</p>
-  <div>
+<h4><%= t('referendums.politician') %></h4>
+<div class="list">
 	<% for p in Politician.all %>
 	<%= label_tag p.name %>
 	<%=	check_box_tag p.name, p.name, (!@referendum.authorships.find_by_politician_id(p.id).nil?) %><br/>
 	<% end %>
-  </div>
-<p>Categories</p>
-  <div>
-	<% for c in Category.all %>
-	<%= label_tag eval("c.name_#{I18n.locale}") %>
-	<%=	check_box_tag eval("c.name_#{I18n.locale}"), eval("c.name_#{I18n.locale}"), (@referendum.category == c) %><br/>
-	<% end %>
-  </div>
+</div>
+</div>
 <br/> <br/> <br/>
-  <div class="actions">
+
+<div class="checkboxes-field">
+<h4><%= t('referendums.categories') %></h4>
+<div class="list">
+  <% for c in Category.all %>
+
+	<%=	radio_button_tag "category", eval("c.name_#{I18n.locale}"), (@referendum.category == c) %>
+	<%= label_tag eval("c.name_#{I18n.locale}"),image_tag(c.photo.url("thumbnail"))  %>
+	<%= eval("c.name_#{I18n.locale}") %>
+	<br/><br/>
+	<% end %>
+</div>
+</div>
+<br/> <br/> <br/>
+<div class="field">
+	<div class="recaptcha">
+<%= recaptcha_tags %>
+</div>
+</div>
+<div class="actions">
     <%= f.submit %>
+	<%= submit_tag t('referendums.preview'), :name => 'preview_button' %>
   </div>
 <% end %>

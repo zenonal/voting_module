@@ -14,33 +14,26 @@
 </head>
 <body class="bp main-layout">
 	<div id="container">
-		
 		<div id="header">
 			<%= link_to image_tag("title_#{I18n.locale}.png"), root_path, :class => "title" %>
 			<h1>
 			<%= link_to t(:headtitle), root_path, :class => "subtitle" %>
 			</h1>
 		</div>
+		<div id="language-links">
+			<%= link_to language_fra_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif" title="French">
+			<% end %>
+			<%= link_to language_ndl_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif" title="Nederlands">
+			<% end %>
+			<%= link_to language_eng_url do %>
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif" title="English">
+			<% end %>
+		</div>
 		<div id="sidebar-left">
 			<div style="height: 50px;"></div>
-			<ul>
-					<%= link_to language_fra_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif" title="French"></li>
-					<% end %>
-					<%= link_to language_ndl_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif" title="Nederlands"></li>
-					<% end %>
-					<%= link_to language_eng_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif" title="English"></li>
-					<% end %>
-					<%= link_to language_tutorial_url do %>
-						<li><img width="20" height="20" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial"></li>
-					<% end %>
-			</ul>
-			<ul>
-				<li><%= link_to image_tag("citoyens.jpg",:size => "60x60"), initiatives_path, :title =>t('initiatives.title') %></li>
-				<li><%= link_to image_tag("partis-politiques-belges.jpg",:size => "60x60"), referendums_path, :title =>t('referendums.title') %></li>
-			</ul>
+			
 		</div>
 		<div id="container2">
 			
@@ -55,14 +48,35 @@
 			</div>
 			<% end %>
 			<div id="content">
-				<%= @thresh %>
+				<div id="menu">
+					<%= link_to initiatives_path do %>
+					<div id="menu-item">
+					<%= image_tag("citoyens.jpg",:size => "40x40") %>
+					<div id="menu-title"><%= t('initiatives.title2') %></div>
+					</div>
+					<%end %>
+					<%= link_to referendums_path do %>
+					<div id="menu-item">
+					<%= image_tag("partis-politiques-belges.jpg",:size => "40x40") %>
+					<div id="menu-title"><%= t('referendums.title2') %></div>
+					</div>
+					<% end %>
+					<%= link_to language_tutorial_url do %>
+					<div id="menu-item">
+					<img width="40" height="40" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
+					<div id="menu-title"><%= t('tutorial.title') %></div>
+					</div>
+					<% end %>
+					<div class="clear"></div>
+				</div>
 				<%= yield %>
 			</div>
 		  
 		</div>
 		
 		<div id="sidebar-right">
-			<div style="height: 50px;"></div>
+			
+				<div id="user_info">
 						<% if user_signed_in? %>
 						<p>
 							<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
@@ -82,6 +96,7 @@
 				        <% else %>
 				          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 				        <% end %>
+				</div>
 		</div>
 		<div id="footer">
 			

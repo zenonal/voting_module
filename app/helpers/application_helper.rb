@@ -64,4 +64,5 @@ module ApplicationHelper
     output += ", "
     output += pluralize(duration.to_i/(60)%60, t(:minutes))
   end
+  
 end

@@ -10,14 +10,19 @@
 	<div class = "comment-content">
 		<%= simple_format "'#{@com.content}'" %>
 	</div>
-</div>
-<br><br>
+<br/><br/>
+<br/><br/>
+<br/><br/>
 <% form_for :reply, :url => {:controller => :comments, :action => :create_reply, :id => @com.id, :back_page => @back} do |f| %>
-	<p>
+	<div class="field">
 		<%= f.label t(:new_reply) %><br>
 		<%= f.text_area :content, :class => "comment_field" %>
-	</p>
-	<p><%= f.submit t(:submit_str) %></p>
+	
+		<div class="recaptcha">
+			<%= recaptcha_tags %>
+		</div>
+	</div>
+	<div class="actions"><%= f.submit t(:submit_str) %></div>
 <% end %>
-
+</div>
 <div id="back_button"><%= link_to t(:back_str), @back, :class => "button" %></div>

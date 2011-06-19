@@ -1,6 +1,7 @@
 en:
   initiatives:
     title: 'List of proposals from citizens'
+    title2: "Initiatives"
     show: "show"
     edit: 'edit'
     edit_init: 'Editing initiative'
@@ -20,7 +21,7 @@ en:
     want_amendment: 'If you want to submit your own amendment'
     want_argument: 'If you want to submit your own point of view'
     index_categories: 'Index of categories'
-    categories: 'List of categories: choose on'
+    categories: 'List of categories: choose one'
     created_at: 'Created on '
     valid: 'This initiative has been validated'
     validate: 'Validate this initiative'
@@ -38,6 +39,7 @@ en:
     options: "Options"
     geographical_level: "Geographical level"
     current_phase: "Initiatives currently in the phase"
+    current_category: "Initiatives belonging to category"
     no_geo: "There is no geographical restriction"
     phase0: "validation failed"
     phase1: "currently being edited"
@@ -45,12 +47,18 @@ en:
     phase3: "currently open to amendments"
     phase4: "currently being voted on"
     phase5: "already voted on"
-    phase_default: "validation passed"
+    phase_default: "All phases after editing phase"
+    category_default: "All categories"
     wins: "Winner of the vote"
     lost: "These bills were defeated"
     results: "Results of the vote"
     all_defeated: "All the bills have been defeated"
     no_winner: "None of the bills passed the criteria to win"
+    created: "Your initiative was successfully created"
+    updated: "Your initiative was successfully updated"
+    destroyed: "Your initiative was successfully deleted"
+    no_bill: "There are currently no initiatives corresponding to your selection criteria"
+    not_allowed: "A delegate cannot change his vote more than one day after it has been cast"
     
     form:
       photo: "Choose a picture for your proposal"

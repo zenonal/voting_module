@@ -1,5 +1,6 @@
 en:
   tutorial:
+    title: "Tutorial"
     pages:
       homepage: 
         step1: "<p>Welcome to the voting module!</p>
@@ -13,7 +14,7 @@ en:
                 <p>Clicking on the question mark toggles the tutorial on and off.</p>
                 <p>If you need help on a specific icon or menu, just place your mouse cursor over it and a tooltip will appear!</p>"
         
-    title: "Tutorial"
+    
     user:
       show: "<p>Here you can see all the public activity of users. This can be you or any other user. 
             Public activity includes initiatives, amendments and points of views that have been posted. It does not 

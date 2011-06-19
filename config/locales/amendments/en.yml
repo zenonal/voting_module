@@ -17,7 +17,7 @@ en:
     vote_of_delegate: 'Your delegate voted'
     want_vote: 'If you want to vote on this'
     index_categories: 'Index of categories'
-    categories: 'List of categories: choose on'
+    categories: 'List of categories: choose one'
     created_at: 'Created on '
     valid: 'This alternative has been validated'
     validate: 'Validate this alternative'
@@ -38,10 +38,13 @@ en:
     phase3: "currently waiting for end of amendment proposal period"
     phase4: "currently being voted on"
     phase5: "already voted on"
-    phase_default: "Amendements which passed validation"
+    phase_default: "All phases after editing phase"
     wins: "Winner of the vote"
     lost: "These bills were defeated"
     results: "Results of the vote"
     all_defeated: "All the bills have been defeated"
     no_winner: "None of the bills passed the criteria to win"
+    created: "Your amendment was successfully created"
+    updated: "Your amendment was successfully updated"
+    destroyed: "Your amendment was successfully deleted"
     

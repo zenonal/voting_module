@@ -46,4 +46,7 @@ VotingModule::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  ENV['RECAPTCHA_PUBLIC_KEY'] = '6LcmacUSAAAAACG35RfWYwwxiDHi5vh5t0jo6iVe'
+  ENV['RECAPTCHA_PRIVATE_KEY'] = '6LcmacUSAAAAAOUsDIP3PLelMyPclhvN-zfIhaI-'
 end

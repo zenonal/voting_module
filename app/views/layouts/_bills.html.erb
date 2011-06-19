@@ -4,23 +4,27 @@
 	<div id="bill-header-content">
 		<div id="bill-header-title"><h3><%= eval("bill.name_#{I18n.locale}").capitalize %></h3></div>
 		<div id="bill-geography">
+			
 				<% if (params[:controller] == "amendments") %>
-					<%= t("#{params[:controller]}.original_bill") %>: 
+					<h4 style="display:inline;"><%= t("#{params[:controller]}.original_bill") %>: </h4>
 					<%= link_to eval("bill.amendmentable.name_#{I18n.locale}"), bill.amendmentable, :class => "link" %>
-				<% else %><h4>
-				<% if bill.level == 4 %>
-					<%= t("#{params[:controller]}.level4") %>
+				<% else %>
+				<h4>
+					<% if bill.level == "4" %>
+						<%= t("#{params[:controller]}.level4") %>
+					<% end %>
+					<% if bill.level == "3" %>
+						<%= t("#{params[:controller]}.level3") %>: <%= bill.region.name %>
+					<% end %>
+					<% if bill.level == "2" %>
+						<%= t("#{params[:controller]}.level2") %>: <%= bill.province.name %>
+					<% end %>
+					<% if bill.level == "1" %>
+						<%= t("#{params[:controller]}.level1") %>: <%= bill.commune.name %>
+					<% end %>
+				</h4>
 				<% end %>
-				<% if bill.level == 3 %>
-					<%= t("#{params[:controller]}.level3") %>: <%= bill.region.name %>
-				<% end %>
-				<% if bill.level == 2 %>
-					<%= t("#{params[:controller]}.level2") %>: <%= bill.province.name %>
-				<% end %>
-				<% if bill.level == 1 %>
-					<%= t("#{params[:controller]}.level1") %>: <%= bill.commune.name %>
-				<% end %></h4>
-			<% end %>
+			
 		</div>
 		<div id="bill-phase">
 			<% if bill.current_phase == 5 %>
@@ -36,7 +40,7 @@
 					<% end %>
 				<% end %>
 			<% else %>
-				<%= t("#{params[:controller]}.phase#{bill.current_phase}") %>
+				<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><h4>
 			<% end %>
 		</div>
 		<div id="bill-category">

@@ -28,22 +28,27 @@ class Referendum < ActiveRecord::Base
   
   scope :user_geographical_level, lambda { |user, level|
     if level == 1
-      where(["level = ? AND level_code = ?", level, user.commune.postal_code])
+      where(["level = ? AND level_code = ?", level.to_s, user.commune.postal_code])
     else
       if level == 2
-        where(["level = ? AND level_code = ?", level, user.province.code])
+        where(["level = ? AND level_code = ?", level.to_s, user.province.code])
       else
         if level == 3
-          where(["level = ? AND level_code = ?", level, user.region.code])
+          where(["level = ? AND level_code = ?", level.to_s, user.region.code])
         else
           if level == 4
-            where(["level = ?", level])
+            where(["level = ?", level.to_s])
           else
             nil
           end
         end
       end
     end
+  }
+  
+  scope :of_category, lambda {|categ|
+    joins(:category).
+    where("categories.name_#{I18n.locale} = ?", categ)
   }
   
   scope :not_blank, where(["content_#{I18n.locale} != \"\""])
@@ -90,6 +95,18 @@ class Referendum < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  def self.filter_category(ar,*categ)
+    list = []
+    ar.each do |a|
+      for cat in categ
+        if eval("a.category.name_#{I18n.locale}") == cat
+          list << a
+        end
+      end
+    end
+    return list
   end
   
   def self.filter_phase(ar,*ph)

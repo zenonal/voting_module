@@ -1,4 +1,9 @@
 <div id="index-content">
+<% if @bills.count == 0 %>
+<br/><br/>
+<h5><%= t("#{params[:controller]}.no_bill") %></h5>
+</div>
+<% else %>
 <% @bills.each do |bill| %>
 <div id="index-element">
 	<% if false %>
@@ -15,16 +20,16 @@
 			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %></h4>
 		</div>
 		<h4>
-			<% if bill.level == 4 %>
+			<% if bill.level == "4" %>
 			<%= t("#{params[:controller]}.level4") %>
 			<% end %>
-			<% if bill.level == 3 %>
+			<% if bill.level == "3" %>
 			<%= t("#{params[:controller]}.level3") %>: <%= bill.region.name %>
 			<% end %>
-			<% if bill.level == 2 %>
+			<% if bill.level == "2" %>
 			<%= t("#{params[:controller]}.level2") %>: <%= bill.province.name %>
 			<% end %>
-			<% if bill.level == 1 %>
+			<% if bill.level == "1" %>
 			<%= t("#{params[:controller]}.level1") %>: <%= bill.commune.name %>
 			<% end %>
 		</h4>
@@ -59,7 +64,7 @@
 				</div>	
 			</div>
 			<div class="clear"></div>
-			<p><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %></p>
+			<h5><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %></h5>
 		</div>
 		<% end %>
 		
@@ -72,7 +77,7 @@
 				</div>	
 			</div>
 			<div class="clear"></div>
-			<p><%= pluralize(bill.amendments.count, t(:amendment)) %></p>
+			<h5><%= pluralize(bill.amendments.count, t(:amendment)) %></h5>
 		</div>
 		<% end %>
 		
@@ -85,7 +90,37 @@
 				</div>	
 			</div>
 			<div class="clear"></div>
-			<p><%= pluralize(bill.tally_all_votes, t("initiatives.votes")) %></p>
+			<h5><%= pluralize(bill.tally_all_votes, t("initiatives.votes")) %></h5>
+		</div>
+		<% end %>
+		
+		<% if bill.current_phase == 5 %>
+		<div id="index-column">
+			<% unless bill.result.nil? %>
+				<% if bill.result.winner %>
+					<div id="bill-winner">
+						<%= t("layout.bill_won") %>
+					</div>
+					<div class="clear"></div>
+				<% else %>
+					<div id="bill-loser">
+						<%= t("layout.bill_lost") %>
+					</div>
+					<div class="clear"></div>
+					<br/>
+					<% unless bill.result.condorcet_winner.nil? %>
+						<% all_bills = Ranking.all_related_bills(bill) %>
+						<% unless bill.result.condorcet_winner > all_bills.count %>
+						<div id="bill-winner">
+							<%= link_to eval("all_bills[bill.result.condorcet_winner].name_#{I18n.locale}"), all_bills[bill.result.condorcet_winner] %> <%= t("layout.won_vote") %>
+						</div>
+						<% end %>
+					<% end %>
+					<div class="clear"></div>
+					
+				<% end %>
+			<% end %>
+			
 		</div>
 		<% end %>
 		
@@ -113,3 +148,4 @@
 	</div>
 	<% end %>
 </div>
+<% end %>

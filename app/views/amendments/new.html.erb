@@ -1,6 +1,7 @@
+<div id="bill-header">
 <%= title t('amendments.new').capitalize %>
-
+</div>
 <%= render 'form' %>
 
-<%= link_to t(:back_str), amendments_path, :class => "button" %>
+<%= link_to t(:back_str), @amendmentable, :class => "button" %>
 <%= raw textile_editor_initialize -%>

@@ -1,9 +1,9 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   custom_error:
     perm_denied: 'Sorry, you are not allowed to access that page.'
+    recaptcha_error: "blabla"
   layout:
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
@@ -16,13 +16,14 @@ en:
       turn_tutorial_off: "Switch off the tutorial"
       go_on_tutorial: "Go on with tutorial"
       points_of_view: "Your point of view on this bill"
-      filter: "Select by geographical level"
+      filter: "Apply options"
       submit: "Submit"
       vote: "vote"
       voter: "voter"
       vote_for: "Drag here the bills that you approve and rank them by order of preference"
       vote_against: "Drag here the bills that you don't approve and rank them starting with the one you dislike the least"
       vote_neutral: "Drag here the bills on which you wish to remain neutral"
+      won_vote: "won the vote"
       show_results: "Show the complete results"
       show_bill: "Show details of the bill"
       bill_won: "This bill won the vote"
@@ -38,7 +39,15 @@ en:
       percent_approval: "Percentage of approval"
       discussion: "Discussion"
       choose_photo: "Choose an image that will be used as an icon for your bill"
+      choose_user_photo: "Choose a picture for your account"
       choose_level: "Select the geographical level of your bill"
+      show_translations: "Add translations to your bill"
+      hide_translations: "Don't include translations in your bill"
+      not_authorized: "You are not authorized to do that"
+      private_activity: "Summary of private activity"
+      public_activity: "Summary of public activity"
+      change_pwd: "Change your password"
+      
       
   homepage:
       title: 'Voting module'
@@ -113,3 +122,12 @@ en:
   validation_failed: "This bill has failed validation"
   amendment: "amendment"
   cancel: "Cancel"
+  cancel_bill: "Cancel the creation of this bill"
+  name_en: "Name in English"
+  content_en: "Text of the bill in English"
+  name_fr: "Nom en français"
+  content_fr: "Texte en français"
+  name_nl: "Naam in het Nederlands"
+  content_nl: "Text in het Nederlands"
+  category_select: "Select a category"
+  recaptcha_error: "There was an error with the recaptcha code below. Please re-enter the code and click submit"

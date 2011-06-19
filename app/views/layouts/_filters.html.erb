@@ -1,18 +1,43 @@
-<h4><%= t("#{bill_model.name.downcase.pluralize}.geographical_level") %>: 
-<%= @geo %></h4>
-<h4><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %>: 
-<%= @phase %></h4>
+
 
 <div id="filter_options">
-<form>
-<%= label_tag t("user_geo_limit") %>
-<%= check_box_tag("user_level", "off", false) %><br/>
-<%= label_tag t("user_geo_select") %>
-<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}) %>
-<p><%= label_tag t("user_phase_select") %>
-<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}) %>
-</p>
-<input type="submit" value=<%=t("layout.filter") %> />
-</form>
+	<br/>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_category") %>: </h5>
+	<h4 style="text-align: right; display:inline;"><%= @categ %></h4>
+	<br/>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.geographical_level") %>: </h5>
+	<h4 style="text-align: right; display:inline;"><%= @geo %></h4>
+	<br/>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %>: </h5>
+	<h4 style="text-align: right; display:inline;"><%= @phase %></h4>
+	<br/><br/><br/>
+	<form>
+		<div class="field">
+			<%= label_tag t("user_geo_limit") %>
+			<%= check_box_tag("user_level", "off", false) %><br/>
+			<%= label_tag t("category_select") %>
+			<% if params[:filter] && params[:filter][:category] %>
+				<%= select("filter", "category", @categories, :selected => params[:filter][:category]) %><br/>
+			<% else %>
+				<%= select("filter", "category", @categories) %><br/>
+			<% end %>
+			<%= label_tag t("user_geo_select") %>
+			<% if params[:filter] && params[:filter][:level] %>
+				<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}, :selected => params[:filter][:level]) %>
+			<% else %>
+				<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}) %>
+			<% end %>
+			<p><%= label_tag t("user_phase_select") %>
+			<% if params[:filter] && params[:filter][:phase] %>
+				<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}, :selected => params[:filter][:phase]) %>
+			<% else %>
+				<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}) %>
+			<% end %>
+			</p>
+   		</div>
+		<div class="actions">
+			<input type="submit" value="<%=t('layout.filter') %>" />
+		</div>
+	</form>
 </div>
 <a id="options_toggle" class="button"><%= t("#{bill_model.name.downcase.pluralize}.options") %></a>

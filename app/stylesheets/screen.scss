@@ -35,6 +35,7 @@ transform: rotate(90deg);
 
 @include font-face("Subtitles", font-files("colabreg-webfont.ttf", truetype));
 @include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
+@include font-face("SubSubtitles", font-files("miso-webfont.ttf", truetype));
 
 body.bp {
 @include blueprint-typography(true);
@@ -47,44 +48,96 @@ body.bp {
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body.main-layout {
 
+h4 {
+	font-family: "SubSubtitles", helvetica;
+	font-size: 18px;
+	font-style: normal;
+}
+
 h3 {
-font-family: "Subtitles", helvetica;
-font-size: 22px;
-font-style: normal;
-text-transform: uppercase;
+	font-family: "Subtitles", helvetica;
+	font-size: 22px;
+	font-style: normal;
+	text-transform: uppercase;
 
 }
 
 h2 {
-font-family: "Titles", helvetica;
-letter-spacing:4px
+	font-family: "Titles", helvetica;
+	letter-spacing:4px
 }
 
 #container {
 @include container; 
-@include background-image(linear-gradient(top, $blueprint-background-color, white));
+@include background-image(linear-gradient(top, #E9E9F5, white));
+margin-top: 0px;
+}
+
+#language-links {
+	position:relative;
+	top: -220px;
+	left: 50px;
+	a {
+		text-decoration:none;
+	list-style-type: none;
+			display: inline;
+			text-decoration: none;
+			padding-right: 15px;
+			padding-left: 15px;
+		}
 }
 
 #sidebar-left {
 $sidebar-l-columns: floor($blueprint-grid-columns / 8);
 @include column($sidebar-l-columns); 
 text-align: center;
-
-li {
-list-style-type: none;
-padding: 10px;
-}
+	li {
+		list-style-type: none;
+		display: inline;
+	}
+	
 }
 
 #container2 {
 @include column($content-columns); 
 }
 
+#menu {
+@include column($content-columns); 
+border-bottom: 3px solid $main-border-color;
+
+	a {
+		text-decoration: none;
+		#menu-item {
+			@include column(ceil($content-columns/3) - 1); 
+			margin-top: 10px;
+			margin-left: 30px;
+			margin-bottom: 10px;
+
+ 			#menu-title {
+				font-style: normal;
+				text-transform: uppercase;
+				font-weight: bold;
+				display:inline;
+				font-size: 20px;
+				text-decoration: none;
+			}
+		}
+	}
+	a:hover {
+		#menu-item {
+		
+		}
+	}
+}
+
 #header {
+position: relative;
 @include column($blueprint-grid-columns, true);
 text-align: center;
 @include background(image-url("DD_header.png"));
 height: 230px;
+margin-top:0px;
 }
 
 .title {
@@ -104,6 +157,37 @@ font-family: "Titles";
 
 #flash {
 @include column($content-columns);
+text-align:center;
+}
+
+#flash_notice, #flash_alert, #flash_recaptcha_error {
+ padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_recaptcha_error {
+  background-color: #CCF;
+  border: solid 1px #66C;
+  color: #33F;
+font-weight: bold;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+  color: #0A0;
+  font-weight: bold;
+}
+
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+  color: #F33;
+font-weight: bold;
+}
+
+.fieldWithErrors {
+  display: inline;
 }
 
 #tutorial {
@@ -132,11 +216,12 @@ transition-property: top, left, height, width, opacity;
 
 #content {
 @include column($content-columns); 
-@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
+@include single-box-shadow(white, 0px, 0px, 50px, false, true);
 text-align: center;
 border: 1px solid $main-border-color;
 background-color: #fff;
-@include background-image(linear-gradient(top, white, darken(white,8%)));
+@include background-image(linear-gradient(top, white, #eef 5%, white));
+min-height: 400px;
 }
 
 #sidebar-right {
@@ -146,6 +231,11 @@ $sidebar-r-columns: floor($blueprint-grid-columns / 8);
 @include column($sidebar-r-columns, true); 
 text-align: center;
 padding: 10px;
+	#user_info {
+		@include background-image(linear-gradient(white, #eef 5%, white));
+		@include single-box-shadow(white, 0px, 0px, 10px, false, true);
+		border: 1px solid darken(#E9E9F5,10%);
+	}
 }
 
 #footer {
@@ -358,8 +448,11 @@ border-left: 2px solid $main-border-color;
 
 #bill-header {
 @include column($content-columns);
-border-bottom: 2px solid $main-border-color;
+@include single-box-shadow(white, 0px, 0px, 50px, false, true);
+border-bottom: 1px solid $main-border-color;
 padding-bottom: 10px;
+@include background-image(linear-gradient(top, #eef, #DDDBF1 85%, #eef));
+background-color:#DDDBF1;
 
 	#bill-header-icon {
 		@include column(floor($content-columns/4));
@@ -406,7 +499,6 @@ padding-bottom: 10px;
 }
 
 
-
 #bill-footer {
 border-top: 2px solid $main-border-color;
 @include column($content-columns);
@@ -424,7 +516,7 @@ padding: 20px;
 
 }
 #index-element {
-@include background-image(linear-gradient(top, white, darken(white, 8%)));
+
 border-bottom: 2px solid darken(white, 12%);
 }
 
@@ -559,6 +651,25 @@ text-align: center;
 padding-right: 20px;
 }
 
+#bill-winner {
+	font-size: 14px;
+	color: #5d5;
+	margin-right: 20px;
+	 a{
+		font-size: 14px;
+		color: #5d5;
+		text-decoration: none;
+	}
+	a:hover {
+		color: darken(#5d5,20%);
+	}
+}
+
+#bill-loser {
+	font-size: 14px;
+	color: #d55;
+	margin-right: 20px;
+}
 }
 
 #ideas {
@@ -621,7 +732,9 @@ vertical-align:middle;
 }
 
 .user-image {
-border: 2px solid #000;
+background-color: #fff;
+padding:5px;
+border: 1px solid #555;
 }
 
 div.meter {
@@ -703,12 +816,15 @@ font-size: 12px;
 font-weight: bold;
 }
 
-#preview {
+#preview {	
+	border: 1px #ddd solid;
+	margin: 10px;
+	padding: 10px;
 	#preview-header {
 		@include column(4);
 	}
 	#preview-content {
-		@include column($content-columns - 5);
+		@include column($content-columns - 6);
 		text-align: left;
 	}
 }
@@ -852,4 +968,110 @@ margin-right: 20px;
 text-align: center;
 margin-bottom: 10px;
 }
+
+.photo-field {
+@include box-shadow(rgba(0,0,0, 0.1), 0px, 0px, 8px); 
+@include rounded(5px);
+@include background-image(linear-gradient(white, #eee 3%, white));
+border: solid 1px #E5E5E5;
+width: 500px;
+padding:auto;
+margin: auto;
+padding-top: 10px;
+padding-bottom: 10px;
+
+label {
+	color: #999999;
+	}
+}
+
+
+.actions input {
+	position:relative;
+	@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, false);
+	@include button-button;
+	@include button-colors;
+	@include button-active-colors;
+	@include button-hover-colors;
+	@include rounded(5px);
+	@include background-image(linear-gradient(top, lighten(#617798,40%), #617798));
+	border: 1px solid #aaa;
+	text-decoration: none;
+	padding: 14px;
+	color: #fff;
+	}
+	
+.actions input:hover {
+	@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, true);
+	color: #fff;
+}
+	
+.field {
+	@include box-shadow(rgba(0,0,0, 0.1), 0px, 0px, 8px); 
+	@include rounded(10px);
+	@include background-image(linear-gradient(white, #eee 3%, white));
+	border: solid 1px #E5E5E5;
+	width: 500px;
+	padding:auto;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+	.recaptcha {
+		padding-left:90px;
+	}
+	
+	input, textarea {
+		@include box-shadow(rgba(0,0,0, 0.1), 0px, 0px, 8px); 
+		@include rounded(5px);
+		background-color: #fff;
+		border: solid 1px #E5E5E5;
+		outline: 0;
+		font: normal 13px/100% Verdana, Tahoma, sans-serif;
+		line-height: 150%;
+	}
+
+	input:hover, textarea:hover,
+	input:focus, textarea:focus {
+		@include box-shadow(rgba(0,0,0, 0.8), 0px, 0px, 8px); 
+		border-color: #C9C9C9;
+	}
+
+	label {
+		color: #999999;
+	}
+}
+
+.checkboxes-field {
+	@extend .field;
+	text-align: center;
+	padding-bottom: 20px;
+	.list {
+		width: 300px;
+		text-align: left;
+		padding: auto;
+		margin: auto;
+	}
+
+	input[type=checkbox] {
+    	display:none;
+  		}
+
+  	input[type=checkbox] + label {
+		@include rounded(5px);
+       padding-top: 12px;
+	   padding-bottom: 15px;
+   }
+   
+   input[type=checkbox]:checked + label
+    {
+		border: 2px #333 solid;
+    }
+
+	input[type=checkbox]:hover + label
+	    {
+	        @include opacity(0.5);
+	    }
+	}
+	
 }

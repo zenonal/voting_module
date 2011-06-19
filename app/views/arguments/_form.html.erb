@@ -10,13 +10,20 @@
       </ul>
     </div>
 <% end %>
+<div class="field">
 <%= f.label t(:new_arg_title) %>:<br>
 <%= f.text_field :title %>
 
 <%= f.textile_editor :content %>
-
-
+</div>
+<div class="field">
+	<div class="recaptcha">
+<%= recaptcha_tags %>
+</div>
+</div>
+<div class="actions">
 <%= f.submit t(:submit_str) %>
+</div>
 <% end %>
 
 

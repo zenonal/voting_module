@@ -55,28 +55,41 @@ class ApplicationController < ActionController::Base
   
   #helper method
   def filter_index(bills)
-    if params[:filter] && params[:filter][:level] && !(params[:filter][:level].to_i == 0)
-      if params[:user_level] == "off"
-         @bills = bills.where(:level => params[:filter][:level]).all(:order => "created_at DESC")
-         @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{params[:filter][:level]}")
+    if params[:filter] && params[:filter][:level]
+      level = params[:filter][:level].to_i
+    else
+      level = nil
+    end
+    if params[:filter] && params[:filter][:phase]
+      phase = params[:filter][:phase].to_i
+      if (params[:controller] == "referendums") && (phase==2)
+        phase = nil
+      end
+    else  
+        phase = nil
+    end
+    if params[:filter] && level && !(level == 0)
+      if params[:user_level] == "off" || current_user.commune.nil?
+         @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
+         @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{level}")
       else
-         @bills = bills.user_geographical_level(current_user,params[:filter][:level].to_i).all(:order => "created_at DESC")
-         if params[:filter][:level].to_i == 1
+         @bills = bills.user_geographical_level(current_user,level).all(:order => "created_at DESC")
+         if level == 1
            @geo = current_user.commune.name
          end
-         if params[:filter][:level].to_i == 2
+         if level == 2
             @geo = current_user.province.name
          end
-         if params[:filter][:level].to_i == 3
+         if level == 3
             @geo = current_user.region.name
          end
-         if params[:filter][:level].to_i == 4
+         if level == 4
             @geo = params[:filter][:level]
          end
       end
     else
        @bills = bills.all(:order => "created_at DESC")
-       if params[:user_level] == "off" || !user_signed_in?
+       if params[:user_level] == "off" || !user_signed_in? || current_user.commune.nil?
          @geo = t("#{bills[0].class.name.pluralize.downcase}.no_geo")
        else
          unless current_user.commune.nil?
@@ -87,13 +100,29 @@ class ApplicationController < ActionController::Base
          end
        end
     end
-    if params[:filter] && params[:filter][:phase].to_i >= 0
-      @bills = bills[0].class.filter_phase(@bills,params[:filter][:phase].to_i)
-      @phase = t("#{bills[0].class.name.pluralize.downcase}.phase#{params[:filter][:phase]}")
+    if phase && phase >= 0
+      @bills = bills[0].class.filter_phase(@bills,phase)
+      @phase = t("#{bills[0].class.name.pluralize.downcase}.phase#{phase}")
     else
-      @bills = bills[0].class.filter_phase(@bills,3,4)
+      @bills = bills[0].class.filter_phase(@bills,2,3,4,5)
       @phase = t("#{bills[0].class.name.pluralize.downcase}.phase_default")
     end
+    if params[:filter] && !params[:filter][:category].blank?
+      @bills = bills[0].class.filter_category(@bills,params[:filter][:category])
+      @categ = params[:filter][:category]
+    else
+      @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
+    end
+  end
+  
+  def not_current_languages
+    resp = []
+    LANGUAGES.each do |l|
+      if l.to_sym != I18n.locale
+        resp << l
+      end
+    end
+    return resp
   end
   
   protected
