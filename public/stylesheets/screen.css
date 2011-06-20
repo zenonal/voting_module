@@ -426,7 +426,7 @@ body.main-layout #container {
   background-image: -moz-linear-gradient(top, #e9e9f5, #ffffff);
   background-image: -o-linear-gradient(top, #e9e9f5, #ffffff);
   background-image: linear-gradient(top, #e9e9f5, #ffffff);
-  margin: 0px;
+  margin: auto;
 }
 /* line 91, ../../app/stylesheets/screen.scss */
 body.main-layout #tutorial_mode {

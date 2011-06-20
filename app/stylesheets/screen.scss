@@ -85,7 +85,7 @@ h2 {
 #container {
 @include container; 
 @include background-image(linear-gradient(top, #E9E9F5, white));
-margin: 0px;
+margin: auto;
 }
 
 #tutorial_mode {
