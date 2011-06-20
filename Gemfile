@@ -8,6 +8,7 @@ gem 'rails', '3.0.4.rc1'
 gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'omniauth'
+gem 'oa-openid', :require => 'omniauth/openid'
 gem 'declarative_authorization'
 gem "paperclip", "~> 2.3"
 gem "RedCloth", '4.2.2'

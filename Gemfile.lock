@@ -183,6 +183,7 @@ DEPENDENCIES
   declarative_authorization
   devise!
   haml
+  oa-openid
   omniauth
   paperclip (~> 2.3)
   rails (= 3.0.4.rc1)
