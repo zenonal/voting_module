@@ -6,6 +6,7 @@
 </div>
 <% else %>
 <% @featured_bills.each do |bill| %>
+<% unless bill.nil? %>
 <div id="featured-element">
 	<div id="featured-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %></div>
 	<div id="featured-large-column" class="bill-text-link">
@@ -22,6 +23,7 @@
 		<div class="clear"></div>
 		<div class="spacer"></div>
 	</div>
+	<% end %>
 	<% end %>
 </div>
 <% end %>
