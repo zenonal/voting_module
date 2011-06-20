@@ -28,7 +28,7 @@ en:
     current_validations: "Number of current validations"
     index: "Show me the list of validated initiatives"
     index_drafts: "Show me the list of initiatives waiting for validation"
-    index_title: "List of validated initiatives"
+    index_title: "List of initiatives"
     index_drafts_title: "List of initiatives waiting for validation"
     preview: "preview"
     modify: "modify"

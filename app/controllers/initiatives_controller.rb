@@ -6,7 +6,6 @@ class InitiativesController < ApplicationController
   # GET /initiatives
   # GET /initiatives.xml
   def index
-    restart_tutorial
     @categories = [""] + Category.all.collect {|l| [eval("l.name_#{I18n.locale}")]}
     filter_index(Initiative.not_blank)
     
@@ -19,12 +18,11 @@ class InitiativesController < ApplicationController
   # GET /initiatives/1
   # GET /initiatives/1.xml
   def show
-    restart_tutorial
     if (@initiative.current_phase == 5) 
       if @initiative.result.nil?
         w = Ranking.schulze(@initiative)
         Ranking.all_related_bills(@initiative).each_with_index do |b,index|
-          r = b.result.find_or_create_by_condorcet_winner(w)
+          r = b.build_result(:condorcet_winner => w)
           if w == index+1
             r.update_attribute(:winner,true)
           else
@@ -62,7 +60,6 @@ class InitiativesController < ApplicationController
   # GET /initiatives/new
   # GET /initiatives/new.xml
   def new
-    restart_tutorial
     @initiative = Initiative.new
     @not_lang = not_current_languages
 
@@ -74,7 +71,6 @@ class InitiativesController < ApplicationController
 
   # GET /initiatives/1/edit
   def edit
-    restart_tutorial
     @initiative = Initiative.find(params[:id])
     @not_lang = not_current_languages
     

@@ -5,8 +5,13 @@
   <title><%= yield(:title) || "Untitled" %></title>
 <%= render 'layouts/stylesheets' %>
 <%= render 'layouts/scripts' %>  
-	<% if (cookies[:tutorial_active] == "true") && tutorial_ok %>
-		<script src="/javascripts/tutorial.js" type="text/javascript"></script>
+	<% if (cookies[:tutorial_active] == "true") %>
+		<script src="/javascripts/tooltips.js" type="text/javascript"></script>
+		<% if I18n.translate("tutorial.#{params[:controller]}.#{params[:action]}").index("translation missing").nil? %>
+			<script src="/javascripts/tutorial.js" type="text/javascript"></script>
+		<% end %>
+	<% else %>
+		<script src="/javascripts/no_tooltips.js" type="text/javascript"></script>
 	<% end %>
 
   <%= csrf_meta_tag %>
@@ -19,51 +24,52 @@
 			<h1>
 			<%= link_to t(:headtitle), root_path, :class => "subtitle" %>
 			</h1>
+			<% if cookies[:tutorial_active] == "true" %>
+				<div id="tutorial_mode"><%= t('layout.tutorial_mode') %> | 
+					<%= link_to t('layout.turn_tutorial_off'), language_tutorial_url %>
+				</div>
+			<% end %>
 		</div>
-		<div id="language-links">
+		<div id="language-links" title="<%= raw t('tooltips.layout.languages') %>">
 			<%= link_to language_fra_url do %>
-					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif" title="French">
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_fr.gif">
 			<% end %>
 			<%= link_to language_ndl_url do %>
-					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif" title="Nederlands">
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_nl.gif">
 			<% end %>
 			<%= link_to language_eng_url do %>
-					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif" title="English">
+					<img width="20" height="20" border="" align="middle" alt="" src="/images/bt_us.gif">
 			<% end %>
 		</div>
-		<div id="sidebar-left">
-			<div style="height: 50px;"></div>
-			
-		</div>
+		
 		<div id="container2">
 			
-			<div id="flash">
-	      		<% flash.each do |name, msg| %>
-	        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-	      		<% end %>
-			</div>
-			<% if (cookies[:tutorial_active] == "true") && tutorial_ok %>
-			<div id="tutorial" style=<%= "left:#{cookies[:tutorial_hposition]}px; top:#{cookies[:tutorial_vposition]}px;" %>>
+			
+			<% if (cookies[:tutorial_active] == "true") && 
+				I18n.translate("tutorial.#{params[:controller]}.#{params[:action]}").index("translation missing").nil? %>
+			<div id="tutorial">
 				<%= render :partial => "layouts/tutorial" %>
 			</div>
 			<% end %>
 			<div id="content">
 				<div id="menu">
+					<div id="flash">
+			      		<% flash.each do |name, msg| %>
+			        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			      		<% end %>
+					</div>
 					<%= link_to initiatives_path do %>
 					<div id="menu-item">
-					<%= image_tag("citoyens.jpg",:size => "40x40") %>
 					<div id="menu-title"><%= t('initiatives.title2') %></div>
 					</div>
 					<%end %>
 					<%= link_to referendums_path do %>
 					<div id="menu-item">
-					<%= image_tag("partis-politiques-belges.jpg",:size => "40x40") %>
 					<div id="menu-title"><%= t('referendums.title2') %></div>
 					</div>
 					<% end %>
 					<%= link_to language_tutorial_url do %>
 					<div id="menu-item">
-					<img width="40" height="40" border="" align="middle" alt="" src="/images/bt_tut.gif" title="Tutorial">
 					<div id="menu-title"><%= t('tutorial.title') %></div>
 					</div>
 					<% end %>
@@ -71,33 +77,37 @@
 				</div>
 				<%= yield %>
 			</div>
-		  
+		  	<div id="sidebar-right">
+
+					<div id="user_info" title="<%= raw t('tooltips.layout.user_info') %>">
+						<h3><%= t("layout.user_info") %></h3>
+							<% if user_signed_in? %>
+							<p>
+								<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
+								<% if current_user.photo.blank?%>
+									<%= link_to t('layout.add_photo'), edit_user_registration_path, :class => "link" %>
+								<% else %>
+									<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
+								<% end %>
+								</p>
+								<% if current_user.commune.nil? %>
+									<%= link_to t('layout.add_postal_code'), edit_user_registration_path, :class => "link" %>
+								<% else %>
+									<p><%= current_user.commune.name %></p>
+								<% end %>
+
+					          	<p><%= link_to t('layout.sign_out'), destroy_user_session_path, :class => "button" %></p>
+					        <% else %>
+					          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+					        <% end %>
+					</div>
+					<div id="featured" title="<%= raw t('tooltips.layout.featured') %>">
+						<%= render "layouts/featured" %>
+					</div>
+			</div>
 		</div>
 		
-		<div id="sidebar-right">
-			
-				<div id="user_info">
-						<% if user_signed_in? %>
-						<p>
-							<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
-							<% if current_user.photo.blank?%>
-								<%= link_to t('layout.add_photo'), edit_user_registration_path, :class => "link" %>
-							<% else %>
-								<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
-							<% end %>
-							</p>
-							<% if current_user.commune.nil? %>
-								<%= link_to t('layout.add_postal_code'), edit_user_registration_path, :class => "link" %>
-							<% else %>
-								<p><%= current_user.commune.name %></p>
-							<% end %>
-				          	
-				          	<p><%= link_to t('layout.sign_out'), destroy_user_session_path, :class => "button" %></p>
-				        <% else %>
-				          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
-				        <% end %>
-				</div>
-		</div>
+		
 		<div id="footer">
 			
 		</div>

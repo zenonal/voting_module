@@ -2,55 +2,49 @@ en:
   tutorial:
     title: "Tutorial"
     pages:
-      homepage: 
-        step1: "<p>Welcome to the voting module!</p>
+      homepage: "<p>Welcome to the voting module!</p>
                 <p>This little window is here to provide you valuable information to start using this website.
                 You can deactivate it at anytime.</p>
                 <p>The objective of this website is twofold: allowing you to vote on propositions of 
                 laws or policies recently put forth by our politicians, and allowing you to submit your own proposals and vote on
                 proposals of other citizens.</p>
                 <p>Please feel free to explore this website, vote and share your ideas!</p>"
-        step2: "<p>You can use these icons to change the language used on this website at anytime.</p>
-                <p>Clicking on the question mark toggles the tutorial on and off.</p>
-                <p>If you need help on a specific icon or menu, just place your mouse cursor over it and a tooltip will appear!</p>"
-        
     
     user:
-      show: "<p>Here you can see all the public activity of users. This can be you or any other user. 
-            Public activity includes initiatives, amendments and points of views that have been posted. It does not 
-            include the private votes of course.</p>
+      show: "<p>Here you can see all the public activity of users. Public activity includes initiatives, amendments and points 
+                of views that have been posted. It does not include the private votes of course.</p>
             <p>If this is the profile of a user that has chosen to become a delegate, you will be able to see how this user
-             voted as a delegate on all the proposals.You can then also delegate your votes to them.
-            If you do that, you don't have to vote on each proposal anymore. Each time the delegate will vote, 
+             voted as a delegate on all the proposals. You can then choose to delegate your votes to this user if you want to.
+            By doing that, you won't have to vote on each proposal anymore. Each time the delegate will vote, 
             you will vote automatically the same. <br/> Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
-            You can also change your delegate at any time.</p>"    
+            You can also cancel your delegation or change your delegate at any time. Finally, you can also choose to become a delegate yourself.
+            </p>"    
     
     initiatives:
         index: "<p>Here you can see all the initiatives recently proposed by other citizens.
-                  <br />This shows only the initiatives that have already passed validation, which means that
-                  they have been endorsed by enough people. Please have a look also at the initiatives waiting for validation. 
-                  You can do so by clicking on the link \"Show me the list of initiatives waiting for validation\" below.</p>
+                  <br />You can extend or narrow down the selection of initiatives that are shown here by clicking on the \"options\" button.</p>
                 <p>Click on one of the proposals to see the details and vote.</p>"
                
-        show: "<p>Here you have all the details on one of the proposals recently submitted by another citizen.
-                <br />On the left panel, you have all the vote-related information. You can see the current vote result, 
-                cast your private vote, or cast your vote as a delegate. You can change your vote at anytime.</p>
-                <p>On the right you have the text of the proposal, followed by the picture of the author of the initiative.</p>
-                <p>Under that, you can see all the alternative proposals that have been proposed by other users. 
-                You can see the details by clicking on it.</p>
-                <p>Finally, you have the points of view of other users on this proposal. You can also submit your own of course.</p>"
+        show: "<p>Here you have all the details on one of the proposals recently submitted by another citizen.</p>
+                <p>A citizen initiative will pass successively through 5 stages:
+                <p>The first stage is the editing stage, during which the authors of the bill 
+                have one week to edit the content of the bill until it suits them. Other users can leave messages to help them improve their draft.</p>
+                <p>The second stage is the validation stage. During this period, users can validate the bill by clicking on the checkmark on the left of this page. 
+                Once the validation threshold is reached (3% of the currently active users), the bill passes to the next phase. If the bill does not
+                reach validation in 2 weeks, it is eliminated.</p>
+                <p>The third stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
+                <p>During the fourth stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p>"
       
     referendums:
       index: "<p>Here you can see all the propositions recently put forth by politicians.
               <p>Click on one of them to see the details and vote.</p>"
     
       show: "<p>Here you have all the details on one of the proposals recently put forth by politicians.
-             <br />On the left panel, you have all the vote-related information. You can see the current vote result, 
-             cast your private vote, or cast your vote as a delegate. You can change your vote at anytime.</p>
-             <p>On the right you have the text of the proposal, followed by the picture of the politicians who proposed it.</p>
-             <p>Under that, you can see all the alternative proposals that have been proposed by users like you. 
-             You can see the details by clicking on it.</p>
-             <p>Finally, you have the points of view of other users on this proposal. You can also submit your own of course.</p>"
+                <p>A referendum will pass successively through 3 stages:
+                <p>The first stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
+                <p>During the third stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p>"
              
     delegates:
       index: "<p>This is a list of all the users that have chosen to become a delegate. 
@@ -60,3 +54,5 @@ en:
                 Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
                 You can also change your delegate at any time.</p><p> Give it a try...</p>"
                 
+    authentications: 
+      index: "Here you can login by using either one of the featured social networks or by using a standard password-based method."

@@ -7,8 +7,15 @@ class Ranking < ActiveRecord::Base
   scope :for_ranker,    lambda { |*args| {:conditions => ["ranker_id = ? AND ranker_type = ?", args.first.id, args.first.class.name]} }
   scope :for_ranker_type,    lambda { |*args| where("ranker_type = ?", args.first.class.name) }
   scope :for_rankable, lambda { |*args| {:conditions => ["rankable_id = ? AND rankable_type = ?", args.first.id, args.first.class.name]} }
+  scope :for_rankable_type, lambda { |*args| {:conditions => ["rankable_type = ?", args.first.class.name]} }
   scope :in_favor, where("rank > ?", 0)
   scope :against, where("rank < ?", 0)
+  
+  def self.number_of_votes(ranker)
+          result = Ranking.for_ranker(ranker).for_rankable_type(Initiative.first).count
+          result += Ranking.for_ranker(ranker).for_rankable_type(Referendum.first).count
+          return result
+  end
   
   def self.ranked_on?(ranker,rankable)
      0 < Ranking.count(:all, :conditions => [

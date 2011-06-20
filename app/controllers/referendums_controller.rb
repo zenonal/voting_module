@@ -17,12 +17,11 @@ class ReferendumsController < ApplicationController
   # GET /referendums/1
   # GET /referendums/1.xml
   def show
-    @referendum = Referendum.find(params[:id])
     if (@referendum.current_phase == 5) 
       if @referendum.result.nil?
         w = Ranking.schulze(@referendum)
         Ranking.all_related_bills(@referendum).each_with_index do |b,index|
-          r = b.result.find_or_create_by_condorcet_winner(w)
+          r = b.build_result(:condorcet_winner => w)
           if w == index+1
             r.update_attribute(:winner,true)
           else
@@ -59,7 +58,6 @@ class ReferendumsController < ApplicationController
   # GET /referendums/new
   # GET /referendums/new.xml
   def new
-    @referendum = Referendum.new
     @not_lang = not_current_languages
 
     respond_to do |format|
@@ -72,7 +70,6 @@ class ReferendumsController < ApplicationController
   def edit
     @not_lang = not_current_languages
     
-    @referendum = Referendum.find(params[:id])
     unless (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
       redirect_to(@referendum)
     end
@@ -81,7 +78,6 @@ class ReferendumsController < ApplicationController
   # POST /referendums
   # POST /referendums.xml
   def create
-    @referendum = Referendum.new(params[:referendum])
     @not_lang = not_current_languages
     if @initiative && verify_recaptcha()
       flash.delete(:recaptcha_error)
@@ -133,7 +129,7 @@ class ReferendumsController < ApplicationController
   # PUT /referendums/1.xml
   def update
     @not_lang = not_current_languages
-    if @initiative && verify_recaptcha()
+    if @referendum && verify_recaptcha()
       flash.delete(:recaptcha_error)
 
       if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
@@ -179,7 +175,6 @@ class ReferendumsController < ApplicationController
   # DELETE /referendums/1
   # DELETE /referendums/1.xml
   def destroy
-    @referendum = Referendum.find(params[:id])
     if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
       @referendum.destroy
 
@@ -194,7 +189,6 @@ class ReferendumsController < ApplicationController
   
   
   def vote
-    @referendum = Referendum.find(params[:id])
     @amendments = @referendum.amendments.not_blank.all_validated
     
     respond_to do |format|
@@ -204,7 +198,6 @@ class ReferendumsController < ApplicationController
   end
   
   def show_results
-    @referendum = Referendum.find(params[:id])
     if @referendum.current_phase == 5
       @amendments = @referendum.amendments.not_blank.all_validated
       @winner = @referendum.result.condorcet_winner
@@ -219,7 +212,6 @@ class ReferendumsController < ApplicationController
   end
   
   def ranking
-    @referendum = Referendum.find(params[:id])
     @amendments = @referendum.amendments.not_blank.all_validated
     @parsed_json = ActiveSupport::JSON.decode(params[:rankings])
     rank = []

@@ -51,10 +51,6 @@ module ApplicationHelper
       args = args.map { |arg| arg == :defaults ? arg : arg.to_s }
       content_for(:head) { javascript_include_tag(*args) }
     end
-    
-  def tutorial_ok
-    !@tutorial_positions[params[:controller]].nil? && !@tutorial_positions[params[:controller]][params[:action]].nil?
-  end
   
   def humanize_duration(duration)
     output = ""

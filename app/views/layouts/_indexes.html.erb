@@ -16,10 +16,10 @@
 	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %></div>
 	<div id="index-column">
 		<p><%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %></p>
-		<div id="bill-phase">
+		<div id="bill-phase" title="<%= raw t('tooltips.layout.bill_phase') %>">
 			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %></h4>
 		</div>
-		<h4>
+		<h4  title="<%= raw t('tooltips.layout.bill_level') %>">
 			<% if bill.level == "4" %>
 			<%= t("#{params[:controller]}.level4") %>
 			<% end %>
@@ -95,7 +95,7 @@
 		<% end %>
 		
 		<% if bill.current_phase == 5 %>
-		<div id="index-column">
+		<div id="index-column" title="<%= raw t('tooltips.layout.bill_results') %>">
 			<% unless bill.result.nil? %>
 				<% if bill.result.winner %>
 					<div id="bill-winner">
@@ -140,7 +140,7 @@
 
 
 		<div id="index-large-column" class="bill-text-link">
-			<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(bill.content_#{I18n.locale}).to_html"), :length => 250))), bill %>"</p>
+			<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(bill.content_#{I18n.locale}).to_html"), :length => 400))), bill %>"</p>
 		</div>
 
 		<div class="clear"></div>

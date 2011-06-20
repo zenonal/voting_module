@@ -16,7 +16,9 @@
 					<%= sprintf("%.2f",Ranking.average_rank(b)) %>
 				</div>
 				<div class="percent_approval">
-					<%= Ranking.percent_approval(b).round %>%
+					<% unless Ranking.percent_approval(b).nan? %>
+						<%= Ranking.percent_approval(b).round %>%
+					<% end %>
 				</div>
 				<div class="clear"></div>
 				<br/>

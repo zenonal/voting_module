@@ -13,7 +13,7 @@ en:
       add_photo: 'Add your photo'
       add_postal_code: 'Missing postal code'
       activate_tutorial: "Turn the tutorial on"
-      turn_tutorial_off: "Switch off the tutorial"
+      turn_tutorial_off: "Turn the tutorial off"
       go_on_tutorial: "Go on with tutorial"
       points_of_view: "Your point of view on this bill"
       filter: "Apply options"
@@ -47,8 +47,10 @@ en:
       private_activity: "Summary of private activity"
       public_activity: "Summary of public activity"
       change_pwd: "Change your password"
-      
-      
+      featured_bills: "Featured bills"
+      user_info: "Your profile"
+      tutorial_mode: "You are currently in tutorial mode"
+     
   homepage:
       title: 'Voting module'
   

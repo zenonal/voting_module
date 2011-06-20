@@ -1,14 +1,12 @@
 VotingModule::Application.routes.draw do
 
+  root :to => "pages#homepage"
+        
   get "pages/Homepage"
 
   match '/auth/:provider/callback' => 'authentications#create'
 
   devise_for :users, :controllers => {:registrations => 'registrations'} 
-  
-  resources :user 
-  resources :delegates
-  resources :delegations
   
   get "language/tutorial"
     
@@ -52,9 +50,13 @@ VotingModule::Application.routes.draw do
   
   resources :categories
   
-  root :to => "pages#homepage"
+  resources :user 
+  resources :delegates
+  resources :delegations
   
   match ':controller(/:action(/:id(.:format)))'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

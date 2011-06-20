@@ -1,5 +1,16 @@
 en:
   tooltips:
+    layout: 
+      languages: "<p>These icons allow you to change the current language.</p>
+                <p>Attention! Changing the language will also change the bills you will have access to: only the bills translated 
+                in your language will be visible.</p>"
+      user_info: "This section gives you access to your profile information."
+      featured: "Here you can see examples of bills picked randomly."
+      index_options: "Click here to select bills based on particular criteria."
+      bill_phase: "This shows the current status of the bill, i.e. whether it is being edited, open to validation, open to votes, etc..."
+      bill_level: "This indicates the geographical level of the bill, i.e. whether it is communal, provincial, regional or federal."
+      bill_results: "This shows a short summary of the results of the votes on this bill."
+              
     vote_yes: "Vote in favor of the bill"
     vote_no: "Vote against the bill"
     choose_delegate: "If you don't want to vote on each single bill, click here to delegate your vote to another user."

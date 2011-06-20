@@ -19,6 +19,20 @@ writing-mode: tb-rl;
 transform: rotate(90deg);
 }
 
+@mixin transition {
+z-index:1;
+-webkit-transition-duration: 1s;
+-moz-transition-duration: 1s;
+-o-transition-duration: 1s;
+-ms-transition-duration: 1s;
+transition-duration: 1s;
+-webkit-transition-property: top, left, height, width, opacity;
+-moz-transition-property: top, left, height, width, opacity;
+-o-transition-property: top, left, height, width, opacity;
+-ms-transition-property: top, left, height, width, opacity;
+transition-property: top, left, height, width, opacity;
+}
+
 
 // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
@@ -36,6 +50,7 @@ transform: rotate(90deg);
 @include font-face("Subtitles", font-files("colabreg-webfont.ttf", truetype));
 @include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
 @include font-face("SubSubtitles", font-files("miso-webfont.ttf", truetype));
+@include font-face("Tooltips", font-files("play-regular-webfont.ttf", truetype));
 
 body.bp {
 @include blueprint-typography(true);
@@ -70,13 +85,27 @@ h2 {
 #container {
 @include container; 
 @include background-image(linear-gradient(top, #E9E9F5, white));
-margin-top: 0px;
+margin: 0px;
+}
+
+#tutorial_mode {
+position:relative;
+top: 100px;
+left: -80px;
+font-family: "Tooltips", helvetica;
+font-size: 16px;
+color: green;
+	a {
+	text-decoration: none;
+	font-size: 18px;
+	}
 }
 
 #language-links {
 	position:relative;
 	top: -220px;
 	left: 50px;
+	width: 150px;
 	a {
 		text-decoration:none;
 	list-style-type: none;
@@ -99,7 +128,17 @@ text-align: center;
 }
 
 #container2 {
-@include column($content-columns); 
+position: relative;
+@include column($blueprint-grid-columns - 2); 
+@include single-box-shadow(white, 0px, 0px, 50px, false, true);
+text-align: center;
+border: 1px solid $main-border-color;
+background-color: #fff;
+@include background-image(linear-gradient(top, white, #eef 5%, white));
+min-height: 400px;
+margin: 0px;
+padding: 0px;
+margin-left: 50px;
 }
 
 #menu {
@@ -155,6 +194,27 @@ font-size: 30px;
 font-family: "Titles";
 }
 
+#error_explanation {
+margin-bottom: 20px;
+border: 2px #D66 solid;
+color: #B55;
+font-weight: bold;
+font-size: 16px;
+background-color: lighten(#D66,30%);
+
+	h2 {
+	font-family: "Verdana";
+	font-weight: bold;
+	color: #B55;
+	font-size: 15px;
+	text-transform: capitalize;
+	letter-spacing:2px
+	}
+	ul {
+		list-style-type:none;
+	}
+}
+
 #flash {
 @include column($content-columns);
 text-align:center;
@@ -191,8 +251,8 @@ font-weight: bold;
 }
 
 #tutorial {
+font-family: "Tooltips", helvetica;
 position: absolute;
-@include opacity(.8);
 @include rounded(10px);
 @include column($content-columns);
 @include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
@@ -201,40 +261,40 @@ border: 1px solid $main-border-color;
 padding: 20px;
 margin-bottom: 20px;
 @include background-image(linear-gradient(left, lighten(green,75%), lighten(green,70%)));
-z-index:1;
--webkit-transition-duration: 1s;
--moz-transition-duration: 1s;
--o-transition-duration: 1s;
--ms-transition-duration: 1s;
-transition-duration: 1s;
--webkit-transition-property: top, left, height, width, opacity;
--moz-transition-property: top, left, height, width, opacity;
--o-transition-property: top, left, height, width, opacity;
--ms-transition-property: top, left, height, width, opacity;
-transition-property: top, left, height, width, opacity;
+left: 300px;
+top: -100px;
+text-align:justify;
+}
+
+.tooltip {
+	font-family: "Tooltips", helvetica;
+	display:none;
+	@include opacity(.8);
+	@include rounded(10px);
+	@include column($content-columns);
+	@include single-box-shadow(white, 0px, 0px, 30px, false, true);
+	@include background-image(linear-gradient(top, white, lighten(green,65%) 5%, white));
+	border: 1px solid darken(green,25%);
+	font-size:13px;
+	width:160px;
+	padding:25px;
+	color:#000;	
 }
 
 #content {
 @include column($content-columns); 
-@include single-box-shadow(white, 0px, 0px, 50px, false, true);
-text-align: center;
-border: 1px solid $main-border-color;
-background-color: #fff;
-@include background-image(linear-gradient(top, white, #eef 5%, white));
-min-height: 400px;
+border-right: 1px solid $main-border-color;
+margin: 0px;
+min-height: 1000px;
 }
 
 #sidebar-right {
-
-// One third of the grid columns, rounding down. With 24 cols, this is 8.
-$sidebar-r-columns: floor($blueprint-grid-columns / 8);
 @include column($sidebar-r-columns, true); 
-text-align: center;
-padding: 10px;
+margin:0px;
+padding:0px;
 	#user_info {
-		@include background-image(linear-gradient(white, #eef 5%, white));
-		@include single-box-shadow(white, 0px, 0px, 10px, false, true);
-		border: 1px solid darken(#E9E9F5,10%);
+		margin:0px;
+		padding-top: 10px;
 	}
 }
 
@@ -634,6 +694,15 @@ border-bottom: 2px solid darken(white, 12%);
 			top: -5px;
 		}
 	}
+}
+
+#featured-column {
+@include column($sidebar-r-columns);
+}
+
+#featured-content {
+	border-top: 1px solid $main-border-color;
+	padding: 10px;
 }
 
 #index-column {

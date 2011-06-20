@@ -4,7 +4,6 @@ class PagesController < ApplicationController
     if params[:neutral]
       @parsed_json = ActiveSupport::JSON.decode(params[:neutral])
     end
-    restart_tutorial
   end
   
   def increment_tutorial

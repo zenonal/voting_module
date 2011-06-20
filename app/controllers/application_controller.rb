@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_mode
   before_filter {|c| Authorization.current_user = c.current_user}
-  before_filter :set_tutorial
+  before_filter :set_featured
   
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
@@ -31,26 +31,11 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def set_tutorial
-    if cookies[:tutorial_index].nil?
-      cookies[:tutorial_index] = 1
-    end
-    if defined?(@tutorial_positions).nil? || @tutorial_positions.nil?
-      @tutorial_positions= Rails.cache.read('tutorial_positions')
-    end
-    if @tutorial_positions[params[:controller]] && @tutorial_positions[params[:controller]][params[:action]]
-      cookies[:tutorial_length] = @tutorial_positions[params[:controller]][params[:action]].size
-      cookies[:tutorial_controller] = params[:controller]
-      cookies[:tutorial_action] = params[:action]
-      cookies[:tutorial_hposition] = @tutorial_positions[params[:controller]][params[:action]]["step#{cookies[:tutorial_index].to_i}"]["left"]
-      cookies[:tutorial_vposition] = @tutorial_positions[params[:controller]][params[:action]]["step#{cookies[:tutorial_index].to_i}"]["top"]
-    end
-  end
-  
-  def restart_tutorial
-    cookies[:tutorial_index] = 1
-    cookies[:tutorial_hposition] = @tutorial_positions[cookies[:tutorial_controller]][cookies[:tutorial_action]]["step#{cookies[:tutorial_index].to_i}"]["left"]
-    cookies[:tutorial_vposition] = @tutorial_positions[cookies[:tutorial_controller]][cookies[:tutorial_action]]["step#{cookies[:tutorial_index].to_i}"]["top"]
+  def set_featured
+    b = Initiative.filter_phase(Initiative.all,2,3,4,5)
+    @featured_bills = [b[rand(b.count)]]
+    b = Referendum.filter_phase(Referendum.all,2,3,4,5)
+    @featured_bills << b[rand(b.count)]
   end
   
   #helper method

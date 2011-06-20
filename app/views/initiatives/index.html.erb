@@ -10,7 +10,7 @@
 <% if permitted_to? :create, Initiative.new %>
 	<%= link_to t("initiatives.new"), new_initiative_path, :class => "button" %>
 <% else %>
-	<p><%= t("#{@controller}.want_initiative") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+	<p><%= t("initiatives.want_initiative") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 <% end %>
 <% if permitted_to? :create, Category.new %>
 	<%= link_to t("initiatives.new_category"), new_category_path, :class => "button" %>

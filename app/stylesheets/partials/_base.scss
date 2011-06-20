@@ -14,6 +14,7 @@ $bill-sidebar-columns: floor($content-columns/3);
 $bill-content-columns: ceil(2*$content-columns/3) - 1;
 $bill-footer-columns: ceil($bill-content-columns/2);
 $one-column: floor($bill-sidebar-columns/4);
+$sidebar-r-columns: $blueprint-grid-columns - 2 - $content-columns;
 
 $index-columns: floor($content-columns/5);
 $index-margin: $content-columns - (4*$index-columns);
@@ -29,7 +30,7 @@ $blueprint-button-hover-background-color: $blueprint-button-background-color;
 $blueprint-button-hover-font-color: $blueprint-button-font-color;
 $blueprint-button-active-border-color: #6299c5;
 
-$main-border-color: #A6A6A6;
+$main-border-color: #A6A6B6;
 $default-box-shadow-blur: 30px;
 $default-box-shadow-spread: false;
 $default-box-shadow-inset: false;

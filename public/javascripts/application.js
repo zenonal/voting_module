@@ -7,7 +7,7 @@ $j(document).ready(function() {
 	$j('#filter_options').hide();
 	$j("#options_toggle").click(function() {
 			// perform exposing for the clicked element
-			$j('#filter_options').toggle("slow");
+			$j('#filter_options').toggle();
 		});	
 	$j('#pwd_options').hide();	
 	$j("#pwd_toggle").click(function() {
@@ -19,11 +19,11 @@ $j(document).ready(function() {
 	$j('#translations_show').click(function(){
 		$j('#bill_translation').show("slow");
 		$j('#translations_show_container').hide();
-		$j('#translations_hide_container').show();
+		$j('#translations_hide_container').show("slow");
 		});
 	$j('#translations_hide').click(function(){
 		$j('#bill_translation').hide("slow");
-		$j('#translations_show_container').show();
+		$j('#translations_show_container').show("slow");
 		$j('#translations_hide_container').hide();
 		});
 	
