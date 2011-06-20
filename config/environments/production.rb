@@ -49,4 +49,6 @@ VotingModule::Application.configure do
   
   ENV['RECAPTCHA_PUBLIC_KEY'] = '6LcmacUSAAAAACG35RfWYwwxiDHi5vh5t0jo6iVe'
   ENV['RECAPTCHA_PRIVATE_KEY'] = '6LcmacUSAAAAAOUsDIP3PLelMyPclhvN-zfIhaI-'
+  
+  Sass::Plugin.options[:never_update] = true
 end
