@@ -80,7 +80,7 @@ class Initiative < ActiveRecord::Base
   
   scope :all_not_validated, where(["validated = ?", false])
   
-  scope :not_blank, where(["content_#{I18n.locale} != \"\""])
+  scope :not_blank, where(["content_#{I18n.locale} != ''"])
   
   attr_readonly :validations_count
   
