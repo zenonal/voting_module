@@ -3,6 +3,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   if ENV['RAILS_ENV'] == 'development'
           provider :facebook, '202977543065805', '7d528a25c5c42fea923abe4cc32d02a7' 
   else
-          provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5'
+          provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5', {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}
   end
+  
 end
