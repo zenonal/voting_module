@@ -99,6 +99,8 @@ class ApplicationController < ActionController::Base
                         else
                                 @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
                         end
+                else
+                        @bills = []
                 end
         end
 
