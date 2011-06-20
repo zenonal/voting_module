@@ -37,7 +37,7 @@ class Commune < ActiveRecord::Base
     c=communes["en"]
     c.each do |cc|
       pc = cc.first
-      if pc[0] == "C"
+      if pc[0,1] == "C"
         postal = pc[1..pc.length].to_i
         if postal >= 1000 && postal < 1300
           p1.communes.find_or_create_by_postal_code(postal)
