@@ -1,6 +1,25 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
+  errors:  
+    messages:  
+      not_found: "not found"  
+      already_confirmed: "was already confirmed"  
+      not_locked: "was not locked"  
+
+  devise:  
+    failure:  
+      unauthenticated: 'You need to sign in or sign up before continuing.'  
+      unconfirmed: 'You will soon receive an email form us. Please use the link in this email to activate your account.'  
+      locked: 'Your account is locked.'  
+      invalid: 'OH NOES! ERROR IN TEH EMAIL!'  
+      invalid_token: 'Invalid authentication token.'  
+      timeout: 'Your session expired, please sign in again to continue.'  
+      inactive: 'Your account was not activated yet.'  
+    sessions:  
+      signed_in: 'Signed in successfully.'  
+      signed_out: 'Signed out successfully.'
+      
   custom_error:
     perm_denied: 'Sorry, you are not allowed to access that page.'
     recaptcha_error: "blabla"
