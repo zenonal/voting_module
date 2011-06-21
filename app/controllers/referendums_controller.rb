@@ -93,8 +93,9 @@ class ReferendumsController < ApplicationController
             @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
           end
         end
-
-        @referendum.category = Category.find_or_create_by_name_en(params[:category])
+        if params[:category]
+                @referendum.category = Category.find_by_name_en(params[:category])
+        end
 
         if @referendum.level == "1"
           @referendum.level_code = current_user.commune.postal_code

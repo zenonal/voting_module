@@ -89,7 +89,9 @@ class InitiativesController < ApplicationController
     @not_lang = not_current_languages
     if @initiative && verify_recaptcha()
       flash.delete(:recaptcha_error)
-      @initiative.category = Category.find_or_create_by_name_en(params[:category])
+      if params[:category]
+          @initiative.category = Category.find_by_name_en(params[:category])
+      end
       
       @initiative.user = current_user
       if @initiative.level == "1"
