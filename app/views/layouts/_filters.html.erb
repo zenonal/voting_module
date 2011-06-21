@@ -29,9 +29,9 @@
 			<% end %>
 			<p><%= label_tag t("user_phase_select") %>
 			<% if params[:filter] && params[:filter][:phase] %>
-				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, bill_model::PHASES.index(p) + (6-"#{bill_model.name.upcase}_LEVELS".constantize.length)]}, :selected => params[:filter][:phase]) %>
+				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, "#{bill_model.name.upcase}_LEVELS".constantize.index(p) + (6-"#{bill_model.name.upcase}_LEVELS".constantize.length)]}, :selected => params[:filter][:phase]) %>
 			<% else %>
-				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, bill_model::PHASES.index(p) + (6-"#{bill_model.name.upcase}_LEVELS".constantize.length)]}) %>
+				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, "#{bill_model.name.upcase}_LEVELS".constantize.index(p) + (6-"#{bill_model.name.upcase}_LEVELS".constantize.length)]}) %>
 			<% end %>
 			</p>
    		</div>
