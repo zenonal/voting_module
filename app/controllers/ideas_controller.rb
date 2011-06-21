@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   def index
     @brainstorm = find_brainstorm
     @bill = @brainstorm.brainstormable
-    @ideas = current_user.ideas.for_bill(@bill)
+    @ideas = current_user.ideas.for_bill(@bill).not_blank
 
     respond_to do |format|
       format.html
@@ -20,7 +20,7 @@ class IdeasController < ApplicationController
     def index_all
       @brainstorm = find_brainstorm
       @bill = @brainstorm.brainstormable
-      @ideas = @brainstorm.ideas.sort {|a,b| (b.votes_for-b.votes_against) <=> (a.votes_for-a.votes_against) }
+      @ideas = @brainstorm.ideas.not_blank.sort {|a,b| (b.votes_for-b.votes_against) <=> (a.votes_for-a.votes_against) }
       
       respond_to do |format|
         format.html
@@ -33,7 +33,7 @@ class IdeasController < ApplicationController
   def select_ideas
     @brainstorm = find_brainstorm
     @bill = @brainstorm.brainstormable
-    @ideas = @brainstorm.ideas.not_from_user(current_user).shuffle.first(5)
+    @ideas = @brainstorm.ideas.not_from_user(current_user).not_blank.shuffle.first(10)
     
      respond_to do |format|
         format.html

@@ -1,6 +1,5 @@
 
 <div id="bill-sidebar">	
-	<%= link_to t('layout.brainstorm'), {:controller => :ideas, :action => :index, "#{bill.class.name}_id".to_sym => bill.id }, :class => "button brainstorm" %>
 	
 	<% if bill.current_phase == 0 %>
 		<div id="bill-time">
@@ -155,4 +154,10 @@
 			<% end %>
 		</div>
 	<% end %>
+	<hr />
+	<% if @ideas %>
+		<h4><%= t('brainstorms.best_idea') %></h4>
+		<h5><%= eval("@ideas.content_#{I18n.locale}") %></h5>
+	<% end %>
+	<%= link_to t('layout.brainstorm'), {:controller => :ideas, :action => :index, "#{bill.class.name}_id".to_sym => bill.id }, :class => "button brainstorm" %>
 </div>

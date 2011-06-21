@@ -50,7 +50,11 @@ class InitiativesController < ApplicationController
     else
          @delegated_vote = nil
     end
-
+    if @initiative.brainstorm
+        @ideas = @initiative.brainstorm.ideas.not_blank.sort {|a,b| (b.votes_for-b.votes_against) <=> (a.votes_for-a.votes_against) }.first
+    else
+        @ideas = nil
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @initiative }

@@ -58,3 +58,9 @@ en:
                 
     authentications: 
       index: "Here you can login by using either one of the featured social networks or by using a standard password-based method."
+      
+    ideas:
+      index: "<p>Welcome to the brainstorm!</p>
+                <p>Here you can submit anonymously your ideas regarding the bill. Try to propose ideas that either clarify the problem
+                that the bill is trying to solve or represent potential solutions to this problem.</p>
+                Then you will have the opportunity to see the ideas of other users and to vote on them."
