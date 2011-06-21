@@ -102,11 +102,6 @@ en:
      
   homepage:
       title: 'Voting module'
-  initiatives:
-      level4: "federal"
-      level3: "regional"
-      level2: "provincial"
-      level1: "communal"
   
   headtitle: "Voting Module"
   submit_str: "Submit"

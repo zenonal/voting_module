@@ -15,7 +15,7 @@
   <% end %>
   <div class="field">
 	<%= f.label t('layout.choose_level') %><br />
-	<%= f.select :level, Initiative::LEVELS.collect {|l| [l, Initiative::LEVELS.index(l)]} %>
+	<%= f.select :level, INITIATIVE_LEVELS.collect {|l| [l, INITIATIVE_LEVELS.index(l)]} %>
   </div>
 <br /><br /><br />
 <div class="photo-field">

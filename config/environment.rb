@@ -13,3 +13,4 @@ BILL_EDITING_DURATION = 1.week
 BILL_AMENDMENTS_DURATION = 1.month
 BILL_VALIDATION_DURATION = 1.month
 
+INITIATIVE_LEVELS = ["", I18n.t("initiatives.level1"), I18n.t("initiatives.level2"), I18n.t("initiatives.level3"), I18n.t("initiatives.level4")]
