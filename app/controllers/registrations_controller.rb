@@ -26,6 +26,10 @@ class RegistrationsController < Devise::RegistrationsController
       end
       if current_user.uploadedPhoto?
          current_user.update_attribute(:photo, current_user.uploadedPhoto.url("small"))
+      else
+              if current_user.photo.nil? 
+                      current_user.update_attribute(:photo, "images/unknownuser.jpg")
+              end
       end
         set_flash_message :notice, :updated
         # Line below required if using Devise >= 1.2.0

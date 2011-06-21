@@ -1,7 +1,11 @@
 
 <table style="padding-left:40px;">
 	<tr>
-<td><%= link_to image_tag(User.find_by_id(argument.user_id).photo, :size => "40x40"), User.find_by_id(argument.user_id) %></td>
+<td>
+	<% if argument.user %>
+		<%= link_to image_tag(argument.user.photo, :size => "40x40"), argument.user %>
+	<% end %>
+</td>
 
 <td style="width:200px;"><%= link_to argument.title, argument, :class => "link" %></td>
 <td><%= pluralize(argument.tally_all_votes,t("#{params[:controller]}.votes")) %>

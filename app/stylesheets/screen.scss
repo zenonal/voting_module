@@ -741,9 +741,120 @@ padding-right: 20px;
 }
 }
 
-#ideas {
-padding-bottom: 30px;
+#submitted_ideas {
 font-weight: bold;
+padding: 0px;
+
+	.idea {
+	border: 1px $main-border-color solid;
+	@include rounded(10px);
+	@include background-image(linear-gradient(top, white, #DDDBF1 15%, white));
+	width: 500px;
+	position:relative;
+	left: 180px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 0px;
+	
+	.idea-body {
+		font-size: 20px;
+		padding: 0px;
+		margin: 0px;
+	}
+	}
+}
+
+#ideas {
+font-weight: bold;
+padding: 0px;
+	
+	.idea {
+	border: 1px $main-border-color solid;
+	@include column(12);
+	width: 500px;
+	position:relative;
+	left: 180px;
+	@include rounded(10px);
+	@include background-image(linear-gradient(top, white, #DDDBF1 15%, white));
+	padding: 10px;
+	margin-bottom: 10px;
+	
+	p {
+		margin: 0px;
+		margin-top: 20px;
+	}
+	.idea-body {
+		font-size: 20px;
+		padding: 0px;
+		margin: 0px;
+	}
+	.idea-body2 {
+		@include column(10);
+		text-align: left;
+		font-size: 20px;
+		padding: 0px;
+		margin: 0px;
+	}
+	#idea-score {
+		@include column(1);
+		@include rounded(10px);
+		font-size: 20px;
+		color: darken(#EBA42C,10%);
+		border: 1px darken(#EBA42C,10%) solid;
+		display: inline;
+		padding: 0px;
+		margin: 0px;
+		background-color: lighten(#EBA42C,20%);
+		margin-left: 12px;
+	}
+	#idea-vote {
+		@include column(2);
+	text-align: left;
+	}
+	#idea-vote-aye {
+		@extend #idea-vote;
+	}
+	#idea-vote-nay {
+		@extend #idea-vote;
+	}
+	}
+}
+
+#all_ideas {
+	@extend #ideas;
+	
+	.idea {
+	@include column(12);
+	left: 120px;
+	@include rounded(10px);
+	@include background-image(linear-gradient(top, white, #DDDBF1 15%, white));
+	
+		padding: 10px;
+		margin-bottom: 10px;
+	
+		.idea-body2 {
+			@include column(10);
+			text-align: left;
+			}
+	
+		#idea-score {
+			@include column(1);
+		
+			}
+	
+			#idea-vote-aye {
+				@include column(4);
+			}
+			#idea-vote-nay {
+				@include column(4);
+			}
+	}
+}
+
+.new_idea {
+	textarea {
+	height: 60px;
+	}
 }
 
 #index-large-column {
@@ -783,6 +894,11 @@ position: relative;
 padding-top: 9px;
 padding-bottom: 5px;
 }
+
+a.brainstorm {
+	@include background-image(linear-gradient(top, white, #FFCC36 ) );
+}
+
 
 a.link {
 text-decoration: none;
@@ -971,10 +1087,6 @@ background-color: #F5F5F5;
 height: 50px;
 }
 
-.idea_field {
-height: 30px;
-width: 300px;
-}
 
 .spacer {
 height: 30px;

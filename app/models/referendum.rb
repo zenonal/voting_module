@@ -21,6 +21,7 @@ class Referendum < ActiveRecord::Base
   has_many :amendments, :as => :amendmentable, :dependent => :destroy
   has_many :rankings, :as => :rankable, :dependent => :destroy
   has_one :result, :as => :resultable, :dependent => :destroy
+  has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   belongs_to :category
   
   LEVELS = ["", I18n.t("referendums.level1"), I18n.t("referendums.level2"), I18n.t("referendums.level3"), I18n.t("referendums.level4")]

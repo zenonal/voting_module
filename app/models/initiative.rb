@@ -18,8 +18,8 @@ class Initiative < ActiveRecord::Base
   has_many :arguments, :as => :argumentable, :dependent => :destroy
   has_many :validations, :as => :validable, :dependent => :destroy
   has_many :amendments, :as => :amendmentable, :dependent => :destroy
-  has_many :brainstorms, :as => :brainstormable, :dependent => :destroy
   has_many :rankings, :as => :rankable, :dependent => :destroy
+  has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   has_one :result, :as => :resultable, :dependent => :destroy
   belongs_to :user
   belongs_to :category

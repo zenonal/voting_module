@@ -1,0 +1,28 @@
+<div id="bill-header">
+	<div id="bill-header-icon"><%= image_tag @bill.photo.url(:thumbnail) %></div>
+	<div id="bill-header-content">
+		<div id="bill-header-title">
+			<%= title t('brainstorms.brainstorm') %>
+			<%= t("brainstorms.for") %> <%= link_to eval("@bill.name_#{I18n.locale}"), @bill, :class => "link" %>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<br /><br />
+<h3><%= t('brainstorms.all_index') %></h3>
+<div id="idea-notice"></div>
+<% unless @ideas.nil? %>
+<div id="all_ideas">
+  <%= render :partial => "all_ideas", :collection => @ideas %>
+</div>
+<div class="clear"></div>
+
+<% else %>
+<%= t('brainstorms.no_ideas') %>
+<% end %>
+<br />
+<br /> 
+<%= link_to t('brainstorms.middle_stage'), {:controller => :ideas, :action => :select_ideas, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br/>
+ <%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.back'), @bill, :class => "link" %>

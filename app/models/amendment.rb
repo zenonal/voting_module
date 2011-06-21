@@ -20,6 +20,7 @@ class Amendment < ActiveRecord::Base
   has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   has_many :rankings, :as => :rankable, :dependent => :destroy
   has_one :result, :as => :resultable, :dependent => :destroy
+  has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   belongs_to :user
   belongs_to :amendmentable, :polymorphic => true
   

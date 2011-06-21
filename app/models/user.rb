@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   belongs_to :region
   belongs_to :party
   before_create :define_role
+  after_create :default_photo
   
   if Rails.env=="development"
     has_attached_file :uploadedPhoto, :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :displayName, :photo, :remember_me, :commune_id, :province_id, :region_id, :password, :password_confirmation, :uploadedPhoto
@@ -102,6 +103,12 @@ class User < ActiveRecord::Base
    private
     def define_role
      self.roles << Role.find_or_create_by_name("registered_user")
+    end
+    
+    def default_photo
+        if self.photo.nil? 
+           self.update_attribute(:photo, "unknownuser.jpg")
+        end
     end
     
 end

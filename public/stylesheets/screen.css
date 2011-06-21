@@ -1471,11 +1471,196 @@ body.main-layout #index-column #bill-loser, body.main-layout #index-large-column
   margin-right: 20px;
 }
 /* line 744, ../../app/stylesheets/screen.scss */
-body.main-layout #ideas {
-  padding-bottom: 30px;
+body.main-layout #submitted_ideas {
   font-weight: bold;
+  padding: 0px;
 }
-/* line 749, ../../app/stylesheets/screen.scss */
+/* line 748, ../../app/stylesheets/screen.scss */
+body.main-layout #submitted_ideas .idea {
+  border: 1px #a6a6b6 solid;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(15%, #dddbf1), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -moz-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  width: 500px;
+  position: relative;
+  left: 180px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0px;
+}
+/* line 759, ../../app/stylesheets/screen.scss */
+body.main-layout #submitted_ideas .idea .idea-body {
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 767, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas, body.main-layout #all_ideas {
+  font-weight: bold;
+  padding: 0px;
+}
+/* line 771, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea, body.main-layout #all_ideas .idea {
+  border: 1px #a6a6b6 solid;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 595px;
+  width: 500px;
+  position: relative;
+  left: 180px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(15%, #dddbf1), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -moz-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #ideas .idea, * html body.main-layout #all_ideas .idea {
+  overflow-x: hidden;
+}
+/* line 782, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea p, body.main-layout #all_ideas .idea p {
+  margin: 0px;
+  margin-top: 20px;
+}
+/* line 786, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea .idea-body, body.main-layout #all_ideas .idea .idea-body {
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 791, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea .idea-body2, body.main-layout #all_ideas .idea .idea-body2 {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 494.167px;
+  text-align: left;
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #ideas .idea .idea-body2, * html body.main-layout #all_ideas .idea .idea-body2 {
+  overflow-x: hidden;
+}
+/* line 798, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea #idea-score, body.main-layout #all_ideas .idea #idea-score {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 40.417px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  font-size: 20px;
+  color: #d08a14;
+  border: 1px #d08a14 solid;
+  display: inline;
+  padding: 0px;
+  margin: 0px;
+  background-color: #f4cc89;
+  margin-left: 12px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #ideas .idea #idea-score, * html body.main-layout #all_ideas .idea #idea-score {
+  overflow-x: hidden;
+}
+/* line 810, ../../app/stylesheets/screen.scss */
+body.main-layout #ideas .idea #idea-vote, body.main-layout #all_ideas .idea #idea-vote, body.main-layout #ideas .idea #idea-vote-aye, body.main-layout #all_ideas #ideas .idea #idea-vote-aye, body.main-layout #ideas #all_ideas .idea #idea-vote-aye, body.main-layout #ideas #all_ideas .idea #idea-vote-aye, body.main-layout #all_ideas #ideas .idea #idea-vote-aye, body.main-layout #all_ideas .idea #idea-vote-aye, body.main-layout #ideas .idea #idea-vote-nay, body.main-layout #all_ideas #ideas .idea #idea-vote-nay, body.main-layout #ideas #all_ideas .idea #idea-vote-nay, body.main-layout #ideas #all_ideas .idea #idea-vote-nay, body.main-layout #all_ideas #ideas .idea #idea-vote-nay, body.main-layout #all_ideas .idea #idea-vote-nay {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 90.833px;
+  text-align: left;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #ideas .idea #idea-vote, * html body.main-layout #all_ideas .idea #idea-vote, * html body.main-layout #ideas .idea #idea-vote-aye, * html body.main-layout #all_ideas #ideas .idea #idea-vote-aye, * html body.main-layout #ideas #all_ideas .idea #idea-vote-aye, * html body.main-layout #ideas #all_ideas .idea #idea-vote-aye, * html body.main-layout #all_ideas #ideas .idea #idea-vote-aye, * html body.main-layout #all_ideas .idea #idea-vote-aye, * html body.main-layout #ideas .idea #idea-vote-nay, * html body.main-layout #all_ideas #ideas .idea #idea-vote-nay, * html body.main-layout #ideas #all_ideas .idea #idea-vote-nay, * html body.main-layout #ideas #all_ideas .idea #idea-vote-nay, * html body.main-layout #all_ideas #ideas .idea #idea-vote-nay, * html body.main-layout #all_ideas .idea #idea-vote-nay {
+  overflow-x: hidden;
+}
+/* line 826, ../../app/stylesheets/screen.scss */
+body.main-layout #all_ideas .idea {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 595px;
+  left: 120px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(15%, #dddbf1), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -moz-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #dddbf1 15%, #ffffff);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #all_ideas .idea {
+  overflow-x: hidden;
+}
+/* line 835, ../../app/stylesheets/screen.scss */
+body.main-layout #all_ideas .idea .idea-body2 {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 494.167px;
+  text-align: left;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #all_ideas .idea .idea-body2 {
+  overflow-x: hidden;
+}
+/* line 840, ../../app/stylesheets/screen.scss */
+body.main-layout #all_ideas .idea #idea-score {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 40.417px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #all_ideas .idea #idea-score {
+  overflow-x: hidden;
+}
+/* line 845, ../../app/stylesheets/screen.scss */
+body.main-layout #all_ideas .idea #idea-vote-aye {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 191.667px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #all_ideas .idea #idea-vote-aye {
+  overflow-x: hidden;
+}
+/* line 848, ../../app/stylesheets/screen.scss */
+body.main-layout #all_ideas .idea #idea-vote-nay {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 191.667px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p136@voting_module/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.main-layout #all_ideas .idea #idea-vote-nay {
+  overflow-x: hidden;
+}
+/* line 855, ../../app/stylesheets/screen.scss */
+body.main-layout .new_idea textarea {
+  height: 60px;
+}
+/* line 860, ../../app/stylesheets/screen.scss */
 body.main-layout #index-large-column, body.main-layout #last-index-large-column {
   display: inline;
   float: left;
@@ -1486,7 +1671,7 @@ body.main-layout #index-large-column, body.main-layout #last-index-large-column 
 * html body.main-layout #index-large-column, * html body.main-layout #last-index-large-column {
   overflow-x: hidden;
 }
-/* line 754, ../../app/stylesheets/screen.scss */
+/* line 865, ../../app/stylesheets/screen.scss */
 body.main-layout #last-index-column {
   display: inline;
   float: left;
@@ -1497,7 +1682,7 @@ body.main-layout #last-index-column {
 * html body.main-layout #last-index-column {
   overflow-x: hidden;
 }
-/* line 759, ../../app/stylesheets/screen.scss */
+/* line 870, ../../app/stylesheets/screen.scss */
 body.main-layout #last-index-large-column {
   display: inline;
   float: left;
@@ -1569,7 +1754,7 @@ body.main-layout form textarea {
   width: 390px;
   height: 250px;
 }
-/* line 768, ../../app/stylesheets/screen.scss */
+/* line 879, ../../app/stylesheets/screen.scss */
 body.main-layout a.button {
   -moz-box-shadow: 0px 2px 5px #a6a6b6;
   -webkit-box-shadow: 0px 2px 5px #a6a6b6;
@@ -1641,7 +1826,7 @@ body.main-layout a.button:hover {
   border-color: #989898 #888888 #888888 #989898;
   color: #888888;
 }
-/* line 780, ../../app/stylesheets/screen.scss */
+/* line 891, ../../app/stylesheets/screen.scss */
 body.main-layout a:hover.button {
   -moz-box-shadow: inset 0px 2px 5px #a6a6b6;
   -webkit-box-shadow: inset 0px 2px 5px #a6a6b6;
@@ -1651,62 +1836,70 @@ body.main-layout a:hover.button {
   padding-top: 9px;
   padding-bottom: 5px;
 }
-/* line 787, ../../app/stylesheets/screen.scss */
+/* line 898, ../../app/stylesheets/screen.scss */
+body.main-layout a.brainstorm {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffcc36));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffcc36);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffcc36);
+  background-image: -o-linear-gradient(top, #ffffff, #ffcc36);
+  background-image: linear-gradient(top, #ffffff, #ffcc36);
+}
+/* line 903, ../../app/stylesheets/screen.scss */
 body.main-layout a.link {
   text-decoration: none;
   font-weight: bold;
   font-size: 16px;
 }
-/* line 793, ../../app/stylesheets/screen.scss */
+/* line 909, ../../app/stylesheets/screen.scss */
 body.main-layout a:hover img {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 798, ../../app/stylesheets/screen.scss */
+/* line 914, ../../app/stylesheets/screen.scss */
 body.main-layout img {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   vertical-align: middle;
 }
-/* line 803, ../../app/stylesheets/screen.scss */
+/* line 919, ../../app/stylesheets/screen.scss */
 body.main-layout .user-image {
   background-color: #fff;
   padding: 5px;
   border: 1px solid #555;
 }
-/* line 809, ../../app/stylesheets/screen.scss */
+/* line 925, ../../app/stylesheets/screen.scss */
 body.main-layout div.meter {
   position: relative;
   left: 131.667px;
 }
-/* line 813, ../../app/stylesheets/screen.scss */
+/* line 929, ../../app/stylesheets/screen.scss */
 body.main-layout img.meter_bkg {
   position: absolute;
 }
-/* line 816, ../../app/stylesheets/screen.scss */
+/* line 932, ../../app/stylesheets/screen.scss */
 body.main-layout img.meter_front {
   position: absolute;
   left: 3px;
 }
-/* line 821, ../../app/stylesheets/screen.scss */
+/* line 937, ../../app/stylesheets/screen.scss */
 body.main-layout div.referendum_item {
   border: 1px solid #888;
 }
-/* line 826, ../../app/stylesheets/screen.scss */
+/* line 942, ../../app/stylesheets/screen.scss */
 body.main-layout .horiz-list {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
-/* line 830, ../../app/stylesheets/screen.scss */
+/* line 946, ../../app/stylesheets/screen.scss */
 body.main-layout .horiz-list li {
   margin-left: 2px;
   float: left;
   /*pour IE*/
 }
-/* line 836, ../../app/stylesheets/screen.scss */
+/* line 952, ../../app/stylesheets/screen.scss */
 body.main-layout .bill_support, body.main-layout .bill_nosupport {
   margin: 0px 15px 12px;
   display: block;
@@ -1717,28 +1910,28 @@ body.main-layout .bill_support, body.main-layout .bill_nosupport {
   overflow: hidden;
   height: 0;
 }
-/* line 847, ../../app/stylesheets/screen.scss */
+/* line 963, ../../app/stylesheets/screen.scss */
 body.main-layout .nay {
   background: url("/images/vote_squares2.png") no-repeat left -39px;
 }
-/* line 850, ../../app/stylesheets/screen.scss */
+/* line 966, ../../app/stylesheets/screen.scss */
 body.main-layout .nay.bill_support, body.main-layout a.nay:hover {
   background-position: -35px -39px;
 }
-/* line 854, ../../app/stylesheets/screen.scss */
+/* line 970, ../../app/stylesheets/screen.scss */
 body.main-layout .aye {
   background: url("/images/vote_squares2.png") no-repeat left 0px;
 }
-/* line 857, ../../app/stylesheets/screen.scss */
+/* line 973, ../../app/stylesheets/screen.scss */
 body.main-layout .aye.bill_support, body.main-layout a.aye:hover {
   background-position: -35px 0px;
 }
-/* line 861, ../../app/stylesheets/screen.scss */
+/* line 977, ../../app/stylesheets/screen.scss */
 body.main-layout #private_vote {
   border: 1px solid #888;
   padding: 10px;
 }
-/* line 866, ../../app/stylesheets/screen.scss */
+/* line 982, ../../app/stylesheets/screen.scss */
 body.main-layout table.votes {
   text-align: center;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -1750,7 +1943,7 @@ body.main-layout table.votes {
   border-collapse: collapse;
   border-spacing: 0px;
 }
-/* line 878, ../../app/stylesheets/screen.scss */
+/* line 994, ../../app/stylesheets/screen.scss */
 body.main-layout table.votes td.hed {
   background-color: #fff;
   color: #000;
@@ -1760,13 +1953,13 @@ body.main-layout table.votes td.hed {
   font-size: 12px;
   font-weight: bold;
 }
-/* line 888, ../../app/stylesheets/screen.scss */
+/* line 1004, ../../app/stylesheets/screen.scss */
 body.main-layout #preview {
   border: 1px #ddd solid;
   margin: 10px;
   padding: 10px;
 }
-/* line 892, ../../app/stylesheets/screen.scss */
+/* line 1008, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-header {
   display: inline;
   float: left;
@@ -1777,7 +1970,7 @@ body.main-layout #preview #preview-header {
 * html body.main-layout #preview #preview-header {
   overflow-x: hidden;
 }
-/* line 895, ../../app/stylesheets/screen.scss */
+/* line 1011, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-content {
   display: inline;
   float: left;
@@ -1789,11 +1982,11 @@ body.main-layout #preview #preview-content {
 * html body.main-layout #preview #preview-content {
   overflow-x: hidden;
 }
-/* line 901, ../../app/stylesheets/screen.scss */
+/* line 1017, ../../app/stylesheets/screen.scss */
 body.main-layout #comments-discussion {
   background-color: #fff;
 }
-/* line 906, ../../app/stylesheets/screen.scss */
+/* line 1022, ../../app/stylesheets/screen.scss */
 body.main-layout .comment {
   display: inline;
   float: left;
@@ -1807,7 +2000,7 @@ body.main-layout .comment {
 * html body.main-layout .comment {
   overflow-x: hidden;
 }
-/* line 913, ../../app/stylesheets/screen.scss */
+/* line 1029, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-header {
   display: inline;
   float: left;
@@ -1818,11 +2011,11 @@ body.main-layout .comment #comment-header {
 * html body.main-layout .comment #comment-header {
   overflow-x: hidden;
 }
-/* line 917, ../../app/stylesheets/screen.scss */
+/* line 1033, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-content {
   text-align: left;
 }
-/* line 921, ../../app/stylesheets/screen.scss */
+/* line 1037, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-options {
   display: inline;
   float: left;
@@ -1835,7 +2028,7 @@ body.main-layout .comment #comment-options {
 * html body.main-layout .comment #comment-options {
   overflow-x: hidden;
 }
-/* line 928, ../../app/stylesheets/screen.scss */
+/* line 1044, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply {
   display: inline;
   float: left;
@@ -1848,7 +2041,7 @@ body.main-layout .comment-reply {
 * html body.main-layout .comment-reply {
   overflow-x: hidden;
 }
-/* line 932, ../../app/stylesheets/screen.scss */
+/* line 1048, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-header {
   display: inline;
   float: left;
@@ -1859,11 +2052,11 @@ body.main-layout .comment-reply #comment-header {
 * html body.main-layout .comment-reply #comment-header {
   overflow-x: hidden;
 }
-/* line 936, ../../app/stylesheets/screen.scss */
+/* line 1052, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-content {
   text-align: left;
 }
-/* line 941, ../../app/stylesheets/screen.scss */
+/* line 1057, ../../app/stylesheets/screen.scss */
 body.main-layout .reply {
   position: relative;
   display: inline;
@@ -1883,7 +2076,7 @@ body.main-layout .reply {
 * html body.main-layout .reply {
   overflow-x: hidden;
 }
-/* line 953, ../../app/stylesheets/screen.scss */
+/* line 1069, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-header {
   display: inline;
   float: left;
@@ -1894,13 +2087,13 @@ body.main-layout .reply #reply-header {
 * html body.main-layout .reply #reply-header {
   overflow-x: hidden;
 }
-/* line 957, ../../app/stylesheets/screen.scss */
+/* line 1073, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-content {
   position: relative;
   text-align: left;
   width: 93%;
 }
-/* line 963, ../../app/stylesheets/screen.scss */
+/* line 1079, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-options {
   display: inline;
   float: left;
@@ -1913,24 +2106,19 @@ body.main-layout .reply #reply-options {
 * html body.main-layout .reply #reply-options {
   overflow-x: hidden;
 }
-/* line 970, ../../app/stylesheets/screen.scss */
+/* line 1086, ../../app/stylesheets/screen.scss */
 body.main-layout .comment_field {
   height: 50px;
 }
-/* line 974, ../../app/stylesheets/screen.scss */
-body.main-layout .idea_field {
-  height: 30px;
-  width: 300px;
-}
-/* line 979, ../../app/stylesheets/screen.scss */
+/* line 1091, ../../app/stylesheets/screen.scss */
 body.main-layout .spacer {
   height: 30px;
 }
-/* line 982, ../../app/stylesheets/screen.scss */
+/* line 1094, ../../app/stylesheets/screen.scss */
 body.main-layout .authentications {
   margin-bottom: 30px;
 }
-/* line 986, ../../app/stylesheets/screen.scss */
+/* line 1098, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication {
   width: 130px;
   float: left;
@@ -1942,7 +2130,7 @@ body.main-layout .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 998, ../../app/stylesheets/screen.scss */
+/* line 1110, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -1952,32 +2140,32 @@ body.main-layout .authentication .remove {
   padding: 2px 4px;
   font-size: 10px;
 }
-/* line 1008, ../../app/stylesheets/screen.scss */
+/* line 1120, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove:hover {
   color: #CCC;
   background-color: #777;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
 }
-/* line 1015, ../../app/stylesheets/screen.scss */
+/* line 1127, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 1020, ../../app/stylesheets/screen.scss */
+/* line 1132, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .provider {
   font-weight: bold;
 }
-/* line 1024, ../../app/stylesheets/screen.scss */
+/* line 1136, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .uid {
   color: #666;
   font-size: 11px;
 }
-/* line 1029, ../../app/stylesheets/screen.scss */
+/* line 1141, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider img {
   display: block;
 }
-/* line 1033, ../../app/stylesheets/screen.scss */
+/* line 1145, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider {
   float: left;
   text-decoration: none;
@@ -1985,7 +2173,7 @@ body.main-layout .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 1041, ../../app/stylesheets/screen.scss */
+/* line 1153, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2006,11 +2194,11 @@ body.main-layout .photo-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1052, ../../app/stylesheets/screen.scss */
+/* line 1164, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field label {
   color: #999999;
 }
-/* line 1058, ../../app/stylesheets/screen.scss */
+/* line 1170, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input {
   position: relative;
   -moz-box-shadow: 0px 2px 5px #a6a6b6;
@@ -2084,7 +2272,7 @@ body.main-layout .actions input:hover {
   border-color: #989898 #888888 #888888 #989898;
   color: #888888;
 }
-/* line 1073, ../../app/stylesheets/screen.scss */
+/* line 1185, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input:hover {
   -moz-box-shadow: inset 0px 2px 5px #a6a6b6;
   -webkit-box-shadow: inset 0px 2px 5px #a6a6b6;
@@ -2092,7 +2280,7 @@ body.main-layout .actions input:hover {
   box-shadow: inset 0px 2px 5px #a6a6b6;
   color: #fff;
 }
-/* line 1078, ../../app/stylesheets/screen.scss */
+/* line 1190, ../../app/stylesheets/screen.scss */
 body.main-layout .field, body.main-layout .checkboxes-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2113,11 +2301,11 @@ body.main-layout .field, body.main-layout .checkboxes-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1089, ../../app/stylesheets/screen.scss */
+/* line 1201, ../../app/stylesheets/screen.scss */
 body.main-layout .field .recaptcha, body.main-layout .checkboxes-field .recaptcha {
   padding-left: 90px;
 }
-/* line 1093, ../../app/stylesheets/screen.scss */
+/* line 1205, ../../app/stylesheets/screen.scss */
 body.main-layout .field input, body.main-layout .checkboxes-field input, body.main-layout .field textarea, body.main-layout .checkboxes-field textarea {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2132,7 +2320,7 @@ body.main-layout .field input, body.main-layout .checkboxes-field input, body.ma
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
   line-height: 150%;
 }
-/* line 1104, ../../app/stylesheets/screen.scss */
+/* line 1216, ../../app/stylesheets/screen.scss */
 body.main-layout .field input:hover, body.main-layout .checkboxes-field input:hover, body.main-layout .field textarea:hover, body.main-layout .checkboxes-field textarea:hover,
 body.main-layout .field input:focus,
 body.main-layout body.main-layout .checkboxes-field input:focus, body.main-layout
@@ -2143,27 +2331,27 @@ body.main-layout .checkboxes-field input:focus, body.main-layout .field textarea
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
   border-color: #C9C9C9;
 }
-/* line 1109, ../../app/stylesheets/screen.scss */
+/* line 1221, ../../app/stylesheets/screen.scss */
 body.main-layout .field label, body.main-layout .checkboxes-field label {
   color: #999999;
 }
-/* line 1114, ../../app/stylesheets/screen.scss */
+/* line 1226, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field {
   text-align: center;
   padding-bottom: 20px;
 }
-/* line 1118, ../../app/stylesheets/screen.scss */
+/* line 1230, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field .list {
   width: 300px;
   text-align: left;
   padding: auto;
   margin: auto;
 }
-/* line 1125, ../../app/stylesheets/screen.scss */
+/* line 1237, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] {
   display: none;
 }
-/* line 1129, ../../app/stylesheets/screen.scss */
+/* line 1241, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] + label {
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -2171,11 +2359,11 @@ body.main-layout .checkboxes-field input[type=checkbox] + label {
   padding-top: 12px;
   padding-bottom: 15px;
 }
-/* line 1136, ../../app/stylesheets/screen.scss */
+/* line 1248, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:checked + label {
   border: 2px #333 solid;
 }
-/* line 1141, ../../app/stylesheets/screen.scss */
+/* line 1253, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);

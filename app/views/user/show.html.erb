@@ -4,7 +4,11 @@
 		<% unless @user.photo.blank? %>
 			<p><%= image_tag(@user.photo, :size => "80x80") %> </p>
 		<% end %>
+		<% if permitted_to? :edit, @user %>
+			<%= link_to t('users.edit'), edit_user_registration_path, :class => "button" %>
+		<% end %>
 	</div>
+	
 	<div id="bill-header-name"><p><%= title @user.displayName %></p></div>
 </div>
 
@@ -176,8 +180,6 @@
 </div>
 <div id="index-content" style="padding-top: 40px;">
 	<h4><%= pluralize(@user.comments.count,t('users.delegates.comments')) %></h4>
-<% if permitted_to? :edit, @user %>
-	<%= link_to t('users.edit'), edit_user_registration_path, :class => "button" %>
-<% end %>
+
 </div>
 </div>

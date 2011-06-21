@@ -1,31 +1,33 @@
-<h1>Listing ideas</h1>
+<div id="bill-header">
+	<div id="bill-header-icon"><%= image_tag @bill.photo.url(:thumbnail) %></div>
+	<div id="bill-header-content">
+		<div id="bill-header-title">
+			<%= title t('brainstorms.brainstorm') %>
+			<%= t("brainstorms.for") %> <%= link_to eval("@bill.name_#{I18n.locale}"), @bill, :class => "link" %>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<div id="submitted_ideas">
+  <%= render :partial => "idea", :collection => @ideas %>
+</div>
 
-<table>
-  <tr>
-    <th>Brainstorm</th>
-    <th>User</th>
-    <th>Content en</th>
-    <th>Content fr</th>
-    <th>Content nl</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @ideas.each do |idea| %>
-  <tr>
-    <td><%= idea.brainstorm_id %></td>
-    <td><%= idea.user_id %></td>
-    <td><%= idea.content_en %></td>
-    <td><%= idea.content_fr %></td>
-    <td><%= idea.content_nl %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<hr /><br />
+<div id="idea-notice"></div>
+<br /><br />
+<h2><%= t('brainstorms.propose_ideas') %></h2>
+<% form_for [@brainstorm, Idea.new], :remote => true do |f| %>
+	<div class="field">
+	<%= f.label "content_#{I18n.locale}", t('brainstorms.new_idea') %><br />
+	<%= f.text_area "content_#{I18n.locale}" %><br />
+	</div>
+	<div class="actions">
+	<%= f.submit t('brainstorms.add_idea') %>
+	</div>
 <% end %>
-</table>
-
 <br />
-
-<%= link_to 'New Idea', new_idea_path %>
+<%= t('brainstorms.ready') %>: 
+<%= link_to t('brainstorms.next_stage'), {:controller => :ideas, :action => :select_ideas, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br />
+ <%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.back'), @bill, :class => "link" %>

@@ -1,14 +1,16 @@
 <% @loc = 'devise.confirmations.' %>
-
-<% title(t(@loc+'title') %>
-
+<br /><br />
+<%= title(t(@loc+'title')) %>
+<br /><br />
 <%= form_for(resource_name, resource, :url => confirmation_path(resource_name)) do |f| %>
   <%= f.error_messages %>
-
+<div class="field">
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>
-
+</div>
+<div class="actions">
   <p><%= f.submit t('devise.confirmations.title') %></p>
+</div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

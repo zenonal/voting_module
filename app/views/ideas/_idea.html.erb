@@ -1,0 +1,4 @@
+<%= div_for idea do %>
+	<%= content_tag(:p, eval("idea.content_#{I18n.locale}"), :class => "idea-body") %>
+	<%= link_to t('brainstorms.delete'), [idea.brainstorm,idea], :method => :delete, :class => "button", :remote => true  %>  
+<% end %>

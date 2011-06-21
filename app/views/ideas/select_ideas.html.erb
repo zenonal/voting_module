@@ -1,0 +1,37 @@
+<div id="bill-header">
+	<div id="bill-header-icon"><%= image_tag @bill.photo.url(:thumbnail) %></div>
+	<div id="bill-header-content">
+		<div id="bill-header-title">
+			<%= title t('brainstorms.brainstorm') %>
+			<%= t("brainstorms.for") %> <%= link_to eval("@bill.name_#{I18n.locale}"), @bill, :class => "link" %>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<br /><br />
+<h3><%= t('brainstorms.select_title') %></h3>
+<% unless @ideas.nil? || @ideas.empty? %>
+<div id="ideas">
+  <%= render :partial => "idea_select", :collection => @ideas %>
+</div>
+<br /><br />
+<%= t('brainstorms.vote_ready') %>
+<%= link_to t('brainstorms.next_stage'), {:controller => :ideas, :action => :index_all, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br /> 
+<%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.previous_stage'), {:controller => :ideas, :action => :index, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br/>
+ <%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.back'), @bill, :class => "link" %>
+
+<% else %>
+<br /><br /><br />
+<h5><%= t('brainstorms.no_ideas') %></h5>
+<%= link_to t('brainstorms.next_stage'), {:controller => :ideas, :action => :index_all, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br /> 
+<%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.previous_stage'), {:controller => :ideas, :action => :index, "#{@bill.class.name}_id".to_sym => @bill.id, :id => Idea.first.id }, :class => "link" %>
+<br/>
+ <%= t('brainstorms.or') %> 
+<%= link_to t('brainstorms.back'), @bill, :class => "link" %>
+<% end %>

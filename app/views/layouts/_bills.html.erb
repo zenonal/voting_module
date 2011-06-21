@@ -69,10 +69,17 @@
 			<% end %>
 			<%= t("#{params[:controller]}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %>
 		<% else %>
+			<% if bill.user %>
 			<p><%= t("#{params[:controller]}.author") %>:
 				<%= link_to image_tag(bill.user.photo, :size => "40x40", :class => "user-image"), bill.user %>
 				<%= link_to bill.user.displayName, bill.user, :class => "link" %></p>
 			<p><%= t("#{params[:controller]}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %></p>
+			<% else %>
+				<p><%= t("#{params[:controller]}.author") %>:
+					<%= image_tag("unknownuser.jpg", :size => "40x40", :class => "user-image") %>
+					<%= t('layout.missing_user') %>
+				<p><%= t("#{params[:controller]}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %></p>
+			<% end %>
 		<% end %>
 	<% if bill.current_phase == 1 %>
 		<% if permitted_to? :edit, bill %>

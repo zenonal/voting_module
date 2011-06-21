@@ -2,64 +2,63 @@ class IdeasController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
   
-  
   # GET /ideas
   # GET /ideas.xml
   def index
-    @ideas = Idea.all
+    @brainstorm = find_brainstorm
+    @bill = @brainstorm.brainstormable
+    @ideas = current_user.ideas.for_bill(@bill)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @ideas }
+      format.html
+      format.js
     end
   end
-
-  # GET /ideas/new
-  # GET /ideas/new.xml
-  def new
-    @idea = Idea.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @idea }
+  
+  # GET /ideas
+    # GET /ideas.xml
+    def index_all
+      @brainstorm = find_brainstorm
+      @bill = @brainstorm.brainstormable
+      @ideas = @brainstorm.ideas.sort {|a,b| (b.votes_for-b.votes_against) <=> (a.votes_for-a.votes_against) }
+      
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
+  
+  # GET /ideas
+  # GET /ideas.xml
+  def select_ideas
+    @brainstorm = find_brainstorm
+    @bill = @brainstorm.brainstormable
+    @ideas = @brainstorm.ideas.not_from_user(current_user).shuffle.first(5)
+    
+     respond_to do |format|
+        format.html
+        format.js
+      end
   end
-
-  # GET /ideas/1/edit
-  def edit
-    @idea = Idea.find(params[:id])
-  end
-
+  
   # POST /ideas
   # POST /ideas.xml
   def create
     @brainstorm = find_brainstorm
+    @bill = @brainstorm.brainstormable
     @idea = @brainstorm.ideas.build(params[:idea])
     
     respond_to do |format|
-      if @idea.save
+      if @idea.save && @idea.update_attribute(:user_id,current_user.id)
+        flash[:notice] = t('brainstorms.idea_succesful')
         format.html { redirect_to(@brainstorm, :notice => 'Idea was successfully created.') }
         format.xml  { render :xml => @idea, :status => :created, :location => @idea }
+        format.js
       else
+        flash[:notice] = t('brainstorms.idea_unsuccesful')
         format.html { render :action => "new" }
         format.xml  { render :xml => @idea.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /ideas/1
-  # PUT /ideas/1.xml
-  def update
-    @brainstorm = find_brainstorm
-    @idea = Idea.find(params[:id])
-
-    respond_to do |format|
-      if @idea.update_attributes(params[:idea])
-        format.html { redirect_to(@idea, :notice => 'Idea was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @idea.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -67,12 +66,15 @@ class IdeasController < ApplicationController
   # DELETE /ideas/1
   # DELETE /ideas/1.xml
   def destroy
+    @brainstorm = find_brainstorm
+    @bill = @brainstorm.brainstormable
     @idea = Idea.find(params[:id])
     @idea.destroy
 
     respond_to do |format|
       format.html { redirect_to(ideas_url) }
       format.xml  { head :ok }
+      format.js
     end
   end
   
@@ -80,7 +82,36 @@ class IdeasController < ApplicationController
     params.each do |name, value|
       if name =~ /(.+)_id$/
         na = $1.classify    
-        brainstorm = na.constantize.find(value)
+        if na == "Brainstorm"
+                brainstorm = Brainstorm.find(value)
+        end 
+        if na == "Initiative"
+                bill = Initiative.find(value)
+                if bill.brainstorm.nil?
+                        brainstorm = bill.build_brainstorm
+                        brainstorm.save!
+                else
+                        brainstorm = bill.brainstorm
+                end
+        end
+        if na == "Referendum"
+                bill = Referendum.find(value)
+                if bill.brainstorm.nil?
+                        brainstorm = bill.build_brainstorm
+                        brainstorm.save!
+                else
+                        brainstorm = bill.brainstorm
+                end
+        end
+        if na == "Amendment"
+                bill = Amendment.find(value)
+                if bill.brainstorm.nil?
+                        brainstorm = bill.build_brainstorm
+                        brainstorm.save!
+                else
+                        brainstorm = bill.brainstorm
+                end
+        end
         return brainstorm
       end
     end
@@ -88,12 +119,34 @@ class IdeasController < ApplicationController
   end
   
   def aye
-     current_user.vote_for(@idea)
-     redirect_to(@idea.brainstorm)
+     unless current_user == @idea.user
+             current_user.vote_for(@idea)
+             respond_to do |format|
+                     format.html {redirect_to(:action => :select_idea)}
+                     format.js
+             end
+     else
+             flash[:notice] = t('brainstorms.not_own_bill')
+             respond_to do |format|
+                          format.html {redirect_to(:action => :select_idea)}
+                          format.js
+             end
+     end
   end
   def nay
-     current_user.vote_against(@idea)
-     redirect_to(@idea.brainstorm)
+     unless current_user == @idea.user
+        current_user.vote_against(@idea)
+        respond_to do |format|
+             format.html {redirect_to(:action => :select_idea)}
+             format.js
+        end
+     else
+             flash[:notice] = t('brainstorms.not_own_bill')
+             respond_to do |format|
+                  format.html {redirect_to(:action => :select_idea)}
+                  format.js
+             end
+     end
   end
   
   def exclude_idea

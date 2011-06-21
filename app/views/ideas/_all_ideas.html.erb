@@ -1,0 +1,20 @@
+<%= div_for all_ideas do %>
+	<div id="idea-score">
+		<%= all_ideas.votes_for-all_ideas.votes_against %>
+	</div>
+	<%= content_tag(:p, eval("all_ideas.content_#{I18n.locale}"), :class => "idea-body2") %>
+	<div class="clear"></div>
+	<div class="spacer"></div>
+	<% if current_user.voted_for?(all_ideas) %>
+		<div id="idea-vote-aye"><%= link_to("aye", {:controller => :ideas, :action => :aye, :id => all_ideas.id}, :class => 'aye bill_support', :remote => true) %></div>
+	<% else %>
+		<div id="idea-vote-aye"><%= link_to("aye", {:controller => :ideas, :action => :aye, :id => all_ideas.id}, :class => 'aye bill_nosupport', :remote => true) %></div>
+	<% end %>
+	<% if current_user.voted_against?(all_ideas) %>
+		<div id="idea-vote-nay"><%= link_to("nay", {:controller => :ideas, :action => :nay, :id => all_ideas.id}, :class => 'nay bill_support', :remote => true) %></div>
+	<% else %>
+		<div id="idea-vote-nay"><%= link_to("nay", {:controller => :ideas, :action => :nay, :id => all_ideas.id}, :class => 'nay bill_nosupport', :remote => true) %></div>
+	<% end %>
+	<div class="clear"></div>
+	
+<% end %>

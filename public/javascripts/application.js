@@ -42,5 +42,4 @@ $j(document).ready(function() {
 			});
 	});
 	
-	
 });

@@ -34,7 +34,8 @@ en:
                 reach validation in 2 weeks, it is eliminated.</p>
                 <p>The third stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
                 <p>During the fourth stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
-                <p>Finally, when the voting period is over, the results of the vote are shown.</p>"
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p>
+                <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
       
     referendums:
       index: "<p>Here you can see all the propositions recently put forth by politicians.
@@ -44,7 +45,8 @@ en:
                 <p>A referendum will pass successively through 3 stages:
                 <p>The first stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
                 <p>During the third stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
-                <p>Finally, when the voting period is over, the results of the vote are shown.</p>"
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p><br />
+                <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
              
     delegates:
       index: "<p>This is a list of all the users that have chosen to become a delegate. 

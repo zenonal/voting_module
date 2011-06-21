@@ -8,6 +8,7 @@ authorization do
     has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment,:edit, :update,:destroy]
     has_permission_on [:delegates, :delegations], :to => [:create, :update, :destroy, :index]
     has_permission_on [:brainstorms], :to => [:create, :show]
+    has_permission_on [:ideas], :to => [:select_ideas, :index_all]
   end
   role :registered_user do
     has_permission_on [:comments,:arguments,:ideas], :to => [:index, :show, :new, :create]
@@ -16,7 +17,7 @@ authorization do
     has_permission_on :user, :to => [:show]
     has_permission_on [:arguments, :ideas], :to => [:aye,:nay,:exclude_argument]
     has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment]
-    has_permission_on [:comments,:arguments], :to => [:edit, :update,:destroy] do
+    has_permission_on [:comments,:arguments, :ideas], :to => [:edit, :update,:destroy] do
       if_attribute :user_id => is { user.id }
     end
     has_permission_on [:initiatives, :amendments], :to => [:index, :index_drafts, :show, :new, :create, :aye,:nay, :vote, :ranking, :show_results]
@@ -35,6 +36,7 @@ authorization do
     end
     has_permission_on :delegations, :to => [:create, :update, :destroy]
     has_permission_on [:brainstorms], :to => [:create, :show]
+    has_permission_on [:ideas], :to => [:select_ideas, :index_all]
   end
   role :guest do
     has_permission_on [:comments,:arguments, :politicians, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show, :show_results]
