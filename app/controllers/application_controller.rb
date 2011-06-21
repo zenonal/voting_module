@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
         before_filter :set_mode
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
-
+        before_filter :mailer_set_url_options
+        
         def default_url_options(options={})
                 logger.debug "default_url_options is passed options: #{options.inspect}\n"
                 { :locale => I18n.locale }
@@ -115,6 +116,10 @@ class ApplicationController < ActionController::Base
         end
 
         protected
+        def mailer_set_url_options
+            ActionMailer::Base.default_url_options[:host] = request.host_with_port
+        end
+        
         def permission_denied
                 flash[:error] = t('custom_error.perm_denied')
                 redirect_to root_url
