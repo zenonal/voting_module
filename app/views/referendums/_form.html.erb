@@ -16,7 +16,7 @@
 
   <div class="field">
 	<%= f.label t('layout.choose_level') %><br />
-	<%= f.select :level, Referendum::LEVELS.collect {|l| [l, Referendum::LEVELS.index(l)]} %>
+	<%= f.select :level, REFERENDUM_LEVELS.collect {|l| [l, REFERENDUM_LEVELS.index(l)]} %>
   </div>
 <br /><br /><br />
 <div class="photo-field">

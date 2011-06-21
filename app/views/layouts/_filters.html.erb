@@ -23,15 +23,15 @@
 			<% end %>
 			<%= label_tag t("user_geo_select") %>
 			<% if params[:filter] && params[:filter][:level] %>
-				<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}, :selected => params[:filter][:level]) %>
+				<%= select("filter", "level", "#{bill_model.upcase}_LEVELS".constantize.collect {|l| [l, bill_model::LEVELS.index(l)]}, :selected => params[:filter][:level]) %>
 			<% else %>
-				<%= select("filter", "level", bill_model::LEVELS.collect {|l| [l, bill_model::LEVELS.index(l)]}) %>
+				<%= select("filter", "level", "#{bill_model.upcase}_LEVELS".constantize.collect {|l| [l, bill_model::LEVELS.index(l)]}) %>
 			<% end %>
 			<p><%= label_tag t("user_phase_select") %>
 			<% if params[:filter] && params[:filter][:phase] %>
-				<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}, :selected => params[:filter][:phase]) %>
+				<%= select("filter", "phase", "#{bill_model.upcase}_PHASES".constantize.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}, :selected => params[:filter][:phase]) %>
 			<% else %>
-				<%= select("filter", "phase", bill_model::PHASES.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}) %>
+				<%= select("filter", "phase", "#{bill_model.upcase}_PHASES".constantize.collect {|p| [p, bill_model::PHASES.index(p) + (6-bill_model::PHASES.length)]}) %>
 			<% end %>
 			</p>
    		</div>
