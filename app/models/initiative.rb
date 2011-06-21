@@ -24,8 +24,8 @@ class Initiative < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   
-  LEVELS = ["", t("initiatives.level1"), t("initiatives.level2"), I18n.t("initiatives.level3"), I18n.t("initiatives.level4")]
-  PHASES = ["", t("initiatives.phase0"), t("initiatives.phase1"),I18n.t("initiatives.phase2"),I18n.t("initiatives.phase3"),I18n.t("initiatives.phase4"),I18n.t("initiatives.phase5")]
+  LEVELS = ["", I18n.t("initiatives.level1"), I18n.t("initiatives.level2"), I18n.t("initiatives.level3"), I18n.t("initiatives.level4")]
+  PHASES = ["", I18n.t("initiatives.phase0"), I18n.t("initiatives.phase1"),I18n.t("initiatives.phase2"),I18n.t("initiatives.phase3"),I18n.t("initiatives.phase4"),I18n.t("initiatives.phase5")]
   
   def validation_threshold
     t = MIN_VALIDATION_THRESHOLD
