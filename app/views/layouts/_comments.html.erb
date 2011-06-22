@@ -1,5 +1,5 @@
 <h2> <%= t(:comment_title) %></h2>
-<% form_for([commentable, Comment.new], :html => { :method => :put}) do |f| %>
+<% form_for(Comment.new, "#{commentable.class.name}_id".to_sym => commentable.id) do |f| %>
 		<div class="field">
 			<%= f.label t(:new_comment) %><br>
 			<%= f.text_area :content, :class => "comment_field" %>
