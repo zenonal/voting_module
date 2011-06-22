@@ -48,6 +48,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
+          render :text => params.to_yaml
+          if false
     @commentable = find_commentable
     if verify_recaptcha()
       flash.delete(:recaptcha_error)
@@ -56,18 +58,19 @@ class CommentsController < ApplicationController
           @comment.update_attribute(:user_id, current_user.id)
           @comment.update_attribute(:language, I18n.locale)
           flash[:notice] = t(:new_comment_ok)
-          redirect_to :root
+          redirect_to @commentable
           
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to :root
+          redirect_to @commentable
           
         end
   
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to :root
+      redirect_to @commentable
+    end
     end
   end
 
