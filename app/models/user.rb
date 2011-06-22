@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
       :path => ":attachment/:id/:style.:extension",
       :url => ':s3_domain_url',
-      :s3_permissions => 'authenticated-read',
+      :s3_permissions => 'public-read',
       :s3_protocol => 'http',
       :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
   end

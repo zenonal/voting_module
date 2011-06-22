@@ -136,6 +136,7 @@
 					% <%= t("#{params[:controller]}.approval") %></p>
 					<p><%= link_to eval("Ranking.all_related_bills(bill)[@winner - 1].name_#{I18n.locale}"), Ranking.all_related_bills(bill)[@winner - 1], :class => "link" %></p>
 				</div>
+				
 				<div id="bill-loser">
 					<%= t("#{params[:controller]}.lost") %>:
 					<% Ranking.all_related_bills(bill).each_with_index do |b,index| %>

@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
       :path => ":attachment/:id/:style.:extension",
       :url => ':s3_domain_url',
-      :s3_permissions => 'authenticated-read',
+      :s3_permissions => 'public-read',
       :s3_protocol => 'http',
       :styles => {:small => "100x100>", :thumbnail => "40x40>"}
   end
