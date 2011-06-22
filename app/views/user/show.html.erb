@@ -103,12 +103,14 @@
 			<div id="ranking-index-element">
 				<div id="ranking-index-date"><%= r.rankings.for_ranker(@user.delegate)[0].updated_at.strftime("%e %B, %Y") %></div>
 				<% Ranking.all_related_bills_sorted(r,@user.delegate).each do |a| %>
+					<% unless a.rankings.for_ranker(@user.delegate)[0].nil? %>
 					<div id="ranking-index-large-column">
 						<div id="ranking-index-score"><%= a.rankings.for_ranker(@user.delegate)[0].rank %></div>
 						<%= link_to eval("a.name_#{I18n.locale}"), a, 
 							:class => "link vote_#{a.rankings.for_ranker(@user.delegate)[0].rank>0} neutral_#{a.rankings.for_ranker(@user.delegate)[0].rank==0}" %>
 					</div>
 					<div class="clear"></div>
+					<% end %>
 				<% end %>
 				<div class="clear"></div>
 			</div>
