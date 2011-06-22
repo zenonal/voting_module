@@ -50,7 +50,7 @@ class CommentsController < ApplicationController
   def create
           
     @commentable = find_commentable
-    if true
+    if verify_recaptcha()
       flash.delete(:recaptcha_error)
       @comment = @commentable.comments.build(params[:comment])
       if @comment.save
