@@ -84,7 +84,7 @@ class ReferendumsController < ApplicationController
   # POST /referendums.xml
   def create
     @not_lang = not_current_languages
-    if @initiative && verify_recaptcha()
+    if @referendum && verify_recaptcha()
       flash.delete(:recaptcha_error)
 
       if @referendum
