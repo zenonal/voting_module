@@ -20,6 +20,7 @@ class Referendum < ActiveRecord::Base
   has_many :politicians, :through => :authorships
   has_many :amendments, :as => :amendmentable, :dependent => :destroy
   has_many :rankings, :as => :rankable, :dependent => :destroy
+  has_many :weights, :as => :weightable, :dependent => :destroy
   has_one :result, :as => :resultable, :dependent => :destroy
   has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   belongs_to :category

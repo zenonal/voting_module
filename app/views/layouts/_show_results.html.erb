@@ -75,8 +75,13 @@
 			<% Delegate.ranked_on(bills[0]).each do |u| %>
 			<tr class="top-bordered">
 				<td>
-					<%= link_to u.user.displayName, u.user, :class => "link" %>
-					<%= t("layout.representing") %><%= pluralize(u.weight_on_bill(bills[0]), t("layout.vote") ) %>
+					<% if u.user.nil? %>
+						<%= t("layout.old_delegate") %>
+						<%= pluralize(u.weights.for_bill(bills[0]).first.value, t("layout.vote") ) %>
+					<% else %>
+						<%= link_to u.user.displayName, u.user, :class => "link" %>
+						<%= t("layout.representing") %><%= pluralize(u.weights.for_bill(bills[0]).first.value, t("layout.vote") ) %>
+					<% end %>
 				</td>
 				<% bills.each do |r| %>
 				<td class="scores left-bordered">

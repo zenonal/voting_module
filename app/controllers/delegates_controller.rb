@@ -34,7 +34,7 @@ class DelegatesController < ApplicationController
   def destroy
     @delegate = Delegate.find_by_id(params[:id])
     @user = @delegate.user
-    @delegate.destroy
+    @delegate.update_attribute(:user_id, nil)
 
     respond_to do |format|
       format.html { redirect_to(@user) }

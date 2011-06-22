@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110619143258) do
+ActiveRecord::Schema.define(:version => 20110622095002) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -300,5 +300,14 @@ ActiveRecord::Schema.define(:version => 20110619143258) do
 
   add_index "votes", ["voteable_id", "voteable_type"], :name => "fk_voteables"
   add_index "votes", ["voter_id", "voter_type"], :name => "fk_voters"
+
+  create_table "weights", :force => true do |t|
+    t.integer  "delegate_id"
+    t.integer  "weightable_id"
+    t.string   "weightable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "value"
+  end
 
 end

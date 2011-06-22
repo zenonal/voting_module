@@ -100,6 +100,7 @@ en:
       missing_user: "The author of this bill cancelled his account"
       brainstorm: "Brainstorm!"
       delete_bill: "Are you certain you want to delete this bill?"
+      old_delegate: "No longer active but represented "
      
   homepage:
       title: 'Voting module'

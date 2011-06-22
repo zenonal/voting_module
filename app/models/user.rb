@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :amendments
   has_many :ideas
   has_many :validations
-  has_one :delegate, :dependent => :destroy
+  has_one :delegate
   has_one :delegation, :dependent => :destroy
   belongs_to :commune
   belongs_to :province

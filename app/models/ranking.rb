@@ -3,6 +3,7 @@ class Ranking < ActiveRecord::Base
   
   belongs_to :rankable, :polymorphic => true
   belongs_to :ranker, :polymorphic => true
+  after_save :auto_create_weights
   
   scope :for_ranker,    lambda { |*args| {:conditions => ["ranker_id = ? AND ranker_type = ?", args.first.id, args.first.class.name]} }
   scope :for_ranker_type,    lambda { |*args| where("ranker_type = ?", args.first.class.name) }
@@ -58,47 +59,43 @@ class Ranking < ActiveRecord::Base
       100*(tally_ranks_for(rankable).to_f/(tally_all_ranks(rankable)))
     end
   
-   def self.tally_all_ranks(rankable)
-     ranks = 0;
-     rankable.rankings.for_ranker_type(Delegate.first).each do |r|
-       Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-       ranks=ranks+Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-     end
-     ranks = ranks+rankable.rankings.for_ranker_type(User.first).count
-   end
-   
-   def self.tally_ranks_for(rankable)
-      ranks = 0;
-       rankable.rankings.for_ranker_type(Delegate.first).in_favor.each do |r|
-         Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-         ranks=ranks+Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-       end
-       ranks = ranks+rankable.rankings.for_ranker_type(User.first).in_favor.count
+    def self.tally_all_ranks(rankable)
+            ranks = 0;
+            rankable.rankings.for_ranker_type(Delegate.first).each do |r|
+                    unless r.ranker.nil? 
+                            ranks=ranks+r.ranker.weights.for_bill(rankable).first.value
+                    end
+            end
+            ranks = ranks+rankable.rankings.for_ranker_type(User.first).count
     end
-    
+
+    def self.tally_ranks_for(rankable)
+            ranks = 0;
+            rankable.rankings.for_ranker_type(Delegate.first).in_favor.each do |r|
+                    unless r.ranker.nil? 
+                            ranks=ranks+r.ranker.weights.for_bill(rankable).first.value
+                    end
+            end
+            ranks = ranks+rankable.rankings.for_ranker_type(User.first).in_favor.count
+    end
+
     def self.tally_ranks_against(rankable)
-        ranks = 0;
-         rankable.rankings.for_ranker_type(Delegate.first).against.each do |r|
-           Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-           ranks=ranks+Delegate.find_by_id(r.ranker_id).weight_on_bill(rankable)
-         end
-         ranks = ranks+rankable.rankings.for_ranker_type(User.first).against.count
-      end
+            ranks = 0;
+            rankable.rankings.for_ranker_type(Delegate.first).against.each do |r|
+                    unless r.ranker.nil? 
+                            ranks=ranks+r.ranker.weights.for_bill(rankable).first.value
+                    end
+            end
+            ranks = ranks+rankable.rankings.for_ranker_type(User.first).against.count
+    end
       
       def self.average_rank(rankable)
          rank = [];
          rankable.rankings.for_ranker_type(Delegate.first).each do |r|
-           deleg = []
-           deleg << Delegation.find_by_delegate_id(r.ranker_id)
-           unless deleg[0].nil?
-             deleg.each do |d|
-               u = User.find_by_id(d.user_id)
-               unless u.nil?
-                   unless Ranking.ranked_on?(u,rankable)
-                     rank << r.rank;
+           unless r.ranker.nil? 
+                   for i in 1..r.ranker.weights.for_bill(r.rankable).first.value
+                           rank << r.rank
                    end
-               end
-             end
            end
          end
          rank += rankable.rankings.for_ranker_type(User.first).collect{|rk| rk.rank}
@@ -106,42 +103,44 @@ class Ranking < ActiveRecord::Base
        end
        
        def self.rank_matrix(rankable)
-         if rankable.class.name == "Amendment"
-           rankable = rankable.amendmentable
-         end
-         cand = [rankable]+rankable.amendments
-         n = cand.count
-         matrix = []
-         #last row and column is for the "none" alternative
-         for i in 0..n
-           matrix[i] = []
-           for j in 0..n
-             matrix[i][j] = 0
-           end
-         end
-         for i in 0..n-1
-           matrix[i][n] = cand[i].rankings.collect{ |r| r.rank>0 ? 1:0 }.sum
-           matrix[n][i] = cand[i].rankings.collect{ |r| r.rank<0 ? 1:0 }.sum
-            for j in (i+1)..n-1
-             cand[i].rankings.each do |r|
-               if r.ranker_type == "Delegate"
-                 num_of_votes = r.ranker.weight_on_bill(r.rankable)
-               else
-                 num_of_votes = 1
+               if rankable.class.name == "Amendment"
+                       rankable = rankable.amendmentable
                end
-               rj = cand[j].rankings.for_ranker(r.ranker)[0]
-               unless rj.nil? #shouldn't normally happen
-                 if r.rank > rj.rank
-                   matrix[i][j] += num_of_votes
-                 end
-                 if r.rank < rj.rank
-                   matrix[j][i] += num_of_votes
-                 end
+               cand = [rankable]+rankable.amendments
+               n = cand.count
+               matrix = []
+               #last row and column is for the "none" alternative
+               for i in 0..n
+                       matrix[i] = []
+                       for j in 0..n
+                               matrix[i][j] = 0
+                       end
                end
-             end
-           end
-         end
-         matrix
+               for i in 0..n-1
+                       matrix[i][n] = cand[i].rankings.collect{ |r| r.rank>0 ? 1:0 }.sum
+                       matrix[n][i] = cand[i].rankings.collect{ |r| r.rank<0 ? 1:0 }.sum
+                       for j in (i+1)..n-1
+                               cand[i].rankings.each do |r|
+                                       unless r.ranker.nil?
+                                               if r.ranker_type == "Delegate"
+                                                       num_of_votes = r.ranker.weights.for_bill(r.rankable).first.value
+                                               else
+                                                       num_of_votes = 1
+                                               end
+                                               rj = cand[j].rankings.for_ranker(r.ranker)[0]
+                                               unless rj.nil? #shouldn't normally happen
+                                                       if r.rank > rj.rank
+                                                               matrix[i][j] += num_of_votes
+                                                       end
+                                                       if r.rank < rj.rank
+                                                               matrix[j][i] += num_of_votes
+                                                       end
+                                               end
+                                       end
+                               end
+                       end
+               end
+               matrix
        end
        
        def self.paths_strength(m)
@@ -213,6 +212,14 @@ class Ranking < ActiveRecord::Base
          ## all other values correspond to indexes of amendments 
          return winner
        end
-       
+      
+      private
+      def auto_create_weights
+          if self.ranker_type == "Delegate" 
+                  weight = self.ranker.weight_on_bill(self.rankable)
+                  w = self.rankable.weights.build(:value => weight, :delegate_id => self.ranker.id)
+                  w.save!
+          end
+      end
        
 end

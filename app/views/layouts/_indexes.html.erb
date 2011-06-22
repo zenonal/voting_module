@@ -90,7 +90,7 @@
 				</div>	
 			</div>
 			<div class="clear"></div>
-			<h5><%= pluralize(bill.tally_all_votes, t("initiatives.votes")) %></h5>
+			<h5><%= pluralize(Ranking.tally_all_ranks(bill), t("initiatives.votes")) %></h5>
 		</div>
 		<% end %>
 		

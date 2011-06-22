@@ -5,6 +5,7 @@ class Delegate < ActiveRecord::Base
   belongs_to :user
   has_many :delegations, :dependent => :destroy
   has_many :rankings, :as => :ranker, :dependent => :nullify
+  has_many :weights
   
   scope :ranked_on, lambda {|v|
     joins(:rankings).

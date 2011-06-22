@@ -218,10 +218,14 @@ class InitiativesController < ApplicationController
     @amendments = @initiative.amendments.not_blank.all_validated
     @parsed_json = ActiveSupport::JSON.decode(params[:rankings])
     rank = []
-    if params[:delegated]
+    if params[:delegated] == "true"
       user_id = current_user.delegate.id
       user_type = "Delegate"
-      allowed = @initiative.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
+      unless @initiative.rankings.for_ranker(current_user.delegate)[0].nil?
+              allowed = @initiative.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
+      else
+              allowed = true
+      end
     else
       user_id = current_user.id
       user_type = "User"
