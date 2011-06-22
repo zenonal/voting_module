@@ -15,7 +15,7 @@ def create
                 @user.update_attribute(:photo, @user.uploadedPhoto.url("small"))
         else
                 if @user.photo.nil? 
-                        @user.update_attribute(:photo, "images/unknownuser.jpg")
+                        @user.update_attribute(:photo, "images/unknownUser.jpg")
                 end
         end
 end
@@ -43,7 +43,7 @@ end
          current_user.update_attribute(:photo, current_user.uploadedPhoto.url("small"))
       else
               if current_user.photo.nil? 
-                      current_user.update_attribute(:photo, "images/unknownuser.jpg")
+                      current_user.update_attribute(:photo, "images/unknownUser.jpg")
               end
       end
         set_flash_message :notice, :updated
