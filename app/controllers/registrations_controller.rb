@@ -13,10 +13,6 @@ def create
         end
         if @user.uploadedPhoto?
                 @user.update_attribute(:photo, @user.uploadedPhoto.url("small"))
-        else
-                if @user.photo.nil? 
-                        @user.update_attribute(:photo, "images/unknownUser.jpg")
-                end
         end
 end
 
