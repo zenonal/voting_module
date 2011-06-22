@@ -14,6 +14,19 @@
   <p><%= f.label t(@loc+'email') %></p>
   <p><%= f.text_field :email %></p>
 
+
+  <p><%= label_tag t(@loc+'postalcode') %></p>
+<% unless current_user.commune.nil? %>
+  <p><%= text_field_tag :postal_code, current_user.commune.postal_code %></p>
+<% else %>
+<p><%= text_field_tag :postal_code %></p>
+<% end %>
+
+	<%= f.label t('layout.choose_user_photo') %><br /><br/>
+    <%= f.file_field :uploadedPhoto %>
+<br /><br/>
+
+
 <% if @user.password_required? %>
   <p><%= f.label t(@loc+'pwd') %></p>
   <p><%= f.password_field :password %></p>
