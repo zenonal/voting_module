@@ -15,12 +15,8 @@
   <p><%= f.text_field :email %></p>
 
 
-  <p><%= label_tag t(@loc+'postalcode') %></p>
-<% unless current_user.commune.nil? %>
-  <p><%= text_field_tag :postal_code, current_user.commune.postal_code %></p>
-<% else %>
-<p><%= text_field_tag :postal_code %></p>
-<% end %>
+    <p><%= label_tag t(@loc+'postalcode') %></p>
+    <p><%= text_field_tag :postal_code %></p>
 
 	<%= f.label t('layout.choose_user_photo') %><br /><br/>
     <%= f.file_field :uploadedPhoto %>
