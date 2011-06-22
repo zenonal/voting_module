@@ -88,10 +88,16 @@
 			<% end %>
 			
 			<div id="bill-vote">
-				<%= t("#{params[:controller]}.vote_of_delegate") %>
+				
 				<% if delegated_vote.nil? %>
-					<p><%= t("#{params[:controller]}.delegate_no_vote") %></p>
+					<% if current_user.delegate.nil? %>
+						<p><%= t("#{params[:controller]}.no_delegate") %></p>
+					<% else %>
+						<%= t("#{params[:controller]}.vote_of_delegate") %>
+						<p><%= t("#{params[:controller]}.delegate_no_vote") %></p>
+					<% end %>
 				<% else %>
+				<%= t("#{params[:controller]}.vote_of_delegate") %>: 
 					<div id="ranking-bill-element">
 					<% delegated_vote.each do |a| %>
 						<% unless a.rankings.for_ranker(@deleg.delegate)[0].nil? %>

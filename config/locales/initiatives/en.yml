@@ -15,6 +15,7 @@ en:
     private_vote: 'Submit your private vote'
     delegate_vote: 'Submit your vote as a delegate'
     delegate_no_vote: "No vote on this bill yet"
+    no_delegate: "You don't have a delegate"
     vote_of_delegate: 'Your delegate ranked this bill'
     want_vote: 'If you want to vote on this'
     want_initiative: 'If you want to submit your own initiative'
