@@ -43,7 +43,7 @@ class Ranking < ActiveRecord::Base
       if rankable.class.name == "Amendment"
         rankable = rankable.amendmentable
       end
-      dataMat = [rankable] + rankable.amendments
+      dataMat = [rankable] + rankable.amendments.not_blank.all_validated
       return dataMat
     end
     
@@ -51,7 +51,7 @@ class Ranking < ActiveRecord::Base
       if rankable.class.name == "Amendment"
         rankable = rankable.amendmentable
       end
-      dataMat = [rankable] + rankable.amendments
+      dataMat = [rankable] + rankable.amendments.not_blank.all_validated
       dataMat.sort_by{|r| r.rankings.for_ranker(ranker)[0].nil? ? 10000 : r.rankings.for_ranker(ranker)[0].rank }.reverse
     end
   
