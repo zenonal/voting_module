@@ -42,7 +42,11 @@ en:
                 <p>Inside each box, the bills must be sorted in order of your preference.</p>"
         show_results: "<p>This page shows you the result of the vote on this bill.</p>
                         <p>Because it is based on ranking, the procedure used to determine who wins the vote is a little more complicated than just counting the number of votes...</p>
-                        <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a></p>"
+                        <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a>. 
+                        Briefly, it determines which of the bills wins against all the other ones in one-to-one matches.</p>
+                        <p>To allow anyone to double check that we picked the winner correctly, we provide a detail of all the results.</p>
+                        <p>For info, we also indicate the percentage of approval and the average ranking for each bill, even though
+                        these values are not directly user to reach a decision.</p>"
       
     referendums:
       index: "<p>Here you can see all the propositions recently put forth by politicians.
@@ -54,6 +58,19 @@ en:
                 <p>During the third stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
                 <p>Finally, when the voting period is over, the results of the vote are shown.</p><br />
                 <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
+                
+      vote: "<p>This page allows you to vote on the bill.</p>
+                        <p>Drag and drop the bills that you don't like in the red box.</p>
+                        <p>Drag and drop the bills that you do like in the green box.</p>
+                        <p>Inside each box, the bills must be sorted in order of your preference.</p>"
+      
+      show_results: "<p>This page shows you the result of the vote on this bill.</p>
+                                <p>Because it is based on ranking, the procedure used to determine who wins the vote is a little more complicated than just counting the number of votes...</p>
+                                <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a>. 
+                                Briefly, it determines which of the bills wins against all the other ones in one-to-one matches.</p>
+                                <p>To allow anyone to double check that we picked the winner correctly, we provide a detail of all the results.</p>
+                                <p>For info, we also indicate the percentage of approval and the average ranking for each bill, even though
+                                these values are not directly user to reach a decision.</p>"
              
     delegates:
       index: "<p>This is a list of all the users that have chosen to become a delegate. 
