@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
           format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
         else
           flash[:error] = t(:new_comment_not_ok)
-          format.html { render :action => "new" }
+          format.html { redirect_to(@commentable) }
           format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
         end
       end
@@ -88,10 +88,10 @@ class CommentsController < ApplicationController
           @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
 
           flash[:notice] = t(:new_comment_ok)
-          redirect_to @back
+          redirect_to @commentable
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to @back
+          redirect_to @commentable
         end
       end
     else
