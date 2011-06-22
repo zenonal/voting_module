@@ -17,7 +17,7 @@ VotingModule::Application.routes.draw do
   get "language/eng"
   
   resources :authentications
-
+  
   resources :referendums, :path => 'referendums' do
     resources :comments
     resources :arguments
