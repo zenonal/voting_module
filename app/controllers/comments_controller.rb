@@ -88,16 +88,16 @@ class CommentsController < ApplicationController
           @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
 
           flash[:notice] = t(:new_comment_ok)
-          redirect_to @commentable
+          redirect_to eval("#{@commentable.class.name.downcase}_path(@commentable)")
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to @commentable
+          redirect_to eval("#{@commentable.class.name.downcase}_path(@commentable)")
         end
       end
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to @commentable
+      redirect_to eval("#{@commentable.class.name.downcase}_path(@commentable)")
     end
   end
   
@@ -109,7 +109,7 @@ class CommentsController < ApplicationController
       flash.delete(:recaptcha_error)
       respond_to do |format|
         if @comment.update_attributes(params[:comment])
-          format.html { redirect_to(@comment, :notice => 'Comment was successfully updated.') }
+          format.html { redirect_to(eval("#{@commentable.class.name.downcase}_path(@commentable)"), :notice => 'Comment was successfully updated.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
