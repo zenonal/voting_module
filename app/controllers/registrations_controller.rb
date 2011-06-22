@@ -1,18 +1,25 @@
 class RegistrationsController < Devise::RegistrationsController
        
-  def create
-    super
-    session[:omniauth] = nil unless @user.new_record?
-    if params[:postal_code]
-            c = Commune.find_by_postal_code(params[:postal_code])
-            if c
-              s1 = @user.update_attribute(:commune_id, c.id)
-              s2 = @user.update_attribute(:province_id, c.province.id)
-              s3 = @user.update_attribute(:region_id, c.province.region.id)
-            end
-          end
-    end
-  
+def create
+        super
+        session[:omniauth] = nil unless @user.new_record?
+        if params[:postal_code]
+                c = Commune.find_by_postal_code(params[:postal_code])
+                if c
+                        s1 = @user.update_attribute(:commune_id, c.id)
+                        s2 = @user.update_attribute(:province_id, c.province.id)
+                        s3 = @user.update_attribute(:region_id, c.province.region.id)
+                end
+        end
+        if @user.uploadedPhoto?
+                @user.update_attribute(:photo, @user.uploadedPhoto.url("small"))
+        else
+                if @user.photo.nil? 
+                        @user.update_attribute(:photo, "images/unknownuser.jpg")
+                end
+        end
+end
+
   def update
 
     # Devise use update_with_password instead of update_attributes.
