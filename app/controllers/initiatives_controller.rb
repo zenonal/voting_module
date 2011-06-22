@@ -118,6 +118,7 @@ class InitiativesController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @initiative.errors, :status => :unprocessable_entity }
       else
+        BillMailer.bill_creation_confirmation(current_user,@initiative).deliver
         format.html { redirect_to(@initiative, :notice => t("initiatives.created")) }
         format.xml  { render :xml => @initiative, :status => :created, :location => @initiative }
       end

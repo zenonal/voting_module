@@ -1,0 +1,9 @@
+<p><%= @user.displayName %>,</p>
+
+<p><%= t('mailer.your_bill') %> "<%= eval("@bill.name_#{I18n.locale}") %>" <%= t('mailer.was_created') %></p>
+
+<p><%= t('mailer.you_can_access') %>: <%= link_to t("mailer.link"), eval("#{@bill.class.name.downcase}_url(@bill)") %></p>
+
+<p><%= t('mailer.reminder') %></p>
+
+<p><%= t('mailer.thanks') %></p>

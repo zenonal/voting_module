@@ -37,7 +37,7 @@
 			<%= link_to t("#{params[:controller]}.edit"), eval("edit_#{params[:controller].singularize}_path(bill)"), :class => "button" %>
 			<% end %>
 			<% if permitted_to? :destroy, bill %>
-			<%= link_to t("#{params[:controller]}.destroy"), bill, :confirm => 'Are you sure?', :method => :delete, :class => "button" %>
+			<%= link_to t(:delete_bill_str), bill, :method => :delete, :confirm => t('layout.delete_bill'), :class => "button" %>
 			<% end %></p>
 
 

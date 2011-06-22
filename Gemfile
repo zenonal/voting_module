@@ -16,6 +16,7 @@ gem "compass", '0.11.1'
 gem 'haml' # for SASS
 gem 'aws-s3'
 gem 'recaptcha'
+gem 'indextank'
 
 # Use unicorn as the web server
 # gem 'unicorn'

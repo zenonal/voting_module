@@ -120,6 +120,7 @@ class ReferendumsController < ApplicationController
           format.html { render :action => "new" }
           format.xml  { render :xml => @referendum.errors, :status => :unprocessable_entity }
         else
+          BillMailer.bill_creation_confirmation(current_user,@referendum).deliver
           format.html { redirect_to(@referendum, :notice => t("referendums.created")) }
           format.xml  { render :xml => @referendum, :status => :created, :location => @referendum }
         end

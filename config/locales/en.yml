@@ -99,6 +99,7 @@ en:
       tutorial_mode: "You are currently in tutorial mode"
       missing_user: "The author of this bill cancelled his account"
       brainstorm: "Brainstorm!"
+      delete_bill: "Are you certain you want to delete this bill?"
      
   homepage:
       title: 'Voting module'
@@ -129,6 +130,7 @@ en:
   postal_code_str: "Postal code"
   created_by: "Created by "
   delete_str: "Delete"
+  delete_bill_str: "Delete this bill"
   delete_comment: "Delete this comment"
   are_you_sure_str: "Are you sure?"
   new_comment: "Post your comment (max 1000 characters)"
