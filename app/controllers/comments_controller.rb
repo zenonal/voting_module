@@ -58,18 +58,18 @@ class CommentsController < ApplicationController
           @comment.update_attribute(:user_id, current_user.id)
           @comment.update_attribute(:language, I18n.locale)
           flash[:notice] = t(:new_comment_ok)
-          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)") }
+          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)").to_s }
           format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
         else
           flash[:error] = t(:new_comment_not_ok)
-          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)") }
+          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)").to_s }
           format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
         end
       end
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)")
+      redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)").to_s
     end
   end
 
