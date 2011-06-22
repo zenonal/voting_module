@@ -106,7 +106,7 @@ class Ranking < ActiveRecord::Base
                if rankable.class.name == "Amendment"
                        rankable = rankable.amendmentable
                end
-               cand = [rankable]+rankable.amendments
+               cand = Ranking.all_related_bills(rankable)
                n = cand.count
                matrix = []
                #last row and column is for the "none" alternative
