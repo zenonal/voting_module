@@ -48,10 +48,9 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-          render :text => params.to_yaml
-          if false
+          
     @commentable = find_commentable
-    if verify_recaptcha()
+    if true
       flash.delete(:recaptcha_error)
       @comment = @commentable.comments.build(params[:comment])
       if @comment.save
@@ -71,7 +70,7 @@ class CommentsController < ApplicationController
       flash.delete(:recaptcha_error)
       redirect_to @commentable
     end
-    end
+    
   end
 
   def create_reply
