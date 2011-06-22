@@ -52,24 +52,22 @@ class CommentsController < ApplicationController
     if verify_recaptcha()
       flash.delete(:recaptcha_error)
       @comment = @commentable.comments.build(params[:comment])
-
-      respond_to do |format|
-        if @comment.save
+      if @comment.save
           @comment.update_attribute(:user_id, current_user.id)
           @comment.update_attribute(:language, I18n.locale)
           flash[:notice] = t(:new_comment_ok)
-          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)") }
-          format.xml  { render :xml => @commentable, :status => :created, :location => @commentable }
+          redirect_to @commentable
+          
         else
           flash[:error] = t(:new_comment_not_ok)
-          format.html { redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)") }
-          format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+          redirect_to @commentable
+          
         end
-      end
+  
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)")
+      redirect_to @commentable
     end
   end
 
@@ -88,16 +86,16 @@ class CommentsController < ApplicationController
           @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
 
           flash[:notice] = t(:new_comment_ok)
-          redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)")
+          redirect_to @commentable
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)")
+          redirect_to @commentable
         end
       end
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to eval("#{@commentable.class.name.downcase}_url(@commentable)")
+      redirect_to @commentable
     end
   end
   
@@ -110,7 +108,7 @@ class CommentsController < ApplicationController
       flash.delete(:recaptcha_error)
       respond_to do |format|
         if @comment.update_attributes(params[:comment])
-          format.html { redirect_to(eval("#{@commentable.class.name.downcase}_url(@commentable)"), :notice => 'Comment was successfully updated.') }
+          format.html { redirect_to(@commentable, :notice => 'Comment was successfully updated.') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }

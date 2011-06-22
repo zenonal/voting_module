@@ -1,5 +1,5 @@
 <h2> <%= t(:comment_title) %></h2>
-<% form_for([commentable, Comment.new]) do |f| %>
+<% form_for([commentable, Comment.new], :url => eval("#{commentable.class.name.downcase}_comments_path(commentable,Comment.new)") ) do |f| %>
 		<div class="field">
 			<%= f.label t(:new_comment) %><br>
 			<%= f.text_area :content, :class => "comment_field" %>
