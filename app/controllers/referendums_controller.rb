@@ -2,7 +2,7 @@ class ReferendumsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
   
-  ssl_exceptions
+  ssl_required :show
   
   # GET /referendums
   # GET /referendums.xml
