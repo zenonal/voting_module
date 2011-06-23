@@ -50,8 +50,16 @@ class IdeasController < ApplicationController
     @brainstorm = find_brainstorm
     @bill = @brainstorm.brainstormable
     @idea = @brainstorm.ideas.build(params[:idea])
-    render :text => @idea.id.to_yaml
     
+    respond_to do |format|
+      if @idea.save && @idea.update_attribute(:user_id,current_user.id)
+              render :text => "saved"
+        
+      else
+              render :text => "error"
+        
+      end
+    end
   end
 
   # DELETE /ideas/1
