@@ -61,14 +61,14 @@ class CommentsController < ApplicationController
           
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to @commentable
+          render :text => "no save #{@commentable}".to_yaml
           
         end
   
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to @commentable
+      render :text => "no recaptcha #{@commentable}".to_yaml
     end
   end
 
