@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
         layout "application"
         protect_from_forgery
-        include SslRequirement
+        include ::SslRequirement
+                ssl_allowed :all
         helper_method :filter_index
 
         before_filter :set_locale
@@ -9,6 +10,8 @@ class ApplicationController < ActionController::Base
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
         before_filter :mailer_set_url_options
+        
+        
         
         def default_url_options(options={})
                 logger.debug "default_url_options is passed options: #{options.inspect}\n"

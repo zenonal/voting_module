@@ -17,6 +17,7 @@ gem 'haml' # for SASS
 gem 'aws-s3'
 gem 'recaptcha'
 gem 'indextank'
+gem 'ssl_requirement'
 
 # Use unicorn as the web server
 # gem 'unicorn'
