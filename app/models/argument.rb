@@ -22,6 +22,10 @@ class Argument < ActiveRecord::Base
   def self.all_cons
     find(:all, :conditions => {:pro => false, :language => I18n.locale})
   end
+  def not_excluded
+          joins(:exclusions).
+          has()
+  end
   def score
     if votes_count>0
     votes_for.to_f/votes_count.to_f

@@ -27,13 +27,6 @@
 	</div>
 	<%= link_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :class => "button" %>
 	
-	<% if @argument.exclusion_requests > 0 %>
-		<%= t(:exclusion_requests_str) %>
-		<% @argument.exclusions.each do |l| %>
-			<span style="color:#F00">X</span>
-		<%end %>
-	<% end %>
-	
 	
 	<% if permitted_to? :destroy, @argument %>
 		<%= link_to t(:delete_str), @argument, :method => :delete, :confirm => 'delete', :class => "button" %>
@@ -41,6 +34,13 @@
 
 	<% if permitted_to? :edit, @argument %>
 		<%= link_to t(:edit_arg), eval("edit_#{@argument.argumentable_type.downcase}_argument_path(@argument.argumentable_type.constantize.find_by_id(@argument.argumentable_id), @argument)"), :class => "button" %>
+	<% end %>
+	<br />
+	<% if @argument.exclusion_requests > 0 %>
+		<%= t(:exclusion_requests_str) %>
+		<% @argument.exclusions.each do |l| %>
+			<span style="color:#F00">X</span>
+		<%end %>
 	<% end %>
 	</div>
 </div>
