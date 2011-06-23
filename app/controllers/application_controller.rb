@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
         before_filter :mailer_set_url_options
-        
+        before_filter :jumpback
         
         
         def default_url_options(options={})
@@ -131,4 +131,20 @@ class ApplicationController < ActionController::Base
         def set_layout
                 (cookies[:tutorial] == "true") ? "tutorial" : "application"
         end
+        def jumpback
+            session[:jumpback] = session[:jumpcurrent]
+            session[:jumpcurrent] = request.request_uri
+          end  
+
+         def rescue_action_in_public(exception)
+            case exception
+             when ::ActionController::RedirectBackError
+               jumpto = session[:jumpback] || {:controller => "/my_overview"}
+               redirect_to jumpto
+             else
+               super
+             end
+          end
+        
+        
 end
