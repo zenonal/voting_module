@@ -50,20 +50,8 @@ class IdeasController < ApplicationController
     @brainstorm = find_brainstorm
     @bill = @brainstorm.brainstormable
     @idea = @brainstorm.ideas.build(params[:idea])
+    render :text => @idea.id.to_yaml
     
-    respond_to do |format|
-      if @idea.save && @idea.update_attribute(:user_id,current_user.id)
-        flash[:notice] = t('brainstorms.idea_succesful')
-        format.html { redirect_to(@brainstorm, :notice => 'Idea was successfully created.') }
-        format.xml  { render :xml => @idea, :status => :created, :location => @idea }
-        format.js
-      else
-        flash[:notice] = t('brainstorms.idea_unsuccesful')
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @idea.errors, :status => :unprocessable_entity }
-        format.js
-      end
-    end
   end
 
   # DELETE /ideas/1
