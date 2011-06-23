@@ -1,7 +1,9 @@
 class BrainstormsController < ApplicationController
   filter_access_to :all
   before_filter :authenticate_user!, :except => [:show,:index]
-  
+  unless ENV['RAILS_ENV']=="development" 
+  ssl_required :new, :edit, :create, :update, :destroy
+  end
   
   # GET /brainstorms
   # GET /brainstorms.xml

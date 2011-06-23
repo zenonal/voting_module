@@ -1,6 +1,10 @@
 class AuthenticationsController < ApplicationController
   # GET /authentications
   # GET /authentications.xml
+  unless ENV['RAILS_ENV']=="development" 
+  ssl_required :new, :edit, :create, :update, :destroy
+  end
+  
   def index
     @authentications = current_user.authentications if current_user
   end

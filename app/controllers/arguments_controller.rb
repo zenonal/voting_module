@@ -1,9 +1,8 @@
 class ArgumentsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
-  
   unless ENV['RAILS_ENV']=="development" 
-    ssl_required  :create, :create_con, :destroy, :votefor, :voteagainst
+  ssl_required :show, :new, :edit, :create, :update, :destroy, :aye, :nay, :exclude_argument
   end
   
 

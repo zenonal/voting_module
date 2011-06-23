@@ -1,6 +1,9 @@
 class DelegationsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!
+  unless ENV['RAILS_ENV']=="development" 
+  ssl_required :create, :destroy
+  end
   
   # POST /delegations
   # POST /delegations.xml

@@ -1,6 +1,9 @@
 class IdeasController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
+  unless ENV['RAILS_ENV']=="development" 
+  ssl_required :index, :index_all, :select_ideas, :create, :destroy, :aye, :nay, :exclude_idea
+  end
   
   # GET /ideas
   # GET /ideas.xml

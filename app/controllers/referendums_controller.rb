@@ -1,8 +1,9 @@
 class ReferendumsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
-  
-  ssl_exceptions :show
+  unless ENV['RAILS_ENV']=="development" 
+  ssl_required :show, :new, :edit, :create, :update, :destroy, :vote, :show_results, :ranking, :aye, :nay
+  end
   
   # GET /referendums
   # GET /referendums.xml
