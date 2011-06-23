@@ -26,7 +26,7 @@
 			<%= simple_format "'#{comment.content}'" %>
 			<% unless current_user.nil? %>
 				<% if (comment.user_id == current_user.id) | permitted_to?(:delete, comment) %>
-					<%= link_to t(:delete_comment), polymorphic_path([commentable,comment]),:method => :delete, :confirm => t(:are_you_sure_str),  :class => "link" %>
+					<%= link_to t(:delete_comment), polymorphic_url([commentable,comment]),:method => :delete, :confirm => t(:are_you_sure_str),  :class => "link" %>
 				<% end %>
 			<% end %>
 		</div>
