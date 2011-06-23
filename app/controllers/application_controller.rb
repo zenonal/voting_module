@@ -139,7 +139,7 @@ class ApplicationController < ActionController::Base
          def rescue_action_in_public(exception)
             case exception
              when ::ActionController::RedirectBackError
-               jumpto = session[:jumpback] || {:controller => "/my_overview"}
+               jumpto = session[:jumpback] || {:controller => "/pages"}
                redirect_to jumpto
              else
                super

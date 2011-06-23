@@ -2,19 +2,19 @@ class LanguageController < ApplicationController
   def fra
     I18n.locale = :fr
     Rails.cache.write("locales_page", true)
-    redirect_to root_url
+    redirect_to session[:jumpback] 
 	end
 	
   def eng
     I18n.locale = :en
     Rails.cache.write("locales_page", true)
-    redirect_to root_url
+    redirect_to session[:jumpback] 
 	end
 	
   def ndl
     I18n.locale = :nl
     Rails.cache.write("locales_page", true)
-    redirect_to root_url
+    redirect_to session[:jumpback] 
 	end
 
   def tutorial
@@ -26,6 +26,6 @@ class LanguageController < ApplicationController
         cookies[:tutorial_index] = 1
       end
     end
-    redirect_to :back
+    redirect_to session[:jumpback] 
   end
 end
