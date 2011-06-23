@@ -126,7 +126,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @origin = @comment.origin
-    @back = @origin.commentable_type.constantize.find(@origin.commentable_id)
+    @back = @origin.commentable
     @comment.destroy
 
     respond_to do |format|
