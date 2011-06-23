@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   validates_length_of       :content, :within => 4..1000
   
   belongs_to :commentable, :polymorphic => true
-  belongs_to :users
+  belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :exclusions, :as => :excludable, :dependent => :destroy
   scope :current_lg, lambda {|l|

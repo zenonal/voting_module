@@ -5,7 +5,7 @@ class Argument < ActiveRecord::Base
   validates_length_of       :content, :within => 5..1500
   
   belongs_to :argumentable, :polymorphic => true
-  belongs_to :users
+  belongs_to :user
   has_many :exclusions, :as => :excludable, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   attr_accessible :content, :title
