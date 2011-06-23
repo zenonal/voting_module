@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
         layout "application"
         protect_from_forgery
         include ::SslRequirement
-                ssl_allowed :all
+                
         helper_method :filter_index
 
         before_filter :set_locale
