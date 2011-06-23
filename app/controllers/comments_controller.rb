@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
           @comment.update_attribute(:user_id, current_user.id)
           @comment.update_attribute(:language, I18n.locale)
           flash[:notice] = t(:new_comment_ok)
-          redirect_to @commentable
+          render :text => "save #{@commentable}".to_yaml
           
         else
           flash[:error] = t(:new_comment_not_ok)
@@ -70,7 +70,6 @@ class CommentsController < ApplicationController
       flash.delete(:recaptcha_error)
       redirect_to @commentable
     end
-    
   end
 
   def create_reply
