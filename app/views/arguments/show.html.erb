@@ -1,15 +1,17 @@
 
 <div id="bill-header">
-	<h2><%= t(:point_of_view_title) %></h2>
-	<div id="bill-header-icon"><%= link_to image_tag(@author.photo, :class => "user-image"), user_path(@author) %></div>
-	<div id="bill-header-name"><h1><%= title @argument.title.capitalize %></h1></div>
+	<%= title t(:point_of_view_title) %></h2>
+	<div id="bill-header-icon"><%= link_to image_tag(@author.photo, :size => "80x80", :class => "user-image"), user_path(@author) %></div>
+	<div id="bill-header-name"><h3><%= @argument.title.capitalize %></h3></div>
 </div>
+<div class="clear"></div>
 <div id="bill-sidebar">
 	<div id="bill-vote">
 	<% if user_signed_in? %>
 	<%= raw vote_options(current_user,@argument) %>
 	<% end %>
 	</div>
+	<div class="clear"></div>
 	<div id="bill-score">
 	<%= pluralize(@argument.tally_all_votes,t("initiatives.votes")) %>
 	<% unless @argument.percent_approval.nan? %>
@@ -22,7 +24,7 @@
 	<div class="bill-text">
 		<%= raw RedCloth.new(@argument.content).to_html %>
 	</div>
-	<%= button_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :title => t(:arg_exclude_tip) %>
+	<%= link_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :class => "button" %>
 	
 	<% if @argument.exclusion_requests > 0 %>
 		<%= t(:exclusion_requests_str) %>
@@ -33,7 +35,7 @@
 	
 	
 	<% if permitted_to? :destroy, @argument %>
-		<%= button_to t(:delete_str), @argument, :method => :delete, :confirm => 'delete', :title => t(:delete_str) %>
+		<%= link_to t(:delete_str), @argument, :method => :delete, :confirm => 'delete', :class => "button" %>
 	<% end %>
 
 	<% if permitted_to? :edit, @argument %>
