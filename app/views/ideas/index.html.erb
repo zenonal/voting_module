@@ -16,7 +16,7 @@
 <div id="idea-notice"></div>
 <br /><br />
 <h2><%= t('brainstorms.propose_ideas') %></h2>
-<% form_for [@brainstorm, Idea.new], :remote => true do |f| %>
+<% form_for [@brainstorm, Idea.new], :url => brainstorm_ideas_path(@brainstorm, Idea.new), :remote => true do |f| %>
 	<div class="field">
 	<%= f.label "content_#{I18n.locale}", t('brainstorms.new_idea') %><br />
 	<%= f.text_area "content_#{I18n.locale}" %><br />
