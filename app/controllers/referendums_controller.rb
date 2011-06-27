@@ -231,7 +231,7 @@ class ReferendumsController < ApplicationController
       if @referendum.rankings.for_ranker(current_user.delegate).empty? || @referendum.rankings.for_ranker(current_user.delegate).nil?
               allowed = true
       else
-              allowed = @referendum.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
+              allowed = @referendum.rankings.for_ranker(current_user.delegate).first.created_at > (Time.now()-1.day)
       end
     else
       user_id = current_user.id
