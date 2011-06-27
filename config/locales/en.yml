@@ -49,8 +49,8 @@ en:
         subject: 'Unlock Instructions'
       
   custom_error:
-    perm_denied: 'Sorry, you are not allowed to access that page.'
-    recaptcha_error: "blabla"
+    perm_denied: "Sorry, you are not allowed to access that page. Don't forget to sign in!"
+    recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
   layout:
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
@@ -101,6 +101,7 @@ en:
       brainstorm: "Brainstorm!"
       delete_bill: "Are you certain you want to delete this bill?"
       old_delegate: "No longer active but represented "
+      no_comment: "There is no comment yet in this discussion"
      
   homepage:
       title: 'Voting module'

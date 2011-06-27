@@ -11,8 +11,8 @@
 <td style="text-align:center;"><%= link_to image_tag("partis-politiques-belges.jpg",:size => "260x260"), referendums_path %></td>
 </tr>
 <tr>
-	<td style="padding: 20px;"><h3><%= t('initiatives.title') %></h3></td>
-	<td style="padding: 20px;"><h3><%= t('referendums.title') %></h3></td>
+	<td style="padding: 20px;"><h3><%= link_to t('initiatives.title'), initiatives_path %></h3></td>
+	<td style="padding: 20px;"><h3><%= link_to t('referendums.title'), referendums_path %></h3></td>
 </tr>
 </table>
 </div>

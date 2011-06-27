@@ -100,7 +100,7 @@ class Amendment < ActiveRecord::Base
   end
   
   def time_left_to_vote
-    BILL_VOTING_DURATION-self.voting_time_elapsed
+    BILL_VOTING_DURATION-self.amendmentable.voting_time_elapsed
   end
   
   def current_phase

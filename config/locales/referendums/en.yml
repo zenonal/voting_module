@@ -24,10 +24,10 @@ en:
     created_at: 'Created on '
     index_title: 'List of referendums'
     current_validations: "Number of current validations"
-    level4: "federal"
-    level3: "regional"
-    level2: "provincial"
-    level1: "communal"
+    level4: "referendum at federal level"
+    level3: "referendum at regional level"
+    level2: "referendum at provincial level"
+    level1: "referendum at communal level"
     options: "Options"
     geographical_level: "Geographical level"
     current_phase: "Referendums currently in the phase"

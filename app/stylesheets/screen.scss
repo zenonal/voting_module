@@ -89,12 +89,14 @@ margin: auto;
 }
 
 #tutorial_mode {
+width: 500px;
 position:relative;
 top: 100px;
-left: -80px;
+left: 280px;
 font-family: "Tooltips", helvetica;
 font-size: 16px;
 color: green;
+border: 3px green solid;
 	a {
 	text-decoration: none;
 	font-size: 18px;
@@ -220,7 +222,7 @@ background-color: lighten(#D66,30%);
 text-align:center;
 }
 
-#flash_notice, #flash_alert, #flash_recaptcha_error {
+#flash_notice, #flash_alert, #flash_recaptcha_error, #flash_error {
  padding: 5px 8px;
   margin: 10px 0;
 }
@@ -239,7 +241,7 @@ font-weight: bold;
   font-weight: bold;
 }
 
-#flash_alert {
+#flash_alert, #flash_error {
   background-color: #FCC;
   border: solid 1px #C66;
   color: #F33;

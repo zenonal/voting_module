@@ -1,4 +1,5 @@
 <h2> <%= t(:comment_title) %></h2>
+<% if permitted_to? :create, Comment.new %>
 <% form_for([commentable, Comment.new], :url => eval("#{commentable.class.name.downcase}_comments_path(commentable,Comment.new)") ) do |f| %>
 		<div class="field">
 			<%= f.label t(:new_comment) %><br>
@@ -11,9 +12,12 @@
 		<%= f.submit t(:submit_str) %>
 		</div>
 <% end %>
+<% end %>
 
 <div id="comments-discussion">
-	
+	<% if commentable.comments.current_lg(I18n.locale).blank? %>
+		<%= t('layout.no_comment')%>
+	<% else %>
 	<% for comment in commentable.comments.current_lg(I18n.locale) %>
 	
 	<div class = "comment">
@@ -50,5 +54,6 @@
 		<%= render :partial => 'layouts/replies', :collection => comment.replies, :as => :reply %>
 	</div>
 	
+	<% end %>
 	<% end %>
 </div>
