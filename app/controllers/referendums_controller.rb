@@ -225,7 +225,7 @@ class ReferendumsController < ApplicationController
     @amendments = @referendum.amendments.not_blank.all_validated
     @parsed_json = ActiveSupport::JSON.decode(params[:rankings])
     rank = []
-    if params[:delegated] && current_user.delegate
+    if (params[:delegated] == "true") && current_user.delegate
       user_id = current_user.delegate.id
       user_type = "Delegate"
       allowed = @referendum.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
@@ -261,7 +261,7 @@ class ReferendumsController < ApplicationController
   
   def aye
     if @referendum.current_phase == 4
-      if params[:delegated]
+      if (params[:delegated] == "true")
         voter = current_user.delegate
       else
         voter = current_user
@@ -278,7 +278,7 @@ class ReferendumsController < ApplicationController
   end
   def nay
     if @referendum.current_phase == 4
-     if params[:delegated]
+     if (params[:delegated] == "true")
         voter = current_user.delegate
       else
         voter = current_user

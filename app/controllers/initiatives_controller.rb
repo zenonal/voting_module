@@ -221,7 +221,7 @@ class InitiativesController < ApplicationController
     @amendments = @initiative.amendments.not_blank.all_validated
     @parsed_json = ActiveSupport::JSON.decode(params[:rankings])
     rank = []
-    if params[:delegated] == "true"
+    if (params[:delegated] == "true")
       user_id = current_user.delegate.id
       user_type = "Delegate"
       unless @initiative.rankings.for_ranker(current_user.delegate)[0].nil?
@@ -259,7 +259,7 @@ class InitiativesController < ApplicationController
 
   def aye
      if @initiative.current_phase == 4
-       if params[:delegated]
+       if (params[:delegated] == "true")
          voter = current_user.delegate
        else
          voter = current_user
@@ -276,7 +276,7 @@ class InitiativesController < ApplicationController
   end
   def nay
     if @initiative.current_phase == 4
-     if params[:delegated]
+     if (params[:delegated] == "true")
         voter = current_user.delegate
       else
         voter = current_user
