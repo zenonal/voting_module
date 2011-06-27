@@ -99,19 +99,18 @@
   border-radius: 20px;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
-  padding-right: 10px;
   font-size: 20px;
   color: #fff;
   font-weight: bold;
-  padding: 15px;
+  padding: 7px;
   margin-right: 20px;
 }
-/* line 106, ../../app/stylesheets/ranking.scss */
+/* line 105, ../../app/stylesheets/ranking.scss */
 .ranking li .original_count {
   visibility: hidden;
 }
 
-/* line 111, ../../app/stylesheets/ranking.scss */
+/* line 110, ../../app/stylesheets/ranking.scss */
 #hiddenDelegated {
   visibility: hidden;
 }
