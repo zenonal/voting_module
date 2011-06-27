@@ -228,7 +228,11 @@ class ReferendumsController < ApplicationController
     if (params[:delegated] == "true") && current_user.delegate
       user_id = current_user.delegate.id
       user_type = "Delegate"
-      allowed = @referendum.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
+      if @referendum.rankings.for_ranker(current_user.delegate).empty? || @referendum.rankings.for_ranker(current_user.delegate).nil?
+              allowed = true
+      else
+              allowed = @referendum.rankings.for_ranker(current_user.delegate)[0].created_at > (Time.now()-1.day)
+      end
     else
       user_id = current_user.id
       user_type = "User"

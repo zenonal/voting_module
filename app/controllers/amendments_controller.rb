@@ -201,7 +201,7 @@ class AmendmentsController < ApplicationController
   
   def aye
     if @amendment.current_phase == 4
-      if params[:delegated]
+      if params[:delegated] == "true"
         voter = current_user.delegate
       else
         voter = current_user
@@ -218,7 +218,7 @@ class AmendmentsController < ApplicationController
   end
   def nay
     if @amendment.current_phase == 4
-      if params[:delegated]
+      if params[:delegated] == "true"
         voter = current_user.delegate
       else
         voter = current_user
