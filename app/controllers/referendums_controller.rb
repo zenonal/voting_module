@@ -96,7 +96,7 @@ class ReferendumsController < ApplicationController
             @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
           end
         end
-        if params[:category]
+        if !params[:category].empty?
                 @referendum.category = Category.find_by_name_en(params[:category])
         end
 
@@ -144,7 +144,7 @@ class ReferendumsController < ApplicationController
 
       if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
         u = @referendum.update_attributes(params[:referendum])
-        @referendum.update_attribute(:category, Category.find_or_create_by_name_en(params[:category]))
+        @referendum.update_attribute(:category, Category.find_by_name_en(params[:category]))
         @referendum.authorships = []
         for p in Politician.all
           if params[p.name]

@@ -92,7 +92,7 @@ class InitiativesController < ApplicationController
     @not_lang = not_current_languages
     if @initiative && verify_recaptcha()
       flash.delete(:recaptcha_error)
-      if params[:category]
+      if !params[:category].empty?
           @initiative.category = Category.find_by_name_en(params[:category])
       end
       
@@ -136,7 +136,7 @@ class InitiativesController < ApplicationController
       flash.delete(:recaptcha_error)
       if (current_user.roles[0].name=="admin") || (@initiative.current_phase == 1)
         u = @initiative.update_attributes(params[:initiative])
-        @initiative.update_attribute(:category, Category.find_or_create_by_name_en(params[:category]))
+        @initiative.update_attribute(:category, Category.find_by_name_en(params[:category]))
 
         l=true
         if @initiative.level == "1"
