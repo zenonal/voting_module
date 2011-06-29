@@ -135,6 +135,9 @@ class InitiativesController < ApplicationController
     if verify_recaptcha()
       flash.delete(:recaptcha_error)
       if (current_user.roles[0].name=="admin") || (@initiative.current_phase == 1)
+        if params[:initiative][:photo].empty?
+                params[:initiative].delete :photo
+        end
         u = @initiative.update_attributes(params[:initiative])
         @initiative.update_attribute(:category, Category.find_by_name_en(params[:category]))
 
