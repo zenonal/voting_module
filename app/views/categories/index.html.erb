@@ -14,4 +14,6 @@
 <% end %>
 </div>
 
-<p"><%= link_to 'New Category', new_category_path, :class => "button" %></p>
+<% if permitted_to? :create, Category.new %>
+<p><%= link_to 'New Category', new_category_path, :class => "button" %></p>
+<% end %>

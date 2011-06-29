@@ -143,6 +143,9 @@ class ReferendumsController < ApplicationController
       flash.delete(:recaptcha_error)
 
       if (current_user.roles[0].name=="admin") || (@referendum.current_phase == 1)
+        if params[:referendum][:photo] && params[:referendum][:photo] == ""
+           params[:referendum].delete :photo
+        end
         u = @referendum.update_attributes(params[:referendum])
         @referendum.update_attribute(:category, Category.find_by_name_en(params[:category]))
         @referendum.authorships = []

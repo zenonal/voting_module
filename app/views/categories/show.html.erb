@@ -43,6 +43,6 @@
 	<%= link_to t('referendums.edit'), edit_category_path(@category), :class => "button" %> |
 <% end %>
 <% if permitted_to? :destroy, @category %>
-	<%= link_to 'Destroy', @category, :confirm => 'Are you sure?', :method => :delete, :class => "button" %> |
+	<%= link_to 'Destroy', @category, :method => :delete, :confirm => 'Are you sure?', :class => "button" %> |
 <% end %>
 <%= link_to t('referendums.index_categories'), categories_path, :class => "link" %>
