@@ -92,7 +92,7 @@ class InitiativesController < ApplicationController
     @not_lang = not_current_languages
     if @initiative && verify_recaptcha()
       flash.delete(:recaptcha_error)
-      if !params[:category].empty?
+      if params[:category] && !params[:category].empty?
           @initiative.category = Category.find_by_name_en(params[:category])
       end
       

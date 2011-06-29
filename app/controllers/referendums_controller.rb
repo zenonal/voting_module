@@ -96,7 +96,7 @@ class ReferendumsController < ApplicationController
             @referendum.authorships << Authorship.find_or_create_by_politician_id(p.id)
           end
         end
-        if !params[:category].empty?
+        if params[:category] && !params[:category].empty?
                 @referendum.category = Category.find_by_name_en(params[:category])
         end
 
