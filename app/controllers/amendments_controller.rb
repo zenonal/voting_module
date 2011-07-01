@@ -233,9 +233,9 @@ class AmendmentsController < ApplicationController
     end
     redirect_to(@amendment)
   end
+  
   def validate
     if @amendment.current_phase == 2
-      @amendment = Amendment.find(params[:id])
       unless !@amendment.validations.find_by_user_id(current_user.id).nil?
         Validation.create(:user_id => current_user.id, :validable_type => "Amendment", :validable_id => @amendment.id)
       end

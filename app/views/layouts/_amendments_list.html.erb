@@ -16,12 +16,7 @@
 				<%= link_to eval("alter.name_#{I18n.locale}"), alter, :class => "link" %>
 			</div>
 			<div id="index-column">
-				<p><%= pluralize(alter.tally_all_votes,t("initiatives.votes")) %>
-				<% unless alter.percent_approval.nan? %>
-					, <%= alter.percent_approval.to_i %>% <%= t("initiatives.approval") %></p>
-					<p><%= raw score_meter(alter.percent_approval/100.0,120) %>
-				<% end %>
-				</p>
+				
 			</div>
 			<div id="index-large-column" class="bill-text-link">
 			<p>"<%= link_to truncate(eval("alter.content_#{I18n.locale}"), :length => 250), alter %>"</p>
