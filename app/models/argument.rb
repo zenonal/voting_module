@@ -10,6 +10,11 @@ class Argument < ActiveRecord::Base
   has_many :comments, :as => :commentable, :dependent => :destroy
   attr_accessible :content, :title
   
+  scope :not_excluded, 
+     :joins => "LEFT JOIN `exclusions` ON exclusions.excludable_id = arguments.id AND exclusions.excludable_type == 'Argument'" ,
+     :group => Argument.column_names.collect{|column_name| "arguments.#{column_name}"}.join(","), 
+     :having => "COUNT(exclusions.id) < #{EXCLUSION_THRESHOLD} "
+  
   def is_pro?
      self.pro == true
   end
@@ -17,14 +22,10 @@ class Argument < ActiveRecord::Base
      self.pro == false
   end
   def self.all_pros
-    find(:all, :conditions => {:pro => true, :language => I18n.locale})
+    where(:pro => true, :language => I18n.locale).not_excluded
   end
   def self.all_cons
-    find(:all, :conditions => {:pro => false, :language => I18n.locale})
-  end
-  def not_excluded
-          joins(:exclusions).
-          has()
+    where(:pro => false, :language => I18n.locale).not_excluded
   end
   def score
     if votes_count>0

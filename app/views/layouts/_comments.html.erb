@@ -15,10 +15,10 @@
 <% end %>
 
 <div id="comments-discussion">
-	<% if commentable.comments.current_lg(I18n.locale).blank? %>
+	<% if commentable.comments.current_lg(I18n.locale).not_excluded.length > 0 %>
 		<%= t('layout.no_comment')%>
 	<% else %>
-	<% for comment in commentable.comments.current_lg(I18n.locale) %>
+	<% for comment in commentable.comments.current_lg(I18n.locale).not_excluded %>
 	
 	<div class = "comment">
 		<div id = "comment-header">

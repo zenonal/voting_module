@@ -10,6 +10,11 @@ class Comment < ActiveRecord::Base
     where(:language => l)
   }
   
+  scope :not_excluded, 
+       :joins => "LEFT JOIN `exclusions` ON exclusions.excludable_id = comments.id AND exclusions.excludable_type == 'Comment'" ,
+       :group => Comment.column_names.collect{|column_name| "comments.#{column_name}"}.join(","), 
+       :having => "COUNT(exclusions.id) < #{EXCLUSION_THRESHOLD} "
+  
   def reply_level
     current_com = self
     level = 0

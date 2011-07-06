@@ -10,7 +10,7 @@
 		<div class="clear"></div>
 		<div id="index-column"></div>
 		<div id="index-large-column">
-			<p><% if !commentable.arguments.all_pros.empty? %>
+			<p><% if commentable.arguments.all_pros.length > 0 %>
 					<% commentable.arguments.all_pros.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
 						<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
 					<% end %>
@@ -28,7 +28,7 @@
 
 		</div>
 		<div id="last-index-large-column">
-			<p><% if !commentable.arguments.all_cons.empty? %>
+			<p><% if commentable.arguments.all_cons.length > 0 %>
 				<% commentable.arguments.all_cons.sort {|a,b| b.score <=> a.score }.each_with_index do |arg, index| %>
 					<%= render(:partial => "layouts/arguments_collection", :locals => { :commentable => commentable, :argument => arg, :arguments_collection_counter => index }) %>
 				<% end %>
