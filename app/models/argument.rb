@@ -22,10 +22,10 @@ class Argument < ActiveRecord::Base
      self.pro == false
   end
   def self.all_pros
-    where(:pro => true, :language => I18n.locale).not_excluded
+    where(:pro => true, :language => I18n.locale)
   end
   def self.all_cons
-    where(:pro => false, :language => I18n.locale).not_excluded
+    where(:pro => false, :language => I18n.locale)
   end
   def score
     if votes_count>0

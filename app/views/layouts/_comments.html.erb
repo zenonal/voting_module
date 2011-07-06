@@ -15,7 +15,7 @@
 <% end %>
 
 <div id="comments-discussion">
-	<% if commentable.comments.current_lg(I18n.locale).not_excluded.length > 0 %>
+	<% if commentable.comments.current_lg(I18n.locale).length > 0 %>
 		<%= t('layout.no_comment')%>
 	<% else %>
 	<% for comment in commentable.comments.current_lg(I18n.locale).not_excluded %>
