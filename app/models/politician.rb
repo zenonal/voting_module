@@ -5,7 +5,7 @@ class Politician < ActiveRecord::Base
     has_attached_file :photo, 
       :storage => :s3,
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-      :path => ":attachment/:id/:style.:extension",
+      :path => ":class/:attachment/:id/:style.:extension",
       :url => ':s3_domain_url',
       :s3_permissions => 'public-read',
       :s3_protocol => 'http',
