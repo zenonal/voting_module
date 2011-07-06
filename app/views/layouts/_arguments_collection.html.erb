@@ -7,16 +7,24 @@
 	<% end %>
 </td>
 
-<td style="width:200px;"><%= link_to argument.title, argument, :class => "link" %></td>
-<td><%= pluralize(argument.tally_all_votes,t("#{params[:controller]}.votes")) %>
-<% unless argument.percent_approval.nan? %>
-	, <%= argument.percent_approval.to_i %>% <%= t("#{params[:controller]}.approval") %>
-<% end %>
+<td style="width:200px;">
+	<table>
+	<tr><td style="width:200px;text-align:left;">
+	<%= link_to argument.title, argument, :class => "link" %>
+	</td></tr>
+	<% unless argument.percent_approval.nan? %>
+	<tr><td style="width:200px;text-align:left;"><%= raw score_meter(argument.percent_approval/100.0,60) %></td></tr>
+	<% end %>
+	</table>
 </td></tr>
+
+
 <tr>
 	<td colspan=3>
 		<div class="bill-text-link"  style="position:relative;top:-10px;left:-10px;">
 		<p>"<%= link_to truncate(argument.content, :length => 150), argument %>"</p>
 		</div>
 	</td>
-</tr></table>
+</tr>
+
+</table>

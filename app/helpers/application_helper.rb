@@ -21,8 +21,8 @@ module ApplicationHelper
       level = 0
     end
     output = "<div class=\"meter\">"
-    output += image_tag("meter/meter_bkg.png", :size => "#{size}x20", :class => "meter_bkg")
-    output += image_tag("meter/meter_front.png", :size => "#{level}x20", :class=> "meter_front")
+    output += image_tag("meter/meter_bkg.png", :size => "#{size}x#{(size/5).round()}", :class => "meter_bkg")
+    output += image_tag("meter/meter_front.png", :size => "#{level}x#{(size/5).round()}", :class=> "meter_front")
     output += "</div>"
   end
   def title(page_title, show_title = true)
