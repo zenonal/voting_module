@@ -81,7 +81,7 @@ class InitiativesController < ApplicationController
     @initiative = Initiative.find(params[:id])
     @not_lang = not_current_languages
     
-    unless (@initiative.current_phase == 1)
+    unless (@initiative.current_phase == 1 || current_user.roles.first.name == "admin")
       redirect_to(@initiative)
     end
   end

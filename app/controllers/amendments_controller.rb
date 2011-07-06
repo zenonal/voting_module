@@ -76,7 +76,7 @@ class AmendmentsController < ApplicationController
     @amendmentable = find_amendmentable
     @not_lang = not_current_languages
     
-    unless (@amendment.current_phase == 1)
+    unless (@amendment.current_phase == 1 || current_user.roles.first.name == "admin")
       redirect_to(@amendment)
     end
   end
