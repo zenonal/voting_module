@@ -13,7 +13,7 @@ class Argument < ActiveRecord::Base
   scope :not_excluded, 
      :joins => "LEFT JOIN `exclusions` ON exclusions.excludable_id = arguments.id AND exclusions.excludable_type == 'Argument'" ,
      :group => Argument.column_names.collect{|column_name| "arguments.#{column_name}"}.join(","), 
-     :having => "COUNT(exclusions.id) < #{EXCLUSION_THRESHOLD} "
+     :having => "COUNT(exclusions.id) < 3"
   
   def is_pro?
      self.pro == true
