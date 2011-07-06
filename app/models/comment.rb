@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   }
   
   scope :not_excluded, 
-       :joins => "LEFT JOIN `exclusions` ON exclusions.excludable_id = comments.id AND exclusions.excludable_type == 'Comment'" ,
+       :joins => 'LEFT JOIN "exclusions" ON exclusions.excludable_id = comments.id AND exclusions.excludable_type == "Comment"' ,
        :group => Comment.column_names.collect{|column_name| "comments.#{column_name}"}.join(","), 
        :having => "COUNT(exclusions.id) < 3"
   
