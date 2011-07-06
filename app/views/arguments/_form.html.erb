@@ -14,6 +14,8 @@
 <%= f.label t(:new_arg_title) %>:<br>
 <%= f.text_field :title %>
 
+<%= hidden_field_tag 'side', params[:side] %> 
+
 <%= f.textile_editor :content %>
 </div>
 <div class="field">

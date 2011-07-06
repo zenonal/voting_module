@@ -44,7 +44,7 @@ class ArgumentsController < ApplicationController
       if @argument.save
         @argument.update_attribute(:user_id, current_user.id)
         @argument.update_attribute(:language, I18n.locale)
-        @argument.update_attribute(:pro, current_user.voted_for?(@argumentable))
+        @argument.update_attribute(:pro, (params[:side]=="pro"))
 
         flash[:notice] = t(:new_argument_ok)
         redirect_to @argumentable
@@ -104,18 +104,26 @@ class ArgumentsController < ApplicationController
   def aye
      @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
      current_user.vote_for(@argument)
-     redirect_to(@argument)
+     respond_to do |format|
+                  format.html {redirect_to(@argument)}
+                  format.js
+     end
+     
   end
   def nay
     @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
      current_user.vote_against(@argument)
-     redirect_to(@argument)
+     respond_to do |format|
+                       format.html {redirect_to(@argument)}
+                       format.js
+          end
+     
   end
   
   def exclude_argument
     @exclusion = @argument.exclusions.find_or_create_by_user_id_and_excludable_id_and_excludable_type(current_user.id, @argument.id, "Argument")
     @argumentable = @argument.argumentable_type.constantize.find(@argument.argumentable_id)
-    redirect_to(@argumentable)
+    redirect_to(@argument)
   end
   
   def find_argumentable

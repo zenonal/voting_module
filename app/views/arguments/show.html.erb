@@ -3,6 +3,7 @@
 	<%= title t(:point_of_view_title) %></h2>
 	<div id="bill-header-icon"><%= link_to image_tag(@author.photo, :size => "80x80", :class => "user-image"), user_path(@author) %></div>
 	<div id="bill-header-name"><h3><%= @argument.title.capitalize %></h3></div>
+	
 </div>
 <div class="clear"></div>
 <div id="bill-sidebar">
@@ -24,9 +25,10 @@
 	<div class="border-div">
 	<div class="bill-text">
 		<%= raw RedCloth.new(@argument.content).to_html %>
+		<%= link_to t('amendments.back'), @argumentable, :class => "link" %>
+		
 	</div>
 	<%= link_to t(:arg_exclude_str), {:controller => :arguments, :action => :exclude_argument, :id => @argument.id}, :class => "button" %>
-	
 	
 	<% if permitted_to? :destroy, @argument %>
 		<%= link_to t(:delete_str), @argument, :method => :delete, :confirm => 'delete', :class => "button" %>
@@ -43,6 +45,7 @@
 		<%end %>
 	<% end %>
 	</div>
+	
 </div>
 <div class="clear"></div>
 

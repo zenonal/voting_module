@@ -34,14 +34,14 @@
 		<div id="bill-phase" title="<%= raw t('tooltips.layout.bill_phase') %>">
 			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %></h4>
 		</div>
-		
+		<% if bill.current_phase == 1 || (user_signed_in? && current_user.roles.first.name == "admin") %>
 		<p><% if permitted_to? :edit, bill %>
 			<%= link_to t("#{params[:controller]}.edit"), eval("edit_#{params[:controller].singularize}_path(bill)"), :class => "button" %>
 			<% end %>
 			<% if permitted_to? :destroy, bill %>
 			<%= link_to t(:delete_bill_str), bill, :method => :delete, :confirm => t('layout.delete_bill'), :class => "button" %>
 			<% end %></p>
-
+		<% end %>
 
 		</div>
 

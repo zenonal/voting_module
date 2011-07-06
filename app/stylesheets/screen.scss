@@ -332,7 +332,8 @@ margin-top: 30px;
 padding: auto;
 text-align: center;
 	div.meter {
-		left: 65px;
+	position: absolute;
+		left: 70px;
 		}
 	#bill-winner {
 		@include rounded(5px);

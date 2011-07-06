@@ -81,7 +81,7 @@
 				<p><%= t("#{params[:controller]}.created_at") %><%= bill.created_at.strftime("%e %B, %Y") %></p>
 			<% end %>
 		<% end %>
-	<% if bill.current_phase == 1 %>
+	<% if bill.current_phase == 1 || (user_signed_in? && current_user.roles.first.name == "admin") %>
 		<% if permitted_to? :edit, bill %>
 			<%= link_to t("#{params[:controller]}.edit"), eval("edit_#{params[:controller].singularize}_path(bill)"), :class => "button" %>
 		<% end %>

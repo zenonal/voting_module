@@ -20,7 +20,7 @@
 		
 			<% if user_signed_in? %>
 				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :side => "pro" }, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
 			<% else %>
 				<p><%= t("#{params[:controller]}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
@@ -38,7 +38,7 @@
 			
 			<% if user_signed_in? %>
 				<% if Argument.find_by_user_id_and_argumentable_id_and_argumentable_type(current_user.id,commentable.id,commentable.class.name).nil? %>
-					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id}, :class => "link", :title => t('tooltips.submit_argument') %></p>
+					<p><%= link_to t(:create_arg), {:controller => :arguments, :action => :new, :argumentable => commentable.class.name, :argumentable_id => commentable.id, :side => "con"}, :class => "link", :title => t('tooltips.submit_argument') %></p>
 				<% end %>
 			<% else %>
 					<p><%= t("#{params[:controller]}.want_argument") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
