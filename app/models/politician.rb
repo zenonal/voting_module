@@ -15,4 +15,6 @@ class Politician < ActiveRecord::Base
   has_many :referendums, :through => :authorships
   has_many :bios, :as => :bioable, :dependent => :destroy
   belongs_to :party
+  
+  attr_accessible :name, :photo, :party_id
 end

@@ -6,6 +6,8 @@ class Idea < ActiveRecord::Base
   belongs_to :user
   has_many :exclusions, :as => :excludable, :dependent => :destroy
   
+  attr_accessible :content_en, :content_fr, :content_nl
+  
   scope :for_bill, lambda {|b|
       joins(:brainstorm).
       where("brainstormable_type = ? AND brainstormable_id = ?", b.class.name, b.id)

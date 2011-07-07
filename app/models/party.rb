@@ -14,4 +14,6 @@ class Party < ActiveRecord::Base
   has_many :politicians
   has_many :users
   has_many :bios, :as => :bioable, :dependent => :destroy
+  
+  attr_accessible :name, :photo
 end

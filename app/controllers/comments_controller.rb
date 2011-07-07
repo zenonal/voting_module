@@ -53,8 +53,9 @@ class CommentsController < ApplicationController
     if verify_recaptcha()
       flash.delete(:recaptcha_error)
       @comment = @commentable.comments.build(params[:comment])
+      @comment.user_id = current_user.id
+      
       if @comment.save
-          @comment.update_attribute(:user_id, current_user.id)
           @comment.update_attribute(:language, I18n.locale)
           flash[:notice] = t(:new_comment_ok)
           redirect_to @commentable
@@ -78,23 +79,23 @@ class CommentsController < ApplicationController
     if verify_recaptcha()
       flash.delete(:recaptcha_error)
       if @com.reply_level < 5
-
-        @reply = Comment.new(params[:reply])
-
+        @reply = @com.comments.build(params[:reply])
+        @reply.user_id = current_user.id
+        
         if @reply.save!
-          @reply.update_attributes({:commentable_type => "Comment", :commentable_id => @com.id, :user_id => current_user.id, :language => I18n.locale})
+          @reply.update_attributes(:language => I18n.locale)
 
           flash[:notice] = t(:new_comment_ok)
-          redirect_to @commentable
+          redirect_to @origin.commentable
         else
           flash[:error] = t(:new_comment_not_ok)
-          redirect_to @commentable
+          redirect_to @origin.commentable
         end
       end
     else
       flash.now[:alert] = t(:recaptcha_error)
       flash.delete(:recaptcha_error)
-      redirect_to @commentable
+      redirect_to @origin.commentable
     end
   end
   

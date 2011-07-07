@@ -15,7 +15,7 @@
 <% end %>
 
 <div id="comments-discussion">
-	<% if commentable.comments.current_lg(I18n.locale).length > 0 %>
+	<% if commentable.comments.current_lg(I18n.locale).length == 0 %>
 		<%= t('layout.no_comment')%>
 	<% else %>
 	<% for comment in commentable.comments.current_lg(I18n.locale) %>
@@ -30,12 +30,13 @@
 			<%= simple_format "'#{comment.content}'" %>
 			<% unless current_user.nil? %>
 				<% if (comment.user_id == current_user.id) | permitted_to?(:delete, comment) %>
-					<%= link_to t(:delete_comment), {:controller => :comments, :action=>:destroy, :id => comment.id}, :method => :delete, :confirm => t(:are_you_sure_str),  :class => "link" %>
+					<%= link_to t(:delete_comment), {:controller => :comments, :action=>:destroy, :id => comment.id}, :method => :delete, :confirm => t(:are_you_sure_str),  :class => "small link" %>
 				<% end %>
+			<% end %><br/>
+			<% if permitted_to? :create, Comment.new %>
+				<%= link_to t(:reply_to_comment_str), {:controller => :comments, :action => :reply_to_comment, :id => comment.id, :current_url => request.request_uri }, :class => "small button" %>
 			<% end %>
-		</div>
-		<div class="clear"></div>
-		<div id = "comment-header">
+			<%= link_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => comment.id}, :title => t(:com_exclude_str), :class => "small button" %>
 			<% if comment.exclusion_requests > 0 %>
 				<p style="font-size:9px">! <%= t(:exclusion_requests_str) %>
 				<% comment.exclusions.each do |l| %>
@@ -44,13 +45,8 @@
 			<% end %>
 			&nbsp;
 		</div>
-		<div id ="comment-options">
-			<% if permitted_to? :create, Comment.new %>
-				<%= link_to t(:reply_to_comment_str), {:controller => :comments, :action => :reply_to_comment, :id => comment.id, :current_url => request.request_uri }, :class => "button" %>
-			<% end %>
-			<%= link_to t(:com_exclude_str), {:controller => :comments, :action => :exclude_comment, :id => comment.id}, :title => t(:com_exclude_str), :class => "button" %></p>
-		</div>
 		<div class="clear"></div>
+	
 		<%= render :partial => 'layouts/replies', :collection => comment.replies, :as => :reply %>
 	</div>
 	

@@ -6,6 +6,9 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :exclusions, :as => :excludable, :dependent => :destroy
+  
+  attr_accessible :content, :language
+  
   scope :current_lg, lambda {|l|
     where(:language => l)
   }

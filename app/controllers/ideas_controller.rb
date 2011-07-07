@@ -50,9 +50,10 @@ class IdeasController < ApplicationController
     @brainstorm = find_brainstorm
     @bill = @brainstorm.brainstormable
     @idea = @brainstorm.ideas.build(params[:idea])
+    @idea.user_id = current_user.id
     
     respond_to do |format|
-      if @idea.save && @idea.update_attribute(:user_id,current_user.id)
+      if @idea.save
         flash[:notice] = t('brainstorms.idea_succesful')
         format.html { redirect_to(@brainstorm, :notice => 'Idea was successfully created.') }
         format.xml  { render :xml => @idea, :status => :created, :location => @idea }

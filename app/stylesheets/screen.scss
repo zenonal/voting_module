@@ -909,6 +909,16 @@ font-weight: bold;
 font-size: 16px;
 }
 
+a.small {
+	font-size: .6em;
+	padding: 3px;
+}
+
+a:hover.small {
+padding-top: 5px;
+padding-bottom: 1px;
+}
+
 a:hover img {
 @include opacity(0.6);
 
@@ -1034,14 +1044,10 @@ background-color: #F5F5F5;
 	}
 
 	#comment-content {
+	    font-size: 18px;
 		text-align: left;
 	}
 	
-	#comment-options {
-		@include column($content-columns - 6);
-		position: relative;
-		top: -30px;
-	}
 }
 
 .comment-reply {
@@ -1053,6 +1059,7 @@ margin: 10px;
 	}
 
 	#comment-content {
+	font-size: 18px;
 		text-align: left;
 	}
 }
@@ -1074,6 +1081,8 @@ background-color: #F5F5F5;
 	}
 
 	#reply-content {
+	font-size: 18px;
+	
 		position:relative;
 		text-align: left;
 		width: 93%;
