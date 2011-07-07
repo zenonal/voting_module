@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   belongs_to :province
   belongs_to :region
   belongs_to :party
-  before_create :define_role
+  before_save :define_role
   after_create :default_photo
   
   if Rails.env=="development"
@@ -102,7 +102,11 @@ class User < ActiveRecord::Base
   
    private
     def define_role
-     self.roles << Role.find_or_create_by_name("registered_user")
+        if !self.commune_id.nil?
+                self.roles << Role.find_or_create_by_name("registered_user")
+        else
+                self.roles << Role.find_or_create_by_name("limited_user")
+        end
     end
     
     def default_photo

@@ -125,8 +125,18 @@ class ApplicationController < ActionController::Base
         end
         
         def permission_denied
+            if params[:controller] == "Initiative" || params[:controller] == "Amendment"
+                if ((params[:action] == :create) || (params[:action] == :new)) && user.commune.nil?
+                        flash[:error] = "blabla"
+                        redirect_to root_url
+                else
+                        flash[:error] = t('custom_error.perm_denied')
+                        redirect_to root_url
+                end
+            else
                 flash[:error] = t('custom_error.perm_denied')
                 redirect_to root_url
+            end
         end
 
         def set_layout

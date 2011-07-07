@@ -18,9 +18,11 @@
 		<% if current_user == @user %>
 			<% unless @user.delegation.blank? %>
 				<% @deleg = Delegate.find_by_id(@user.delegation.delegate_id).user %>
+				<% unless @deleg.blank? %>
 				<h5><%= t('users.delegates.votes_delegated') %><%= @deleg.displayName %> </h5>
 				<% unless @deleg.photo.blank? %>
 					<%= link_to image_tag(@deleg.photo, :size => "40x40",:class => "user-image"), @deleg %>
+				<% end %>
 				<% end %>
 			<% end %>
 			<% if @user.delegate.nil? %>

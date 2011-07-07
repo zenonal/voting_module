@@ -10,7 +10,11 @@
 <% if permitted_to? :create, Initiative.new %>
 	<%= link_to t("initiatives.new"), new_initiative_path, :class => "button" %>
 <% else %>
-	<p><%= t("initiatives.want_initiative") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+	<% if user_signed_in? %>
+		<p><%= t("initiatives.want_initiative") %>: <%= link_to t('users.add_postal_code'), edit_user_registration_path, :class => "link" %></p>
+	<% else %>
+		<p><%= t("initiatives.want_initiative") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+	<% end %>
 <% end %>
 <% if permitted_to? :create, Category.new %>
 	<%= link_to t("initiatives.new_category"), new_category_path, :class => "button" %>

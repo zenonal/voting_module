@@ -56,7 +56,11 @@
 	<% if permitted_to? :create, Amendment.new %>
 		<p style="position:relative;top:-20px;"><%= link_to t('amendments.new'), new_amendment_path(eval(":#{bill.class.name.downcase}_id") => bill.id), :class => "button", :title => t('tooltips.submit_amendment') %></p>
 	<% else %>
+		<% if user_signed_in? %>
+			<p><%= t("#{params[:controller]}.want_amendment") %>: <%= link_to t('users.add_postal_code'), edit_user_registration_path, :class => "link" %></p>
+		<% else %>
 		<p><%= t("#{params[:controller]}.want_amendment") %>: <%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+		<% end %>
 	<% end %>
 <% end %>
 

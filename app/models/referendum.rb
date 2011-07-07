@@ -25,6 +25,8 @@ class Referendum < ActiveRecord::Base
   has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
   belongs_to :category
   
+  attr_accessible :name_en, :name_fr, :name_nl, :content_en, :content_fr, :content_nl, :photo, :level, :level_code
+  
   LEVELS = ["", I18n.t("referendums.level1"), I18n.t("referendums.level2"), I18n.t("referendums.level3"), I18n.t("referendums.level4")]
   PHASES = ["", I18n.t("referendums.phase3"),I18n.t("referendums.phase4"),I18n.t("referendums.phase5")]
   

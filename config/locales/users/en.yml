@@ -2,6 +2,7 @@ en:
   users: 
     edit: "Edit user"
     votes: "private vote"
+    add_postal_code: "provide your postal code"
     delegates: 
       index: "Index of delegates"
       active_delegate: "Currently active as delegate"
@@ -29,3 +30,4 @@ en:
       to_oneself: "You can't delegate your votes to yourself"
       initiatives: "Submitted initiatives"
       amendments: "Submitted amendments to other proposals"
+      

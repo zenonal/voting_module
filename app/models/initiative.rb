@@ -25,6 +25,8 @@ class Initiative < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   
+  attr_accessible :name_en, :name_fr, :name_nl, :content_en, :content_fr, :content_nl, :photo, :level, :level_code
+  
   LEVELS = ["", I18n.t("initiatives.level1"), I18n.t("initiatives.level2"), I18n.t("initiatives.level3"), I18n.t("initiatives.level4")]
   PHASES = ["", I18n.t("initiatives.phase0"), I18n.t("initiatives.phase1"),I18n.t("initiatives.phase2"),I18n.t("initiatives.phase3"),I18n.t("initiatives.phase4"),I18n.t("initiatives.phase5")]
   
