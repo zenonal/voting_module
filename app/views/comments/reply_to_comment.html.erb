@@ -7,7 +7,7 @@
 			<p><em><%= @com.created_at.strftime("%e %B, %Y") %></em></p>
 	</div>
 	<br/>
-	<div class = "comment-content">
+	<div id = "comment-content">
 		<%= simple_format "'#{@com.content}'" %>
 	</div>
 <br/><br/>
