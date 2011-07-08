@@ -189,3 +189,4 @@ en:
   category_select: "Select a category"
   recaptcha_error: "There was an error with the recaptcha code below. Please re-enter the code and click submit"
   message_sent: "Thanks for sending your message. Your feedback is very important to us."
+  feedback: "Your feedback"

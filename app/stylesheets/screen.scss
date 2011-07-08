@@ -1271,8 +1271,8 @@ label {
 
 #feedback {
 position: relative;
- 	left: 96%;
-	top: 25px;
+ 	left: 94%;
+	top: 40px;
 
 	#feedbackTag {
 	position: absolute;
@@ -1282,13 +1282,13 @@ position: relative;
 	font-weight: bold;
 	font-size: 1.2em;
 	padding: 5px;
-	width: 70px;
+	width: 100px;
 	}
 	
 	#feedbackForm {
 		position: absolute;
-		left: -495px;
-		top: -25px;
+		left: -475px;
+		top: -40px;
 		text-align: center;
 		background-color: #FFEE94;
 		padding: 10px;
