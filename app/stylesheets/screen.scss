@@ -1271,13 +1271,14 @@ label {
 
 #feedback {
 position: relative;
- 	left: 95%;
+ 	left: 96%;
+	top: 25px;
 
 	#feedbackTag {
 	position: absolute;
 	@include vertical-text;
-	color: #FF9933;
-	background-color: #FFDC74;
+	color: #0066CC;
+	background-color: #FFEE94;
 	font-weight: bold;
 	font-size: 1.2em;
 	padding: 5px;
@@ -1289,7 +1290,7 @@ position: relative;
 		left: -495px;
 		top: -25px;
 		text-align: center;
-		background-color: #FFDC74;
+		background-color: #FFEE94;
 		padding: 10px;
 	}
 }

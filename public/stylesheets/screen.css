@@ -2376,9 +2376,10 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
 /* line 1272, ../../app/stylesheets/screen.scss */
 #feedback {
   position: relative;
-  left: 95%;
+  left: 96%;
+  top: 25px;
 }
-/* line 1276, ../../app/stylesheets/screen.scss */
+/* line 1277, ../../app/stylesheets/screen.scss */
 #feedback #feedbackTag {
   position: absolute;
   writing-mode: tb-rl;
@@ -2387,19 +2388,19 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
-  color: #FF9933;
-  background-color: #FFDC74;
+  color: #0066CC;
+  background-color: #FFEE94;
   font-weight: bold;
   font-size: 1.2em;
   padding: 5px;
   width: 70px;
 }
-/* line 1287, ../../app/stylesheets/screen.scss */
+/* line 1288, ../../app/stylesheets/screen.scss */
 #feedback #feedbackForm {
   position: absolute;
   left: -495px;
   top: -25px;
   text-align: center;
-  background-color: #FFDC74;
+  background-color: #FFEE94;
   padding: 10px;
 }
