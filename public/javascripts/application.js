@@ -42,4 +42,13 @@ $j(document).ready(function() {
 			});
 	});
 	
+	$j("#feedbackForm").hide();
+	$j("#feedback").hover(
+		function() {
+			$j("#feedbackForm").show();
+		},
+		function() {
+			$j("#feedbackForm").hide();
+		}
+	);
 });

@@ -1268,3 +1268,28 @@ label {
 	}
 	
 }
+
+#feedback {
+ 	position: absolute;
+	left: $blueprint-container-size - 530px;
+	
+	
+	#feedbackTag {
+	position: relative;
+	left: 495px;
+	top: 55px;
+	@include vertical-text;
+	color: #FF9933;
+	background-color: #FFDC74;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding: 5px;
+	width: 70px;
+	}
+	
+	#feedbackForm {
+		text-align: center;
+		background-color: #FFDC74;
+		padding: 10px;
+	}
+}

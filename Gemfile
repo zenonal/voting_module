@@ -17,7 +17,6 @@ gem 'haml' # for SASS
 gem 'aws-s3'
 gem 'recaptcha'
 gem 'ssl_requirement'
-gem 'sunspot_rails', '~> 1.2.1'
 
 # Use unicorn as the web server
 # gem 'unicorn'

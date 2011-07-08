@@ -16,5 +16,11 @@ class PagesController < ApplicationController
       cookies[:tutorial_vposition] = @tutorial_positions[cookies[:tutorial_controller]][cookies[:tutorial_action]]["step#{cookies[:tutorial_index].to_i}"]["top"]
     end
   end
+  
+  def send_message
+      Message.feedback_message(current_user,params[:message]).deliver
+      flash[:notice] = t(:message_sent)
+      redirect_to session[:jumpback] 
+  end
 
 end

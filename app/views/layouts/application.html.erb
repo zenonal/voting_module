@@ -106,8 +106,20 @@
 					</div>
 			</div>
 		</div>
-		
-		
+		<div id="feedback">
+			<div id="feedbackTag">Feedback</div>
+			<div id="feedbackForm">
+				<%= form_tag(:controller => "pages", :action => "send_message", :method => "get") do %>
+				<div class="field">
+					<%= label_tag t(:new_message) %><br>
+					<%= text_area_tag :message, nil, :class => "comment_field" %>
+				</div>
+				<div class="actions">
+					<%= submit_tag t(:submit_str) %>
+				</div>
+				<% end %>
+			</div>
+		</div>
 		<div id="footer">
 			
 		</div>

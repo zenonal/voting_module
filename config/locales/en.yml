@@ -136,6 +136,7 @@ en:
   delete_comment: "Delete this comment"
   are_you_sure_str: "Are you sure?"
   new_comment: "Post your comment (max 1000 characters)"
+  new_message: "We need your feedback. Send us a message!"
   new_arg: "Post your point of view (max 1500 characters)"
   new_idea_en: "Your idea in English"
   new_idea_fr: "Your idea in French"
@@ -187,3 +188,4 @@ en:
   content_nl: "Text in het Nederlands"
   category_select: "Select a category"
   recaptcha_error: "There was an error with the recaptcha code below. Please re-enter the code and click submit"
+  message_sent: "Thanks for sending your message. Your feedback is very important to us."

@@ -2372,3 +2372,33 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
+
+/* line 1272, ../../app/stylesheets/screen.scss */
+#feedback {
+  position: absolute;
+  left: 670px;
+}
+/* line 1277, ../../app/stylesheets/screen.scss */
+#feedback #feedbackTag {
+  position: relative;
+  left: 495px;
+  top: 55px;
+  writing-mode: tb-rl;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  color: #FF9933;
+  background-color: #FFDC74;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 5px;
+  width: 70px;
+}
+/* line 1290, ../../app/stylesheets/screen.scss */
+#feedback #feedbackForm {
+  text-align: center;
+  background-color: #FFDC74;
+  padding: 10px;
+}
