@@ -107,7 +107,7 @@ border: 3px green solid;
 	position:relative;
 	top: -220px;
 	left: 50px;
-	width: 150px;
+	width: 160px;
 	a {
 		text-decoration:none;
 	list-style-type: none;
@@ -1270,14 +1270,11 @@ label {
 }
 
 #feedback {
- 	position: absolute;
-	left: $blueprint-container-size - 530px;
-	
-	
+position: relative;
+ 	left: 95%;
+
 	#feedbackTag {
-	position: relative;
-	left: 495px;
-	top: 55px;
+	position: absolute;
 	@include vertical-text;
 	color: #FF9933;
 	background-color: #FFDC74;
@@ -1288,6 +1285,9 @@ label {
 	}
 	
 	#feedbackForm {
+		position: absolute;
+		left: -495px;
+		top: -25px;
 		text-align: center;
 		background-color: #FFDC74;
 		padding: 10px;
