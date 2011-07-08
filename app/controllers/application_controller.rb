@@ -59,6 +59,7 @@ class ApplicationController < ActionController::Base
                         else  
                                 phase = nil
                         end
+                        
                         if params[:filter] && level && !(level == 0)
                                 if params[:user_level] == "off" || current_user.commune.nil?
                                         @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
@@ -103,6 +104,9 @@ class ApplicationController < ActionController::Base
                                 @categ = params[:filter][:category]
                         else
                                 @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
+                        end
+                        if params[:filter] && !params[:filter][:search].blank?
+                                @bills = @bills.filter_keywords(params[:filter][:search])
                         end
                 else
                         @bills = []

@@ -54,6 +54,10 @@ class Initiative < ActiveRecord::Base
     return [MIN_VALIDATION_THRESHOLD,t].max
   end
   
+  scope :filter_keywords, lambda { |kw|
+        where(["name_#{I18n.locale} LIKE ? OR content_#{I18n.locale} LIKE ?", "%#{kw}%", "%#{kw}%"])
+  }
+  
   scope :user_geographical_level, lambda { |user, level|
     if level == 1
       where(["level = ? AND level_code = ?", level.to_s, user.commune.postal_code])
