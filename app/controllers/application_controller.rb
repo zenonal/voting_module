@@ -107,7 +107,8 @@ class ApplicationController < ActionController::Base
                         end
                         if !params[:search].blank?
                                 @bills = bills.search_tank(params[:search], :paginate => false, :function => 1)
-                                
+                                a = eval("Amendment.of_#{params[:controller]}")
+                                @bills + a.search_tank(params[:search], :paginate => false, :function => 1)
                         end
                 else
                         @bills = []
