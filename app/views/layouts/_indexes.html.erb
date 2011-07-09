@@ -24,8 +24,9 @@
 		<% end %>
 	</div>
 	<% end %>
+	<div id="index-single-column"> &nbsp; </div>
 	<% if (bill.class.name == "Amendment") %>
-	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %>
+	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %><br/>
 		<%= t('layout.amendment_of') %><%= link_to eval("bill.amendmentable.name_#{I18n.locale}"), bill, :class => "link" %>
 	</div>
 	<% else %>
@@ -138,6 +139,9 @@
 					<div class="clear"></div>
 					
 				<% end %>
+			<% else %>
+			<div id="index-column"></div>
+			
 			<% end %>
 			
 		</div>

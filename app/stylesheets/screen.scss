@@ -583,6 +583,10 @@ padding: 20px;
 border-bottom: 2px solid darken(white, 12%);
 }
 
+#index-single-column {
+@include column(1);
+}
+
 #index-search {
 	text-align: right;
 	padding: 5px;
