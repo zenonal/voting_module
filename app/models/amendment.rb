@@ -27,7 +27,7 @@ class Amendment < ActiveRecord::Base
   
   #tanker
     include Tanker
-    tankit 'idx' do
+    tankit 'amendments' do
         indexes :name_en
         indexes :name_fr
         indexes :name_nl
