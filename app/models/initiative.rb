@@ -30,6 +30,23 @@ class Initiative < ActiveRecord::Base
   LEVELS = ["", I18n.t("initiatives.level1"), I18n.t("initiatives.level2"), I18n.t("initiatives.level3"), I18n.t("initiatives.level4")]
   PHASES = ["", I18n.t("initiatives.phase0"), I18n.t("initiatives.phase1"),I18n.t("initiatives.phase2"),I18n.t("initiatives.phase3"),I18n.t("initiatives.phase4"),I18n.t("initiatives.phase5")]
   
+  
+  #tanker
+  include Tanker
+  tankit 'my_index' do
+      indexes :name_en
+      indexes :name_fr
+      indexes :name_nl
+      indexes :content_en
+      indexes :content_fr
+      indexes :content_nl
+      indexes :id
+      
+    end
+    after_save :update_tank_indexes
+    after_destroy :delete_tank_indexes
+        
+    
   def validation_threshold
     t = MIN_VALIDATION_THRESHOLD
     start = self.created_at
@@ -183,6 +200,10 @@ class Initiative < ActiveRecord::Base
     return list
   end
   
+  def self.per_page
+        5
+      end
+      
   def commune
     Commune.find_by_postal_code(self.level_code)
   end
