@@ -583,6 +583,20 @@ padding: 20px;
 border-bottom: 2px solid darken(white, 12%);
 }
 
+#index-search {
+	text-align: right;
+	padding: 5px;
+	height: 43px;
+	position: relative;
+	
+	div.input-image {
+	    height: 43px;
+	    position: absolute;
+	    right: 0;
+	    top: 0px;
+	    width: 31px;
+	}
+}
 
 #ranking-index-element {
 	@include column(ceil(2*$content-columns/3), true);

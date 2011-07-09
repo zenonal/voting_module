@@ -175,6 +175,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.pre2)
     xml-simple (1.0.16)
 
 PLATFORMS
@@ -198,3 +199,4 @@ DEPENDENCIES
   ssl_requirement
   tanker
   webrat (= 0.7.1)
+  will_paginate (~> 3.0.pre2)

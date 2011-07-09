@@ -25,6 +25,29 @@ class Amendment < ActiveRecord::Base
   belongs_to :user
   belongs_to :amendmentable, :polymorphic => true
   
+  #tanker
+    include Tanker
+    tankit 'idx' do
+        indexes :name_en
+        indexes :name_fr
+        indexes :name_nl
+        indexes :content_en
+        indexes :content_fr
+        indexes :content_nl
+        indexes :author_names do
+              user.nil? ? nil : user.displayName
+        end
+
+        functions do
+              {
+                1 => 'relevance / age'
+              }
+        end
+
+      end
+      after_save :update_tank_indexes
+      after_destroy :delete_tank_indexes
+  
   PHASES = ["", I18n.t("amendments.phase0"), I18n.t("amendments.phase1"),I18n.t("amendments.phase2"),I18n.t("amendments.phase3"),I18n.t("amendments.phase4"),I18n.t("amendments.phase5")]
   
   def validation_threshold
@@ -52,6 +75,10 @@ class Amendment < ActiveRecord::Base
   end
   
   scope :all_validated, where(["validated = ?", true])
+  
+  scope :of_initiatives, where(["amendmentable_type = ?", "Initiative"])
+  
+  scope :of_referendums, where(["amendmentable_type = ?", "Referendum"])
   
   scope :all_not_validated, where(["validated = ?", false])
   

@@ -1,5 +1,3 @@
-
-
 <div id="filter_options">
 	<br/>
 	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_category") %>: </h5>
@@ -10,13 +8,10 @@
 	<br/>
 	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %>: </h5>
 	<h4 style="text-align: right; display:inline;"><%= @phase %></h4>
+	
 	<br/><br/><br/>
 	<form>
 		<div class="field">
-			<% if false %>
-			<%= label_tag t("bill_keyword_search") %>
-			<%= text_field_tag :search, params[:search] %>
-			<% end %>
 			<%= label_tag t("user_geo_limit") %>
 			<%= check_box_tag("user_level", "off", false) %><br/>
 			<%= label_tag t("category_select") %>

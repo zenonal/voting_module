@@ -1,3 +1,14 @@
+<div class="clear"></div>
+<div id="index-search">
+	<form>
+		<%= text_field_tag :search, t("#{params[:controller]}.search") %>
+		<div class="input-image">
+		<%= image_tag("search_magnifier.png", :size => "30x30") %>
+		</div>
+	</form>
+</div>
+<div class="clear"></div>
+<div class="spacer"></div>
 <div id="index-content">
 <% if @bills.count == 0 %>
 <br/><br/>
@@ -13,6 +24,11 @@
 		<% end %>
 	</div>
 	<% end %>
+	<% if (bill.class.name == "Amendment") %>
+	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %>
+		<%= t('layout.amendment_of') %><%= link_to eval("bill.amendmentable.name_#{I18n.locale}"), bill, :class => "link" %>
+	</div>
+	<% else %>
 	<div id="index-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %>
 		<h4  title="<%= raw t('tooltips.layout.bill_level') %>">
 			<% if bill.level == "4" %>
@@ -29,6 +45,7 @@
 			<% end %>
 		</h4>
 		</div>
+	<% end %>
 	<div id="index-column">
 		<p><%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %></p>
 		<div id="bill-phase" title="<%= raw t('tooltips.layout.bill_phase') %>">

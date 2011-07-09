@@ -52,6 +52,7 @@ en:
     destroyed: "Your referendum was successfully deleted"
     no_bill: "There are currently no referendums corresponding to your selection criteria"
     not_allowed: "A delegate cannot change his vote more than one day after it has been cast"
+    search: "Search among referendums and their amendments:"
     
     politicians:
       title: "List of proposals"

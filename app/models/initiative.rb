@@ -40,7 +40,15 @@ class Initiative < ActiveRecord::Base
       indexes :content_en
       indexes :content_fr
       indexes :content_nl
-      indexes :id
+      indexes :author_names do
+            user.nil? ? nil : user.displayName
+      end
+      
+      functions do
+            {
+              1 => 'relevance / age'
+            }
+      end
       
     end
     after_save :update_tank_indexes
@@ -199,10 +207,6 @@ class Initiative < ActiveRecord::Base
     end
     return list
   end
-  
-  def self.per_page
-        5
-      end
       
   def commune
     Commune.find_by_postal_code(self.level_code)

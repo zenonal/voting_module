@@ -18,6 +18,7 @@ gem 'aws-s3'
 gem 'recaptcha'
 gem 'ssl_requirement'
 gem 'tanker'
+gem "will_paginate", "~> 3.0.pre2"
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -105,8 +105,9 @@ class ApplicationController < ActionController::Base
                         else
                                 @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
                         end
-                        if params[:filter] && !params[:filter][:search].blank?
-                                @bills = @bills.filter_keywords(params[:filter][:search])
+                        if !params[:search].blank?
+                                @bills = bills.search_tank(params[:search], :paginate => false, :function => 1)
+                                @bills + Amendment.of_initiatives.search_tank(params[:search], :paginate => false, :function => 1)
                         end
                 else
                         @bills = []
