@@ -33,7 +33,7 @@ class Initiative < ActiveRecord::Base
   
   #tanker
   include Tanker
-  tankit 'my_index' do
+  tankit 'idx' do
       indexes :name_en
       indexes :name_fr
       indexes :name_nl
