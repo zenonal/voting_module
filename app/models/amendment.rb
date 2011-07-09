@@ -28,9 +28,9 @@ class Amendment < ActiveRecord::Base
   #tanker
     include Tanker
     if Rails.env=="development"
-            indexName = 'development_index'
+            indexName = 'development_initiative_index'
     else
-            indexName = 'production_index'
+            indexName = 'production_amendment_index'
     end
     tankit indexName do
         indexes :name_en

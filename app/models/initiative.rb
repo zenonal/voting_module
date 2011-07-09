@@ -34,9 +34,9 @@ class Initiative < ActiveRecord::Base
   #tanker
   include Tanker
   if Rails.env=="development"
-          indexName = 'development_index'
+          indexName = 'development_initiative_index'
   else
-          indexName = 'production_index'
+          indexName = 'production_initiative_index'
   end
   tankit indexName do
       indexes :name_en

@@ -30,9 +30,9 @@ class Referendum < ActiveRecord::Base
         #tanker
         include Tanker
         if Rails.env=="development"
-                indexName = 'development_index'
+                indexName = 'development_referendum_index'
         else
-                indexName = 'production_index'
+                indexName = 'production_referendum_index'
         end
         tankit indexName do
                 indexes :name_en
