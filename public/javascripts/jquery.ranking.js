@@ -139,6 +139,8 @@ jQuery.fn.ranking = function() {
 			else {
 				if ($j(this).parent().parent().attr("class") == "neutral") {
 					$j(this).find(".count").text(0);
+				} else {
+					$j(this).find(".count").text(index);
 				}
 			}
 		});
