@@ -111,7 +111,7 @@ class Amendment < ActiveRecord::Base
   end
   
   def voting_time_elapsed
-    time_elapsed_since_validation-BILL_AMENDMENTS_DURATION
+    amendmentable.time_elapsed_since_validation-BILL_AMENDMENTS_DURATION
   end
   
   def time_left_to_edit
