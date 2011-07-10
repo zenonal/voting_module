@@ -1,8 +1,18 @@
-<%= div_for all_ideas do %>
+<% if permitted_to? :destroy, all_ideas %>
+<div class="own_idea" id= <%= "idea_#{all_ideas.id}" %> >
 	<div id="idea-score">
 		<%= all_ideas.votes_for-all_ideas.votes_against %>
 	</div>
-	<%= content_tag(:p, eval("all_ideas.content_#{I18n.locale}"), :class => "idea-body2") %>
+	<span class="idea-body2"><%= eval("all_ideas.content_#{I18n.locale}") %> </span>
+	<div class="clear"></div>
+	<div class=" delete-idea"><%= t('brainstorms.own_idea') %><%= link_to t('brainstorms.delete_it'), [all_ideas.brainstorm,all_ideas], :method => :delete, :class => "link", :remote => true  %> </div>
+</div>
+<% else %>
+	<%= div_for all_ideas do %>
+	<div id="idea-score">
+		<%= all_ideas.votes_for-all_ideas.votes_against %>
+	</div>
+	<span class="idea-body2"><%= eval("all_ideas.content_#{I18n.locale}") %> </span>
 	<div class="clear"></div>
 	<div class="spacer"></div>
 	<% if current_user.voted_for?(all_ideas) %>
@@ -16,5 +26,5 @@
 		<div id="idea-vote-nay"><%= link_to("nay", {:controller => :ideas, :action => :nay, :id => all_ideas.id}, :class => 'nay bill_nosupport', :remote => true) %></div>
 	<% end %>
 	<div class="clear"></div>
-	
+	<% end %>
 <% end %>

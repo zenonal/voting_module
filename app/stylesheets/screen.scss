@@ -816,6 +816,9 @@ padding: 0px;
 		padding: 0px;
 		margin: 0px;
 	}
+	.delete-idea {
+		text-align: left;
+	}
 	#idea-score {
 		@include column(1);
 		@include rounded(10px);
@@ -869,6 +872,11 @@ padding: 0px;
 			#idea-vote-nay {
 				@include column(4);
 			}
+	}
+	
+	.own_idea {
+	@extend .idea;
+		@include background-image(linear-gradient(top, white, #FFDBE1 10%, white));
 	}
 }
 

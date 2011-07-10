@@ -13,6 +13,7 @@ en:
     select_title: "Review and vote on ideas from other users"
     no_ideas: "Sorry but you are the first to submit ideas. There are no other to review."
     delete: "Delete"
+    delete_it: "Delete it!"
     vote_ready: "You voted on all the ideas?"
     all_index: "Index of all the ideas submitted on this bill"
     middle_stage: "Go back to the previous stage"
@@ -20,3 +21,4 @@ en:
     brainstorm: "Brainstorm"
     for: "for"
     best_idea: "Best brainstorm idea on this bill"
+    own_idea: "This is one of your own ideas. If you think it is a duplicate, just "
