@@ -17,10 +17,10 @@ class DelegationsController < ApplicationController
 
         respond_to do |format|
           if @delegation.save
-            format.html { redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) }
+            format.html { redirect_to(@delegate, :action => :show, :notice => t('users.delegates.delegation_successful')) }
             format.xml  { render :xml => @delegate, :status => :created, :location => @delegate }
           else
-            format.html { redirect_to(@delegate, :notice => t('users.delegates.already_added')) }
+            format.html { redirect_to(@delegate, :action => :show, :notice => t('users.delegates.already_added')) }
             format.xml  { render :xml => @delegation.errors, :status => :unprocessable_entity }
           end
         end
@@ -30,10 +30,10 @@ class DelegationsController < ApplicationController
 
         respond_to do |format|
           if @delegation.update_attribute(:delegate_id,params[:delegate_id])
-            format.html { redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) }
-            format.xml  { render :xml => @delegate, :status => :created, :location => @delegate }
+            format.html { redirect_to(@delegate, :action => :show, :notice => t('users.delegates.delegation_successful')) }
+            format.xml  { render :xml => @delegate, :action => :show, :status => :created, :location => @delegate }
           else
-            format.html { redirect_to(@delegate, :notice => t('users.delegates.already_added')) }
+            format.html { redirect_to(@delegate, :action => :show, :notice => t('users.delegates.already_added')) }
             format.xml  { render :xml => @delegation.errors, :status => :unprocessable_entity }
           end
         end

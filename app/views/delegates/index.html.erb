@@ -4,12 +4,14 @@
   <tr>
 	<td style="width:50px;"> </td>
 	<% @user = User.find_by_id(d.user_id) %>
-	<% unless @user.photo.blank? %>
-	<td><%= link_to image_tag(@user.photo), @user %></td>
+	<% unless @user.nil? %>
+		<% unless @user.photo.blank? %>
+			<td><%= link_to image_tag(@user.photo), @user %></td>
+		<% end %>
+		<td><%= link_to @user.displayName, @user, :class => "link" %></td>
+		<td><%= pluralize(Ranking.number_of_votes(@user.delegate), t('users.delegates.vote'), t('users.delegates.votes')) %></td>
+		<td><%= raw(delegate_button(@user)) %></td>
 	<% end %>
-	<td><%= link_to @user.displayName, @user, :class => "link" %></td>
-	<td><%= pluralize(Ranking.number_of_votes(@user.delegate), t('users.delegates.vote'), t('users.delegates.votes')) %></td>
-	<td><%= raw(delegate_button(@user)) %></td>
   </tr>
 </table>
 <% end %>
