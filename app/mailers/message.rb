@@ -4,7 +4,7 @@ class Message < ActionMailer::Base
       def feedback_message(user,mes)
         if user.nil?
                 @mes = mes
-                mail(:from => unsigned_user@votingModule.be, :to => "zenon.alex@gmail.com", :subject => "A message from an unsigned user")
+                mail(:from => "unsigned_user@votingModule.be", :to => "zenon.alex@gmail.com", :subject => "A message from an unsigned user")
         else
                 @user = user
                 @mes = mes
