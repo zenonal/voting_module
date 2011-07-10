@@ -110,7 +110,7 @@ class ApplicationController < ActionController::Base
                                 @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
                                 a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
                                 a = a.find_all {|b| b.class.name == "Amendment" }
-                                @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == #{params[:controller]} } ")
+                                @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == bills.first.class.name } ")
                         end
                 else
                         @bills = []
