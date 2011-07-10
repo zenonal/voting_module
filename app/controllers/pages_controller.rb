@@ -18,9 +18,9 @@ class PagesController < ApplicationController
   end
   
   def send_message
-      Message.feedback_message(current_user,params[:message]).deliver
-      flash[:notice] = t(:message_sent)
-      redirect_to session[:jumpback] 
+          d = Message.feedback_message(current_user,params[:message]).deliver
+          flash[:notice] = t(:message_sent)
+          redirect_to session[:jumpback]           
   end
 
 end
