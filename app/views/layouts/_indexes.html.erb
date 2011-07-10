@@ -62,7 +62,11 @@
 		<% end %>
 
 		</div>
-
+		
+		<% if bill.current_phase == 0 %>
+		<div id="index-column">
+		</div>
+		<% end %>
 
 		<% if bill.current_phase == 1 %>
 		<div id="index-column">
