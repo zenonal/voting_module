@@ -18,7 +18,7 @@ VotingModule::Application.routes.draw do
   
   resources :user 
   resources :delegates
-  resources :delegation
+  resources :delegations
   
   resources :authentications
   
