@@ -16,6 +16,8 @@ VotingModule::Application.routes.draw do
 
   get "language/eng"
   
+  resources :delegations
+  
   resources :authentications
   
   resources :referendums, :path => 'referendums' do
@@ -52,7 +54,6 @@ VotingModule::Application.routes.draw do
   
   resources :user 
   resources :delegates
-  resources :delegations
   
   match ':controller(/:action(/:id(.:format)))'
 
