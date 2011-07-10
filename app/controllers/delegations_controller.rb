@@ -15,18 +15,18 @@ class DelegationsController < ApplicationController
         @delegation = Delegation.new(:delegate_id => params[:delegate_id], :user_id => params[:user_id])
         @delegate = Delegate.find_by_id(params[:delegate_id]).user.first
         if @delegation.save
-            redirect_to(:action => :show, :id => @delegate.id, :notice => t('users.delegates.delegation_successful')) 
+            redirect_to(:controller => :user, :action => :show, :id => @delegate.id, :notice => t('users.delegates.delegation_successful')) 
         else
-            redirect_to(:action => :show, :id => @delegate.id, :notice => t('users.delegates.already_added')) 
+            redirect_to(:controller => :user, :action => :show, :id => @delegate.id, :notice => t('users.delegates.already_added')) 
         end
       else
         @delegation = @user.delegation
         @delegate = Delegate.find_by_id(params[:delegate_id]).user.first
 
         if @delegation.update_attribute(:delegate_id,params[:delegate_id])
-            redirect_to(:action => :show, :id => @delegate.id, :notice => t('users.delegates.delegation_successful')) 
+            redirect_to(:controller => :user, :action => :show, :id => @delegate.id, :notice => t('users.delegates.delegation_successful')) 
         else
-            redirect_to(:action => :show, :id => @delegate.id, :notice => t('users.delegates.already_added')) 
+            redirect_to(:controller => :user, :action => :show, :id => @delegate.id, :notice => t('users.delegates.already_added')) 
         end
       end
     else
