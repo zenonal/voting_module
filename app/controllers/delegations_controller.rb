@@ -8,9 +8,7 @@ class DelegationsController < ApplicationController
   # POST /delegations
   # POST /delegations.xml
   def create
-          if true
-                  render :text => "OK"
-          else
+       
     @user = User.find_by_id(params[:user_id])
     
     unless @user.delegate == Delegate.find_by_id(params[:delegate_id])
@@ -35,7 +33,7 @@ class DelegationsController < ApplicationController
     else
       redirect_to(@user, :notice => t('users.delegates.to_oneself')) 
     end
-    end
+   
   end
 
   # DELETE /delegations/1
