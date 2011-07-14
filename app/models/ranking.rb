@@ -117,9 +117,9 @@ class Ranking < ActiveRecord::Base
                        end
                end
                for i in 0..n-1
-                       matrix[i][n] = cand[i].rankings.collect{ |r| r.rank>0 ? 1:0 }.sum
-                       matrix[n][i] = cand[i].rankings.collect{ |r| r.rank<0 ? 1:0 }.sum
-                       for j in (i+1)..n-1
+                       #matrix[i][n] = cand[i].rankings.collect{ |r| r.rank>0 ? 1:0 }.sum
+                       #matrix[n][i] = cand[i].rankings.collect{ |r| r.rank<0 ? 1:0 }.sum
+                       for j in (i+1)..n
                                cand[i].rankings.each do |r|
                                        unless r.ranker.nil?
                                                if r.ranker_type == "Delegate"
@@ -128,12 +128,21 @@ class Ranking < ActiveRecord::Base
                                                        num_of_votes = 1
                                                end
                                                rj = cand[j].rankings.for_ranker(r.ranker)[0]
-                                               unless rj.nil? #shouldn't normally happen
+                                               unless rj.nil?
                                                        if r.rank > rj.rank
                                                                matrix[i][j] += num_of_votes
                                                        end
                                                        if r.rank < rj.rank
                                                                matrix[j][i] += num_of_votes
+                                                       end
+                                               else  #"none" alternative
+                                                       if j == n
+                                                               if r.rank > 0
+                                                                       matrix[i][n] += num_of_votes
+                                                               end
+                                                               if r.rank < 0
+                                                                       matrix[n][i] += num_of_votes
+                                                               end
                                                        end
                                                end
                                        end
