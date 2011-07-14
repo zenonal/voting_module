@@ -127,21 +127,21 @@ class Ranking < ActiveRecord::Base
                                                else
                                                        num_of_votes = 1
                                                end
-                                               rj = cand[j].rankings.for_ranker(r.ranker)[0]
-                                               unless rj.nil?
-                                                       if r.rank > rj.rank
-                                                               matrix[i][j] += num_of_votes
+                                               if j == n
+                                                       if r.rank > 0
+                                                               matrix[i][n] += num_of_votes
                                                        end
-                                                       if r.rank < rj.rank
-                                                               matrix[j][i] += num_of_votes
+                                                       if r.rank < 0
+                                                               matrix[n][i] += num_of_votes
                                                        end
-                                               else  #"none" alternative
-                                                       if j == n
-                                                               if r.rank > 0
-                                                                       matrix[i][n] += num_of_votes
+                                               else
+                                                       rj = cand[j].rankings.for_ranker(r.ranker)[0]
+                                                       unless rj.nil?
+                                                               if r.rank > rj.rank
+                                                                       matrix[i][j] += num_of_votes
                                                                end
-                                                               if r.rank < 0
-                                                                       matrix[n][i] += num_of_votes
+                                                               if r.rank < rj.rank
+                                                                       matrix[j][i] += num_of_votes
                                                                end
                                                        end
                                                end
