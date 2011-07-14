@@ -192,6 +192,7 @@ class AmendmentsController < ApplicationController
 	    end
     end
     @winner = @initiative.result.condorcet_winner
+    @matrix = Ranking.rank_matrix(@initiative)
     
     respond_to do |format|
       format.html # show.html.erb
