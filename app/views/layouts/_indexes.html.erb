@@ -134,7 +134,7 @@
 					<br/>
 					<% unless bill.result.condorcet_winner.nil? %>
 						<% all_bills = Ranking.all_related_bills(bill) %>
-						<% unless (bill.result.condorcet_winner > all_bills.count) && all_bills[bill.result.condorcet_winner].nil? %>
+						<% unless (bill.result.condorcet_winner > all_bills.count) || all_bills[bill.result.condorcet_winner].nil? %>
 						<div id="bill-winner">
 							<%= link_to eval("all_bills[bill.result.condorcet_winner].name_#{I18n.locale}"), all_bills[bill.result.condorcet_winner] %> <%= t("layout.won_vote") %>
 						</div>
