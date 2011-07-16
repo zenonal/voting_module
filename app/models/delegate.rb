@@ -12,6 +12,8 @@ class Delegate < ActiveRecord::Base
     where("rankings.rankable_type = ? AND rankings.rankable_id = ?",v.class.name, v.id)
   }
   
+  scope :currently_active, where(:active => true)
+  
   def weight_on_bill(bill)
     self.delegations.collect{|dd| Ranking.ranked_on?(dd.user, bill) ? 0:1 }.sum
   end

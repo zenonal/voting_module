@@ -8,7 +8,7 @@ class DelegatesController < ApplicationController
   # GET /delegates
   # GET /delegates.xml
   def index
-    @delegates = Delegate.all
+    @delegates = Delegate.currently_active
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +19,7 @@ class DelegatesController < ApplicationController
   # POST /delegates
   # POST /delegates.xml
   def create
-    @delegate = Delegate.new(:user_id => params[:user_id])
+    @delegate = Delegate.find_or_create_by_user_id(params[:user_id])
     @user = User.find_by_id(params[:user_id])
     respond_to do |format|
       if @delegate.save
@@ -37,7 +37,11 @@ class DelegatesController < ApplicationController
   def destroy
     @delegate = Delegate.find_by_id(params[:id])
     @user = @delegate.user
-    @delegate.update_attribute(:user_id, nil)
+    @delegate.update_attribute(:active, false)
+    @delegate.delegations.each do |d|
+            d.destroy
+            DelegateMailer.delegation_forced_cancellation(d.user,@delegate).deliver
+    end
 
     respond_to do |format|
       format.html { redirect_to(@user) }

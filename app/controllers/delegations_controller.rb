@@ -9,30 +9,33 @@ class DelegationsController < ApplicationController
   # POST /delegations.xml
   def create
        
-    @user = User.find_by_id(params[:user_id])
-    
-    unless @user.delegate == Delegate.find_by_id(params[:delegate_id])
-      if @user.delegation.blank?
-        @delegation = Delegation.new(:delegate_id => params[:delegate_id], :user_id => params[:user_id])
-        @delegate = Delegate.find_by_id(params[:delegate_id]).user
-        if @delegation.save
-            redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) 
-        else
-            redirect_to(@delegate, :notice => t('users.delegates.already_added')) 
-        end
-      else
-        @delegation = @user.delegation
-        @delegate = Delegate.find_by_id(params[:delegate_id]).user.first
+          @user = User.find_by_id(params[:user_id])
+          if Delegate.find_by_id(params[:delegate_id]).active
+                  unless @user.delegate == Delegate.find_by_id(params[:delegate_id])
+                          if @user.delegation.blank?
+                                  @delegation = Delegation.new(:delegate_id => params[:delegate_id], :user_id => params[:user_id])
+                                  @delegate = Delegate.find_by_id(params[:delegate_id]).user
+                                  if @delegation.save
+                                          redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) 
+                                  else
+                                          redirect_to(@delegate, :notice => t('users.delegates.already_added')) 
+                                  end
+                          else
+                                  @delegation = @user.delegation
+                                  @delegate = Delegate.find_by_id(params[:delegate_id]).user.first
 
-        if @delegation.update_attribute(:delegate_id,params[:delegate_id])
-            redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) 
-        else
-            redirect_to(@delegate, :notice => t('users.delegates.already_added')) 
-        end
-      end
-    else
-      redirect_to(@user, :notice => t('users.delegates.to_oneself')) 
-    end
+                                  if @delegation.update_attribute(:delegate_id,params[:delegate_id])
+                                          redirect_to(@delegate, :notice => t('users.delegates.delegation_successful')) 
+                                  else
+                                          redirect_to(@delegate, :notice => t('users.delegates.already_added')) 
+                                  end
+                          end
+                  else
+                          redirect_to(@user, :notice => t('users.delegates.to_oneself')) 
+                  end
+          else
+                  redirect_to(@user, :notice => t('users.delegates.not_active')) 
+          end
    
   end
 

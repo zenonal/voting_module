@@ -7,3 +7,5 @@ en:
     reminder: "Don't forget that you have only one week to edit the bill. After that, you won't be able to change it anymore!"
     thanks: "Thanks for using the Voting Module of Citizens for Direct Democracy"
     link: "link"
+    
+    delegation_cancelled: "cancelled his delegate mandate"
