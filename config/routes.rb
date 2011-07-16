@@ -16,10 +16,9 @@ VotingModule::Application.routes.draw do
 
   get "language/eng"
   
-  resources :user do
-        resources :delegations
-        resources :delegates
-  end
+  resources :user 
+  resources :delegations
+  resources :delegates
   
   resources :authentications
   
