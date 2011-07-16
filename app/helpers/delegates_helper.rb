@@ -10,7 +10,7 @@ module DelegatesHelper
 					  output += t('users.delegates.current_delegate')
 					  output += "</td></tr>"
 					  output += "<tr><td>"
-					  output += link_to t('users.delegates.cancel_delegate'), delegation_path(current_user.delegation), :method => :delete, :class => "button"
+					  output += link_to t('users.delegates.cancel_delegate'), {:controller => :delegations, :action => :destroy, :id => current_user.delegation.id}, :method => :delete, :class => "button"
 					  output += "</td></tr></table>"
 					else
 					  output = link_to(t('users.delegates.choose'), {:controller => :delegations, :action => :create, :delegate_id => delegate_user.delegate.id, :user_id => current_user.id}, :method => :post, :class => "button")
