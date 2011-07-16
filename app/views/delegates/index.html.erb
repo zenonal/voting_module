@@ -6,7 +6,7 @@
 	<% @user = User.find_by_id(d.user_id) %>
 	<% unless @user.nil? %>
 		<% unless @user.photo.blank? %>
-			<td><%= link_to image_tag(@user.photo), @user %></td>
+			<td><%= link_to image_tag(@user.photo, :size => "40x40"), @user %></td>
 		<% end %>
 		<td><%= link_to @user.displayName, @user, :class => "link" %></td>
 		<td><%= pluralize(Ranking.number_of_votes(@user.delegate), t('users.delegates.vote'), t('users.delegates.votes')) %></td>
