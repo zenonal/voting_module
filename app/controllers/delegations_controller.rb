@@ -43,7 +43,7 @@ class DelegationsController < ApplicationController
     @delegation.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to session[:jumpback]  }
       format.xml  { head :ok }
     end
   end
