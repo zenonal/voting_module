@@ -25,12 +25,12 @@
 				<% end %>
 				<% end %>
 			<% end %>
-			<% if @user.delegate.nil? %>
+			<% if @user.delegate.nil? || !@user.delegate.active %>
 				<p><%= link_to t('users.delegates.choose_delegate'), delegates_path, :class => "link" %></p>
 				<p><%= link_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}, {:method => :post, :class => "button"}) %></p>
 			<% else %>
 				<h5><%= t('users.delegates.active_delegate') %></h5>
-				<% unless @user.delegate.blank? || !@user.delegate.active %>
+				<% unless @user.delegate.blank? %>
 					<h5><%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_vote'),t('users.delegates.delegated_votes')) %></h5>
 				<% end %>
 				<% if permitted_to? :destroy, @user.delegate %>
