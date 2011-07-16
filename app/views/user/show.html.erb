@@ -30,7 +30,7 @@
 				<p><%= link_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}, {:method => :post, :class => "button"}) %></p>
 			<% else %>
 				<h5><%= t('users.delegates.active_delegate') %></h5>
-				<% unless @user.delegate.blank? %>
+				<% unless @user.delegate.blank? || !@user.delegate.active %>
 					<h5><%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_vote'),t('users.delegates.delegated_votes')) %></h5>
 				<% end %>
 				<% if permitted_to? :destroy, @user.delegate %>
