@@ -2,7 +2,7 @@ class DelegatesController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:index]
   unless ENV['RAILS_ENV']=="development" 
-  ssl_required :new, :edit, :create, :update, :destroy
+  ssl_required :new, :edit, :create, :update, :destroy, :index
   end
   
   # GET /delegates
