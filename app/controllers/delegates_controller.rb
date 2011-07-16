@@ -20,6 +20,7 @@ class DelegatesController < ApplicationController
   # POST /delegates.xml
   def create
     @delegate = Delegate.find_or_create_by_user_id(params[:user_id])
+    @delegate.update_attribute(:active, true)
     @user = User.find_by_id(params[:user_id])
     respond_to do |format|
       if @delegate.save
