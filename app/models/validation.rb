@@ -7,7 +7,9 @@ class Validation < ActiveRecord::Base
   def update_bill_validity
     b = self.validable
     if b.validations_count+1 >= b.validation_threshold
-      b.update_attributes(:validated => true, :validation_date => Time.now())
+      b.validated = true
+      b.validation_date = Time.now()
+      b.save
     end
   end
 end
