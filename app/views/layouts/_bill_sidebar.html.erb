@@ -81,7 +81,7 @@
 				<%= link_to t("#{params[:controller]}.private_vote"), {:action => :vote, :id => bill.id}, :class => "link" %>
 			</div>
 			
-			<% unless current_user.delegate.nil? %>
+			<% unless current_user.delegate.nil? || !current_user.delegate.active %>
 				<div id="bill-vote">
 					<%= link_to t("#{params[:controller]}.delegate_vote"), {:action => :vote, :id => bill.id, :delegated => true}, :class => "link" %>
 				</div>
