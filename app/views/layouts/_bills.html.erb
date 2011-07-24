@@ -89,6 +89,9 @@
 			<%= link_to t(:delete_bill_str), bill, :method => :delete, :confirm => t('layout.delete_bill'), :class => "button" %>
 		<% end %>
 	<% end %>
+	
+	<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=235019189864862&amp;xfbml=1"></script><fb:like href='<%= url_for(bill) %>' send="true" width="450" show_faces="true" action="recommend" font="tahoma"></fb:like>
+	
 </div>
 </div>
 
