@@ -1,4 +1,4 @@
-<% if params[:controller] == "initiatives" %>
+<% if params[:controller] == "initiatives" && params[:action] == "show" %>
 <meta property="og:title" content='<%= eval("@initiative.name_#{I18n.locale}") %>'/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content='<%= "https://votingmodule.heroku.com#{url_for(@initiative)}" %>'/>
@@ -8,7 +8,7 @@
 <meta property="og:description"
           content='<%= truncate(eval("@initiative.content_#{I18n.locale}"), :length => 200) %>'/>
 <% end %>
-<% if params[:controller] == "referendums" %>
+<% if params[:controller] == "referendums" && params[:action] == "show" %>
 <meta property="og:title" content='<%= eval("@referendum.name_#{I18n.locale}") %>'/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content='<%= "https://votingmodule.heroku.com#{url_for(@referendum)}" %>'/>
@@ -18,7 +18,7 @@
 <meta property="og:description"
           content='<%= truncate(eval("@referendum.content_#{I18n.locale}"), :length => 200) %>'/>
 <% end %>
-<% if params[:controller] == "amendments" %>
+<% if params[:controller] == "amendments" && params[:action] == "show" %>
 <meta property="og:title" content='<%= eval("@amendment.name_#{I18n.locale}") %>'/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content='<%= "https://votingmodule.heroku.com#{url_for(@amendment)}" %>'/>
