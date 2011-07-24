@@ -1,7 +1,7 @@
 <% if params[:controller] == "initiatives" %>
 <meta property="og:title" content='<%= eval("@initiative.name_#{I18n.locale}") %>'/>
-<meta property="og:type" content="bill"/>
-<meta property="og:url" content="<%= url_for(@initiative) %>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content='<%= "https://votingmodule.heroku.com/#{url_for(@initiative)}" %>'/>
 <meta property="og:image" content='<%= @initiative.photo.url("small") %>'/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
@@ -10,8 +10,8 @@
 <% end %>
 <% if params[:controller] == "referendums" %>
 <meta property="og:title" content='<%= eval("@referendum.name_#{I18n.locale}") %>'/>
-<meta property="og:type" content="bill"/>
-<meta property="og:url" content="<%= url_for(@referendum) %>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content='<%= "https://votingmodule.heroku.com/#{url_for(@referendum)}" %>'/>
 <meta property="og:image" content='<%= @referendum.photo.url("small") %>'/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
@@ -20,8 +20,8 @@
 <% end %>
 <% if params[:controller] == "amendments" %>
 <meta property="og:title" content='<%= eval("@amendment.name_#{I18n.locale}") %>'/>
-<meta property="og:type" content="bill"/>
-<meta property="og:url" content="<%= url_for(@amendment) %>"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content='<%= "https://votingmodule.heroku.com/#{url_for(@amendment)}" %>'/>
 <meta property="og:image" content='<%= @amendment.photo.url("small") %>'/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
