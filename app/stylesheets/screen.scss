@@ -172,6 +172,18 @@ border-bottom: 3px solid $main-border-color;
 	}
 }
 
+.homepage_style {
+	font-size: 26px;
+	text-align: justify;
+	a {
+		text-decoration: none;
+		color: #888;
+	}
+	a:hover {
+		color: #aaa;
+	}
+}
+
 #header {
 position: relative;
 @include column($blueprint-grid-columns, true);

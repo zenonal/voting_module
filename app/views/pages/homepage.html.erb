@@ -5,14 +5,28 @@
 <div id="home-content" style="height:50px;">
 </div>
 <div id="home-content">
-<table style="margin-left: auto;margin-right: auto;">
-<tr>
-<td style="text-align:center;"><%= link_to image_tag("citoyens.jpg",:size => "260x260"), initiatives_path %></td>
-<td style="text-align:center;"><%= link_to image_tag("partis-politiques-belges.jpg",:size => "260x260"), referendums_path %></td>
-</tr>
-<tr>
-	<td style="padding: 20px;"><h3><%= link_to t('initiatives.title'), initiatives_path %></h3></td>
-	<td style="padding: 20px;"><h3><%= link_to t('referendums.title'), referendums_path %></h3></td>
-</tr>
-</table>
+	<table>
+		<tr>
+			<td>
+	<h3 style="color:#40991E;">VOTE</h3>
+		<h4  class="homepage_style" style="color:#40991E;">You can vote on the bills that have been <%= link_to "proposed by politicians (referendums)", referendums_path %> or 
+<%= link_to "proposed by other citizens like you (initiatives)", initiatives_path %></h4>
+			</td>
+			<td>
+	
+	<h3 style="color:#44A5C4;">PROPOSE</h3>
+		<h4  class="homepage_style" style="color:#44A5C4;">You can also propose your own bill or counter-proposals to other bills. If they gain sufficient support from other users, they will also be voted on. </h4>
+			</td>
+			<td>
+    		<h3 style="color:#C49029;">DEBATE</h3>
+				<h4  class="homepage_style" style="color:#C49029;">On each bill, you can give your point of view, evaluate the points of view of others and participate in brainstorming.</h4>
+					</td>
+					
+		</tr>
+			<tr>
+				<td colspan=3>
+		<h3 >QUICK START</h3>
+			<h4  class="homepage_style">blablabla</h4>
+				</td>
+	</table>
 </div>
