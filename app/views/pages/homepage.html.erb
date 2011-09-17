@@ -1,32 +1,42 @@
-<br/><br/><br/><br/>
-<br/><br/><br/><br/>
-<%= title t('homepage.title') %>
+<% title t('homepage.title') %>
 
-<div id="home-content" style="height:50px;">
-</div>
 <div id="home-content">
-	<table>
-		<tr>
-			<td>
-	<h3 style="color:#40991E;">VOTE</h3>
-		<h4  class="homepage_style" style="color:#40991E;">You can vote on the bills that have been <%= link_to "proposed by politicians (referendums)", referendums_path %> or 
-<%= link_to "proposed by other citizens like you (initiatives)", initiatives_path %></h4>
-			</td>
-			<td>
+	<div id="home-small-column">
+	<%= image_tag("hand_green.png") %>
+	<h3 class="green_text">VOTE</h3></div>
+	<div id="home-large-column">
+		<h4 class="homepage_style green_text" style="top: 50px;">Read the proposals from <%= link_to "politicians (referendums)", referendums_path %> or 
+<%= link_to "from other citizens like you (initiatives)", initiatives_path %>. Submit a counter-proposal if you want to. And Vote!</h4>
+	</div>
+	<div class="clear"></div>
 	
-	<h3 style="color:#44A5C4;">PROPOSE</h3>
-		<h4  class="homepage_style" style="color:#44A5C4;">You can also propose your own bill or counter-proposals to other bills. If they gain sufficient support from other users, they will also be voted on. </h4>
-			</td>
-			<td>
-    		<h3 style="color:#C49029;">DEBATE</h3>
-				<h4  class="homepage_style" style="color:#C49029;">On each bill, you can give your point of view, evaluate the points of view of others and participate in brainstorming.</h4>
-					</td>
-					
-		</tr>
-			<tr>
-				<td colspan=3>
-		<h3 >QUICK START</h3>
-			<h4  class="homepage_style">blablabla</h4>
-				</td>
-	</table>
+	<div style="position:relative;top: -20px;">
+	<div id="home-large-column">
+		<h4 class="homepage_style beige_text">Submit your own bill proposal. Choose the level at which you want it to apply (communal, regional, provincial, federal). If it gains sufficient support from other users, it will be voted on. </h4>
+	</div>
+	<div id="home-small-column" style="position:relative;top: -50px;">
+	<%= image_tag("hand_beige.png") %>
+	<h3 class="beige_text">PROPOSE</h3></div>
+	<div class="clear"></div>
+	</div>
+	
+	<div style="position:relative;top: -50px;">
+	<div id="home-small-column" style="position:relative;top: -50px;">
+	<%= image_tag("hand_pink.png") %>		
+    <h3 class="pink_text">DEBATE</h3></div>
+	<div id="home-large-column">
+		<h4 class="homepage_style pink_text">Discuss with other users on the bills. Give your opinion. Propose you suggestions. Participate in the brainstorming. </h4>
+	</div>
+	<div class="clear"></div>
+	</div>
+	
+	<div style="position:relative;top: -100px;">
+	<div id="home-large-column">
+		<h4 class="homepage_style cyan_text">You can propose yourself as a delegate. If people like the way you think, they can give you their vote. Each time you will vote on a bill, you will vote for them... until they change their mind.</h4>
+	</div>
+	<div id="home-small-column" style="position:relative;top: -50px;">
+	<%= image_tag("hand_cyan.png") %>
+	<h3 class="cyan_text">REPRESENT</h3></div>
+	</div>
 </div>
+<div class="clear"></div>

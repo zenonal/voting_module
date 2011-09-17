@@ -82,6 +82,22 @@ h2 {
 	letter-spacing:4px
 }
 
+.beige_text {
+	color: $beige-color;
+}
+
+.green_text {
+	color: $green-color;
+}
+
+.cyan_text {
+	color: $cyan-color;
+}
+
+.pink_text {
+	color: $pink-color;
+}
+
 #container {
 @include container; 
 @include background-image(linear-gradient(top, #E9E9F5, white));
@@ -173,11 +189,12 @@ border-bottom: 3px solid $main-border-color;
 }
 
 .homepage_style {
-	font-size: 26px;
+	position: relative;
+	font-size: 20px;
 	text-align: justify;
 	a {
 		text-decoration: none;
-		color: #888;
+		color: #ccc;
 	}
 	a:hover {
 		color: #aaa;
@@ -324,6 +341,16 @@ height: 100px;}
 		}
 	text-align: center;
 	height: 500px;
+}
+
+#home-small-column {
+@include column(2);
+padding: 10px;
+}
+
+#home-large-column {
+@include column($content-columns - 3, true);
+padding: 10px;
 }
 
 .filter_form {
