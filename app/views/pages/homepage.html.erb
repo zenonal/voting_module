@@ -2,7 +2,7 @@
 
 <div id="home-content">
 	<div id="home-small-column">
-	<%= image_tag("hand_green.png") %>
+	<%= link_to image_tag("hand_green.png"),initiatives_path %>
 	<h3 class="green_text">VOTE</h3></div>
 	<div id="home-large-column">
 		<h4 class="homepage_style green_text" style="top: 50px;">Read the proposals from <%= link_to "politicians (referendums)", referendums_path %> or 
@@ -15,17 +15,17 @@
 		<h4 class="homepage_style beige_text">Submit your own bill proposal. Choose the level at which you want it to apply (communal, regional, provincial, federal). If it gains sufficient support from other users, it will be voted on. </h4>
 	</div>
 	<div id="home-small-column" style="position:relative;top: -50px;">
-	<%= image_tag("hand_beige.png") %>
+	<%= link_to image_tag("hand_beige.png"),new_initiative_path %>
 	<h3 class="beige_text">PROPOSE</h3></div>
 	<div class="clear"></div>
 	</div>
 	
 	<div style="position:relative;top: -50px;">
 	<div id="home-small-column" style="position:relative;top: -50px;">
-	<%= image_tag("hand_pink.png") %>		
+	<%= link_to image_tag("hand_pink.png"), arguments_path %>		
     <h3 class="pink_text">DEBATE</h3></div>
 	<div id="home-large-column">
-		<h4 class="homepage_style pink_text">Discuss with other users on the bills. Give your opinion. Propose you suggestions. Participate in the brainstorming. </h4>
+		<h4 class="homepage_style pink_text">Discuss with other users on the bills. Give your opinion. Propose you suggestions. Participate in the <%= link_to "brainstorming", brainstorms_path %>. </h4>
 	</div>
 	<div class="clear"></div>
 	</div>
@@ -35,7 +35,7 @@
 		<h4 class="homepage_style cyan_text">You can propose yourself as a delegate. If people like the way you think, they can give you their vote. Each time you will vote on a bill, you will vote for them... until they change their mind.</h4>
 	</div>
 	<div id="home-small-column" style="position:relative;top: -50px;">
-	<%= image_tag("hand_cyan.png") %>
+	<%= link_to image_tag("hand_cyan.png"), delegates_path %>
 	<h3 class="cyan_text">REPRESENT</h3></div>
 	</div>
 </div>

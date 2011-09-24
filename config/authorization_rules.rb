@@ -1,6 +1,6 @@
 authorization do
   role :guest do
-    has_permission_on [:comments,:arguments, :politicians, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show, :show_results]
+    has_permission_on [:comments,:arguments, :politicians, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show, :new, :show_results]
     has_permission_on [:brainstorm, :user], :to => [:show]
   end
   role :admin do
@@ -36,7 +36,7 @@ authorization do
           if_attribute :user_id => is { user.id }
         end
         has_permission_on :delegations, :to => [:create, :update, :destroy]
-        has_permission_on [:brainstorms], :to => [:create, :show]
+        has_permission_on [:brainstorms], :to => [:create, :show, :index]
         has_permission_on [:ideas], :to => [:select_ideas, :index_all]
   end
   role :registered_user do

@@ -1,0 +1,22 @@
+
+<%= title t('arguments.index_title') %>	
+
+<table>
+
+<% @arguments.each do |argument| %>
+<tr>	<td colspan=5 class="bill-text-link"><%= link_to '"'+strip_tags(truncate(argument.content, :length => 400))+'"', argument.argumentable, :class => "strong_text" %></td> </tr>
+  <tr>
+	<td><%= t(:by) %></td>
+	<td style="font-size: 6px;"><%= link_to image_tag(User.find(argument.user_id).photo, :size => "20x20", :class => "user-image"), User.find(argument.user_id) %></td>
+	<td><%= link_to User.find(argument.user_id).displayName, User.find(argument.user_id), :class => "link" %></td>
+	<td><%= t(:on) %></td>
+	<td><%= link_to eval("argument.argumentable.name_#{I18n.locale}"), argument.argumentable, :class => "link"  %></td>
+  </tr>
+<tr><td colspan=5> </td></tr>
+<tr><td colspan=5> </td></tr>
+<tr><td colspan=5> </td></tr>  
+<tr><td colspan=5> </td></tr>
+<tr><td colspan=5> </td></tr>
+<tr><td colspan=5> </td></tr>
+<% end %>
+</table>

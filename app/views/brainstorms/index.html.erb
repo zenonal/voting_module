@@ -1,25 +1,16 @@
-<h1>Listing brainstorms</h1>
+
+<%= title t('brainstorms.index_title') %>	
 
 <table>
-  <tr>
-    <th>Brainstormable type</th>
-    <th>Brainstormable</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @brainstorms.each do |brainstorm| %>
+  <% if brainstorm.ideas.count>0 %>
   <tr>
-    <td><%= brainstorm.brainstormable_type %></td>
-    <td><%= brainstorm.brainstormable_id %></td>
-    <td><%= link_to 'Show', brainstorm %></td>
-    <td><%= link_to 'Edit', edit_brainstorm_path(brainstorm) %></td>
-    <td><%= link_to 'Destroy', brainstorm, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to image_tag(brainstorm.brainstormable.photo.url(:thumbnail)), brainstorm.brainstormable %></td>
+	<td><%= link_to eval("brainstorm.brainstormable.name_#{I18n.locale}"), brainstorm.brainstormable, :class => "link"  %></td>
+	<td class="bill-text-link"><%= link_to strip_tags(raw(truncate(eval("RedCloth.new(brainstorm.brainstormable.content_#{I18n.locale}).to_html"), :length => 200))), brainstorm.brainstormable %></td>
+    <td><%= link_to t('layout.brainstorm'), {:controller => :ideas, :action => :index, "#{brainstorm.brainstormable_type}_id".to_sym => brainstorm.brainstormable_id }, :class => "button brainstorm" %></td>
   </tr>
 <% end %>
+<% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Brainstorm', new_brainstorm_path %>

@@ -103,10 +103,15 @@ en:
       old_delegate: "No longer active but represented "
       no_comment: "There is no comment yet in this discussion"
       amendment_of: "Amendment of "
+  
+  arguments: 
+      index_title: "Examples of opinions on current bills"
      
   homepage:
       title: 'Voting module'
   
+  by: "by"
+  on: "on"
   headtitle: "Voting Module"
   submit_str: "Submit"
   create_str: "Create"

@@ -5,6 +5,14 @@ class ArgumentsController < ApplicationController
   ssl_required :show, :new, :edit, :create, :update, :destroy, :aye, :nay, :exclude_argument
   end
   
+  def index
+      @arguments = Argument.all
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @arguments }
+      end
+    end
 
   def show
     @argumentable = @argument.argumentable_type.constantize.find_by_id(@argument.argumentable.id)

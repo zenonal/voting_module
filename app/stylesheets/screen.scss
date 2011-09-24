@@ -547,6 +547,10 @@ border-left: 2px solid $main-border-color;
 
 }
 
+.strong_text {
+	font-size: 20px;
+}
+
 
 #bill-header {
 @include column($content-columns);
