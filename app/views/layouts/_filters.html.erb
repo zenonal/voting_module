@@ -1,42 +1,42 @@
 <div id="filter_options">
 	<br/>
-	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_category") %>: </h5>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_category") %><%= info_help('category',15) %>: </h5>
 	<h4 style="text-align: right; display:inline;"><%= @categ %></h4>
 	<br/>
-	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.geographical_level") %>: </h5>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.geographical_level") %><%= info_help('geography',15) %>: </h5>
 	<h4 style="text-align: right; display:inline;"><%= @geo %></h4>
 	<br/>
-	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %>: </h5>
+	<h5 style="text-align: left; display:inline;"><%= t("#{bill_model.name.downcase.pluralize}.current_phase") %><%= info_help('phase',15) %>: </h5>
 	<h4 style="text-align: right; display:inline;"><%= @phase %></h4>
 	
 	<br/><br/><br/>
 	<form>
 		<div class="field">
-			<%= label_tag t("user_geo_limit") %>
+			<%= label_tag t("user_geo_limit") %><%= info_help('outside_geo',15) %>
 			<%= check_box_tag("user_level", "off", false) %><br/>
-			<%= label_tag t("category_select") %>
+			<%= label_tag t("category_select") %><%= info_help('category',15) %>
 			<% if params[:filter] && params[:filter][:category] %>
 				<%= select("filter", "category", @categories, :selected => params[:filter][:category]) %><br/>
 			<% else %>
 				<%= select("filter", "category", @categories) %><br/>
 			<% end %>
-			<%= label_tag t("user_geo_select") %>
+			<%= label_tag t("user_geo_select") %><%= info_help('geography',15) %>
 			<% if params[:filter] && params[:filter][:level] %>
 				<%= select("filter", "level", "#{bill_model.name.upcase}_LEVELS".constantize.collect {|l| [l, "#{bill_model.name.upcase}_LEVELS".constantize.index(l)]}, :selected => params[:filter][:level]) %>
 			<% else %>
 				<%= select("filter", "level", "#{bill_model.name.upcase}_LEVELS".constantize.collect {|l| [l, "#{bill_model.name.upcase}_LEVELS".constantize.index(l)]}) %>
-			<% end %>
-			<p><%= label_tag t("user_phase_select") %>
+			<% end %><br/>
+			<%= label_tag t("user_phase_select") %><%= info_help('phase',15) %>
 			<% if params[:filter] && params[:filter][:phase] %>
 				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, "#{bill_model.name.upcase}_PHASES".constantize.index(p) + (6-"#{bill_model.name.upcase}_PHASES".constantize.length)]}, :selected => params[:filter][:phase]) %>
 			<% else %>
 				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, "#{bill_model.name.upcase}_PHASES".constantize.index(p) + (6-"#{bill_model.name.upcase}_PHASES".constantize.length)]}) %>
 			<% end %>
-			</p>
    		</div>
 		<div class="actions">
 			<input type="submit" value="<%=t('layout.filter') %>" />
 		</div>
 	</form>
 </div>
-<a id="options_toggle" class="button" title="<%= raw t('tooltips.layout.index_options') %>"><%= t("#{bill_model.name.downcase.pluralize}.options") %></a>
+<a id="options_toggle" class="button"><%= t("#{bill_model.name.downcase.pluralize}.options") %></a>
+<%= info_help('options') %>

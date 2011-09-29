@@ -1,5 +1,5 @@
 <div id="featured-content">
-<h3><%= t("layout.featured_bills") %></h3>
+<h3><%= t("layout.featured_bills") %><%= info_help('featured_title') %></h3>
 <% if @featured_bills.count == 0 %>
 <br/><br/>
 <h5><%= t("#{params[:controller]}.no_bill") %></h5>

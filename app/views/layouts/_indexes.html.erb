@@ -6,7 +6,9 @@
 		<%= image_tag("search_magnifier.png", :size => "30x30") %>
 		</div>
 	</form>
+	
 </div>
+
 <div class="clear"></div>
 <div class="spacer"></div>
 <div id="index-content">
@@ -49,8 +51,8 @@
 	<% end %>
 	<div id="index-column">
 		<p><%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %></p>
-		<div id="bill-phase" title="<%= raw t('tooltips.layout.bill_phase') %>">
-			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %></h4>
+		<div id="bill-phase">
+			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><%= info_help('phase',15) %></h4>
 		</div>
 		<% if bill.current_phase == 1 || (user_signed_in? && current_user.roles.first.name == "admin") %>
 		<p><% if permitted_to? :edit, bill %>

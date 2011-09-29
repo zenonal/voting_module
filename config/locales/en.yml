@@ -173,7 +173,7 @@ en:
   level: "level"
   user_geo_limit: "View bills outside your specific geographical level"
   user_geo_select: "Select geographical level"
-  user_phase_select: "Select bills at a given processing stage"
+  user_phase_select: "Select processing phase"
   bill_keyword_search: "Show only bills containing "
   days: "day"
   hours: "hour"

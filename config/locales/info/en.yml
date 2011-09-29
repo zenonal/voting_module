@@ -1,0 +1,22 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+  info:
+    initiative_menu: "View, vote or propose citizen-initiated bills"
+    referendum_menu: "View and vote on politicians-initiated bills"
+    tutorial_menu: "Watch videos showing you how to proceed"
+    your_profile_title: "This section allows you to log in and access your personal information"
+    featured_title: "Examples of bills picked randomly for you."
+    options: "Filter the bills according to their geographical extent, their category and their developmemnt phase"
+    category: "Defines the domain to which the bills apply (e.g. economy, agriculture, etc...)."
+    geography: "Defines the geographical level of the bills (communal, provincial, regional, federal)."
+    phase: "Defines the current processing phase of the bills:
+            <ul><li>currently being edited: the bill is being drafter by its author</li>
+            <li>curently gathering validations: the bill is gathering validations from other users. It needs to pass a validation threshold to go on to the next steps.</li>
+            <li>validation failed: the bill didn't reach the validation threshold in time. It won't go on to the next steps.</li>
+            <li>currently open to amendments: the bill is open to amendment. Anyone can propose alternative proposals.</li>
+            <li>currently being voted on: the bill is being voted on</li>
+            <li>already voted on: the voting period is over. You can see the results of the vote. </li></ul>
+            By default, all phases are shown except the editing phase."
+    outside_geo: "By default, in addition to federal bills, only bills from your own commune, province and region are shown. </br>
+        You can see the bills from other geographical sectors by checking this option."

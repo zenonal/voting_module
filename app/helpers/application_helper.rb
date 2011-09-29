@@ -31,6 +31,13 @@ module ApplicationHelper
         raw "<h2>#{page_title}</h2>"
       end
     end
+    
+    def info_help(id,size=20)
+            output="<div class=\"info_help\">"
+            output+=image_tag("i.png",:size => "#{size}x#{size}", :class => "info_help_img", :title=>t("info.#{id}"))
+            output+="</div>"
+            output = raw(output)
+    end
 
     def show_title?
       @show_title

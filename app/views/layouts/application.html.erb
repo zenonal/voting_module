@@ -66,17 +66,17 @@
 					</div>
 					<%= link_to initiatives_path do %>
 					<div id="menu-item">
-					<div id="menu-title"><%= t('initiatives.title2') %></div>
+					<div id="menu-title"><%= t('initiatives.title2') %><%= info_help('initiative_menu') %></div>
 					</div>
 					<%end %>
 					<%= link_to referendums_path do %>
 					<div id="menu-item">
-					<div id="menu-title"><%= t('referendums.title2') %></div>
+					<div id="menu-title"><%= t('referendums.title2') %><%= info_help('referendum_menu') %></div>
 					</div>
 					<% end %>
 					<%= link_to language_tutorial_url do %>
 					<div id="menu-item">
-					<div id="menu-title"><%= t('tutorial.title') %></div>
+					<div id="menu-title"><%= t('tutorial.title') %><%= info_help('tutorial_menu') %></div>
 					</div>
 					<% end %>
 					<div class="clear"></div>
@@ -85,8 +85,8 @@
 			</div>
 		  	<div id="sidebar-right">
 
-					<div id="user_info" title="<%= raw t('tooltips.layout.user_info') %>">
-						<h3><%= t("layout.user_info") %></h3>
+					<div id="user_info">
+						<h3><%= t("layout.user_info") %><%= info_help('your_profile_title') %></h3>
 							<% if user_signed_in? %>
 							<p>
 								<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
@@ -107,7 +107,7 @@
 					          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 					        <% end %>
 					</div>
-					<div id="featured" title="<%= raw t('tooltips.layout.featured') %>">
+					<div id="featured">
 						<%= render "layouts/featured" %>
 					</div>
 			</div>
