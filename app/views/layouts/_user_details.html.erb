@@ -1,0 +1,16 @@
+<table style="margin:auto; padding:auto;">
+	<tr>
+		<td class="user-icons"><%= image_tag("hand_white.png", :size => "20x30", :title => t('info.private_vote_num')) %></td>
+		<% unless current_user.delegate.nil? %><td class="user-icons"><%= image_tag("hand_black.png", :size => "20x30", :title => t('info.public_vote_num')) %></td><% end %>
+		<td class="user-icons"><%= image_tag("bill.png", :size => "20x30", :title => t('info.submitted_bill_num')) %></td>
+		<td class="user-icons"><%= image_tag("blabla.png", :size => "20x30", :title => t('info.comments_num')) %></td>
+		<td class="user-icons"><%= image_tag("bulb.png", :size => "25x30", :title => t('info.points_of_view_num')) %></td>`
+	</tr>
+	<tr>
+		<td class="user-icons user-icons-text"><%= Ranking.number_of_votes(current_user) %></td>
+		<% unless current_user.delegate.nil? %><td class="user-icons user-icons-text"><%= Ranking.number_of_votes(current_user.delegate) %></td><% end %>
+		<td class="user-icons user-icons-text"><%= current_user.initiatives.count + current_user.amendments.count %></td>
+		<td class="user-icons user-icons-text"><%= current_user.comments.count %></td>
+		<td class="user-icons user-icons-text"><%= current_user.arguments.count %></td>
+	</tr>
+</table>

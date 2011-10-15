@@ -6,61 +6,58 @@
 		<% end %>
 		<% if permitted_to? :edit, @user %>
 			<%= link_to t('users.edit'), edit_user_registration_path, :class => "button" %>
+			<% if @user.delegate.nil? || !@user.delegate.active %><p><%= link_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}, {:method => :post, :class => "button"}) %></p><% end %>
 		<% end %>
 	</div>
 	
 	<div id="bill-header-name"><p><%= title @user.displayName %></p></div>
-</div>
-
-<div id="index-content">
-	<div id="index-large-column" style="height:50px;"></div>
-	<div id="index-large-column" style="position:relative;left: -25px;height:50px;">
+	
+	<div ><%= info_help('delegation_title') %>
 		<% if current_user == @user %>
 			<% unless @user.delegation.blank? %>
 				<% @deleg = Delegate.find_by_id(@user.delegation.delegate_id).user %>
 				<% unless @deleg.blank? %>
-				<h5><%= t('users.delegates.votes_delegated') %><%= @deleg.displayName %> </h5>
+				<h5><%= t('users.delegates.votes_delegated') %><%= @deleg.displayName %>
 				<% unless @deleg.photo.blank? %>
 					<%= link_to image_tag(@deleg.photo, :size => "40x40",:class => "user-image"), @deleg %>
-				<% end %>
+				<% end %></h5>
 				<% end %>
 			<% end %>
 			<% if @user.delegate.nil? || !@user.delegate.active %>
-				<p><%= link_to t('users.delegates.choose_delegate'), delegates_path, :class => "link" %></p>
-				<p><%= link_to(t('users.delegates.create_delegate'), {:controller => :delegates, :action => :create, :user_id => @user.id}, {:method => :post, :class => "button"}) %></p>
+				<% if @user.delegation.blank? %>
+					<%= link_to t('users.delegates.choose_delegate'), delegates_path, :class => "link" %>
+				<% else %>
+					<%= link_to t('users.delegates.change_delegate'), delegates_path, :class => "link" %>
+				<% end %>
+				
 			<% else %>
-				<h5><%= t('users.delegates.active_delegate') %></h5>
+				<h5><%= t('users.delegates.active_delegate') %>:
 				<% unless @user.delegate.blank? %>
-					<h5><%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_vote'),t('users.delegates.delegated_votes')) %></h5>
+					<%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_vote'),t('users.delegates.delegated_votes')) %></h5>
 				<% end %>
 				<% if permitted_to? :destroy, @user.delegate %>
 					<%= link_to t('users.delegates.destroy_delegate'), delegate_path(@user.delegate), {:method => :delete, :class => "button"} %>
 				<% end %>
 			<% end %>
 		<% else %>
-			<div class="button"><%= raw(delegate_button(@user)) %></div>
 			<% unless @user.delegate.blank? %>
 				<h5><%= pluralize(@user.delegate.delegations.count,t('users.delegates.delegated_vote'),t('users.delegates.delegated_votes')) %></h5>
 			<% end %>
+			<div class="button"><%= raw(delegate_button(@user)) %></div>
+			
 		<% end %>
 	</div>
-	<div id="index-large-column" style="height:50px;padding-bottom:30px;">
-	
-	
-	</div>
 	<div class="clear"></div>
-	<br /><br /><br /><br /><br />
-	<div id="index-element">
-	<h3><%= t("layout.private_activity")%></h3>
-	<br />
-	<h4><%= pluralize(Ranking.number_of_votes(@user),t('users.votes')) %></h4>
-	</div>
+</div>
+
+<div id="user-content">
+	
 	<br/><br/><br/>
 	
-	<h3><%= t("layout.public_activity")%></h3>
+	<h3 style="position:relative; left: -30px;"><%= t("layout.public_activity")%></h3>
 	<% unless @user.delegate.nil? %>
 		
-		<h4><%= t("users.delegates.votes_as_a_delegate") %></h4>
+		<h4><%= image_tag("hand_black.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Ranking.number_of_votes(@user.delegate),t("users.delegates.votes_as_a_delegate")) %></h4>
 		<% Referendum.filter_phase(Referendum.all,4,5).each do |r| %>
 		
 		<% if r.rankings.for_ranker(@user.delegate).empty? %>
@@ -121,9 +118,9 @@
 		<% end %>
 		
 	<% end %>
-	
-<div id="index-content" style="padding-top: 40px;">
-<h4><%= pluralize(Initiative.filter_phase(@user.initiatives,1,2,3,4,5).count,t('users.delegates.initiatives')) %> </h4>
+</div>
+<div id="user-content" style="padding-top: 40px;">
+<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.initiatives,1,2,3,4,5).count,t('users.delegates.initiatives')) %> </h4>
 	<% Initiative.filter_phase(@user.initiatives,1,2,3,4,5).each_with_index do |arg, index| %>
 	<div id="index-element" style="padding-top: 40px;">
 		<div id="index-column" style="height:50px;">
@@ -151,8 +148,8 @@
 	<% end %>
 </div>
 
-<div id="index-content" style="padding-top: 40px;">
-<h4><%= pluralize(Initiative.filter_phase(@user.amendments,1,2,3,4,5).count,t('users.delegates.amendments')) %> </h4>
+<div id="user-content" style="padding-top: 40px;">
+<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.amendments,1,2,3,4,5).count,t('users.delegates.amendments')) %> </h4>
 	<% Initiative.filter_phase(@user.amendments,1,2,3,4,5).each_with_index do |arg, index| %>
 	<div id="index-element" style="padding-top: 40px;">
 		<div id="index-column" style="height:50px;">
@@ -169,8 +166,8 @@
 	</div>
 	<% end %>
 </div>
-<div id="index-content" style="padding-top: 40px;">
-<h4><%= pluralize(@user.arguments.count,t('users.delegates.point_of_view')) %> </h4>
+<div id="user-content" style="padding-top: 40px;">
+<h4><%= image_tag("bulb.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(@user.arguments.count,t('users.delegates.point_of_view')) %> </h4>
 	<% @user.arguments.each_with_index do |arg, index| %>
 	<div id="index-element" style="padding-top: 40px;">
 		<div id="index-column" style="height:50px;"></div>
@@ -182,8 +179,7 @@
 	</div>
 	<% end %>
 </div>
-<div id="index-content" style="padding-top: 40px;">
-	<h4><%= pluralize(@user.comments.count,t('users.delegates.comments')) %></h4>
+<div id="user-content" style="padding-top: 40px;">
+	<h4><%= image_tag("blabla.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(@user.comments.count,t('users.delegates.comments')) %></h4>
 
-</div>
 </div>

@@ -167,6 +167,6 @@
 		<h5><%= eval("@ideas.content_#{I18n.locale}") %></h5>
 	<% end %>
 	<% if permitted_to? :index, Idea.new %>
-	<%= link_to t('layout.brainstorm'), {:controller => :ideas, :action => :index, "#{bill.class.name}_id".to_sym => bill.id }, :class => "button brainstorm" %>
+	<%= link_to t('layout.brainstorm'), {:controller => :ideas, :action => :index, "#{bill.class.name}_id".to_sym => bill.id }, :class => "button brainstorm" %><%= info_help('brainstorm') %>
 	<% end %>
 </div>

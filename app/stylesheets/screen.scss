@@ -151,6 +151,17 @@ margin-left: 10px;
 margin-right: 10px;
 }
 
+.user-icons {
+position: relative;
+text-align: center;
+}
+
+.user-icons-text {
+font-size: 20px;
+top: -10px;	
+}
+ 
+
 #container2 {
 position: relative;
 @include column($blueprint-grid-columns - 2); 
@@ -625,6 +636,13 @@ padding: 20px;
 @include column($content-columns, true);
 
 }
+
+#user-content {
+@include column($content-columns - 2, true);
+text-align: left;
+margin-left: 60px;
+}
+
 #index-element {
 
 border-bottom: 2px solid darken(white, 12%);

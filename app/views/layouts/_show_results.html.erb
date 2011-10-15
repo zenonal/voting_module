@@ -4,8 +4,8 @@
 		<h3><%= t('layout.global_results') %></h3>
 		<div class="bill-result">
 			<div class="name">&nbsp;</div>
-			<div class="average_rank_title"><%= t('layout.average_rank') %></div>
-			<div class="percent_approval_title"><%= t('layout.percent_approval') %></div>
+			<div class="average_rank_title"><%= t('layout.average_rank') %><%= info_help('average_ranking',15) %></div>
+			<div class="percent_approval_title"><%= t('layout.percent_approval') %><%= info_help('percent_approval',15) %></div>
 			<div class="clear"></div>
 		<% bills.each do |b| %>
 			
@@ -28,7 +28,7 @@
 		
 		<br/>
 		<br/>
-		<h3><%= t('layout.rank_matrix') %></h3>
+		<h3><%= t('layout.rank_matrix') %><%= info_help('rank_matrix') %></h3>
 		<%= t('tooltips.rank_matrix') %>
 		<table class="rank-matrix">
 			<th></th>
@@ -63,7 +63,7 @@
 		
 		<br/>
 		<br/>
-		<h3><%= t('layout.delegate_votes_list') %></h3>
+		<h3><%= t('layout.delegate_votes_list') %><%= info_help('delegates_rankings') %></h3>
 		<table class="rank-matrix">
 			<th style="width: 50px;"></th>
 			<% bills.each do |b| %>
@@ -96,7 +96,7 @@
 		
 		<br/>
 		<br/>
-		<h3><%= t('layout.private_votes_list') %></h3>
+		<h3><%= t('layout.private_votes_list') %><%= info_help('private_rankings') %></h3>
 		<table class="rank-matrix">
 			<th style="width: 80px;"></th>
 			<% bills.each do |b| %>

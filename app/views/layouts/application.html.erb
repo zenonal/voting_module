@@ -86,25 +86,26 @@
 		  	<div id="sidebar-right">
 
 					<div id="user_info">
-						<h3><%= t("layout.user_info") %><%= info_help('your_profile_title') %></h3>
+						<h3><%= info_help('your_profile_title') %><%= t("layout.user_info") %> 
+							<% if user_signed_in? %><% if current_user.photo.blank? %>
+								<%= link_to t('layout.add_photo'), edit_user_registration_path, :class => "link" %>
+							<% else %>
+								<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
+							<% end %>
+							<% end %>
+						</h3>
 							<% if user_signed_in? %>
-							<p>
 								<p><%= link_to current_user.displayName, user_path(current_user), :class => "link" %></p>
-								<% if current_user.photo.blank?%>
-									<%= link_to t('layout.add_photo'), edit_user_registration_path, :class => "link" %>
-								<% else %>
-									<%= link_to image_tag(current_user.photo, :size => "30x30", :class => "user-image"), user_path(current_user) %>
-								<% end %>
-								</p>
 								<% if current_user.commune.nil? %>
 									<%= link_to t('layout.add_postal_code'), edit_user_registration_path, :class => "link" %>
 								<% else %>
 									<p><%= current_user.commune.name %></p>
 								<% end %>
-
-					          	<p><%= link_to t('layout.sign_out'), destroy_user_session_path, :class => "button" %></p>
+								<%= render :partial => "layouts/user_details" %>
+								
+					        	<p><%= link_to t('layout.sign_out'), destroy_user_session_path, :class => "button" %></p>
 					        <% else %>
-					          <p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
+					          	<p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 					        <% end %>
 					</div>
 					<div id="featured">

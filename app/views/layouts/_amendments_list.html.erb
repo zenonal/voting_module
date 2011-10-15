@@ -1,6 +1,6 @@
 <% @amendments = bill.amendments.not_blank %>
 
-<h2><%= t("amendments.title") %></h2>
+<h2><%= t("amendments.title") %> <%= info_help('amendments_title') %></h2>
 
 <% if @amendments.count > 0 %>
 	
