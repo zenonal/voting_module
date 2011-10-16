@@ -73,7 +73,7 @@ $j(document).ready(function() {
 	});
 	
 	$j("#overlay-intro").overlay({
-		top: "5%",
+		top: -30,
 		left: 50,
 		mask: {
 			color: '#fff',

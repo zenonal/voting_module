@@ -108,14 +108,14 @@ h2 {
 
 #container {
 @include container; 
-@include background-image(linear-gradient(top, #222, #555));
+@include background-image(linear-gradient(top, #333, #666));
 margin: auto;
 padding: 0px;
 }
 
 
 #header {
-    @include background-image(linear-gradient(top, #555, #222));
+    @include background-image(linear-gradient(top, #666, #333));
 	@include column($blueprint-grid-columns, true);
 	text-align: left;
     position: relative;
@@ -123,23 +123,14 @@ padding: 0px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-	height: 85px;
+	height: 60px;
 	
-	#subdom-level-name {
-		position: relative;
-		top: 0px;
-		left: 160px;
-		z-index: 5000;
-		font-size: 35px;
-		color: red;
-	}
 }
 
 #header-title {
-	position: absolute;
-	left: 650px;
-	top: 0px;
+	text-align: left;
 	padding: 0px;
+	margin-left: 20px;
 	
 	h2 {
 		color:#fff;
@@ -150,20 +141,21 @@ padding: 0px;
 		text-decoration: none;
 		}
 	}
-	
 }
 
 #header-subtitle {
 	position: absolute;
-	left: -350px;
+	left: 600px;
 	top: 10px;
+	color: white;
+	font-size:25px;
 }
 
 #language-header {
 	position: absolute;
-	left: 250px;
+	right: -20px;
 	top: 0px;
-	width: 300px;
+	width: 200px;
 }
 
 #flag1 {
@@ -219,7 +211,7 @@ top: -10px;
  
 
 #container2 {
- 	border: 4px solid $main-border-color;
+	border: 4px solid $main-border-color;
 	@include home-border;
 position: relative;
 @include column($blueprint-grid-columns - 2); 
@@ -227,11 +219,22 @@ position: relative;
 text-align: center;
 border: 1px solid $main-border-color;
 background-color: #fff;
-@include background-image(linear-gradient(top, white, #eee 5%, white));
 margin: 0px;
 padding: 0px;
 margin-left: 50px;
 min-height: $content-height;
+}
+
+
+#subdom-level-name {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	z-index: 5000;
+	font-size: 35px;
+	color: #333;
+	display: inline;
+	width: 200px;
 }
 
 #menu {

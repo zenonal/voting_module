@@ -24,11 +24,13 @@
 	<div id="container">
 		<div id="header">
 			<div id="header-title">
-				<h2><%= link_to t('layout.intro_title'), "http://www.democratie-directe.be" %><%= link_to image_tag("hand_white.png", :size => "35x52"), "http://www.democratie-directe.be" %> </h2>
+				<h2><%= link_to t('layout.head_title'), "http://www.democratie-directe.be" %><%= link_to image_tag("hand_white.png", :size => "35x52"), "http://www.democratie-directe.be" %> </h2>
 			</div>
 			
 			<div id="header-subtitle">
-				<%= link_to image_tag("votingmodule.png", :size => "220x60"), root_path, :class => "title" %>
+				<% unless @subdom_level.blank? %>
+					<%= @subdom_level.name %>
+				<% end %>
 			</div>
 			
 			<div id="language-header">
@@ -54,11 +56,6 @@
 					<%= link_to image_tag("bt_intro.png",:size => "32x32"), language_intro_url, :title => t('info.activate_intro') %>
 				</span>
 			<% end %>
-			<span id="subdom-level-name">
-				<% unless @subdom_level.blank? %>
-				<%= @subdom_level.name.upcase %>
-				<% end %>
-			</span>
 			</div>
 			
 		</div>
@@ -90,7 +87,6 @@
 			<% end %>
 			
 			<div id="content">
-				
 				<div id="menu">
 					<div id="flash">
 			      		<% flash.each do |name, msg| %>
