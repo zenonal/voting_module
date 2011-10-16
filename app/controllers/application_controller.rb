@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
         before_filter :set_featured
         before_filter :mailer_set_url_options
         before_filter :jumpback
+        before_filter :find_subdomain
+
+        def find_subdomain
+           
+        end
         
         
         def default_url_options(options={})
