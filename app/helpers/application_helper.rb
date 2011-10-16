@@ -33,10 +33,14 @@ module ApplicationHelper
     end
     
     def info_help(id,size=20)
-            output="<div class=\"info_help\">"
-            output+=image_tag("i.png",:size => "#{size}x#{size}", :class => "info_help_img", :title=>t("info.#{id}"))
-            output+="</div>"
-            output = raw(output)
+            if cookies[:info_active] == "true"
+                    output="<div class=\"info_help\">"
+                    output+=image_tag("i.png",:size => "#{size}x#{size}", :class => "info_help_img", :title=>t("info.#{id}"))
+                    output+="</div>"
+                    output = raw(output)
+            else
+                    output = ""
+            end
     end
 
     def show_title?

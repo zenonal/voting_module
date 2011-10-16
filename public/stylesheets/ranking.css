@@ -71,7 +71,7 @@
 }
 /* line 72, ../../app/stylesheets/ranking.scss */
 .ranking li {
-  border: 2px solid #6f6f87;
+  border: 2px solid black;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

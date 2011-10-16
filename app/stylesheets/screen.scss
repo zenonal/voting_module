@@ -33,6 +33,13 @@ transition-duration: 1s;
 transition-property: top, left, height, width, opacity;
 }
 
+@mixin home-border {
+-moz-border-image:url("/images/border.png") 4 round; /* Firefox */
+-webkit-border-image:url("/images/border.png") 4 round; /* Safari and Chrome */
+-o-border-image:url("/images/border.png") 4 round; /* Opera */
+border-image:url("/images/border.png") 4 round;
+}
+
 
 // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
@@ -98,52 +105,92 @@ h2 {
 	color: $pink-color;
 }
 
+
 #container {
 @include container; 
-@include background-image(linear-gradient(top, #E9E9F5, white));
+@include background-image(linear-gradient(top, #222, #555));
 margin: auto;
+padding: 0px;
 }
 
-#tutorial_mode {
-width: 500px;
-position:relative;
-top: 100px;
-left: 280px;
-font-family: "Tooltips", helvetica;
-font-size: 16px;
-color: green;
-border: 3px green solid;
-	a {
-	text-decoration: none;
-	font-size: 18px;
-	}
+
+#header {
+    @include background-image(linear-gradient(top, #555, #222));
+	@include column($blueprint-grid-columns, true);
+	text-align: left;
+    position: relative;
+	margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+	height: 60px;
 }
 
-#language-links {
-	position:relative;
-	top: -220px;
-	left: 50px;
-	width: 160px;
-	a {
-		text-decoration:none;
-	list-style-type: none;
-			display: inline;
-			text-decoration: none;
-			padding-right: 15px;
-			padding-left: 15px;
+#header-title {
+	position: absolute;
+	left: 650px;
+	top: 0px;
+	padding: 0px;
+	
+	h2 {
+		color:#fff;
+		font-size:35px;
+		
+		a {
+		color:#fff;
+		text-decoration: none;
 		}
-}
-
-#sidebar-left {
-$sidebar-l-columns: floor($blueprint-grid-columns / 8);
-@include column($sidebar-l-columns); 
-text-align: center;
-	li {
-		list-style-type: none;
-		display: inline;
 	}
 	
 }
+
+#header-subtitle {
+	position: absolute;
+	left: -350px;
+	top: 10px;
+}
+
+#language-header {
+	position: absolute;
+	left: 250px;
+	top: 0px;
+	width: 300px;
+}
+
+#flag1 {
+	position: absolute;
+	right: 166px;
+	top: 0px;
+	width: 83px;
+	height: 20px;
+	margin: 0px;
+    @include background-image(linear-gradient(top, lighten(black,50%), black));
+}
+
+#flag2 {
+	position: absolute;
+	right: 83px;
+	top: 0px;
+	width: 83px;
+	height: 20px;
+	margin: 0px;
+    @include background-image(linear-gradient(top, lighten(yellow,50%), yellow));
+}
+
+#flag3 {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 83px;
+	height: 20px;
+	margin: 0px;
+	@include background-image(linear-gradient(top, lighten(red,50%), red));
+}
+
+#lang {
+	
+}
+
 
 .info_help {
 display: inline;
@@ -163,22 +210,25 @@ top: -10px;
  
 
 #container2 {
+ 	border: 4px solid $main-border-color;
+	@include home-border;
 position: relative;
 @include column($blueprint-grid-columns - 2); 
 @include single-box-shadow(white, 0px, 0px, 50px, false, true);
 text-align: center;
 border: 1px solid $main-border-color;
 background-color: #fff;
-@include background-image(linear-gradient(top, white, #eef 5%, white));
-min-height: 400px;
+@include background-image(linear-gradient(top, white, #eee 5%, white));
 margin: 0px;
 padding: 0px;
 margin-left: 50px;
+min-height: $content-height;
 }
 
 #menu {
 @include column($content-columns); 
-border-bottom: 3px solid $main-border-color;
+border-bottom: 4px solid $main-border-color;
+@include home-border;
 
 	a {
 		text-decoration: none;
@@ -195,6 +245,7 @@ border-bottom: 3px solid $main-border-color;
 				display:inline;
 				font-size: 20px;
 				text-decoration: none;
+				color: $main-links-color;
 			}
 		}
 	}
@@ -218,14 +269,6 @@ border-bottom: 3px solid $main-border-color;
 	}
 }
 
-#header {
-position: relative;
-@include column($blueprint-grid-columns, true);
-text-align: center;
-@include background(image-url("DD_header.png"));
-height: 230px;
-margin-top:0px;
-}
 
 .title {
 position: relative;
@@ -329,9 +372,21 @@ text-align:justify;
 
 #content {
 @include column($content-columns); 
-border-right: 1px solid $main-border-color;
+border-right: 4px solid $main-border-color;
+@include home-border;
 margin: 0px;
-min-height: 1000px;
+min-height: $content-height;
+}
+
+#sidebar-left {
+$sidebar-l-columns: floor($blueprint-grid-columns / 8);
+@include column($sidebar-l-columns); 
+text-align: center;
+	li {
+		list-style-type: none;
+		display: inline;
+	}
+	
 }
 
 #sidebar-right {
@@ -345,8 +400,13 @@ padding:0px;
 }
 
 #footer {
+position: relative;
 @include column($blueprint-grid-columns); 
-height: 100px;}
+text-align: center;
+padding: 20px;
+color: white;
+
+}
 
 
 #home-content {
@@ -661,7 +721,7 @@ border-bottom: 2px solid darken(white, 12%);
 	div.input-image {
 	    height: 43px;
 	    position: absolute;
-	    right: 30;
+	    right: 0px;
 	    top: 0px;
 	    width: 31px;
 	}
@@ -787,7 +847,8 @@ border-bottom: 2px solid darken(white, 12%);
 }
 
 #featured-content {
-	border-top: 1px solid $main-border-color;
+	border-top: 4px solid $main-border-color;
+	@include home-border;
 	padding: 10px;
 }
 
@@ -1385,3 +1446,41 @@ position: relative;
 		padding: 10px;
 	}
 }
+
+#overlay-intro {
+
+		display:none;
+		width:1000px;
+		border:10px solid #666;
+		text-align: justify;
+		border:10px solid rgba(82, 82, 82, 0.698);
+
+		-moz-border-radius:8px;
+		-webkit-border-radius:8px;
+		
+		#intro-check {
+			color:#fff;
+			background-color:#6D6D6D;
+			padding:5px 10px;
+			border:1px solid #4C4C4C;
+		}
+		
+	}
+
+	#overlay-intro div {
+		padding:10px;
+		border:1px solid #3B5998;
+		background-color:#fff;
+		font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+		font-size: 15px;
+	}
+
+	#overlay-intro h2 {
+		margin:-11px;
+		margin-bottom:0px;
+		color:#fff;
+		background-color:#6D6D6D;
+		padding:5px 10px;
+		border:1px solid #4C4C4C;
+		font-size:25px;
+	}

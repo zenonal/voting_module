@@ -1,19 +1,15 @@
 VotingModule::Application.routes.draw do
 
-  root :to => "pages#homepage"
+  root :to => "initiatives#index"
         
-  get "pages/Homepage"
-
   match '/auth/:provider/callback' => 'authentications#create'
 
   devise_for :users, :controllers => {:registrations => 'registrations'} 
   
-  get "language/tutorial"
-    
+  get "language/info"
+  get "language/intro"
   get "language/fra"
-
   get "language/ndl"
-
   get "language/eng"
   
   resources :user 

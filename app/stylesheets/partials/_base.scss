@@ -16,10 +16,13 @@ $bill-footer-columns: ceil($bill-content-columns/2);
 $one-column: floor($bill-sidebar-columns/4);
 $sidebar-r-columns: $blueprint-grid-columns - 2 - $content-columns;
 
+$container-height: 700px;
+$content-height: 600px;
+
 $index-columns: floor($content-columns/5);
 $index-margin: $content-columns - (4*$index-columns);
 
-$blueprint-background-color: lighten(#F4EAC1,3%);
+$blueprint-background-color: darken(#FFF,3%);
 
 $blueprint-button-font-family: "Arial";
 $blueprint-button-border-color: #888;
@@ -30,7 +33,9 @@ $blueprint-button-hover-background-color: $blueprint-button-background-color;
 $blueprint-button-hover-font-color: $blueprint-button-font-color;
 $blueprint-button-active-border-color: #6299c5;
 
-$main-border-color: #A6A6B6;
+$main-border-color: #222;
+$main-links-color: #767676;
+
 $default-box-shadow-blur: 30px;
 $default-box-shadow-spread: false;
 $default-box-shadow-inset: false;

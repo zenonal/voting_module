@@ -71,4 +71,29 @@ $j(document).ready(function() {
 	      }
 	    });
 	});
+	
+	$j("#overlay-intro").overlay({
+		top: "5%",
+		left: 50,
+		mask: {
+			color: '#fff',
+			loadSpeed: 200,
+			opacity: 0.8
+		},
+		closeOnClick: false,
+		load: true,
+		fixed: false
+	});
+	
+	$j("#overlay-intro form").submit(function(e) {
+		var check = $j("input#show_intro_check", this).is(':checked');
+		if (check) {
+			$j.cookie('show_intro', false);
+		} else {
+			$j.cookie('show_intro', true);
+		}
+		return e.preventDefault();
+	});
+	
+	
 });

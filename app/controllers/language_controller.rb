@@ -17,15 +17,20 @@ class LanguageController < ApplicationController
     redirect_to session[:jumpback] 
 	end
 
-  def tutorial
-    if cookies[:tutorial_active] == "true"
-      cookies[:tutorial_active] = false
+  def info
+    if cookies[:info_active] == "true"
+      cookies[:info_active] = false
     else
-      cookies[:tutorial_active] = true
-      if defined?(cookies[:tutorial_index]).nil?
-        cookies[:tutorial_index] = 1
-      end
+      cookies[:info_active] = true
     end
     redirect_to session[:jumpback] 
   end
+  def intro
+      if cookies[:show_intro] == "true"
+        cookies[:show_intro] = false
+      else
+        cookies[:show_intro] = true
+      end
+      redirect_to session[:jumpback] 
+    end
 end

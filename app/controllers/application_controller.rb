@@ -25,14 +25,11 @@ class ApplicationController < ActionController::Base
         end
 
         def set_mode
-                if cookies[:tutorial_active].blank?
-                        if user_signed_in?
-                                if current_user.sign_in_count <= 1
-                                        cookies[:tutorial_active] = true
-                                else
-                                        cookies[:tutorial_active] = false
-                                end
-                        end
+                if cookies[:info_active].blank?
+                        cookies[:info_active] = true
+                end
+                if cookies[:show_intro].blank?
+                        cookies[:show_intro] = true
                 end
         end
 
@@ -41,6 +38,7 @@ class ApplicationController < ActionController::Base
                 @featured_bills = [b[rand(b.count)]]
                 b = Referendum.filter_phase(Referendum.all,2,3,4,5)
                 @featured_bills << b[rand(b.count)]
+                @featured_bills = [@featured_bills[rand(2)]]
         end
 
         #helper method
