@@ -12,20 +12,24 @@
 	<br/><br/><br/>
 	<form>
 		<div class="field">
+			<% if @subdom_level.blank? %>
 			<%= label_tag t("user_geo_limit") %><%= info_help('outside_geo',15) %>
 			<%= check_box_tag("user_level", "off", false) %><br/>
+			<% end %>
 			<%= label_tag t("category_select") %><%= info_help('category',15) %>
 			<% if params[:filter] && params[:filter][:category] %>
 				<%= select("filter", "category", @categories, :selected => params[:filter][:category]) %><br/>
 			<% else %>
 				<%= select("filter", "category", @categories) %><br/>
 			<% end %>
+			<% if @subdom_level.blank? %>
 			<%= label_tag t("user_geo_select") %><%= info_help('geography',15) %>
 			<% if params[:filter] && params[:filter][:level] %>
 				<%= select("filter", "level", "#{bill_model.name.upcase}_LEVELS".constantize.collect {|l| [l, "#{bill_model.name.upcase}_LEVELS".constantize.index(l)]}, :selected => params[:filter][:level]) %>
 			<% else %>
 				<%= select("filter", "level", "#{bill_model.name.upcase}_LEVELS".constantize.collect {|l| [l, "#{bill_model.name.upcase}_LEVELS".constantize.index(l)]}) %>
 			<% end %><br/>
+			<% end %>
 			<%= label_tag t("user_phase_select") %><%= info_help('phase',15) %>
 			<% if params[:filter] && params[:filter][:phase] %>
 				<%= select("filter", "phase", "#{bill_model.name.upcase}_PHASES".constantize.collect {|p| [p, "#{bill_model.name.upcase}_PHASES".constantize.index(p) + (6-"#{bill_model.name.upcase}_PHASES".constantize.length)]}, :selected => params[:filter][:phase]) %>

@@ -14,7 +14,10 @@ en:
     featured_title: "Examples of bills picked randomly for you."
     options: "Filter the bills according to their geographical extent, their category and their developmemnt phase"
     category: "Defines the domain to which the bills apply (e.g. economy, agriculture, etc...)."
-    geography: "Defines the geographical level of the bills (communal, provincial, regional, federal)."
+    geography: "Defines the geographical level of the bills (communal, provincial, regional, federal).</br>
+        If you are using a subdomain such as http://bruxelles.votingmodule.heroku.com then the geographical level will be automatically
+        set to Brussels and you won't be able to change it here. If you want to access bills in other geographical level, you can either
+        use another subdomain (e.g. http://antwerpen.votingmodule.heroku.com) or use no subdomain (e.g. http://votingmodule.heroku.com)."
     phase: "Defines the current processing phase of the bills:
             <ul><li>currently being edited: the bill is being drafter by its author</li>
             <li>curently gathering validations: the bill is gathering validations from other users. It needs to pass a validation threshold to go on to the next steps.</li>

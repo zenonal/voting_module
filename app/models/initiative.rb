@@ -89,6 +89,22 @@ class Initiative < ActiveRecord::Base
         where(["name_#{I18n.locale} LIKE ? OR content_#{I18n.locale} LIKE ?", "%#{kw}%", "%#{kw}%"])
   }
   
+  scope :subdom_level, lambda { |subdom_level|
+          if subdom_level.class.name == "Commune"
+                  where(["level = ? AND level_code = ?", "Communal", subdom_level.postal_code])
+          else 
+                  if subdom_level.class.name == "Province"
+                          where(["level = ? AND level_code = ?", "Provincial", subdom_level.code])
+                  else
+                          if subdom_level.class.name == "Region"
+                                  where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
+                          else
+                                  nil
+                          end
+                  end
+          end 
+    }
+  
   scope :user_geographical_level, lambda { |user, level|
     if level == 1
       where(["level = ? AND level_code = ?", level.to_s, user.commune.postal_code])

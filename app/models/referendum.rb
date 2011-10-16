@@ -60,7 +60,23 @@ class Referendum < ActiveRecord::Base
 
         LEVELS = ["", I18n.t("referendums.level1"), I18n.t("referendums.level2"), I18n.t("referendums.level3"), I18n.t("referendums.level4")]
         PHASES = ["", I18n.t("referendums.phase3"),I18n.t("referendums.phase4"),I18n.t("referendums.phase5")]
-
+        
+        scope :subdom_level, lambda { |subdom_level|
+                  if subdom_level.class.name == "Commune"
+                          where(["level = ? AND level_code = ?", "Communal", subdom_level.postal_code])
+                  else 
+                          if subdom_level.class.name == "Province"
+                                  where(["level = ? AND level_code = ?", "Provincial", subdom_level.code])
+                          else
+                                  if subdom_level.class.name == "Region"
+                                          where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
+                                  else
+                                          nil
+                                  end
+                          end
+                  end 
+            }
+            
         scope :user_geographical_level, lambda { |user, level|
                 if level == 1
                         where(["level = ? AND level_code = ?", level.to_s, user.commune.postal_code])

@@ -15,7 +15,43 @@ class ApplicationController < ActionController::Base
         before_filter :find_subdomain
 
         def find_subdomain
-           
+                subdom = request.subdomains.first
+                if @subdom.blank? || @subdom != subdom
+                        if subdom != "votingmodule" && subdom != "www"
+                                if @level_names.blank?
+                                        c = Commune.all
+                                        p = Province.all
+                                        r = Region.all
+                                        @commune_names = c.map(&:name).map(&:parameterize)
+                                        c_ids = c.map(&:id)
+                                        @province_names = p.map(&:name).map(&:parameterize)
+                                        p_ids = p.map(&:id)
+                                        @region_names = r.map(&:name).map(&:parameterize)
+                                        r_ids = r.map(&:id)
+                                        @level_names = @commune_names + @province_names + @region_names
+                                        @commune_ids = c_ids + Array.new(size=p_ids.count, obj=nil) + Array.new(size=r_ids.count, obj=nil)
+                                        @province_ids = Array.new(size=c_ids.count, obj=nil) + p_ids + Array.new(size=r_ids.count, obj=nil)
+                                        @region_ids = Array.new(size=c_ids.count, obj=nil) + Array.new(size=p_ids.count, obj=nil) + r_ids
+                                end
+                                i = @level_names.index subdom.downcase
+                                if i && @commune_ids[i]
+                                        @subdom_level = Commune.find(@commune_ids[i])
+                                else 
+                                   if i && @province_ids[i]
+                                           @subdom_level = Province.find(@province_ids[i])
+                                   else
+                                           if i && @region_ids[i]
+                                                   @subdom_level = Region.find(@region_ids[i])
+                                           else
+                                                   @subdom_level = nil
+                                           end
+                                   end
+                                end
+                        else
+                                @subdom_level = nil
+                        end
+                end
+                @subdom = subdom
         end
         
         
@@ -48,76 +84,84 @@ class ApplicationController < ActionController::Base
 
         #helper method
         def filter_index(bills)
-                unless bills.blank? || bills.empty?
-                        if params[:filter] && params[:filter][:level]
-                                level = params[:filter][:level].to_i
-                        else
-                                level = nil
-                        end
-                        if params[:filter] && params[:filter][:phase]
-                                phase = params[:filter][:phase].to_i
-                                if (params[:controller] == "referendums") && (phase==2)
+                
+                        unless bills.blank? || bills.empty?
+                                if params[:filter] && params[:filter][:level]
+                                        level = params[:filter][:level].to_i
+                                else
+                                        level = nil
+                                end
+                                
+                                if params[:filter] && params[:filter][:phase]
+                                        phase = params[:filter][:phase].to_i
+                                        if (params[:controller] == "referendums") && (phase==2)
+                                                phase = nil
+                                        end
+                                else  
                                         phase = nil
                                 end
-                        else  
-                                phase = nil
-                        end
-                        
-                        if params[:filter] && level && !(level == 0)
-                                if params[:user_level] == "off" || current_user.commune.nil?
-                                        @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
-                                        @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{level}")
-                                else
-                                        @bills = bills.user_geographical_level(current_user,level).all(:order => "created_at DESC")
-                                        if level == 1
-                                                @geo = current_user.commune.name
-                                        end
-                                        if level == 2
-                                                @geo = current_user.province.name
-                                        end
-                                        if level == 3
-                                                @geo = current_user.region.name
-                                        end
-                                        if level == 4
-                                                @geo = params[:filter][:level]
-                                        end
-                                end
-                        else
-                                @bills = bills.all(:order => "created_at DESC")
-                                if params[:user_level] == "off" || !user_signed_in? || current_user.commune.nil?
-                                        @geo = t("#{bills[0].class.name.pluralize.downcase}.no_geo")
-                                else
-                                        unless current_user.commune.nil?
-                                                @geo = current_user.commune.name + ", " + current_user.province.name + ", "
-                                                @geo += current_user.region.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4") + " " + t('level')
+                                
+                                if @subdom_level.blank?
+                                        if params[:filter] && level && !(level == 0)
+                                                if params[:user_level] == "off" || current_user.commune.nil?
+                                                        @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
+                                                        @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{level}")
+                                                else
+                                                        @bills = bills.user_geographical_level(current_user,level).all(:order => "created_at DESC")
+                                                        if level == 1
+                                                                @geo = current_user.commune.name
+                                                        end
+                                                        if level == 2
+                                                                @geo = current_user.province.name
+                                                        end
+                                                        if level == 3
+                                                                @geo = current_user.region.name
+                                                        end
+                                                        if level == 4
+                                                                @geo = params[:filter][:level]
+                                                        end
+                                                end
                                         else
-                                                @geo = t("#{bills[0].class.name.pluralize.downcase}.no_geo")
+                                                @bills = bills.all(:order => "created_at DESC")
+                                                if params[:user_level] == "off" || !user_signed_in? || current_user.commune.nil?
+                                                        @geo = t("#{bills[0].class.name.pluralize.downcase}.no_geo")
+                                                else
+                                                        unless current_user.commune.nil?
+                                                                @geo = current_user.commune.name + ", " + current_user.province.name + ", "
+                                                                @geo += current_user.region.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4") + " " + t('level')
+                                                        else
+                                                                @geo = t("#{bills[0].class.name.pluralize.downcase}.no_geo")
+                                                        end
+                                                end
                                         end
+                                else
+                                       @bills = bills.subdom_level(@subdom_level).all(:order => "created_at DESC")
+                                       @geo = @subdom_level.name
                                 end
-                        end
-                        if phase && phase >= 0
-                                @bills = bills[0].class.filter_phase(@bills,phase)
-                                @phase = t("#{bills[0].class.name.pluralize.downcase}.phase#{phase}")
+                                if phase && phase >= 0
+                                        @bills = bills[0].class.filter_phase(@bills,phase)
+                                        @phase = t("#{bills[0].class.name.pluralize.downcase}.phase#{phase}")
+                                else
+                                        @bills = bills[0].class.filter_phase(@bills,2,3,4,5)
+                                        @phase = t("#{bills[0].class.name.pluralize.downcase}.phase_default")
+                                end
+                                if params[:filter] && !params[:filter][:category].blank?
+                                        @bills = bills[0].class.filter_category(@bills,params[:filter][:category])
+                                        @categ = params[:filter][:category]
+                                else
+                                        @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
+                                end
+                                if !params[:search].blank?
+                                        @bills = bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
+                                        @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
+                                        a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
+                                        a = a.find_all {|b| b.class.name == "Amendment" }
+                                        @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == bills.first.class.name } ")
+                                end
                         else
-                                @bills = bills[0].class.filter_phase(@bills,2,3,4,5)
-                                @phase = t("#{bills[0].class.name.pluralize.downcase}.phase_default")
+                                @bills = []
                         end
-                        if params[:filter] && !params[:filter][:category].blank?
-                                @bills = bills[0].class.filter_category(@bills,params[:filter][:category])
-                                @categ = params[:filter][:category]
-                        else
-                                @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
-                        end
-                        if !params[:search].blank?
-                                @bills = bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
-                                @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
-                                a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
-                                a = a.find_all {|b| b.class.name == "Amendment" }
-                                @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == bills.first.class.name } ")
-                        end
-                else
-                        @bills = []
-                end
+                
         end
 
         def not_current_languages
