@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
         def find_subdomain
                 subdom = request.subdomains.first
                 if @subdom.blank? || @subdom != subdom
-                        if subdom != "votingmodule" && subdom != "www"
+                        if subdom && subdom != "votingmodule" && subdom != "www"
                                 if @level_names.blank?
                                         c = Commune.all
                                         p = Province.all

@@ -80,13 +80,12 @@ h3 {
 	font-family: "Subtitles", helvetica;
 	font-size: 22px;
 	font-style: normal;
-	text-transform: uppercase;
-
 }
 
 h2 {
 	font-family: "Titles", helvetica;
-	letter-spacing:4px
+	letter-spacing:3px;
+	color: #333;
 }
 
 .beige_text {
@@ -108,14 +107,13 @@ h2 {
 
 #container {
 @include container; 
-@include background-image(linear-gradient(top, #333, #666));
+
 margin: auto;
 padding: 0px;
 }
 
 
 #header {
-    @include background-image(linear-gradient(top, #666, #333));
 	@include column($blueprint-grid-columns, true);
 	text-align: left;
     position: relative;
@@ -128,9 +126,11 @@ padding: 0px;
 }
 
 #header-title {
+	position: absolute;
 	text-align: left;
 	padding: 0px;
-	margin-left: 20px;
+	top: 0px;
+	left: 250px;
 	
 	h2 {
 		color:#fff;
@@ -140,6 +140,16 @@ padding: 0px;
 		color:#fff;
 		text-decoration: none;
 		}
+	}
+}
+
+#header-preinfo {
+	background: darken(white,10%);
+	padding: 6px;
+	color: #fff;
+	border-bottom: 1px solid $main-border-color;
+	a {
+		color: #fff;
 	}
 }
 
@@ -158,11 +168,16 @@ padding: 0px;
 	width: 200px;
 }
 
+#lang {
+	position: relative;
+	top: 0px;
+}
+
 #flag1 {
 	position: absolute;
-	right: 166px;
+	right: 168px;
 	top: 0px;
-	width: 83px;
+	width: 84px;
 	height: 20px;
 	margin: 0px;
     @include background-image(linear-gradient(top, lighten(black,50%), black));
@@ -170,9 +185,9 @@ padding: 0px;
 
 #flag2 {
 	position: absolute;
-	right: 83px;
+	right: 84px;
 	top: 0px;
-	width: 83px;
+	width: 84px;
 	height: 20px;
 	margin: 0px;
     @include background-image(linear-gradient(top, lighten(yellow,50%), yellow));
@@ -182,14 +197,10 @@ padding: 0px;
 	position: absolute;
 	right: 0px;
 	top: 0px;
-	width: 83px;
+	width: 84px;
 	height: 20px;
 	margin: 0px;
 	@include background-image(linear-gradient(top, lighten(red,50%), red));
-}
-
-#lang {
-	
 }
 
 
@@ -211,9 +222,8 @@ top: -10px;
  
 
 #container2 {
-	border: 4px solid $main-border-color;
-	@include home-border;
 position: relative;
+@include rounded;
 @include column($blueprint-grid-columns - 2); 
 @include single-box-shadow(white, 0px, 0px, 50px, false, true);
 text-align: center;
@@ -239,9 +249,7 @@ min-height: $content-height;
 
 #menu {
 @include column($content-columns); 
-border-bottom: 4px solid $main-border-color;
-@include home-border;
-
+border-bottom: 1px solid $main-border-color;
 	a {
 		text-decoration: none;
 		#menu-item {
@@ -252,8 +260,6 @@ border-bottom: 4px solid $main-border-color;
 
  			#menu-title {
 				font-style: normal;
-				text-transform: uppercase;
-				font-weight: bold;
 				display:inline;
 				font-size: 20px;
 				text-decoration: none;
@@ -384,8 +390,7 @@ text-align:justify;
 
 #content {
 @include column($content-columns); 
-border-right: 4px solid $main-border-color;
-@include home-border;
+border-right: 1px solid $main-border-color;
 margin: 0px;
 min-height: $content-height;
 }
@@ -859,8 +864,7 @@ border-bottom: 2px solid darken(white, 12%);
 }
 
 #featured-content {
-	border-top: 4px solid $main-border-color;
-	@include home-border;
+	border-top: 1px solid $main-border-color;
 	padding: 10px;
 }
 
@@ -1044,22 +1048,22 @@ form {
 }
 
 a.button {
-@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, false);
+@include single-box-shadow(lighten($main-border-color,20%), 0px, 1px, 3px, false, false);
 @include button-button;
 @include button-colors;
 @include button-active-colors;
 @include button-hover-colors;
-@include rounded(5px);
+@include rounded(10px);
 @include background-image(linear-gradient(top, white, darken(white, 12%)));
 border: 1px solid #aaa;
 text-decoration: none;
-padding: 7px;
+padding: 5px;
 }
 a:hover.button {
-@include single-box-shadow($main-border-color, 0px, 2px, 5px, false, true);
+@include single-box-shadow(lighten($main-border-color,20%), 0px, 1px, 3px, false, true);
 position: relative;
-padding-top: 9px;
-padding-bottom: 5px;
+padding-top: 7px;
+padding-bottom: 3px;
 }
 
 a.brainstorm {

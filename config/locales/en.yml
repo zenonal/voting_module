@@ -52,6 +52,7 @@ en:
     perm_denied: "Sorry, you are not allowed to access that page. Don't forget to sign in!"
     recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
   layout:
+      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
       sign_out: 'Sign out'

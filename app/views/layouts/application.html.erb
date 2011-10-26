@@ -23,8 +23,11 @@
 <body class="bp main-layout">
 	<div id="container">
 		<div id="header">
+			<div id="header-preinfo">
+				<%= raw t('layout.preinfo') %>
+			</div>
 			<div id="header-title">
-				<h2><%= link_to t('layout.head_title'), "http://www.democratie-directe.be" %><%= link_to image_tag("hand_white.png", :size => "35x52"), "http://www.democratie-directe.be" %> </h2>
+				<h2><%= link_to image_tag("new_title_en.png", :size => "650x65"), "http://www.democratie-directe.be" %> </h2>
 			</div>
 			
 			<div id="header-subtitle">
@@ -35,25 +38,25 @@
 			
 			<div id="language-header">
 			
-			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "30x30"), language_fra_url %></span>
-			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "30x30"), language_ndl_url %></span>
-			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "30x30"), language_eng_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "20x20"), language_fra_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "20x20"), language_ndl_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "20x20"), language_eng_url %></span>
 			<% if cookies[:info_active] == "true" %>
-				<span id="lang" style="position: relative; top: 1px;">
-					<%= link_to image_tag("bt_noti.png",:size => "32x32"), language_info_url, :title => t('info.disactivate_info') %>
+				<span id="lang">
+					<%= link_to image_tag("bt_noti.png",:size => "20x30"), language_info_url, :title => t('info.disactivate_info') %>
 				</span>
 			<% else %>
-				<span id="lang" style="position: relative; top: 1px;">
-					<%= link_to image_tag("bt_i.png",:size => "32x32"), language_info_url, :title => t('info.activate_info') %>
+				<span id="lang">
+					<%= link_to image_tag("bt_i.png",:size => "20x30"), language_info_url, :title => t('info.activate_info') %>
 				</span>
 			<% end %>
 			<% if cookies[:show_intro] == "true" %>
 				<span id="lang">
-					<%= link_to image_tag("bt_notintro.png",:size => "32x32"), language_intro_url, :title => t('info.disactivate_intro') %>
+					<%= link_to image_tag("bt_notintro.png",:size => "20x30"), language_intro_url, :title => t('info.disactivate_intro') %>
 				</span>
 			<% else %>
 				<span id="lang">
-					<%= link_to image_tag("bt_intro.png",:size => "32x32"), language_intro_url, :title => t('info.activate_intro') %>
+					<%= link_to image_tag("bt_intro.png",:size => "20x30"), language_intro_url, :title => t('info.activate_intro') %>
 				</span>
 			<% end %>
 			</div>
