@@ -107,7 +107,7 @@ h2 {
 
 #container {
 @include container; 
-
+width: 1210px;
 margin: auto;
 padding: 0px;
 }
@@ -121,17 +121,14 @@ padding: 0px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-	height: 60px;
-	
 }
 
 #header-title {
-	position: absolute;
+	position: relative;
+	left: 30px;
 	text-align: left;
 	padding: 0px;
-	top: 0px;
-	left: 250px;
-	
+
 	h2 {
 		color:#fff;
 		font-size:35px;
@@ -143,23 +140,21 @@ padding: 0px;
 	}
 }
 
+#header-subtitle {
+	position: relative;
+	top: -30px;
+	left: 400px;
+	color: #622;
+	font-size: 30px;
+}
+
 #header-preinfo {
-	background: darken(white,10%);
-	padding: 6px;
-	color: #fff;
-	border-bottom: 1px solid $main-border-color;
+	color: #CCC;
 	a {
-		color: #fff;
+		color: #CCC;
 	}
 }
 
-#header-subtitle {
-	position: absolute;
-	left: 600px;
-	top: 10px;
-	color: white;
-	font-size:25px;
-}
 
 #language-header {
 	position: absolute;
@@ -171,36 +166,6 @@ padding: 0px;
 #lang {
 	position: relative;
 	top: 0px;
-}
-
-#flag1 {
-	position: absolute;
-	right: 168px;
-	top: 0px;
-	width: 84px;
-	height: 20px;
-	margin: 0px;
-    @include background-image(linear-gradient(top, lighten(black,50%), black));
-}
-
-#flag2 {
-	position: absolute;
-	right: 84px;
-	top: 0px;
-	width: 84px;
-	height: 20px;
-	margin: 0px;
-    @include background-image(linear-gradient(top, lighten(yellow,50%), yellow));
-}
-
-#flag3 {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 84px;
-	height: 20px;
-	margin: 0px;
-	@include background-image(linear-gradient(top, lighten(red,50%), red));
 }
 
 
@@ -222,16 +187,13 @@ top: -10px;
  
 
 #container2 {
-position: relative;
-@include rounded;
-@include column($blueprint-grid-columns - 2); 
-@include single-box-shadow(white, 0px, 0px, 50px, false, true);
+-position: relative;
+padding: auto;
+margin: auto;
+@include column($blueprint-grid-columns); 
 text-align: center;
 border: 1px solid $main-border-color;
 background-color: #fff;
-margin: 0px;
-padding: 0px;
-margin-left: 50px;
 min-height: $content-height;
 }
 
@@ -248,30 +210,51 @@ min-height: $content-height;
 }
 
 #menu {
-@include column($content-columns); 
-border-bottom: 1px solid $main-border-color;
+position: relative;
+top: -20px;
+@include background-image(linear-gradient(top, #ccc, #999 75%, #ccc));
+@include column($blueprint-grid-columns); 
+padding: auto;
+margin: auto;
+height: 25px;
 	a {
+		text-align: center;
 		text-decoration: none;
+		padding-top: 0px;
+		margin-top: 0px;
 		#menu-item {
 			@include column(ceil($content-columns/3) - 1); 
-			margin-top: 10px;
-			margin-left: 30px;
-			margin-bottom: 10px;
-
+			margin: 0px;
  			#menu-title {
 				font-style: normal;
 				display:inline;
-				font-size: 20px;
+				font-size: 16px;
 				text-decoration: none;
-				color: $main-links-color;
+				color: white;
 			}
 		}
 	}
 	a:hover {
 		#menu-item {
-		
+			@include background-image(linear-gradient(top, #AAA, #666 75%, #AAA));
 		}
 	}
+	.selected_item {
+		@include background-image(linear-gradient(top, #AAA, #666 75%, #AAA));
+	}
+}
+
+#intro_text {
+padding: 10px;
+font-size: 20px;
+color: #555;
+a {
+	text-decoration: none;
+	color: #55D;
+}
+a:hover {
+	color: #00F;
+}
 }
 
 .homepage_style {
@@ -447,6 +430,12 @@ padding: 10px;
 
 .filter_form {
 @include blueprint-form;
+}
+
+#login_logos {
+margin: auto;
+padding: auto;
+width: 420px;
 }
 
 
@@ -649,9 +638,6 @@ border-left: 2px solid $main-border-color;
 @include single-box-shadow(white, 0px, 0px, 50px, false, true);
 border-bottom: 1px solid $main-border-color;
 padding-bottom: 10px;
-@include background-image(linear-gradient(top, #eef, #DDDBF1 85%, #eef));
-background-color:#DDDBF1;
-
 	#bill-header-icon {
 		@include column(floor($content-columns/4));
 		padding-top: 15px;
@@ -1030,7 +1016,7 @@ padding: 0px;
 
 #index-large-column {
 @extend #index-column;
-@include column($index-columns*2);
+@include column($index-columns*2 + 2);
 }
 
 #last-index-column {

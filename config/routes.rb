@@ -1,6 +1,6 @@
 VotingModule::Application.routes.draw do
 
-  root :to => "initiatives#index"
+  root :to => "info#homepage"
         
   match '/auth/:provider/callback' => 'authentications#create'
 
@@ -11,6 +11,9 @@ VotingModule::Application.routes.draw do
   get "language/fra"
   get "language/ndl"
   get "language/eng"
+  get "tutorial/video_tutorial"
+  get "info/homepage"
+  get "info/contact"
   
   resources :user 
   resources :delegations

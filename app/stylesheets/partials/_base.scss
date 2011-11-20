@@ -9,12 +9,12 @@ $blueprint-grid-margin: 10px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
-$content-columns: ceil(6*$blueprint-grid-columns / 8) - 1;
-$bill-sidebar-columns: floor($content-columns/3);
-$bill-content-columns: ceil(2*$content-columns/3) - 1;
+$content-columns: ceil(6*$blueprint-grid-columns / 8) + 1;
+$bill-sidebar-columns: floor($content-columns/3) - 2;
+$bill-content-columns: ceil(2*$content-columns/3) + 1;
 $bill-footer-columns: ceil($bill-content-columns/2);
 $one-column: floor($bill-sidebar-columns/4);
-$sidebar-r-columns: $blueprint-grid-columns - 2 - $content-columns;
+$sidebar-r-columns: $blueprint-grid-columns - $content-columns;
 
 $container-height: 700px;
 $content-height: 600px;

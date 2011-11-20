@@ -2,12 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 en:
   info:
+    title: "Info"
+            
     activate_info: "Show help links"
     disactivate_info: "Hide help links"
     activate_intro: "Show intro window"
     disactivate_intro: "Do not show intro window anymore"
     initiative_menu: "View, vote or propose citizen-initiated bills"
     referendum_menu: "View and vote on politicians-initiated bills"
+    info_menu: "Get some info on our project"
     tutorial_menu: "Watch videos showing you how to proceed"
     your_profile_title: "This section allows you to log in and see a summary of your personal information. </br>
     Click on the links to have more details or edit your user information."
@@ -63,7 +66,15 @@ en:
     If you do so, your vote overrides the one from your delegate. </br></br>Very importantly also, you can change your delegate at anytime! </br>
     Finally, you can also naturally propose yourself as a delegate. You just have to click a button. That's all."
     
+    info_initiative: "An initiative is the draft of a new law, proposed by a citizen or a group of citizens. Anyone can propose an initiative. <br>
+    Once submitted, it needs to gather a certain number of signatures to prove that it is valuable. Then it is submitted to a general vote. 
+    If it's a communal law, it's voted by all the citizens of the commune, if it's a federal law, it's voted by all the citizens of the country."    
     
+    info_referendum: "A referendum is a vote organized to approve or disapprove a law proposed by politicians.
+    There are two crucial aspects of a referendum that can make it a true democratic tool. <br>
+    First it needs to be decisive, i.e. the result makes law. Noone can decide singly to cancel it. 
+    Second it needs to be citizen-initiated. In many countries, the politicians decide themselves when to put a law to referendum. 
+    Then it becomes a way for them to increase their power. In contrast, citizen-initiated referendums allow citizens to oppose a real counter-power to the politicians."
     
     private_vote_num: "Number of votes you casted privately."
     public_vote_num: "Number of votes you casted as a delegate."

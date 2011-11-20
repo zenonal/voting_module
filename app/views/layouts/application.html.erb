@@ -27,7 +27,7 @@
 				<%= raw t('layout.preinfo') %>
 			</div>
 			<div id="header-title">
-				<h2><%= link_to image_tag("new_title_en.png", :size => "650x65"), "http://www.democratie-directe.be" %> </h2>
+				<h2><%= link_to image_tag("new_title_en.png", :size => "500x50"), "http://www.democratie-directe.be" %> </h2>
 			</div>
 			
 			<div id="header-subtitle">
@@ -60,64 +60,44 @@
 				</span>
 			<% end %>
 			</div>
+			<div id="menu">
+				<div id="flash">
+		      		<% flash.each do |name, msg| %>
+		        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		      		<% end %>
+				</div>
+				<%= link_to info_homepage_url do %>
+				<div id="menu-item" <% if controller_path == "info" %> class="selected_item" <% end %>>
+				<div id="menu-title"><%= t('info.title') %><%= info_help('info_menu') %></div>
+				</div>
+				<% end %>
+				<%= link_to initiatives_path do %>
+				<div id="menu-item" <% if controller_path == "initiatives" %> class="selected_item" <% end %>>
+				<div id="menu-title"><%= t('initiatives.title2') %><%= info_help('initiative_menu') %></div>
+				</div>
+				<%end %>
+				<%= link_to referendums_path do %>
+				<div id="menu-item" <% if controller_path == "referendums" %> class="selected_item" <% end %>>
+				<div id="menu-title"><%= t('referendums.title2') %><%= info_help('referendum_menu') %></div>
+				</div>
+				<% end %>
+				<%= link_to tutorial_video_tutorial_url do %>
+				<div id="menu-item" <% if controller_path == "tutorial" %> class="selected_item" <% end %>>
+				<div id="menu-title"><%= t('tutorial.title') %><%= info_help('tutorial_menu') %></div>
+				</div>
+				<% end %>
+				<div class="clear"></div>
+			</div>
 			
 		</div>
 		<div class="clear"></div>
 		
 		<div id="container2">
-			<% if (cookies[:show_intro] == "true") %>
-			<div id="overlay-intro">
-				<div>
-					<h2><%= image_tag("hand_white.png", :size => "30x45") %> &nbsp;&nbsp; <%= t('layout.intro_title') %></h2>
-
-					<p>
-						<%= raw(t('layout.intro_content')) %>
-					</p>
-					
-					<p>
-						<div id="intro-check">
-						<form>
-							<%= t('layout.intro_checkbox') %>
-						    <input type="checkbox" id="show_intro_check" name="show_intro_check"/>
-						    <button class="close"> <%= t('layout.intro_close_button') %> </button>
-						  </form>
-						</div>
-						
-					</p>
-				</div>
-
-			</div>
-			<% end %>
-			
 			<div id="content">
-				<div id="menu">
-					<div id="flash">
-			      		<% flash.each do |name, msg| %>
-			        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-			      		<% end %>
-					</div>
-					<%= link_to initiatives_path do %>
-					<div id="menu-item">
-					<div id="menu-title"><%= t('initiatives.title2') %><%= info_help('initiative_menu') %></div>
-					</div>
-					<%end %>
-					<%= link_to referendums_path do %>
-					<div id="menu-item">
-					<div id="menu-title"><%= t('referendums.title2') %><%= info_help('referendum_menu') %></div>
-					</div>
-					<% end %>
-					<%= link_to language_info_url do %>
-					<div id="menu-item">
-					<div id="menu-title"><%= t('tutorial.title') %><%= info_help('tutorial_menu') %></div>
-					</div>
-					<% end %>
-					<div class="clear"></div>
-				</div>
+				
 				<%= yield %>
 			</div>
 		  	<div id="sidebar-right">
-			
-					<span id="flag1"> </span><span id="flag2"> </span><span id="flag3"> </span>
 					</br>
 					<div id="user_info">
 						<h3><%= info_help('your_profile_title') %><%= t("layout.user_info") %> 
