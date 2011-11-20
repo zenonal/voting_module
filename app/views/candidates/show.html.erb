@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <%= title @candidate.name %>
+	<% if @candidate.level == "4" %>
+		<%= t("#{params[:controller]}.level4") %>
+	<% end %>
+	<% if @candidate.level == "3" %>
+	<%= link_to @candidate.region.name, root_url(:host => @candidate.region.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+	<% end %>
+	<% if @candidate.level == "2" %>
+	<%= link_to @candidate.province.name, root_url(:host => @candidate.province.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+	<% end %>
+	<% if @candidate.level == "1" %>
+	<%= link_to @candidate.commune.name, root_url(:host => @candidate.commune.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+	<% end %>
+
 <table>
 	<tr>
 		<td>&nbsp;</td>

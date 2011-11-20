@@ -13,3 +13,4 @@ en:
     level3: "Candidate at regional level"
     level2: "Candidate at provincial level"
     level1: "Candidate at communal level"
+    candidate_for: "Candidate for "
