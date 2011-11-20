@@ -1,0 +1,15 @@
+en:
+  candidates:
+    title: 'List of our candidates'
+    show: "show"
+    edit: 'edit'
+    destroy: 'destroy'
+    new: 'new candidate'
+    back: 'back'
+    votes: 'votes'
+    approval: 'approval'
+    index: 'List of candidates'
+    level4: "Candidate at federal level"
+    level3: "Candidate at regional level"
+    level2: "Candidate at provincial level"
+    level1: "Candidate at communal level"

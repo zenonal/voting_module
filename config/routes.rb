@@ -1,5 +1,7 @@
 VotingModule::Application.routes.draw do
 
+  resources :candidates
+
   root :to => "info#homepage"
         
   match '/auth/:provider/callback' => 'authentications#create'

@@ -1,10 +1,10 @@
 authorization do
   role :guest do
-    has_permission_on [:comments,:arguments, :politicians, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show, :new, :show_results]
+    has_permission_on [:comments,:arguments, :politicians, :candidates, :parties, :referendums, :initiatives, :amendments, :categories], :to =>  [:index, :show, :new, :show_results]
     has_permission_on [:brainstorm, :user], :to => [:show]
   end
   role :admin do
-    has_permission_on [:initiatives, :referendums, :amendments, :comments, :arguments, :users, :politicians, :parties, :categories, :ideas], :to => [:index, :show, :new, :create, :edit, :update, :destroy]
+    has_permission_on [:initiatives, :referendums, :amendments, :comments, :arguments, :users, :politicians, :candidates, :parties, :categories, :ideas], :to => [:index, :show, :new, :create, :edit, :update, :destroy]
     has_permission_on [:initiatives, :referendums, :amendments, :ideas], :to => [:aye,:nay, :vote, :ranking, :show_results]
     has_permission_on [:initiatives, :amendments], :to => [:validate, :index_drafts]
     has_permission_on :user, :to => [:show]
@@ -17,7 +17,7 @@ authorization do
   role :limited_user do
         has_permission_on [:comments,:arguments,:ideas], :to => [:index, :show, :new, :create]
         has_permission_on :referendums, :to => [:index, :show, :aye,:nay, :vote, :ranking, :show_results]
-        has_permission_on [:politicians,:parties,:categories], :to => [:index, :show]
+        has_permission_on [:politicians,:parties,:categories,:candidates], :to => [:index, :show]
         has_permission_on :user, :to => [:show]
         has_permission_on [:arguments, :ideas], :to => [:aye,:nay,:exclude_argument]
         has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment]

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
         helper_method :filter_index
 
         before_filter :set_locale
-        before_filter :set_mode
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
         before_filter :mailer_set_url_options

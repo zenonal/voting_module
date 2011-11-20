@@ -50,22 +50,9 @@
 					<%= link_to image_tag("bt_i.png",:size => "20x30"), language_info_url, :title => t('info.activate_info') %>
 				</span>
 			<% end %>
-			<% if cookies[:show_intro] == "true" %>
-				<span id="lang">
-					<%= link_to image_tag("bt_notintro.png",:size => "20x30"), language_intro_url, :title => t('info.disactivate_intro') %>
-				</span>
-			<% else %>
-				<span id="lang">
-					<%= link_to image_tag("bt_intro.png",:size => "20x30"), language_intro_url, :title => t('info.activate_intro') %>
-				</span>
-			<% end %>
 			</div>
 			<div id="menu">
-				<div id="flash">
-		      		<% flash.each do |name, msg| %>
-		        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
-		      		<% end %>
-				</div>
+				
 				<%= link_to info_homepage_url do %>
 				<div id="menu-item" <% if controller_path == "info" %> class="selected_item" <% end %>>
 				<div id="menu-title"><%= t('info.title') %><%= info_help('info_menu') %></div>
@@ -93,6 +80,11 @@
 		<div class="clear"></div>
 		
 		<div id="container2">
+			<div id="flash">
+	      		<% flash.each do |name, msg| %>
+	        		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+	      		<% end %>
+			</div>
 			<div id="content">
 				
 				<%= yield %>

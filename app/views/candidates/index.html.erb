@@ -1,0 +1,40 @@
+<div id="party-index">
+<%= title t('candidates.title') %>
+
+<table>
+<% @candidates.each do |candidate| %>
+  <tr>
+	<td><%= link_to image_tag(candidate.photo.url(:thumbnail)), candidate %></td>
+    <td><%= link_to candidate.name, candidate, :class => "link" %></td>
+	<td>
+		<% if candidate.level == "4" %>
+			<%= t("#{params[:controller]}.level4") %>
+		<% end %>
+		<% if candidate.level == "3" %>
+		<%= link_to candidate.region.name, root_url(:host => candidate.region.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+		<% end %>
+		<% if candidate.level == "2" %>
+		<%= link_to candidate.province.name, root_url(:host => candidate.province.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+		<% end %>
+		<% if candidate.level == "1" %>
+		<%= link_to candidate.commune.name, root_url(:host => candidate.commune.name.strip + '.' + request.domain + request.port_string), :class => "link" %>
+		<% end %>
+	</td>
+	
+    
+<% if permitted_to? :edit, candidate %>
+    <td><%= link_to t('candidates.edit'), edit_candidate_path(candidate), :class => "button" %></td>
+<% end %>
+<% if permitted_to? :destroy, candidate %>
+    <td><%= button_to t('candidates.destroy'), candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if permitted_to? :create, Candidate.new %>
+	<%= link_to t('candidates.new'), new_candidate_path, :class => "button" %>
+<% end %>
+</div>

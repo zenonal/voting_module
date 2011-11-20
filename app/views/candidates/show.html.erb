@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @candidate.name %>
+</p>
+
+<p>
+  <b>Photo file name:</b>
+  <%= @candidate.photo_file_name %>
+</p>
+
+<p>
+  <b>Photo content type:</b>
+  <%= @candidate.photo_content_type %>
+</p>
+
+<p>
+  <b>Photo file size:</b>
+  <%= @candidate.photo_file_size %>
+</p>
+
+<p>
+  <b>Photo updated at:</b>
+  <%= @candidate.photo_updated_at %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @candidate.level %>
+</p>
+
+<p>
+  <b>Level code:</b>
+  <%= @candidate.level_code %>
+</p>
+
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>
