@@ -27,7 +27,7 @@
 				<%= raw t('layout.preinfo') %>
 			</div>
 			<div id="header-title">
-				<h2><%= link_to image_tag("new_title_en.png", :size => "500x50"), "http://www.democratie-directe.be" %> </h2>
+				<h2><%= link_to image_tag("new_title_en.png", :size => "500x50"), root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}") %> </h2>
 			</div>
 			
 			<% unless @subdom_level.blank? %>

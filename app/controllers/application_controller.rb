@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
         include ::SslRequirement
         end
         helper_method :filter_index
-
+        before_filter :set_mode
         before_filter :set_locale
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
@@ -67,9 +67,6 @@ class ApplicationController < ActionController::Base
         def set_mode
                 if cookies[:info_active].blank?
                         cookies[:info_active] = true
-                end
-                if cookies[:show_intro].blank?
-                        cookies[:show_intro] = true
                 end
         end
 

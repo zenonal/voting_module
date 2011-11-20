@@ -58,6 +58,7 @@ border-image:url("/images/border.png") 4 round;
 @include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
 @include font-face("SubSubtitles", font-files("miso-webfont.ttf", truetype));
 @include font-face("Tooltips", font-files("play-regular-webfont.ttf", truetype));
+@include font-face("Menu", font-files("Aaargh-webfont.ttf", truetype));
 
 body.bp {
 @include blueprint-typography(true);
@@ -173,7 +174,7 @@ table.candidate tr td {
 
 #language-header {
 	position: absolute;
-	right: -20px;
+	right: 0px;
 	top: 0px;
 	width: 200px;
 }
@@ -225,12 +226,11 @@ min-height: $content-height;
 }
 
 #menu {
+font-family: "Menu", helvetica;
 position: relative;
 top: -20px;
 @include background-image(linear-gradient(top, #ccc, #999 75%, #ccc));
 @include column($blueprint-grid-columns); 
-padding: auto;
-margin: auto;
 height: 25px;
 	a {
 		text-align: center;
@@ -239,6 +239,7 @@ height: 25px;
 		margin-top: 0px;
 		#menu-item {
 			@include column(ceil($content-columns/3) - 1); 
+			padding-top: 3px;
 			margin: 0px;
  			#menu-title {
 				font-style: normal;
@@ -410,7 +411,7 @@ margin:0px;
 padding:0px;
 	#user_info {
 		margin:0px;
-		padding-top: 10px;
+		padding-top: 0px;
 	}
 }
 
