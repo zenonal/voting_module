@@ -26,7 +26,7 @@
     <td><%= link_to t('candidates.edit'), edit_candidate_path(candidate), :class => "button" %></td>
 <% end %>
 <% if permitted_to? :destroy, candidate %>
-    <td><%= button_to t('candidates.destroy'), candidate, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to t('candidates.destroy'), candidate, :method => :delete, :confirm => t('layout.delete_bill'), :class => "button" %>
 <% end %>
   </tr>
 <% end %>
