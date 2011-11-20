@@ -1,4 +1,9 @@
 class Candidate < ActiveRecord::Base
+
+belongs_to :commune
+belongs_to :province
+belongs_to :region
+
         if Rails.env=="development"
                 has_attached_file :photo, :styles => {:small => "150x150>", :thumbnail => "80x80>"}
         else

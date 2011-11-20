@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120104056) do
+ActiveRecord::Schema.define(:version => 20111120115318) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -97,6 +97,9 @@ ActiveRecord::Schema.define(:version => 20111120104056) do
     t.integer  "level_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "commune_id"
+    t.integer  "province_id"
+    t.integer  "region_id"
   end
 
   create_table "categories", :force => true do |t|

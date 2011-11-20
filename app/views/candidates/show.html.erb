@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-
-<div id="index-content">
+<%= title @candidate.name %>
 <table>
 	<tr>
-		<td><%= title @candidate.name %></td>
-	</tr>
-</table>
-<table>
-	<tr>
+		<td>&nbsp;</td>
 		<td>
 			<%= image_tag @candidate.photo.url(:small) %>
 		</td>
@@ -30,4 +25,3 @@
 
 <%= link_to t('candidates.edit'), edit_candidate_path(@candidate), :class => "button" %> |
 <%= link_to t('candidates.index'), candidates_path, :class => "button" %>
-</div>

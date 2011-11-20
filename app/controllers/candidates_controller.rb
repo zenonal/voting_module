@@ -47,7 +47,28 @@ class CandidatesController < ApplicationController
   # POST /candidates.xml
   def create
           @candidate = Candidate.new(params[:candidate])
-
+          if params[:candidate][:level] == "1"
+                  c = Commune.find_by_postal_code(params[:candidate][:level_code])
+                  if c
+                          s1 = @candidate.update_attribute(:commune_id, c.id)
+                  end
+          else 
+                  if params[:level] == "2"
+                          p = Province.find_by_level_code(params[:candidate][:level_code])
+                          if p
+                                  s1 = @candidate.update_attribute(:province_id, p.id)
+                          end
+                  else
+                          if params[:level] == "3"
+                                  r = Region.find_by_level_code(params[:candidate][:level_code])
+                                  if r
+                                          s1 = @candidate.update_attribute(:region_id, r.id)
+                                  end
+                          end
+                  end
+          end
+                
+          
           respond_to do |format|
                   if @candidate.save
                           bio_text_en = params[:bio_text_en]
