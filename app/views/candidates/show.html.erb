@@ -1,40 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @candidate.name %>
-</p>
 
-<p>
-  <b>Photo file name:</b>
-  <%= @candidate.photo_file_name %>
-</p>
-
-<p>
-  <b>Photo content type:</b>
-  <%= @candidate.photo_content_type %>
-</p>
-
-<p>
-  <b>Photo file size:</b>
-  <%= @candidate.photo_file_size %>
-</p>
-
-<p>
-  <b>Photo updated at:</b>
-  <%= @candidate.photo_updated_at %>
-</p>
-
-<p>
-  <b>Level:</b>
-  <%= @candidate.level %>
-</p>
-
-<p>
-  <b>Level code:</b>
-  <%= @candidate.level_code %>
-</p>
+<div id="index-content">
+<table>
+	<tr>
+		<td><%= title @candidate.name %></td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<%= image_tag @candidate.photo.url(:small) %>
+		</td>
+		<td>
+			<table>
+			<tr>
+				<td><%= raw eval("@candidate.bios[0].content_#{I18n.locale}") %></td>
+			</tr>
+			<tr>
+				<td><%= link_to eval("@candidate.bios[0].wiki_#{I18n.locale}") %></td>
+			</tr>
+			</table>
+		</td>
+		<td>
+		</td>
+	</tr>
+</table>
 
 
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
+<%= link_to t('candidates.edit'), edit_candidate_path(@candidate), :class => "button" %> |
+<%= link_to t('candidates.index'), candidates_path, :class => "button" %>
+</div>
