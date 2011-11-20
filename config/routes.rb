@@ -1,7 +1,5 @@
 VotingModule::Application.routes.draw do
-
-  resources :candidates
-
+        
   root :to => "info#homepage"
         
   match '/auth/:provider/callback' => 'authentications#create'
@@ -55,6 +53,7 @@ VotingModule::Application.routes.draw do
   
   resources :categories
   
+  resources :candidates
   
   
   match ':controller(/:action(/:id(.:format)))'

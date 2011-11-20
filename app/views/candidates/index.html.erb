@@ -27,7 +27,7 @@
 <% end %>
 <% if permitted_to? :destroy, candidate %>
 	<td>
-	<%= link_to t('candidates.destroy'), {:controller => :candidates, :action => :destroy, :id => candidate.id}, :method => :delete, :class => "link" %>
+	<%= link_to t('candidates.destroy'), {:controller => :candidates, :action => :destroy, :id => candidate.id}, :method => :delete, :confirm => t(:are_you_sure_str),  :class => "link" %>
 	</td>
 <% end %>
   </tr>
