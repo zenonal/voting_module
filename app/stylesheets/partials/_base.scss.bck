@@ -1,0 +1,46 @@
+// Here is where you can define your constants for your application and to configure the blueprint framework.
+// Feel free to delete these if you want keep the defaults:
+
+$blueprint-grid-columns: 24;
+$blueprint-container-size: 1200px;
+$blueprint-grid-margin: 10px;
+
+// Use this to calculate the width based on the total width.
+// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+$content-columns: ceil(6*$blueprint-grid-columns / 8) - 1;
+$bill-sidebar-columns: floor($content-columns/3);
+$bill-content-columns: ceil(2*$content-columns/3) - 1;
+$bill-footer-columns: ceil($bill-content-columns/2);
+$one-column: floor($bill-sidebar-columns/4);
+$sidebar-r-columns: $blueprint-grid-columns - 2 - $content-columns;
+
+$container-height: 700px;
+$content-height: 600px;
+
+$index-columns: floor($content-columns/5);
+$index-margin: $content-columns - (4*$index-columns);
+
+$blueprint-background-color: darken(#FFF,3%);
+
+$blueprint-button-font-family: "Arial";
+$blueprint-button-border-color: #888;
+$blueprint-button-background-color: #454589;
+$blueprint-button-font-color: #888;
+$blueprint-button-hover-border-color: $blueprint-button-border-color;
+$blueprint-button-hover-background-color: $blueprint-button-background-color;
+$blueprint-button-hover-font-color: $blueprint-button-font-color;
+$blueprint-button-active-border-color: #6299c5;
+
+$main-border-color: #AAA;
+$main-links-color: #767676;
+
+$default-box-shadow-blur: 30px;
+$default-box-shadow-spread: false;
+$default-box-shadow-inset: false;
+
+$beige-color: #F4C08C;
+$cyan-color: #9ee3cf;
+$green-color: #80b293;
+$pink-color: #d685a1;

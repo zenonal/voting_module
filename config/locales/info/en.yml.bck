@@ -1,0 +1,72 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+  info:
+    activate_info: "Show help links"
+    disactivate_info: "Hide help links"
+    activate_intro: "Show intro window"
+    disactivate_intro: "Do not show intro window anymore"
+    initiative_menu: "View, vote or propose citizen-initiated bills"
+    referendum_menu: "View and vote on politicians-initiated bills"
+    tutorial_menu: "Watch videos showing you how to proceed"
+    your_profile_title: "This section allows you to log in and see a summary of your personal information. </br>
+    Click on the links to have more details or edit your user information."
+    featured_title: "Examples of bills picked randomly for you."
+    options: "Filter the bills according to their geographical extent, their category and their developmemnt phase"
+    category: "Defines the domain to which the bills apply (e.g. economy, agriculture, etc...)."
+    geography: "Defines the geographical level of the bills (communal, provincial, regional, federal).</br>
+        If you are using a subdomain such as http://bruxelles.votingmodule.heroku.com then the geographical level will be automatically
+        set to Brussels and you won't be able to change it here. If you want to access bills in other geographical level, you can either
+        use another subdomain (e.g. http://antwerpen.votingmodule.heroku.com) or use no subdomain (e.g. http://votingmodule.heroku.com)."
+    phase: "Defines the current processing phase of the bills:
+            <ul><li>currently being edited: the bill is being drafter by its author</li>
+            <li>curently gathering validations: the bill is gathering validations from other users. It needs to pass a validation threshold to go on to the next steps.</li>
+            <li>validation failed: the bill didn't reach the validation threshold in time. It won't go on to the next steps.</li>
+            <li>currently open to amendments: the bill is open to amendment. Anyone can propose alternative proposals.</li>
+            <li>currently being voted on: the bill is being voted on</li>
+            <li>already voted on: the voting period is over. You can see the results of the vote. </li></ul>
+            By default, all phases are shown except the editing phase."
+    outside_geo: "By default, in addition to federal bills, only bills from your own commune, province and region are shown. </br>
+        You can see the bills from other geographical sectors by checking this option."
+    sign_in_through_social_networks: "You can sign in very easily through one of these social networks.</br>
+     If you have an account with one of these, you can just click on the corresponding icon </br> and you will be authenticated automatically through their website."
+    brainstorm: "This is the place where ideas are proposed anonymously and are voted on. </br> You can propose anything that comes to your mind in relation to the corresponding bill. "
+    edit_bill: "This allows you to modify the bill. Keep in mind that this will be possible only for a limited amount of time though."
+    percent_approval: "This shows the percentage of votes in which this bill was given a positive ranking. </br>
+        Because the votes are based on ranking instead of simply 'yes' or 'no', </br>
+        this measure of percentage of approval does not reliably indicates which bill, if any, passed the vote."
+    average_ranking: "This shows how the bill was ranked on average, with respect to the other bills. The higher the score, the more this bill is considered superior to the other bills."
+    rank_matrix: "This is a way of summarizing the results by showing the number of votes in which each bill was ranked higher than each other bill.</br>
+    From this table of result, we calculate the winner of the vote with the so-called <a href='http://en.wikipedia.org/w/index.php?title=Condorcet_method&oldid=454655093'>Condorcet method</a>."
+    delegates_rankings: "This shows how each delegate voted on this bill. A delegate is a citizen whom you can choose to represent you. </br>
+        In this case, each time he votes on a bill, he votes also for you. You can change delegate or override his vote anytime you like. </br>
+        You can also choose to be a delegate yourself. </br>Click on you user name in the upper right corner to know more about that."
+    private_rankings: "This is a list of all the votes on this bill. </br>
+    This gives users a possibility to check that their vote was indeed counted without revealing the identity of the voters."
+    
+    amendments_title: "This section shows the alternative proposals that other users have proposed. </br></br>
+    Like the other bills, these proposals have first to be validated, i.e. to be supported by enough voters.</br>
+    If you see here under the title 'These alternatives have not been validated yet' proposals that you like, please go ahead and validate them.</br></br>
+    You can also propose alternatives yourself. But this can be done only during a limited period of time, after the original bill has been validarted, and before the vote!</br>  
+    When the vote takes place, each voter ranks all the proposals, including the original one, in the order of his preference.</br>
+    The winner will be the bill which is ranked before the other ones most of the time (Condorcet method)."
+    
+    argument_title: "Here you can place a relatively elaborated comment on what you think about the bill. You can see this as a mini newspaper op-ed if you like.</br>
+    To keep things clear, we separated the columns with pros and cons points of view.</br></br> These points of views cannot be commented. "
+    
+    discussion_title: "This section is for debate. You can post your comment and reply to other's comments. </br>
+    Please post only comments that are relevant to the discussion. If you see irrelevant or abusive comments, you can flag them."
+    
+    delegation_title: "This section gives information on delegation, which is the core of fluid democracy.</br>
+    You can choose any person you like to be your delegate. Once done so, everytime this person votes, she votes for you as well.</br></br>
+    The good part, which makes this system very different from the usual representative system, is that you can vote yourself instead on any bill.</br>
+    If you do so, your vote overrides the one from your delegate. </br></br>Very importantly also, you can change your delegate at anytime! </br>
+    Finally, you can also naturally propose yourself as a delegate. You just have to click a button. That's all."
+    
+    
+    
+    private_vote_num: "Number of votes you casted privately."
+    public_vote_num: "Number of votes you casted as a delegate."
+    submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."
+    comments_num: "Number of comments you posted."
+    points_of_view_num: "Number of points of view you posted."
