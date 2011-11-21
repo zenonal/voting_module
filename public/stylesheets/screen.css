@@ -451,7 +451,7 @@ body.main-layout #container {
 body.main-layout table.candidate {
   position: absolute;
   top: 0px;
-  right: -30px;
+  right: -20px;
   width: 150px;
 }
 /* line 124, ../../app/stylesheets/screen.scss */
