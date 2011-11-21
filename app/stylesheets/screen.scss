@@ -81,12 +81,13 @@ h3 {
 	font-family: "Subtitles", helvetica;
 	font-size: 22px;
 	font-style: normal;
+	color: #378;
 }
 
 h2 {
 	font-family: "Titles", helvetica;
 	letter-spacing:3px;
-	color: #333;
+	color: #703;
 }
 
 .beige_text {
@@ -209,7 +210,6 @@ padding: auto;
 margin: auto;
 @include column($blueprint-grid-columns); 
 text-align: center;
-border: 1px solid $main-border-color;
 background-color: #fff;
 min-height: $content-height;
 }
@@ -262,8 +262,9 @@ height: 25px;
 }
 
 #intro_text {
+
 padding: 10px;
-font-size: 20px;
+font-size: 14px;
 color: #555;
 a {
 	text-decoration: none;
