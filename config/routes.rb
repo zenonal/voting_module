@@ -11,7 +11,7 @@ VotingModule::Application.routes.draw do
   get "language/fra"
   get "language/ndl"
   get "language/eng"
-  get "tutorial/video_tutorial"
+  get "tutorial/video"
   get "info/homepage"
   get "info/contact"
   

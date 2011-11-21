@@ -27,7 +27,7 @@
 				<%= raw t('layout.preinfo') %>
 			</div>
 			<div id="header-title">
-				<h2><%= link_to image_tag("new_title_en.png", :size => "500x50"), root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}") %> </h2>
+				<h2><%= link_to image_tag("new_title_en.png", :size => "500x60"), root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}") %> </h2>
 			</div>
 			
 			<% unless @subdom_level.blank? %>
@@ -87,7 +87,7 @@
 				<div id="menu-title"><%= t('referendums.title2') %><%= info_help('referendum_menu') %></div>
 				</div>
 				<% end %>
-				<%= link_to tutorial_video_tutorial_url do %>
+				<%= link_to tutorial_video_url do %>
 				<div id="menu-item" <% if controller_path == "tutorial" %> class="selected_item" <% end %>>
 				<div id="menu-title"><%= t('tutorial.title') %><%= info_help('tutorial_menu') %></div>
 				</div>

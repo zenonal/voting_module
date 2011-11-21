@@ -105,7 +105,9 @@ en:
       no_comment: "There is no comment yet in this discussion"
       amendment_of: "Amendment of "
       footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> is at the origin of this website. 
-      It is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium."
+      It is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium.
+      <br>
+      <a href='mailto:zenon.alex@gmail.com'> Contact us! </a>"
       head_title: "DIGITAL DIRECT DEMOCRAC"
       intro_title: "DIGITAL DIRECT DEMOCRACY"
       intro_close: "To close, click the Close button or hit the ESC key."

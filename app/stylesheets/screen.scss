@@ -142,6 +142,7 @@ table.candidate tr td {
 #header-title {
 	position: relative;
 	left: 30px;
+	top: -10px;
 	text-align: left;
 	padding: 0px;
 
@@ -229,7 +230,7 @@ min-height: $content-height;
 font-family: "Menu", helvetica;
 position: relative;
 top: -20px;
-@include background-image(linear-gradient(top, #ccc, #999 75%, #ccc));
+@include background-image(linear-gradient(top, #ccd, #99A 75%, #ccd));
 @include column($blueprint-grid-columns); 
 height: 25px;
 	a {
@@ -252,11 +253,11 @@ height: 25px;
 	}
 	a:hover {
 		#menu-item {
-			@include background-image(linear-gradient(top, #AAA, #666 75%, #AAA));
+			@include background-image(linear-gradient(top, #AAB, #667 75%, #AAB));
 		}
 	}
 	.selected_item {
-		@include background-image(linear-gradient(top, #AAA, #666 75%, #AAA));
+		@include background-image(linear-gradient(top, #AAB, #667 75%, #AAB));
 	}
 }
 
@@ -420,8 +421,10 @@ position: relative;
 @include column($blueprint-grid-columns); 
 text-align: center;
 padding: 20px;
-color: white;
-
+color: #aaa;
+ 	a {
+	color: #aae;
+	}
 }
 
 
