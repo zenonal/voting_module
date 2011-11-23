@@ -1,0 +1,209 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+en:
+  errors:
+    messages:
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+
+  devise:
+    failure:
+      already_authenticated: 'You are already signed in.'
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'You will soon receive an email form us. Please use the link in this email to activate your account.'  
+      locked: 'Your account is locked.'
+      invalid: 'Invalid email or password.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'Your account was not activated yet.'
+    sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+    passwords:
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'Your password was changed successfully. You are now signed in.'
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: 'Welcome! You have signed up successfully.'
+      inactive_signed_up: 'You have signed up successfully. Please check your email and activate your account before signing in.'
+      updated: 'You updated your account successfully.'
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Activate your account on the voting module of Citizens for Direct Democracy.'
+      reset_password_instructions:
+        subject: 'Voting module of Citizens for Direct Democracy: Reset password instructions'
+      unlock_instructions:
+        subject: 'Unlock Instructions'
+      
+  custom_error:
+    perm_denied: "Sorry, you are not allowed to access that page. Don't forget to sign in!"
+    recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
+  layout:
+      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>."
+      sign_in_phrase: 'Signed in as'
+      not_you: 'Not you?'
+      sign_out: 'Sign out'
+      sign_up: 'Sign up'
+      sign_in: 'Sign in'
+      add_photo: 'Add your photo'
+      add_postal_code: 'Missing postal code'
+      activate_tutorial: "Turn the tutorial on"
+      turn_tutorial_off: "Turn the tutorial off"
+      go_on_tutorial: "Go on with tutorial"
+      points_of_view: "Your point of view on this bill"
+      filter: "Apply options"
+      submit: "Submit"
+      vote: "vote"
+      voter: "voter"
+      vote_for: "Drag here the bills that you approve and rank them by order of preference"
+      vote_against: "Drag here the bills that you don't approve and rank them starting with the one you dislike the least"
+      vote_neutral: "Drag here the bills on which you wish to remain neutral"
+      won_vote: "won the vote"
+      show_results: "Show the complete results"
+      show_bill: "Show details of the bill"
+      bill_won: "This bill won the vote"
+      bill_lost: "This bill lost the vote"
+      results_for: "Results of the vote for "
+      reject_all: "Reject all"
+      global_results: "General results"
+      rank_matrix: "Table of pairwise comparisons"
+      private_votes_list: "List of all the private votes"
+      delegate_votes_list: "List of all the votes of the delegates"
+      representing: "Representing "
+      average_rank: "Average ranking"
+      percent_approval: "Percentage of approval"
+      discussion: "Discussion"
+      choose_photo: "Choose an image that will be used as an icon for your bill"
+      choose_user_photo: "Choose a picture for your account"
+      choose_level: "Select the geographical level of your bill"
+      show_translations: "Add translations to your bill"
+      hide_translations: "Don't include translations in your bill"
+      not_authorized: "You are not authorized to do that"
+      private_activity: "Summary of private activity"
+      public_activity: "Summary of public activity"
+      change_pwd: "Change your password"
+      featured_bills: "Featured bills"
+      user_info: "Your profile"
+      tutorial_mode: "You are currently in tutorial mode"
+      missing_user: "The author of this bill cancelled his account"
+      brainstorm: "Brainstorm!"
+      delete_bill: "Are you certain you want to delete this bill?"
+      old_delegate: "No longer active but represented "
+      no_comment: "There is no comment yet in this discussion"
+      amendment_of: "Amendment of "
+      footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> is at the origin of this website. 
+      It is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium.
+      <br>
+      <a href='mailto:zenon.alex@gmail.com'> Contact us! </a>"
+      head_title: "DIGITAL DIRECT DEMOCRAC"
+      intro_title: "DIGITAL DIRECT DEMOCRACY"
+      intro_close: "To close, click the Close button or hit the ESC key."
+      intro_checkbox: "Check this box if you don't want this intro to show again."
+      intro_close_button: "Close"
+      
+  arguments: 
+      index_title: "Examples of opinions on current bills"
+     
+  homepage:
+      title: 'Voting module'
+  
+  by: "by"
+  on: "on"
+  headtitle: "Voting Module"
+  submit_str: "Submit"
+  create_str: "Create"
+  update_str: "Update"
+  back_str: "Back"
+  show_str: "Show"
+  agree_str: "I AGREE"
+  arg_exclude_str: "Flag an abuse"
+  arg_exclude_tip: "Select this action to exclude a comment or post that you find inappropriate"
+  com_exclude_str: "Flag an abuse"
+  exclusion_requests_str: "Exclusion requests:"
+  disagree_str: "I DISAGREE"
+  approval_str: "approval for this argument"
+  pro_str: "PROS"
+  con_str: "CONS"
+  comments_str: "Your comments"
+  reply_to_comment_str: "Reply to this comment"
+  no_arg_text: "There are currently no arguments in this section"
+  title_form_str: "Title"
+  content_form_str: "Content"
+  comment_title: "Discussion"
+  argument_title: "Pros and cons"
+  comment_for: "Comments for "
+  postal_code_str: "Postal code"
+  created_by: "Created by "
+  delete_str: "Delete"
+  delete_bill_str: "Delete this bill"
+  delete_comment: "Delete this comment"
+  are_you_sure_str: "Are you sure?"
+  new_comment: "Post your comment (max 1000 characters)"
+  new_message: "We need your feedback: send us a message!"
+  new_arg: "Post your point of view (max 1500 characters)"
+  new_idea_en: "Your idea in English"
+  new_idea_fr: "Your idea in French"
+  new_idea_nl: "Your idea in Dutch"
+  ideas_title: "Submit your idea"
+  new_arg_title: "Title"
+  create_arg: "Give your own point of view!"
+  edit_arg: "Edit"
+  new_reply: "Post your reply (max 1000 characters)"
+  score_str: "Score"
+  comments_created_str: "Comments created"
+  reply_title: "Reply to comment"
+  original_comment: "Original comment"
+  average_score_str: "Average score"
+  approval_rate: "Approval rate"
+  new_comment_ok: "Comment was successfully created."
+  new_comment_not_ok: "There was an error creating the comment."
+  new_argument_ok: "Argument was successfully added."
+  new_argument_not_ok: "There was an error adding this argument."
+  english_head: "In English"
+  french_head: "En français"
+  nederland_head: "In het Nederlands"
+  point_of_view_title: "Point of view"
+  text_no_translation: "This bill content is not translated in English"
+  name_no_translation: "This bill title is not translated in English"
+  not_valid: "Not validated"
+  and: "and"
+  level: "level"
+  user_geo_limit: "View bills outside your specific geographical level"
+  user_geo_select: "Select geographical level"
+  user_phase_select: "Select processing phase"
+  bill_keyword_search: "Show only bills containing "
+  days: "day"
+  hours: "hour"
+  minutes: "minute"
+  left_to_edit: "left to edit this bill"
+  left_to_validate: "left to validate this bill"
+  left_to_amend: "left to propose alternatives to this bill"
+  left_to_vote: "left to vote"
+  validation_failed: "This bill has failed validation"
+  amendment: "amendment"
+  cancel: "Cancel"
+  cancel_bill: "Cancel the creation of this bill"
+  name_en: "Name in English"
+  content_en: "Text of the bill in English"
+  name_fr: "Nom en français"
+  content_fr: "Texte en français"
+  name_nl: "Naam in het Nederlands"
+  content_nl: "Text in het Nederlands"
+  category_select: "Select a category"
+  recaptcha_error: "There was an error with the recaptcha code below. Please re-enter the code and click submit"
+  message_sent: "Thanks for sending your message. Your feedback is very important to us."
+  message_sending_error: "Your message could not be sent because you are not logged in."
+  feedback: "Your feedback"

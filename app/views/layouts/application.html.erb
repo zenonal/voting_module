@@ -56,16 +56,16 @@
 				<% end %>
 			
 			<div id="language-header">
-			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "20x20"), language_fra_url %></span>
-			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "20x20"), language_ndl_url %></span>
-			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "20x20"), language_eng_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "18x18"), language_fra_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "18x18"), language_ndl_url %></span>
+			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "18x18"), language_eng_url %></span>
 			<% if cookies[:info_active] == "true" %>
 				<span id="lang">
-					<%= link_to image_tag("bt_noti.png",:size => "20x30"), language_info_url, :title => t('info.disactivate_info') %>
+					<%= link_to image_tag("bt_noti.png",:size => "18x27"), language_info_url, :title => t('info.disactivate_info') %>
 				</span>
 			<% else %>
 				<span id="lang">
-					<%= link_to image_tag("bt_i.png",:size => "20x30"), language_info_url, :title => t('info.activate_info') %>
+					<%= link_to image_tag("bt_i.png",:size => "18x27"), language_info_url, :title => t('info.activate_info') %>
 				</span>
 			<% end %>
 			</div>

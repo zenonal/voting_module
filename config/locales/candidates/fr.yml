@@ -1,0 +1,16 @@
+fr:
+  candidates:
+    title: 'Liste des candidats'
+    show: "afficher"
+    edit: 'éditer'
+    destroy: 'effacer'
+    new: 'nouveau candidat'
+    back: 'retour'
+    votes: 'votes'
+    approval: 'approbation'
+    index: 'Liste des candidats'
+    level4: "Candidat(e) au niveau fédéral"
+    level3: "Candidat(e) au niveau régional"
+    level2: "Candidat(e) au niveau provincial"
+    level1: "Candidat(e) au niveau communal"
+    candidate_for: "Candidat(e) pour "

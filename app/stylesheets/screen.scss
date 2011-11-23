@@ -176,13 +176,14 @@ table.candidate tr td {
 
 #language-header {
 	position: absolute;
-	right: 0px;
+	right: 100px;
 	top: 0px;
 	width: 200px;
 }
 
 #lang {
 	position: relative;
+	padding: 10px;
 	top: 0px;
 }
 
@@ -233,6 +234,7 @@ top: -20px;
 @include background-image(linear-gradient(top, #ccd, #99A 75%, #ccd));
 @include column($blueprint-grid-columns); 
 height: 25px;
+border-bottom: 1px solid #888;
 	a {
 		text-align: center;
 		text-decoration: none;
@@ -360,32 +362,16 @@ font-weight: bold;
   display: inline;
 }
 
-#tutorial {
-font-family: "Tooltips", helvetica;
-position: absolute;
-@include rounded(10px);
-@include column($content-columns);
-@include single-box-shadow(darken($main-border-color,20%), 4px, 4px, 5px, false, false);
-width: span(floor($content-columns/2)) - 40px;
-border: 1px solid $main-border-color;
-padding: 20px;
-margin-bottom: 20px;
-@include background-image(linear-gradient(left, lighten(green,75%), lighten(green,70%)));
-left: 300px;
-top: -100px;
-text-align:justify;
-}
-
 .tooltip {
 	font-family: "Tooltips", helvetica;
 	display:none;
 	@include rounded(10px);
-	@include single-box-shadow(white, 0px, 0px, 30px, false, true);
-	@include background-image(linear-gradient(top, white, #eef 5%, white));
+	@include single-box-shadow(#666, 0px, 0px, 30px, false, true);
+	@include background-image(linear-gradient(top, gray, #ccc 25%, gray));
 	border: 2px solid lighten(white,25%);
 	font-size:13px;
 	padding:15px;
-	color:#223;	
+	color:white;	
 	
 }
 

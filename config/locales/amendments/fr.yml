@@ -1,0 +1,51 @@
+fr:
+  amendments:
+    title: "Alternatives proposées par d'autres citoyens"
+    show: "afficher"
+    edit: 'éditer'
+    edit_init: "Edition de l'alternative"
+    destroy: 'détruire'
+    new: 'Soumettez votre propre proposition alternative'
+    new_category: 'nouvelle catégorie'
+    back: 'retour à la proposition originale'
+    votes: 'vote'
+    approval: "d'approbation"
+    author: 'Auteur'
+    private_vote: 'Votre vote privé'
+    delegate_vote: 'Votre vote en tant que délégué'
+    delegate_no_vote: "Pas encore de vote sur cette proposition"
+    no_delegate: "Vous n'avez pas de délégué pour l'instant"
+    vote_of_delegate: 'Votre délégué a voté'
+    want_vote: 'Si vous voulez voter sur cette proposition'
+    index_categories: 'Index des catégories'
+    categories: 'Liste de catégories: choisissez-en une'
+    created_at: 'Créé le '
+    valid: 'Cette alternative a été validée'
+    validate: 'Validez cette alternative'
+    current_validations: "Nombre de validations pour l'instant"
+    index: "Montrez-moi la liste des alternatives validées"
+    index_drafts: "Montrez-moi la liste des alternatives en cours de validation"
+    index_title: "Liste d'alternatives validées"
+    index_drafts_title: "Liste des alternatives en cours de validation"
+    preview: "aperçu"
+    modify: "modifiez"
+    validated: "Ces alternatives ont été validées"
+    not_validated: "Ces alternatives ne sont pas encore validées"
+    none: "Aucune alternative n'a été proposée pour cette proposition"
+    original_bill: "Proposition originale"
+    phase0: "la validation a échoué"
+    phase1: "en cours d'édition"
+    phase2: "en cours de validation"
+    phase3: "en phase de proposition d'alternatives"
+    phase4: "en cours de vote"
+    phase5: "a déjà été votée"
+    phase_default: "Toutes les phases après la phase d'édition"
+    wins: "Gagnant du vote"
+    lost: "Ces propositions n'ont pas été retenues"
+    results: "Résultats du vote"
+    all_defeated: "Aucune proposition n'a été retenue au cours du vote"
+    no_winner: "Aucune des propositions n'a passé le critère pour emporter le vote"
+    created: "Votre amendement a été créé avec succès"
+    updated: "Votre amendement a été mis à jour avec succès"
+    destroyed: "Votre amendement a été effacé avec succès"
+    
