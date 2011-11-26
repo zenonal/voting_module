@@ -73,12 +73,12 @@ $j(document).ready(function() {
 	});
 	
 	$j("#overlay-intro").overlay({
-		top: -30,
-		left: 50,
+		top: 200,
+		left: 400,
 		mask: {
 			color: '#fff',
 			loadSpeed: 200,
-			opacity: 0.8
+			opacity: 0.9
 		},
 		closeOnClick: false,
 		load: true,

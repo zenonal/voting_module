@@ -1,0 +1,86 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+fr:
+  info:
+    title: "Info"
+
+    activate_info: "Montrer l'aide"
+    disactivate_info: "Cacher l'aide"
+    activate_intro: "Montrer la fenêtre d'introduction"
+    disactivate_intro: "Ne plus montrer la fenêtre d'introduction"
+    initiative_menu: "Voir, proposer et voter sur des propositions de loi soumises par des citoyens"
+    referendum_menu: "Voir et voter sur des propositions de lois soumises par les politiciens"
+    info_menu: "Information sur notre projet"
+    tutorial_menu: "Visionner une vidéo expliquant comment fontionne le site"
+    your_profile_title: "Cette section vous permet de vous identifier et de voir un résumé de vos informations personnelles. </br>
+    Cliquez sur les liens pour avoir plus de détails ou éditer votre profil."
+    featured_title: "Exemples de propositions choisies au hasard pour vous."
+    options: "Filtrer les propositions en fonction de leur localisation géographique, leur catégorie et leur phase de développement."
+    category: "Défini le domaine sur lequel la proposition s'applique (e.g. économie, agriculture, etc...)."
+    geography: "Défini le niveau géographique de la proposition (communal, provincial, régional, fédéral).</br>
+        Si vous utilisez un sous-domaine tel que http://oupeye.votingmodule.heroku.com alors le niveau géographique sera automatiquement attribué à Oupeye et vous ne pourrez plus le changer ici. 
+        Si vous voulez accéder à des propositions d'un autre niveau géographique, vous pouvez soit
+        utiliser un autre sous-domaine (ex. http://brasschaat.votingmodule.heroku.com) ou ne pas utiliser de sous-domaine (http://votingmodule.heroku.com)."
+    phase: "Défini le stade dans lequel se trouve la proposition actuellement:
+            <ul><li>en cours d'édition: la proposition est en train d'être rédigée par son auteur</li>
+            <li>en cours de validation: la proposition est en train de receuillir des validations de la part d'autres utilisateurs. 
+            Elle doit passez un seuil de validation avant de pouvoir passer au stade suivant.</li>
+            <li>la validation a échoué: la proposition n'a pas atteint le seuil de validation dans les temps. Elle n'ira pas plus loin.</li>
+            <li>en phase de proposition d'alternatives: tous les utilisateurs peuvent proposer des alternatives à la proposition. Ces alternatives devront également passer par une phase de validation 
+            puis sera votée en même temps que la proposition originale</li>
+            <li>en cours de vote: la proposition est votée</li>
+            <li>a déjà été votée: la période de vote est terminée. Vous pouvez voir les résultats du vote. </li></ul>
+            Par défaut, toutes les phases sont montrées excepté la phase d'édition."
+            
+    outside_geo: "Par défaut, en plus des propositions fédérales, seules les propositions de votre propre commune, province et région sont montrées. </br>
+        Vous pouvez voir les propositions venant des autres zones géographiques en cochant cette case."
+    sign_in_through_social_networks: "You can sign in very easily through one of these social networks.</br>
+     If you have an account with one of these, you can just click on the corresponding icon </br> and you will be authenticated automatically through their website."
+    brainstorm: "This is the place where ideas are proposed anonymously and are voted on. </br> You can propose anything that comes to your mind in relation to the corresponding bill. "
+    edit_bill: "This allows you to modify the bill. Keep in mind that this will be possible only for a limited amount of time though."
+    percent_approval: "This shows the percentage of votes in which this bill was given a positive ranking. </br>
+        Because the votes are based on ranking instead of simply 'yes' or 'no', </br>
+        this measure of percentage of approval does not reliably indicates which bill, if any, passed the vote."
+    average_ranking: "This shows how the bill was ranked on average, with respect to the other bills. The higher the score, the more this bill is considered superior to the other bills."
+    rank_matrix: "This is a way of summarizing the results by showing the number of votes in which each bill was ranked higher than each other bill.</br>
+    From this table of result, we calculate the winner of the vote with the so-called <a href='http://en.wikipedia.org/w/index.php?title=Condorcet_method&oldid=454655093'>Condorcet method</a>."
+    delegates_rankings: "This shows how each delegate voted on this bill. A delegate is a citizen whom you can choose to represent you. </br>
+        In this case, each time he votes on a bill, he votes also for you. You can change delegate or override his vote anytime you like. </br>
+        You can also choose to be a delegate yourself. </br>Click on you user name in the upper right corner to know more about that."
+    private_rankings: "This is a list of all the votes on this bill. </br>
+    This gives users a possibility to check that their vote was indeed counted without revealing the identity of the voters."
+    
+    amendments_title: "This section shows the alternative proposals that other users have proposed. </br></br>
+    Like the other bills, these proposals have first to be validated, i.e. to be supported by enough voters.</br>
+    If you see here under the title 'These alternatives have not been validated yet' proposals that you like, please go ahead and validate them.</br></br>
+    You can also propose alternatives yourself. But this can be done only during a limited period of time, after the original bill has been validarted, and before the vote!</br>  
+    When the vote takes place, each voter ranks all the proposals, including the original one, in the order of his preference.</br>
+    The winner will be the bill which is ranked before the other ones most of the time (Condorcet method)."
+    
+    argument_title: "Here you can place a relatively elaborated comment on what you think about the bill. You can see this as a mini newspaper op-ed if you like.</br>
+    To keep things clear, we separated the columns with pros and cons points of view.</br></br> These points of views cannot be commented. "
+    
+    discussion_title: "This section is for debate. You can post your comment and reply to other's comments. </br>
+    Please post only comments that are relevant to the discussion. If you see irrelevant or abusive comments, you can flag them."
+    
+    delegation_title: "This section gives information on delegation, which is the core of fluid democracy.</br>
+    You can choose any person you like to be your delegate. Once done so, everytime this person votes, she votes for you as well.</br></br>
+    The good part, which makes this system very different from the usual representative system, is that you can vote yourself instead on any bill.</br>
+    If you do so, your vote overrides the one from your delegate. </br></br>Very importantly also, you can change your delegate at anytime! </br>
+    Finally, you can also naturally propose yourself as a delegate. You just have to click a button. That's all."
+    
+    info_initiative: "An initiative is the draft of a new law, proposed by a citizen or a group of citizens. Anyone can propose an initiative. <br>
+    Once submitted, it needs to gather a certain number of signatures to prove that it is valuable. Then it is submitted to a general vote. 
+    If it's a communal law, it's voted by all the citizens of the commune, if it's a federal law, it's voted by all the citizens of the country."    
+    
+    info_referendum: "A referendum is a vote organized to approve or disapprove a law proposed by politicians.
+    There are two crucial aspects of a referendum that can make it a true democratic tool in the hand of the people. <br>
+    First it needs to be binding, i.e. the result makes law. No one can overcome it (except the people themselves through an initiative for example). 
+    Second it needs to be citizen-initiated. In many countries, the politicians decide themselves when to put a law to referendum. 
+    Then it becomes a way for them to increase their power. In contrast, citizen-initiated referendums allow citizens to oppose a real counter-power to the politicians."
+    
+    private_vote_num: "Number of votes you casted privately."
+    public_vote_num: "Number of votes you casted as a delegate."
+    submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."
+    comments_num: "Number of comments you posted."
+    points_of_view_num: "Number of points of view you posted."

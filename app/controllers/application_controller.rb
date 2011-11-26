@@ -68,6 +68,9 @@ class ApplicationController < ActionController::Base
                 if cookies[:info_active].blank?
                         cookies[:info_active] = true
                 end
+                if cookies[:choose_lang].blank?
+                        cookies[:choose_lang] = true
+                end
         end
 
         def set_featured

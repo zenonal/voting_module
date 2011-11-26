@@ -1,0 +1,238 @@
+fr:
+  errors:
+    messages:
+      not_found: "n'a pas été trouvé"
+      already_confirmed: "a déjà été confirmé"
+      not_locked: "n'a pas été bloqué"
+
+  devise:
+    back: 'retour'
+    confirm: 'Etes-vous sur?'  
+    failure:
+      unauthenticated: 'Vous devez vous inscrire ou vous identifier pour pouvoir continuer.'
+      unconfirmed: 'Vous devez confirmer votre profil avant de pouvoir continuer.'
+      locked: 'Votre profil est bloqué.'
+      invalid: 'Email ou mot de passe invalide.'
+      invalid_token: "Jeton d'identification invalide."
+      timeout: 'Votre session a expiré, identifiez-vous à nouveau pour continuer.'
+      inactive: "Votre profil n'a pas encore été activé."
+    sessions:
+      intro: 'Veuillez entre votre email et votre mot de passe ci-dessous'
+      title: 'Login'
+      email: 'email'
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      remember: 'me maintenir identifié'
+      signed_in: 'Identification réussie.'
+      signed_out: 'Désidentification réussie.'
+    passwords:
+      title: 'Changer votre mot de passe'
+      forgot: 'Mot de passe oublié?'    
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      submit: 'Envoyez-moi les instructions pour obtenir un nouveau mot de passe'
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment obtenir un nouveau mot de passe dans quelques minutes.'
+      updated: 'Votre mot de passe a été changé. Vous êtes maintenant identifié.'
+    confirmations:
+      title: 'Renvoyer les instructions de confirmation'    
+      no_instructions: "Vous n'avez pas reçu les instructions de confirmation?"
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment confirmer votre profil dans quelques minutes.'
+      confirmed: 'Votre profil a été confirmé avec succès. Vous êtes maintenant identifié.'
+    registrations:
+      intro: 'Entrez vos informations ci-dessous'
+      edit: 'Votre profil'    
+      title: 'Inscrivez-vous'    
+      email: 'email'
+      photo: "Photo"
+      name: 'nom'
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      pwd_i: "laissez blanc si vous ne voulez pas le changer"
+      cur_pwd: 'mot de passe actuel'
+      cur_pwd_i: 'nous avons besoin de votre mot de passe actuel pour confirmer les changements'
+      update: 'Mettre à jour'
+      cancel: 'Supprimer mon profil'
+      unhappy: 'Mécontent?'
+      signed_up: 'Identification réussie.'
+      updated: 'Mise à jour de profil réussie.'
+      destroyed: 'Au revoir! Votre profil a été supprimé. Nous espérons vous revoir bientôt.'
+      update_name_text: 'Veuillez choisir le nom que vous utiliserez sur ce site web.'
+      postalcode: "Votre code postal"
+    unlocks:
+      title: 'Renvoyer les instructions de déblocage'
+      no_instruction: "Vous n'avez pas reçu les instructions de déblocage?"    
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment débloquer votre profil dans quelques minutes.'
+      unlocked: 'Votre profil a été débloqué avec succès. Vous êtes maintenant identifié.'
+    mailer:
+      welcome: 'Bienvenue'   
+      hello: 'Bonjour'
+      confirm_text: 'Vous pouvez confirmer votre profil en cliquant sur le lien ci-dessous' 
+      confirm_button: 'Confirmer votre profil'
+      confirmation_instructions: 'Instructions de confirmation'
+      reset_text: 'Changez votre mot de passe en cliquant sur le lien ci-dessous'
+      reset_button: 'Changer de mot de passe'
+      reset_text2_html:   "<p>Si ce n'est pas vous qui avez fait cette demande, ignorez cet email.</p><p>Votre mot de passe ne changera que si vous cliquez sur le lien ci-dessous et entrez un nouveau mot de passe.</p>"
+      reset_password_instructions: 'Instructions pour changer de mot de passe'
+      unlock_text_html: "<p>Votre profil a été bloqué en raison d'un nombre excessif de tentative infructeuses d'identification.</p><p>Cliquez sur le lien ci-dessous pour débloquer votre profil:</p>"
+      unlock_button: 'Débloquer mon profil'
+      unlock_instructions: 'Instructions de déblocage'
+
+  custom_error:
+    perm_denied: "Désolé mais vous ne pouvez pas accéder à cette page. N'oubliez pas de vous identifier!"
+    recaptcha_error: "Vous n'avez pas entré les deux mots de sécurité correctement. Essayez à nouveau."
+  layout:
+    preinfo: "Un projet de <a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a>."
+    sign_in_phrase: 'Identification: '
+    not_you: "Ce n'est pas vous?"
+    sign_out: "Quitter l'application"
+    sign_up: "S'inscrire"
+    sign_in: "S'identifier"
+    add_photo: 'Ajoutez une photo'
+    add_postal_code: 'Votre code postal est manquant'
+    activate_tutorial: "Activez le tutoriel"
+    turn_tutorial_off: "Désactivez le tutoriel"
+    go_on_tutorial: "Continuez avec le tutoriel"
+    points_of_view: "Votre point de vue sur cette proposition"
+    filter: "Appliquez les options"
+    submit: "Publier"
+    vote: "voter"
+    voter: "voteur"
+    vote_for: "Faites glisser ici les propositions que vous approuvez et classez-les par ordre de préférence"
+    vote_against: "Faites glisser ici les propositions que vous n'approuvez pas en commençant par celle que vous désapprouvez le moins"
+    vote_neutral: "Faites glisser ici les propositions sur lesquelles vous voulez rester neutre"
+    won_vote: "a gagné le vote"
+    show_results: "Montrer les résultats complets"
+    show_bill: "Montrer les détails de la proposition"
+    bill_won: "Cette proposition a remporté le vote"
+    bill_lost: "Cette proposition a perdu le vote"
+    results_for: "Résultats du vote pour "
+    reject_all: "Rejetez toutes les propositions"
+    global_results: "Résultats généraux"
+    rank_matrix: "Table des comparaisons par paire"
+    private_votes_list: "Liste des votes privés"
+    delegate_votes_list: "Liste des votes de délégués"
+    representing: "Représentant "
+    average_rank: "Positionnement moyen"
+    percent_approval: "Pourcentage d'approbation"
+    discussion: "Discussion"
+    choose_photo: "Choisissez une image qui sera utilisée comme icône pour votre proposition"
+    choose_user_photo: "Choisissez une image pour votre profil"
+    choose_level: "Choisissez le niveau géographique de votre proposition"
+    show_translations: "Ajoutez des traductions à votre proposition"
+    hide_translations: "N'ajoutez pas de traductions à votre proposition"
+    not_authorized: "Vous n'êtes pas autorisés à faire ça"
+    private_activity: "Résumé de l'activité privée"
+    public_activity: "Résumé de l'activité publique"
+    change_pwd: "Changer de mot de passe"
+    featured_bills: "Exemples de proposition"
+    user_info: "Votre profil"
+    tutorial_mode: "Vous êtes en ce moment en mode tutoriel"
+    missing_user: "L'auteur de cette proposition a annulé son profil"
+    brainstorm: "Brainstorm!"
+    delete_bill: "Etes-vous sur de vouloir effacer cette proposition?"
+    old_delegate: "Plus actif mais représentait "
+    no_comment: "Il n'y a pas encore de commentaire dans cette discussion"
+    amendment_of: "Amendement de "
+    footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a> est à l'origine de ce site web. 
+          C'est un groupe de travail de l'association <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, et son objectif est d'apporter la démocratie directe en Belgique.
+          <br>
+          <a href='mailto:zenon.alex@gmail.com'> Contactez nous! </a>"
+    head_title: "DEMOCRATIE DIRECTE DIGITALE"
+    intro_title: "DEMOCRATIE DIRECTE DIGITALE"
+    intro_close: "Pour fermer, cliquez sur le boutton 'fermer' ou appuyez sur la touche échap."
+    intro_checkbox: "Cochez cette case si vous ne voulez plus que cette fenêtre apparaisse."
+    intro_close_button: "Fermer"
+
+  arguments: 
+      index_title: "Exemples d'opinion sur des propositions courantes"
+
+  homepage:
+      title: 'Voting module'
+
+  by: "par"
+  on: "sur"
+  headtitle: "Voting Module"
+  submit_str: "Envoyer"
+  create_str: "Créer"
+  update_str: "Mettre à jour"
+  back_str: "Retour"
+  show_str: "Montrer"
+  agree_str: "JE SUIS D'ACCORD"
+  arg_exclude_str: "Marquer un abus"
+  arg_exclude_tip: "Choisissez cette action pour exclure un commentaire ou une action que vous trouvez inappropriée."
+  com_exclude_str: "Marquer un abus"
+  exclusion_requests_str: "Abus:"
+  disagree_str: "JE NE SUIS PAS D'ACCORD"
+  approval_str: "d'approbation pour cet argument"
+  pro_str: "ARGUMENTS POUR"
+  con_str: "ARGUMENT CONTRE"
+  comments_str: "Vos commentaires"
+  reply_to_comment_str: "Répondre à ce commentaire"
+  no_arg_text: "Il n'y a pas d'arguments actuellement dans cette section"
+  title_form_str: "Titre"
+  content_form_str: "Contenu"
+  comment_title: "Discussion"
+  argument_title: "Arguments pour et contre"
+  comment_for: "Commentaires pour "
+  postal_code_str: "Code postal"
+  created_by: "Créé par "
+  delete_str: "Effacer"
+  delete_bill_str: "Effacer cette proposition"
+  delete_comment: "Effacer ce commentaire"
+  are_you_sure_str: "Etes-vous sur(e)?"
+  new_comment: "Poster votre commentaire (max 1000 caractères)"
+  new_message: "Nous avons besoin de votre avis: écrivez-nous!"
+  new_arg: "Poster votre point de vue (max 1500 caractères)"
+  new_idea_en: "Votre idée en anglais"
+  new_idea_fr: "Votre idée en français"
+  new_idea_nl: "Votre idée en néerlandais"
+  ideas_title: "Publiez votre idée"
+  new_arg_title: "Titre"
+  create_arg: "Donnez votre propre point de vue!"
+  edit_arg: "Editez"
+  new_reply: "Postez votre réponse (max 1000 caractères)"
+  score_str: "Score"
+  comments_created_str: "Commentaires créés"
+  reply_title: "Répondre au commentaire"
+  original_comment: "Commentaire original"
+  average_score_str: "Score moyen"
+  approval_rate: "Taux d'approbation"
+  new_comment_ok: "Le commentaire a été créé avec succès."
+  new_comment_not_ok: "Il y a eu une erreur en créant le commentaire. Essayez à nouveau. Attention au nombre de caractères."
+  new_argument_ok: "L'argument a été créé avec succès."
+  new_argument_not_ok: "Il y a eu une erreur en créant cet argument. Essayez à nouveau. Attention au nombre de caractères."
+  english_head: "In English"
+  french_head: "En français"
+  nederland_head: "In het Nederlands"
+  point_of_view_title: "Point de vue"
+  text_no_translation: "Cette proposition n'est pas traduite en anglais"
+  name_no_translation: "Le titre de cette proposition n'est pas traduit en anglais"
+  not_valid: "Non validée"
+  and: "et"
+  level: "niveau"
+  user_geo_limit: "Propositions hors de votre niveau géographique"
+  user_geo_select: "Choisissez un niveau géographique"
+  user_phase_select: "Choisissez une phase de développement"
+  bill_keyword_search: "Montrer uniquement les propositions contenant les mots clés suivants: "
+  days: "jour"
+  hours: "heure"
+  minutes: "minute"
+  left_to_edit: "restants pour éditer cette proposition"
+  left_to_validate: "restants pour valider cette proposition"
+  left_to_amend: "restants pour proposer des alternatives à cette proposition"
+  left_to_vote: "restants pour voter"
+  validation_failed: "Cette proposition n'a pas été validée"
+  amendment: "amendement"
+  cancel: "Annuler"
+  cancel_bill: "Annuler la création de cette proposition"
+  name_en: "Nom en anglais"
+  content_en: "Texte en anglais"
+  name_fr: "Nom en français"
+  content_fr: "Texte en français"
+  name_nl: "Naam in het Nederlands"
+  content_nl: "Text in het Nederlands"
+  category_select: "Choisissez une catégorie"
+  recaptcha_error: "Il y eu une erreur avec les mots de sécurité recaptcha ci-dessous. Essayez de ré-entrer les codes et appuyez sur Publier"
+  message_sent: "Merci pour votre message. Votre avis est très important pour nous."
+  message_sending_error: "Votre message n'a pu être envoyé car vous n'êtes pas identifié."
+  feedback: "Votre avis"

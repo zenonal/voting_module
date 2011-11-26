@@ -120,23 +120,22 @@
 	<% end %>
 </div>
 <div id="user-content" style="padding-top: 40px;">
-<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.initiatives,1,2,3,4,5).count,t('users.delegates.initiatives')) %> </h4>
-	<% Initiative.filter_phase(@user.initiatives,1,2,3,4,5).each_with_index do |arg, index| %>
-	<div id="index-element" style="padding-top: 40px;">
-		<div id="index-column" style="height:50px;">
+<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.initiatives,0,1,2,3,4,5).count,t('users.delegates.initiatives')) %> </h4>
+	<% Initiative.filter_phase(@user.initiatives,0,1,2,3,4,5).each_with_index do |arg, index| %>
+	<div id="index-element">
+		<div id="user-content-small-column">
 			<% unless arg.validated? %>
-				<%= image_tag("red-error.gif") %>
-				<%= t(:not_valid) %>
+				<span class="info_help"><%= image_tag("red-error.gif", :size => "25x25", :class => "info_help_img", :title => t(:not_valid)) %></span>
 			<% end %>
 		</div>
-		<div id="index-large-column" style="height:50px;text-align: left;">
+		<div id="user-content-large-column">
 			<% unless eval("arg.name_#{I18n.locale}.blank?") %>
 				<%= link_to eval("arg.name_#{I18n.locale}"), arg, :class => "link" %>
 			<% else %>
 				<p><%= t('title_no_translation') %></p>
 			<% end %>
 		</div>
-		<div id="index-large-column" class="bill-text-link">
+		<div id="user-content-large-column" class="bill-text-link">
 			<% unless eval("arg.content_#{I18n.locale}.blank?") %>
 				<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(arg.content_#{I18n.locale}).to_html"), :length => 250))), arg %>"</p>
 			<% else %>
@@ -149,17 +148,16 @@
 </div>
 
 <div id="user-content" style="padding-top: 40px;">
-<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.amendments,1,2,3,4,5).count,t('users.delegates.amendments')) %> </h4>
-	<% Initiative.filter_phase(@user.amendments,1,2,3,4,5).each_with_index do |arg, index| %>
-	<div id="index-element" style="padding-top: 40px;">
-		<div id="index-column" style="height:50px;">
+<h4><%= image_tag("bill.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(Initiative.filter_phase(@user.amendments,0,1,2,3,4,5).count,t('users.delegates.amendments')) %> </h4>
+	<% Initiative.filter_phase(@user.amendments,0,1,2,3,4,5).each_with_index do |arg, index| %>
+	<div id="index-element">
+		<div id="user-content-small-column">
 			<% unless arg.validated? %>
-				<%= image_tag("red-error.gif") %>
-				<%= t(:not_valid) %>
+				<span class="info_help"><%= image_tag("red-error.gif", :size => "25x25", :class => "info_help_img", :title => t(:not_valid)) %></span>
 			<% end %>
 		</div>
-		<div id="index-large-column" style="height:50px;text-align: left;"><%= link_to eval("arg.name_#{I18n.locale}"), arg, :class => "link" %></div>
-		<div id="index-large-column" class="bill-text-link">
+		<div id="user-content-large-column"><%= link_to eval("arg.name_#{I18n.locale}"), arg, :class => "link" %></div>
+		<div id="user-content-large-column" class="bill-text-link">
 		<p>"<%= link_to strip_tags(raw(truncate(eval("RedCloth.new(arg.content_#{I18n.locale}).to_html"), :length => 250))), arg %>"</p>
 		</div>
 		<div class="clear"></div>
@@ -169,10 +167,10 @@
 <div id="user-content" style="padding-top: 40px;">
 <h4><%= image_tag("bulb.png", :size => "20x30") %>&nbsp;&nbsp;<%= pluralize(@user.arguments.count,t('users.delegates.point_of_view')) %> </h4>
 	<% @user.arguments.each_with_index do |arg, index| %>
-	<div id="index-element" style="padding-top: 40px;">
-		<div id="index-column" style="height:50px;"></div>
-		<div id="index-large-column" style="height:50px;text-align: left;"><%= link_to arg.title, arg, :class => "link" %></div>
-		<div id="index-large-column" class="bill-text-link">
+	<div id="index-element">
+		<div id="user-content-small-column"> </div>
+		<div id="user-content-large-column"><%= link_to arg.title, arg, :class => "link" %></div>
+		<div id="user-content-large-column" class="bill-text-link">
 		<p>"<%= link_to truncate(arg.content, :length => 150), arg %>"</p>
 		</div>
 		<div class="clear"></div>

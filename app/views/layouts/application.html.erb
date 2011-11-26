@@ -98,6 +98,18 @@
 		<div class="clear"></div>
 		
 		<div id="container2">
+			<% if (cookies[:choose_lang] == "true") %>
+			<div id="overlay-intro">
+				<h2><%= image_tag("hand_white.png", :size => "30x45") %> &nbsp;&nbsp; <%= t('layout.intro_title') %></h2>
+				
+				<div>
+					<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "36x36"), language_fra_url %></span>
+					<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "36x36"), language_ndl_url %></span>
+					<span id="lang"><%= link_to image_tag("bt_en.png",:size => "36x36"), language_eng_url %></span>
+				</div>
+
+			</div>
+			<% end %>
 			<div id="flash">
 	      		<% flash.each do |name, msg| %>
 	        		<%= content_tag :div, msg, :id => "flash_#{name}" %>

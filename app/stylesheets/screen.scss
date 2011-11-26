@@ -707,9 +707,18 @@ padding: 20px;
 }
 
 #user-content {
+border-bottom: 1px solid darken(white, 12%);
 @include column($content-columns - 2, true);
 text-align: left;
 margin-left: 60px;
+}
+
+#user-content-small-column {
+@include column(1);
+}
+
+#user-content-large-column {
+	@include column($index-columns + 2);
 }
 
 #index-element {
@@ -1456,10 +1465,8 @@ position: relative;
 }
 
 #overlay-intro {
-
 		display:none;
-		width:1000px;
-		border:10px solid #666;
+		width:500px;
 		text-align: justify;
 		border:10px solid rgba(82, 82, 82, 0.698);
 
@@ -1476,19 +1483,20 @@ position: relative;
 	}
 
 	#overlay-intro div {
-		padding:10px;
-		border:1px solid #3B5998;
-		background-color:#fff;
+	background-color: #FFF;
+		width: 185px;
+		padding:40px;
+		padding-left: auto;
+		padding-right: auto;
+		margin: auto;
 		font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
 		font-size: 15px;
 	}
 
 	#overlay-intro h2 {
-		margin:-11px;
 		margin-bottom:0px;
 		color:#fff;
-		background-color:#6D6D6D;
-		padding:5px 10px;
-		border:1px solid #4C4C4C;
+		background-color:rgba(82, 82, 82, 0.698);
+		padding:10px;
 		font-size:25px;
 	}
