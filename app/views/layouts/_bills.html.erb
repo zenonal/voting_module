@@ -14,13 +14,13 @@
 						<%= t("#{params[:controller]}.level4") %>
 					<% end %>
 					<% if bill.level == "3" %>
-						<%= t("#{params[:controller]}.level3") %>: <%= bill.region.name %>
+						<%= t("#{params[:controller]}.level3") %>: <br><strong><%= bill.region.name %></strong>
 					<% end %>
 					<% if bill.level == "2" %>
-						<%= t("#{params[:controller]}.level2") %>: <%= bill.province.name %>
+						<%= t("#{params[:controller]}.level2") %>: <br><strong><%= bill.province.name %></strong>
 					<% end %>
 					<% if bill.level == "1" %>
-						<%= t("#{params[:controller]}.level1") %>: <%= bill.commune.name %>
+						<%= t("#{params[:controller]}.level1") %>: <br><strong><%= bill.commune.name %></strong>
 					<% end %>
 				</h4>
 				<% end %>
