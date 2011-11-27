@@ -1,11 +1,12 @@
 <% if user_signed_in? %>
 <% @current_user_bills = Initiative.filter_phase(current_user.initiatives,1,2,3,4,5) %>
 <% if @current_user_bills.count > 0 %>
-<h4><%= t("layout.current_user_bills") %></h4>
+<div id="current-user-bills">
+<h3><%= t("layout.current_user_bills") %></h3>
 <% @current_user_bills.each do |bill| %>
 <% unless bill.nil? %>
 <div id="featured-element">
-	<div id="featured-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %></div>
+	<div id="featured-large-column"><%= link_to image_tag(bill.photo.url(:thumbnail)), bill %></div>
 	<div id="featured-large-column" class="bill-text-link">
 		<%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %>
 		<div id="bill-phase">
@@ -17,5 +18,6 @@
 	</div>
 	<% end %>
 	<% end %>
+</div>
 <% end %>
 <% end %>

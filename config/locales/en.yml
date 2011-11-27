@@ -96,7 +96,7 @@ en:
       public_activity: "Summary of public activity"
       change_pwd: "Change your password"
       featured_bills: "Featured bills"
-      current_user_bills: "All the bills you submitted"
+      current_user_bills: "Bills you submitted"
       user_info: "Your profile"
       tutorial_mode: "You are currently in tutorial mode"
       missing_user: "The author of this bill cancelled his account"

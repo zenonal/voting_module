@@ -872,6 +872,21 @@ border-bottom: 2px solid darken(white, 12%);
 	padding: 10px;
 }
 
+#current-user-bills {
+    @include rounded;
+	background-color: #ffe;
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid #eed;
+	
+	h3 {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+		color: #650;
+		font-size: 14px;
+		
+	}
+}
+
 #index-column {
 @include column($index-columns);
 text-align:center; 
