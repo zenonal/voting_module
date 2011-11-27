@@ -142,6 +142,8 @@
 					        <% else %>
 					          	<p><%= link_to t('layout.sign_in'), authentications_path, :class => "button" %></p>
 					        <% end %>
+					
+							<%= render "layouts/current_user_bills" %>
 					</div>
 					<div id="featured">
 						<%= render "layouts/featured" %>
