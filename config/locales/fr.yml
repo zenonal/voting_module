@@ -125,6 +125,7 @@ fr:
     public_activity: "Résumé de l'activité publique"
     change_pwd: "Changer de mot de passe"
     featured_bills: "Exemples de proposition"
+    current_user_bills: "Toutes vos propositions"
     user_info: "Votre profil"
     tutorial_mode: "Vous êtes en ce moment en mode tutoriel"
     missing_user: "L'auteur de cette proposition a annulé son profil"

@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-<%= @current_user_bills = Initiative.filter_phase(current_user.initiatives,1,2,3,4,5) %>
+<% @current_user_bills = Initiative.filter_phase(current_user.initiatives,1,2,3,4,5) %>
 <% if @current_user_bills.count > 0 %>
-<div id="featured-content">
+<h4><%= t("layout.current_user_bills") %></h4>
 <% @current_user_bills.each do |bill| %>
 <% unless bill.nil? %>
 <div id="featured-element">
@@ -17,6 +17,5 @@
 	</div>
 	<% end %>
 	<% end %>
-</div>
 <% end %>
 <% end %>
