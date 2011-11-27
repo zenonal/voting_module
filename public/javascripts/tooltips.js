@@ -1,7 +1,9 @@
 
 $j(document).ready(function() {
 	$j("[title]").tooltip({
-
+	   
+	   delay: 500,
+	
 	   // tweak the position
 	   offset: [-10, 12],
 

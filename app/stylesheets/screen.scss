@@ -143,7 +143,7 @@ table.candidate tr td {
 #header-title {
 	position: relative;
 	left: 30px;
-	top: -10px;
+	top: 0px;
 	text-align: left;
 	padding: 0px;
 
@@ -209,7 +209,7 @@ top: -10px;
 -position: relative;
 padding: auto;
 margin: auto;
-@include column($blueprint-grid-columns); 
+@include column($blueprint-grid-columns + 4); 
 text-align: center;
 background-color: #fff;
 min-height: $content-height;
@@ -230,18 +230,21 @@ min-height: $content-height;
 #menu {
 font-family: "Menu", helvetica;
 position: relative;
-top: -20px;
+top: -15px;
+left: 5px;
+@include single-box-shadow(#555, 1px, 1px, 10px);
 @include background-image(linear-gradient(top, #ccd, #99A 75%, #ccd));
-@include column($blueprint-grid-columns); 
 height: 25px;
+@include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
 	a {
 		text-align: center;
 		text-decoration: none;
-		padding-top: 0px;
-		margin-top: 0px;
+		padding: 0px;
+		margin: 0px;
 		#menu-item {
-			@include column(ceil($content-columns/3) - 1); 
+			@include column(ceil($blueprint-grid-columns/4)); 
+			padding: 0px;
 			padding-top: 3px;
 			margin: 0px;
  			#menu-title {
@@ -718,7 +721,7 @@ margin-left: 60px;
 }
 
 #user-content-large-column {
-	@include column($index-columns + 2);
+	@include column($index-columns + 4);
 }
 
 #index-element {
@@ -1446,12 +1449,11 @@ position: relative;
 	#feedbackTag {
 	position: absolute;
 	@include vertical-text;
-	color: #0066CC;
-	background-color: #FFEE94;
+	color: #EECC83;
 	font-weight: bold;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	padding: 5px;
-	width: 100px;
+	width: 120px;
 	}
 	
 	#feedbackForm {
@@ -1459,7 +1461,7 @@ position: relative;
 		left: -475px;
 		top: -40px;
 		text-align: center;
-		background-color: #FFEE94;
+		background-color: #FFF;
 		padding: 10px;
 	}
 }
