@@ -2,7 +2,7 @@
 <h3><%= t("layout.featured_bills") %><%= info_help('featured_title') %></h3>
 <% if @featured_bills.count == 0 %>
 <br/><br/>
-<h5><%= t("#{params[:controller]}.no_bill") %></h5>
+<h5><%= t("layout.no_bill") %></h5>
 </div>
 <% else %>
 <% @featured_bills.each do |bill| %>

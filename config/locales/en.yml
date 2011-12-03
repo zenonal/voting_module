@@ -114,6 +114,7 @@ en:
       intro_close: "To close, click the Close button or hit the ESC key."
       intro_checkbox: "Check this box if you don't want this intro to show again."
       intro_close_button: "Close"
+      no_bill: "No bill has been submitted in your language yet"
       
   arguments: 
       index_title: "Examples of opinions on current bills"

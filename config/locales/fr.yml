@@ -143,6 +143,7 @@ fr:
     intro_close: "Pour fermer, cliquez sur le boutton 'fermer' ou appuyez sur la touche échap."
     intro_checkbox: "Cochez cette case si vous ne voulez plus que cette fenêtre apparaisse."
     intro_close_button: "Fermer"
+    no_bill: "Il n'y a encore aucune proposition dans votre langue"
 
   arguments: 
       index_title: "Exemples d'opinion sur des propositions courantes"
