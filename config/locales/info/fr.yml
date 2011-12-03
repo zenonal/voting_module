@@ -34,8 +34,8 @@ fr:
             
     outside_geo: "Par défaut, en plus des propositions fédérales, seules les propositions de votre propre commune, province et région sont montrées. </br>
         Vous pouvez voir les propositions venant des autres zones géographiques en cochant cette case."
-    sign_in_through_social_networks: "You can sign in very easily through one of these social networks.</br>
-     If you have an account with one of these, you can just click on the corresponding icon </br> and you will be authenticated automatically through their website."
+    sign_in_through_social_networks: "Vous pouvez vous identifiez très facilement via un de ces réseaux sociaux.</br>
+     Si vous avez un compte avec l'un d'entre eux, cliquez simplement sur l'icône correspondante </br> et vous serez automatiquement identifié(e) par leur site web."
     brainstorm: "This is the place where ideas are proposed anonymously and are voted on. </br> You can propose anything that comes to your mind in relation to the corresponding bill. "
     edit_bill: "This allows you to modify the bill. Keep in mind that this will be possible only for a limited amount of time though."
     percent_approval: "This shows the percentage of votes in which this bill was given a positive ranking. </br>
