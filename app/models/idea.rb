@@ -21,7 +21,7 @@ class Idea < ActiveRecord::Base
         where("user_id != ?", u.id)
     }
     
-  scope :not_blank, where(["content_#{I18n.locale} != ''"])
+  scope :not_blank, lambda { where(["content_#{I18n.locale} != ''"]) }
   
   def exclusion_requests
     self.exclusions.count.to_i
