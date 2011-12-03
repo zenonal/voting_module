@@ -1,7 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-        unless ENV['RAILS_ENV']=="development" 
-        ssl_required :new, :edit, :create, :update, :destroy
-       end
        
 def create
         super

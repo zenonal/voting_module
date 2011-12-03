@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
         layout "application"
         protect_from_forgery
-        unless ENV['RAILS_ENV']=="development" 
-        include ::SslRequirement
-        end
+        
         helper_method :filter_index
         before_filter :set_mode
         before_filter :set_locale

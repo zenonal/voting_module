@@ -53,4 +53,6 @@ VotingModule::Application.configure do
   ENV['RECAPTCHA_PRIVATE_KEY'] = '6LcmacUSAAAAAOUsDIP3PLelMyPclhvN-zfIhaI-'
   
   Sass::Plugin.options[:never_update] = true
+  
+  config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
 end

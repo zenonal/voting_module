@@ -1,0 +1,78 @@
+en:
+  errors:
+    messages:
+      not_found: "n'a pas été trouvé"
+      already_confirmed: "a déjà été confirmé"
+      not_locked: "n'a pas été bloqué"
+
+  devise:
+    back: 'retour'
+    confirm: 'Etes-vous sur?'  
+    failure:
+      unauthenticated: 'Vous devez vous inscrire ou vous identifier pour pouvoir continuer.'
+      unconfirmed: 'Vous devez confirmer votre profil avant de pouvoir continuer.'
+      locked: 'Votre profil est bloqué.'
+      invalid: 'Email ou mot de passe invalide.'
+      invalid_token: "Jeton d'identification invalide."
+      timeout: 'Votre session a expiré, identifiez-vous à nouveau pour continuer.'
+      inactive: "Votre profil n'a pas encore été activé."
+    sessions:
+      intro: 'Veuillez entre votre email et votre mot de passe ci-dessous'
+      title: 'Login'
+      email: 'email'
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      remember: 'me maintenir identifié'
+      signed_in: 'Identification réussie.'
+      signed_out: 'Désidentification réussie.'
+    passwords:
+      title: 'Changer votre mot de passe'
+      forgot: 'Mot de passe oublié?'    
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      submit: 'Envoyez-moi les instructions pour obtenir un nouveau mot de passe'
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment obtenir un nouveau mot de passe dans quelques minutes.'
+      updated: 'Votre mot de passe a été changé. Vous êtes maintenant identifié.'
+    confirmations:
+      title: 'Renvoyer les instructions de confirmation'    
+      no_instructions: "Vous n'avez pas reçu les instructions de confirmation?"
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment confirmer votre profil dans quelques minutes.'
+      confirmed: 'Votre profil a été confirmé avec succès. Vous êtes maintenant identifié.'
+    registrations:
+      intro: 'Entrez vos informations ci-dessous'
+      edit: 'Votre profil'    
+      title: 'Inscrivez-vous'    
+      email: 'email'
+      photo: "Photo"
+      name: 'nom'
+      pwd: 'mot de passe'
+      pwd_conf: 'confirmation de mot de passe'
+      pwd_i: "laissez blanc si vous ne voulez pas le changer"
+      cur_pwd: 'mot de passe actuel'
+      cur_pwd_i: 'nous avons besoin de votre mot de passe actuel pour confirmer les changements'
+      update: 'Mettre à jour'
+      cancel: 'Supprimer mon profil'
+      unhappy: 'Mécontent?'
+      signed_up: 'Identification réussie.'
+      updated: 'Mise à jour de profil réussie.'
+      destroyed: 'Au revoir! Votre profil a été supprimé. Nous espérons vous revoir bientôt.'
+      update_name_text: 'Veuillez choisir le nom que vous utiliserez sur ce site web.'
+      postalcode: "Votre code postal"
+    unlocks:
+      title: 'Renvoyer les instructions de déblocage'
+      no_instruction: "Vous n'avez pas reçu les instructions de déblocage?"    
+      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment débloquer votre profil dans quelques minutes.'
+      unlocked: 'Votre profil a été débloqué avec succès. Vous êtes maintenant identifié.'
+    mailer:
+      welcome: 'Bienvenue'   
+      hello: 'Bonjour'
+      confirm_text: 'Vous pouvez confirmer votre profil en cliquant sur le lien ci-dessous' 
+      confirm_button: 'Confirmer votre profil'
+      confirmation_instructions: 'Instructions de confirmation'
+      reset_text: 'Changez votre mot de passe en cliquant sur le lien ci-dessous'
+      reset_button: 'Changer de mot de passe'
+      reset_text2_html:   "<p>Si ce n'est pas vous qui avez fait cette demande, ignorez cet email.</p><p>Votre mot de passe ne changera que si vous cliquez sur le lien ci-dessous et entrez un nouveau mot de passe.</p>"
+      reset_password_instructions: 'Instructions pour changer de mot de passe'
+      unlock_text_html: "<p>Votre profil a été bloqué en raison d'un nombre excessif de tentative infructeuses d'identification.</p><p>Cliquez sur le lien ci-dessous pour débloquer votre profil:</p>"
+      unlock_button: 'Débloquer mon profil'
+      unlock_instructions: 'Instructions de déblocage'

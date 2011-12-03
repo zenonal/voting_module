@@ -2,9 +2,6 @@ class InitiativesController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
   helper_method :filter_index
-  unless ENV['RAILS_ENV']=="development" 
-  ssl_required :show, :new, :edit, :create, :update, :destroy, :vote, :show_results, :ranking, :aye, :nay, :validate
-  end
   
   # GET /initiatives
   # GET /initiatives.xml

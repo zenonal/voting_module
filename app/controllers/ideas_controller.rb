@@ -2,7 +2,6 @@ class IdeasController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
   
-  
   # GET /ideas
   # GET /ideas.xml
   def index

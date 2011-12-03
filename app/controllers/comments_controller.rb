@@ -1,9 +1,6 @@
 class CommentsController < ApplicationController
   filter_resource_access
   before_filter :authenticate_user!, :except => [:show,:index]
-  unless ENV['RAILS_ENV']=="development" 
-    ssl_required  :index, :new, :show, :edit, :create, :create_reply, :update, :destroy, :reply_to_comment
-  end
   
   # GET /comments
   # GET /comments.xml
