@@ -72,9 +72,9 @@ class ApplicationController < ActionController::Base
         end
 
         def set_featured
-                b = Initiative.filter_phase(Initiative.all,2,3,4,5)
+                b = Initiative.filter_phase(Initiative.not_blank,2,3,4,5)
                 @featured_bills = [b[rand(b.count)]]
-                b = Referendum.filter_phase(Referendum.all,2,3,4,5)
+                b = Referendum.filter_phase(Referendum.not_blank,2,3,4,5)
                 @featured_bills << b[rand(b.count)]
                 @featured_bills = [@featured_bills[rand(2)]]
         end
