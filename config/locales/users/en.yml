@@ -7,6 +7,7 @@ en:
       index: "Index of delegates"
       active_delegate: "Currently active as delegate"
       create_delegate: "Become a delegate!"
+      created: "You are now a delegate."
       destroy_delegate: "Cancel your delegate mandate"
       vote: "vote as a delegate"
       votes: "votes as a delegate"

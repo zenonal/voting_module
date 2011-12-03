@@ -156,10 +156,10 @@ class AmendmentsController < ApplicationController
 
       respond_to do |format|
         if d
-          format.html { redirect_to(@amendmentable, :notice => 'Amendment was successfully destroyed.') }
+          format.html { redirect_to(@amendmentable, :notice => t('amendments.destroyed')) }
           format.xml  { head :ok }
         else
-          format.html { redirect_to(@amendmentable, :notice => 'You are not authorized to delete this amendment.') }
+          format.html { redirect_to(@amendmentable, :notice => t('amendments.not_destroyed')) }
           format.xml  { head :ok }
         end
       end

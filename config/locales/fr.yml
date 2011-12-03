@@ -146,6 +146,13 @@ fr:
 
   arguments: 
       index_title: "Exemples d'opinion sur des propositions courantes"
+      updated: "Votre point de vue a été mis à jour avec succès."
+      destroyed: 'Votre point de vue a été supprimé avec succès.'
+  categories: 
+      updated: "Catégorie mise à jour avec succès."
+      destroyed: 'Catégorie supprimée avec succès.'
+  comments:
+      updated: "Commentaire mis à jour avec succès."
 
   homepage:
       title: 'Voting module'

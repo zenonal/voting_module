@@ -1,4 +1,4 @@
-en:
+fr:
   errors:
     messages:
       not_found: "n'a pas été trouvé"
@@ -53,7 +53,7 @@ en:
       update: 'Mettre à jour'
       cancel: 'Supprimer mon profil'
       unhappy: 'Mécontent?'
-      signed_up: 'Identification réussie.'
+      signed_up: 'Enregistrement réussi.'
       updated: 'Mise à jour de profil réussie.'
       destroyed: 'Au revoir! Votre profil a été supprimé. Nous espérons vous revoir bientôt.'
       update_name_text: 'Veuillez choisir le nom que vous utiliserez sur ce site web.'

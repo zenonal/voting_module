@@ -117,7 +117,16 @@ en:
       
   arguments: 
       index_title: "Examples of opinions on current bills"
-     
+      updated: "Argument was successfully updated."
+      destroyed: 'Argument was successfully deleted.'
+  categories: 
+      updated: "Category was successfully updated."
+      destroyed: 'Category was successfully deleted.'
+  comments:
+      updated: "Comment was successfully updated."
+  delegates:
+      created: "You are now a delegate."
+      
   homepage:
       title: 'Voting module'
   

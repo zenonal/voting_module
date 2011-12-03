@@ -1,0 +1,62 @@
+fr:
+  referendums:
+    title: 'Liste de propositions des politiciens'
+    title2: "Référendums"
+    show: "montrer"
+    edit: 'éditer'
+    destroy: 'supprimer'
+    new: 'nouveau référendum'
+    new_category: 'nouvelle catégorie'
+    back: 'retour'
+    votes: 'vote'
+    approval: 'approbation'
+    author: 'Auteur'
+    private_vote: 'Soumettez votre vote privé'
+    delegate_vote: 'Soumettez votre vote en tant que délégué'
+    delegate_no_vote: "Pas encore de vote sur cette proposition"
+    no_delegate: "Vous n'avez pas de délégué"
+    vote_of_delegate: 'Votre délégué a classé cette proposition'
+    want_vote: 'Si vous voulez voter sur ceci'
+    want_amendment: 'Si vous voulez soumettre votre propre proposition alternative'
+    want_argument: 'Si vous voulez soumettre votre propre point de vue'
+    want_referendum: 'Si vous voulez soumettre votre propre référendum'
+    index_categories: 'Index des catégories'
+    
+    categories: 'Liste des catégories: choisissez-en une'
+    created_at: 'Créé le '
+    current_validations: "Nombre actuel de validations"
+    index_title: "Liste des référendums"
+    preview: "pré-visualisation"
+    modify: "modifier"
+    level4: "Référendum de niveau fédéral"
+    level3: "Référendum de niveau régional"
+    level2: "Référendum de niveau provincial"
+    level1: "Référendum de niveau communal"
+    options: "Options"
+    geographical_level: "Niveau géographique"
+    
+    current_phase: "Référendums actuellement en phase"
+    current_category: "Référendums appartenant à la catégorie"
+    no_geo: "Il n'y a pas de restriction géographique"
+    phase0: "la validation a échoué"
+    phase1: "en cours d'édition"
+    phase2: "en cours de validation"
+    phase3: "en phase de proposition d'alternatives"
+    phase4: "en cours de vote"
+    phase5: "a déjà été votée"
+    phase_default: "Toutes les phases après la phase d'édition"
+    wins: "Gagnant du vote"
+    lost: "Ces propositions n'ont pas été retenues"
+    results: "Résultats du vote"
+    all_defeated: "Aucune proposition n'a été retenue au cours du vote"
+    no_winner: "Aucune des propositions n'a passé le critère pour emporter le vote"
+    created: "Votre référendum a été créé avec succès"
+    updated: "Votre référendum a été mis à jour avec succès"
+    destroyed: "Votre référendum a été effacé avec succès"
+    politician: "Sélectionnez les auteurs de cette proposition"
+    politicians:
+          title: "Liste de propositions"
+              
+    no_bill: "Il n'y a pour l'instant aucune proposition correspondant à vos critères de sélection"
+    not_allowed: "24h après avoir voté, un délégué ne peut plus changer son vote"
+    search: "Cherchez parmis les référendums et leurs propositions alternatives:"

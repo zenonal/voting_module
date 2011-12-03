@@ -21,7 +21,7 @@ class DelegatesController < ApplicationController
     @user = User.find_by_id(params[:user_id])
     respond_to do |format|
       if @delegate.save
-        format.html { redirect_to(@user, :notice => 'Delegate was successfully created.') }
+        format.html { redirect_to(@user, :notice => t('users.delegates.created')) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

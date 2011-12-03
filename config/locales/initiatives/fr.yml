@@ -1,0 +1,66 @@
+fr:
+  initiatives:
+    title: 'Liste de propositions des citoyens'
+    title2: "Initiatives"
+    show: "montrer"
+    edit: 'éditer'
+    edit_init: "Edition de l'initiative"
+    destroy: 'détruire'
+    new: 'nouvelle initiative'
+    new_category: "nouvelle catégorie"
+    back: 'retour'
+    votes: 'vote'
+    approval: 'approbation'
+    author: 'Auteur'
+    private_vote: 'Soumettez votre vote privé'
+    delegate_vote: 'Soumettez votre vote en tant que délégué'
+    delegate_no_vote: "Pas encore de vote sur cette proposition"
+    no_delegate: "Vous n'avez pas de délégué"
+    vote_of_delegate: 'Votre délégué a classé cette proposition'
+    want_vote: 'Si vous voulez voter sur ceci'
+    want_initiative: 'Si vous voulez soumettre votre propre initiative'
+    want_amendment: 'Si vous voulez soumettre votre propre proposition alternative'
+    want_argument: 'Si vous voulez soumettre votre propre point de vue'
+    index_categories: 'Index des catégories'
+    categories: 'Liste des catégories: choisissez-en une'
+    created_at: 'Créé le '
+    valid: 'Cette initiative a été validée'
+    validate: 'Valider cette initiative'
+    current_validations: "Nombre actuel de validations"
+    index: "Montrer la liste des initiatives validées"
+    index_drafts: "Montrer la liste des initiatives en attente de validation"
+    index_title: "Liste des initiatives"
+    index_drafts_title: "Liste des initiatives en attente de validation"
+    preview: "pré-visualisation"
+    modify: "modifier"
+    level4: "Initiative de niveau fédéral"
+    level3: "Initiative de niveau régional"
+    level2: "Initiative de niveau provincial"
+    level1: "Initiative de niveau communal"
+    options: "Options"
+    geographical_level: "Niveau géographique"
+    current_phase: "Initiatives actuellement en phase"
+    current_category: "Initiatives appartenant à la catégorie"
+    no_geo: "Il n'y a pas de restriction géographique"
+    phase0: "la validation a échoué"
+    phase1: "en cours d'édition"
+    phase2: "en cours de validation"
+    phase3: "en phase de proposition d'alternatives"
+    phase4: "en cours de vote"
+    phase5: "a déjà été votée"
+    phase_default: "Toutes les phases après la phase d'édition"
+    wins: "Gagnant du vote"
+    lost: "Ces propositions n'ont pas été retenues"
+    results: "Résultats du vote"
+    all_defeated: "Aucune proposition n'a été retenue au cours du vote"
+    no_winner: "Aucune des propositions n'a passé le critère pour emporter le vote"
+    created: "Votre initiative a été créée avec succès"
+    updated: "Votre initiative a été mise à jour avec succès"
+    destroyed: "Votre initiative a été effacée avec succès"
+    
+    no_bill: "Il n'y a pour l'instant aucune proposition correspondant à vos critères de sélection"
+    not_allowed: "24h après avoir voté, un délégué ne peut plus changer son vote"
+    search: "Cherchez parmis les initiatives et leurs propositions alternatives:"
+    
+    form:
+      photo: "Choisissez une image pour illustrer votre proposition"

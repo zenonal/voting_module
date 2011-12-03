@@ -77,7 +77,7 @@ class CandidatesController < ApplicationController
                           h = {:content_en => bio_text_en, :content_fr => bio_text_fr, :content_nl => bio_text_nl, :wiki_en => bio_wiki_en, :wiki_fr => bio_wiki_fr, :wiki_nl => bio_wiki_nl}
                           @bio = @candidate.bios.build(h)
                           if @bio.save
-                                  format.html { redirect_to(@candidate, :notice => 'Candidate was successfully created.') }
+                                  format.html { redirect_to(@candidate, :notice => t('candidates.created')) }
                                   format.xml  { render :xml => @candidate, :status => :created, :location => @candidate }
                           else
                                   format.html { render :action => "new" }
@@ -97,7 +97,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.update_attributes(params[:candidate])
-        format.html { redirect_to(@candidate, :notice => 'Candidate was successfully updated.') }
+        format.html { redirect_to(@candidate, :notice => t('candidates.updated')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -105,7 +105,7 @@ class CommentsController < ApplicationController
       flash.delete(:recaptcha_error)
       respond_to do |format|
         if @comment.update_attributes(params[:comment])
-          format.html { redirect_to(@commentable, :notice => 'Comment was successfully updated.') }
+          format.html { redirect_to(@commentable, :notice => t('comments.updated')) }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }

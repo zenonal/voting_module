@@ -1,0 +1,66 @@
+en:
+  initiatives:
+    title: 'List of proposals from citizens'
+    title2: "Initiatives"
+    show: "show"
+    edit: 'edit'
+    edit_init: 'Editing initiative'
+    destroy: 'destroy'
+    new: 'new initiative'
+    new_category: 'new category'
+    back: 'back'
+    votes: 'vote'
+    approval: 'approval'
+    author: 'Author'
+    private_vote: 'Submit your private vote'
+    delegate_vote: 'Submit your vote as a delegate'
+    delegate_no_vote: "No vote on this bill yet"
+    no_delegate: "You don't have a delegate"
+    vote_of_delegate: 'Your delegate ranked this bill'
+    want_vote: 'If you want to vote on this'
+    want_initiative: 'If you want to submit your own initiative'
+    want_amendment: 'If you want to submit your own amendment'
+    want_argument: 'If you want to submit your own point of view'
+    index_categories: 'Index of categories'
+    categories: 'List of categories: choose one'
+    created_at: 'Created on '
+    valid: 'This initiative has been validated'
+    validate: 'Validate this initiative'
+    current_validations: "Number of current validations"
+    index: "Show me the list of validated initiatives"
+    index_drafts: "Show me the list of initiatives waiting for validation"
+    index_title: "List of initiatives"
+    index_drafts_title: "List of initiatives waiting for validation"
+    preview: "preview"
+    modify: "modify"
+    level4: "Initiative at federal level"
+    level3: "Initiative at regional level"
+    level2: "Initiative at provincial level"
+    level1: "Initiative at communal level"
+    options: "Options"
+    geographical_level: "Geographical level"
+    current_phase: "Initiatives currently in the phase"
+    current_category: "Initiatives belonging to category"
+    no_geo: "There is no geographical restriction"
+    phase0: "validation failed"
+    phase1: "currently being edited"
+    phase2: "currently gathering validations"
+    phase3: "currently open to amendments"
+    phase4: "currently being voted on"
+    phase5: "already voted on"
+    phase_default: "All phases after editing phase"
+    category_default: "All categories"
+    wins: "Winner of the vote"
+    lost: "These bills were defeated"
+    results: "Results of the vote"
+    all_defeated: "All the bills have been defeated"
+    no_winner: "None of the bills passed the criteria to win"
+    created: "Your initiative was successfully created"
+    updated: "Your initiative was successfully updated"
+    destroyed: "Your initiative was successfully deleted"
+    no_bill: "There are currently no initiatives corresponding to your selection criteria"
+    not_allowed: "A delegate cannot change his vote more than one day after it has been cast"
+    search: "Search among initiatives and their amendments:"
+    
+    form:
+      photo: "Choose a picture for your proposal"

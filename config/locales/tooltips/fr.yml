@@ -1,0 +1,19 @@
+fr:
+  tooltips:
+    layout: 
+      languages: "<p>Ces icônes vous permettent de changer la langue utilisée dans le site.</p>
+                <p>Attention! Si vous changez la langue, vous allez aussi changer les propositions auxquelles vous allez avoir accès: 
+                        seules les propositions traduites dans la langue sélectionnée seront visibles.</p>"
+      user_info: "Cette section vous donne accès à votre information de profil."
+      featured: "Ici vous pouvez voir des exemples de propositions choisies au hasard."
+      index_options: "Cliquez ici pour afficher les propositions en fonction de certains critères de sélection."
+      bill_phase: "Ceci montre le statu actuel de la proposition: édition, validation, vote, etc..."
+      bill_level: "Ceci indique le niveau géographique de la proposition: communal, provincial, régional ou fédéral."
+      bill_results: "Ceci montre un petit résumé des résultats du vote sur cette proposition."
+              
+    vote_yes: "Voter en faveur de la proposition"
+    vote_no: "Voter contre la proposition"
+    choose_delegate: "Si vous ne voulez pas voter sur chaque proposition individuellement, cliquez ici pour choisir un délégué qui votera à votre place."
+    submit_amendment: "Vous pensez que cette proposition peut être améliorée? Proposez votre propre version en cliquant ici!"
+    submit_argument: "Faites savoir ce que vous pensez."
+    rank_matrix: "Chaque valeur représente le nombre de fois où la proposition en vert a battu la proposition en rouge lors des votes"

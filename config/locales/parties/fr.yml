@@ -1,0 +1,11 @@
+fr:
+  parties:
+    title: 'Liste des partis'
+    show: "montrer"
+    edit: 'éditer'
+    destroy: 'supprimer'
+    new: 'nouveau parti'
+    back: 'retour'
+    votes: 'votes'
+    approval: 'approbation'
+    index: 'Liste des partis'

@@ -48,4 +48,4 @@ fr:
     created: "Votre amendement a été créé avec succès"
     updated: "Votre amendement a été mis à jour avec succès"
     destroyed: "Votre amendement a été effacé avec succès"
-    
+    not_destroyed: "Vous n'êtes pas autorisé à supprimer cette proposition alternative"

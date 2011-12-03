@@ -74,7 +74,7 @@ class ArgumentsController < ApplicationController
       flash.delete(:recaptcha_error)
       respond_to do |format|
         if @argument.update_attributes(params[:argument])
-          format.html { redirect_to(@argumentable, :notice => 'Argument was successfully updated.') }
+          format.html { redirect_to(@argumentable, :notice => t('arguments.updated')) }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
@@ -97,7 +97,7 @@ class ArgumentsController < ApplicationController
 
     respond_to do |format|
       if @argument.destroy
-        format.html { redirect_to(@argumentable, :notice => 'Argument was successfully deleted.') }
+        format.html { redirect_to(@argumentable, :notice => t('arguments.destroyed')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "delete" }

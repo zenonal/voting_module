@@ -48,4 +48,5 @@ en:
     created: "Your amendment was successfully created"
     updated: "Your amendment was successfully updated"
     destroyed: "Your amendment was successfully deleted"
+    not_destroyed: "Your are not authorized to delete this amendment"
     

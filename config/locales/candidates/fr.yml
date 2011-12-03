@@ -14,3 +14,5 @@ fr:
     level2: "Candidat(e) au niveau provincial"
     level1: "Candidat(e) au niveau communal"
     candidate_for: "Candidat(e) pour "
+    created: 'Candidat(e) créée avec succès.'
+    updated: 'Candidat(e) mise à jour avec succès.'

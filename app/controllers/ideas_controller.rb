@@ -52,7 +52,7 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.save
         flash[:notice] = t('brainstorms.idea_succesful')
-        format.html { redirect_to(@brainstorm, :notice => 'Idea was successfully created.') }
+        format.html { redirect_to(@brainstorm, :notice => t('brainstorms.idea_succesful')) }
         format.xml  { render :xml => @idea, :status => :created, :location => @idea }
         format.js
       else

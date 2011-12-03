@@ -1,0 +1,11 @@
+fr:
+  politicians:
+    title: 'Liste des politiciens dont les propositions sont soumises à référendum sur le site'
+    show: "montrer"
+    edit: 'éditer'
+    destroy: 'supprimer'
+    new: 'nouveau politicien'
+    back: 'retour'
+    votes: 'votes'
+    approval: 'approbation'
+    index: 'Liste des politiciens'

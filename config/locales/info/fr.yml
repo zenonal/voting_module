@@ -36,51 +36,58 @@ fr:
         Vous pouvez voir les propositions venant des autres zones géographiques en cochant cette case."
     sign_in_through_social_networks: "Vous pouvez vous identifiez très facilement via un de ces réseaux sociaux.</br>
      Si vous avez un compte avec l'un d'entre eux, cliquez simplement sur l'icône correspondante </br> et vous serez automatiquement identifié(e) par leur site web."
-    brainstorm: "This is the place where ideas are proposed anonymously and are voted on. </br> You can propose anything that comes to your mind in relation to the corresponding bill. "
-    edit_bill: "This allows you to modify the bill. Keep in mind that this will be possible only for a limited amount of time though."
-    percent_approval: "This shows the percentage of votes in which this bill was given a positive ranking. </br>
-        Because the votes are based on ranking instead of simply 'yes' or 'no', </br>
-        this measure of percentage of approval does not reliably indicates which bill, if any, passed the vote."
-    average_ranking: "This shows how the bill was ranked on average, with respect to the other bills. The higher the score, the more this bill is considered superior to the other bills."
-    rank_matrix: "This is a way of summarizing the results by showing the number of votes in which each bill was ranked higher than each other bill.</br>
-    From this table of result, we calculate the winner of the vote with the so-called <a href='http://en.wikipedia.org/w/index.php?title=Condorcet_method&oldid=454655093'>Condorcet method</a>."
-    delegates_rankings: "This shows how each delegate voted on this bill. A delegate is a citizen whom you can choose to represent you. </br>
-        In this case, each time he votes on a bill, he votes also for you. You can change delegate or override his vote anytime you like. </br>
-        You can also choose to be a delegate yourself. </br>Click on you user name in the upper right corner to know more about that."
-    private_rankings: "This is a list of all the votes on this bill. </br>
-    This gives users a possibility to check that their vote was indeed counted without revealing the identity of the voters."
+    brainstorm: "Ici vous pouvez proposer et voter sur des idées anonymement. </br> Vous pouvez proposer n'importe quelle idée qui vous traverse la tête en relation avec la proposition de loi correspondante."
+    edit_bill: "Ici vous pouvez modifier la proposition que vous avez soumise. Attention! Ce n'est possible que pour une durée limitée.<br> 
+    Après celà, la proposition sera soumise à validation et ne pourra plus être modifiée."
+    percent_approval: "Ceci montre le pourcentage de votes qui ont attribué un score positif à cette proposition. </br>
+        Attention ! Etant donné que les votes sont basés sur un ordre de préférence et non pas à un simple 'oui' ou 'non', </br>
+        cette mesure de pourcentage n'indique pas nécessairement quelle proposition a remporté le vote."
+    average_ranking: "Ceci montre en moyenne à quelle position la proposition a été placée par rapport aux autres propositions. Plus haut est le score, plus la proposition est considérée comme supérieure aux autres."
+    rank_matrix: "C'est un moyen de résumer les résultats en montrant pour chaque proposition, le nombre de votes dans lesquels elle est placée à un rang supérieur à chacune des autres propositions.</br>
+    A partir de cette table de résultats, on calcule le gagnant du vote au moyen de la <a href='http://fr.wikipedia.org/wiki/Méthode_Condorcet'> méthode Condorcet</a>."
+    delegates_rankings: "Cette section montre comment chaque délégué a voté sur cette proposition. </br>
+    Un délégué est un citoyen que vous pouvez choisir pour vous représenter. Dans ce cas, chaque fois qu'il vote sur une loi, il vote aussi pour vous. </br>
+    Vous pouvez changer de délégué ou voter directement vous-même quand vous voulez.</br>
+        Vous pouvez aussi choisir de devenir vous-même délégué. </br>Cliquez sur votre nom dans le coin supérieur droit de l'écran pour en savoir plus."
+    private_rankings: "Ceci est une liste de tous les votes anonymes ayant eu lieu sur cette proposition."
+    amendments_title: "Cette section montre les propositions alternatives des autres utilisateurs. </br></br>
+    Tout comme les propositions originales, ces propositions alternatives doivent d'abord être validées, c'est à dire être supportées par suffisamment de voteurs.</br>
+    Si vous voyez ici sous le titre 'Ces alternatives n'ont pas encore été validées', des propositions qui vous plaisent, n'hésitez pas à soumettre votre validation. 
+    Cela permettra à ces propositions d'être votée en même temps que la proposition principale.</br></br>
+    Vous pouvez aussi soumettre une proposition alternative par vous-même. Mais celà n'est possible que pendant une durée limitée, après la validation de la proposition originale et avant le vote!</br>  
+    Lorsque le vote a lieu, chaque voteur classe toutes les propositions validées (l'originale et les alternatives), dans leur ordre de préférence.</br>
+    La proposition qui remporte le vote sera celle qui est classée avant les autres dans la plupart des votes (<a href='http://fr.wikipedia.org/wiki/Méthode_Condorcet'> méthode Condorcet</a>)"
     
-    amendments_title: "This section shows the alternative proposals that other users have proposed. </br></br>
-    Like the other bills, these proposals have first to be validated, i.e. to be supported by enough voters.</br>
-    If you see here under the title 'These alternatives have not been validated yet' proposals that you like, please go ahead and validate them.</br></br>
-    You can also propose alternatives yourself. But this can be done only during a limited period of time, after the original bill has been validarted, and before the vote!</br>  
-    When the vote takes place, each voter ranks all the proposals, including the original one, in the order of his preference.</br>
-    The winner will be the bill which is ranked before the other ones most of the time (Condorcet method)."
+    argument_title: "Ici vous pouvez placer un commentaire relativement élaboré sur ce que vous pensez de la proposition. 
+    Voyez-le comme si vous écriviez un petit article sur le sujet dans un journal.</br>
+    Pour garder les choses simples, nous les avons séparés en colonnes 'pour' et 'contre'.</br></br> Ces points de vue ne peuvent pas être commentés. "
     
-    argument_title: "Here you can place a relatively elaborated comment on what you think about the bill. You can see this as a mini newspaper op-ed if you like.</br>
-    To keep things clear, we separated the columns with pros and cons points of view.</br></br> These points of views cannot be commented. "
+    discussion_title: "Cette section est pour les débats. Vous pouvez poster vos commentaires et répondre à celui des autres. </br>
+    Ne postez que des commentaires qui ont un rapport avec la proposition. Si vous voyez des commentaires hors-sujet ou inappropriés, vous pouvez les signaler comme abusifs."
     
-    discussion_title: "This section is for debate. You can post your comment and reply to other's comments. </br>
-    Please post only comments that are relevant to the discussion. If you see irrelevant or abusive comments, you can flag them."
+    delegation_title: "Cette section donne des informations sur la délégation, qui est le coeur de la démocratie liquide. </br>
+    Vous pouvez choisir n'importe quelle personne qui s'est proposée comme délégué. Après avoir choisi un délégué, chaque fois que cette personne vote, elle vote aussi pour vous. </br></br>
+    Le plus important, qui rend ce système très différent du système représentatif que l'on connait, est que vous pouvez toujours voter vous-même à tout moment. </br>
+    Si vous le faites, votre vote remplace celui de votre délégué.</br></br>
+    Vous pouvez aussi changer de délégué à tout moment, pas besoin d'attendre les élections tous les 4 ans ! </br>
+    Finalement, vous pouvez aussi vous proposer vous-même comme délégué. Vous devez juste cliquer sur un boutton. Aussi simple que ça."
     
-    delegation_title: "This section gives information on delegation, which is the core of fluid democracy.</br>
-    You can choose any person you like to be your delegate. Once done so, everytime this person votes, she votes for you as well.</br></br>
-    The good part, which makes this system very different from the usual representative system, is that you can vote yourself instead on any bill.</br>
-    If you do so, your vote overrides the one from your delegate. </br></br>Very importantly also, you can change your delegate at anytime! </br>
-    Finally, you can also naturally propose yourself as a delegate. You just have to click a button. That's all."
+    info_initiative: "Une initiative est le brouillon d'une nouvelle loi, proposé par un citoyen ou un groupe de citoyens. N'importe qui peut proposer une initiative. <br>
+    Une fois soumise, la proposition doit récolter un certain nombre de signatures pour prouver qu'elle est pertinente. Celà permet déjà d'éliminer les propositions farfelues ou dangereuses. </br>
+    Après ce premier stade de validation, les autres utilisateurs peuvent proposer des proposition alternatives, qu'ils considèrent meilleures que la propositon originale. </br>
+    Finalement, les voteurs peuvent voter, en classant dans leur ordre de préférence toutes ces propositions. 
+    S'il s'agit d'une proposition au niveau communal, elle est votée par tous les citoyens de la commune. 
+    S'il s'agit d'une loi fédérale, elle est votée par tous les citoyens du pays."    
     
-    info_initiative: "An initiative is the draft of a new law, proposed by a citizen or a group of citizens. Anyone can propose an initiative. <br>
-    Once submitted, it needs to gather a certain number of signatures to prove that it is valuable. Then it is submitted to a general vote. 
-    If it's a communal law, it's voted by all the citizens of the commune, if it's a federal law, it's voted by all the citizens of the country."    
+    info_referendum: "Un référendum est un vote organisé pour approuver ou désapprouver une loi proposée par les politiciens. 
+    Il y a deux éléments essentiels qui peuvent faire du référendum un outil démocratique puissant aux mains des citoyens. </br>
+    Premièrement, il doit être décisif, c'est à dire que le résultat doit faire loi. Personne ne peut le contrecarrer, excepté le peuple lui-même, par le biais d'une autre initiative par exemple. </br>
+    Deuxièmement, il doit être initié par les citoyens ou par la constitution, pas par les politiciens. Dans beaucoup de pays, les politiciens décident eux-mêmes quand organiser un référendum. 
+    Il devient alors un moyen de renforcer leur pouvoir en receuillant l'assentiment du peuple lorsqu'ils sont surs de l'avoir. </br>
+    Au contraire, les référendums initiés par les citoyens leur permettent d'opposer un vrai contre-pouvoir à leurs représentants politiques."
     
-    info_referendum: "A referendum is a vote organized to approve or disapprove a law proposed by politicians.
-    There are two crucial aspects of a referendum that can make it a true democratic tool in the hand of the people. <br>
-    First it needs to be binding, i.e. the result makes law. No one can overcome it (except the people themselves through an initiative for example). 
-    Second it needs to be citizen-initiated. In many countries, the politicians decide themselves when to put a law to referendum. 
-    Then it becomes a way for them to increase their power. In contrast, citizen-initiated referendums allow citizens to oppose a real counter-power to the politicians."
-    
-    private_vote_num: "Number of votes you casted privately."
-    public_vote_num: "Number of votes you casted as a delegate."
-    submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."
-    comments_num: "Number of comments you posted."
-    points_of_view_num: "Number of points of view you posted."
+    private_vote_num: "Nombre de votes anonymes"
+    public_vote_num: "Nombre de votes soumis en tant que délégué"
+    submitted_bill_num: "Nombre de propositions soumises (propositions originales ou propositions alternatives)"
+    comments_num: "Nombre de commentaires postés"
+    points_of_view_num: "Nombre de points de vue postés"

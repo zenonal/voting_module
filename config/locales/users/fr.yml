@@ -1,0 +1,35 @@
+fr:
+  users: 
+    edit: "Modifier le profil"
+    votes: "vote privé"
+    add_postal_code: "entrez votre code postal"
+    delegates: 
+      index: "Liste des délégués"
+      active_delegate: "Actuellement actif comme délégué"
+      create_delegate: "Devenez un délégué!"
+      created: "Vous êtes maintenant un délégué."
+      destroy_delegate: "Annulez votre mandat de délégué"
+      vote: "votez en tant que délégué"
+      votes: "votes en tant que délégué"
+      comments: "commentaires"
+      point_of_view: "Point de vue"
+      ref: "Sur"
+      confirm: "Etes-vous sur? Tous vos votes vont devenir publics!"
+      confirm_new: "Etes-vous sur de vouloir déléguer vos votes à cet utilisateur?"
+      choose: "Choisissez comme délégué"
+      delegated_vote: "utilisateur a délégué son vote à ce délégué"
+      delegated_votes: "utilisateurs ont délégué leur vote à ce délégué"
+      votes_delegated: "Votes actuellement délégués à "
+      votes_as_a_delegate: "Votes soumis en tant que délégué"
+      already_added: 'Utilisateur déjà actif comme délégué.'
+      delegation_successful: 'Vous avez maintenant délégué votre vote à cet utilisateur.'
+      choose_delegate: 'Choisissez un délégué'
+      change_delegate: 'Choisissez un autre délégué'
+      cancel_delegate: 'Annulez votre délégation à cet utilisateur'
+      current_delegate: 'Vos votes sont actuellement délégués à cet utilisateur'
+      no_vote: "Il n'y a pas encore de vote sur cette proposition"
+      to_oneself: "Vous ne pouvez pas déléguer vos votes à vous-même"
+      initiatives: "Initiatives soumises"
+      amendments: "Propositions alternatives soumises"
+      not_active: "Cet utilisateur n'est plus un délégué"
+      

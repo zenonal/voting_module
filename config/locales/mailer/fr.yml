@@ -1,0 +1,12 @@
+fr:
+  mailer:
+    bill_created: "créée"
+    your_bill: "Votre proposition"
+    was_created: "a été crée avec succès"
+    you_can_access: "Vous pouvez avoir accès à cette proposition à tout moment au moyen de ce "
+    reminder: "N'oubliez pas que vous disposez seulement d'une semaine pour éditer cette proposition. 
+    Après celà, vous ne pourrez plus la changer !"
+    thanks: "Merci pour votre intérêt pour la Démocratie Directe Digitale"
+    link: "lien"
+    
+    delegation_cancelled: "a annulé son mandat de délégué"
