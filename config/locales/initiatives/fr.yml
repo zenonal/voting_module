@@ -60,7 +60,7 @@ fr:
     
     no_bill: "Il n'y a pour l'instant aucune proposition correspondant à vos critères de sélection"
     not_allowed: "24h après avoir voté, un délégué ne peut plus changer son vote"
-    search: "Cherchez parmis les initiatives et leurs propositions alternatives:"
+    search: "Cherchez parmis les initiatives et leurs amendements:"
     
     form:
       photo: "Choisissez une image pour illustrer votre proposition"

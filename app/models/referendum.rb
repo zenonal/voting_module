@@ -102,7 +102,7 @@ class Referendum < ActiveRecord::Base
                 where("categories.name_#{I18n.locale} = ?", categ)
         }
 
-        scope :not_blank, where(["content_#{I18n.locale} != ''"])
+        scope :not_blank, where(["content_#{I18n.locale} != ?", ""])
 
         def time_elapsed
                 Time.now()-self.created_at
