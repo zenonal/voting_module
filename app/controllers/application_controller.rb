@@ -17,10 +17,11 @@ class ApplicationController < ActionController::Base
                         unless ENV['RAILS_ENV']=="production" 
                                 redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
                         else
-                                if request.subdomain.to_i == 0
+                                all_subs = request.subdomain.split(".")
+                                if (all_subs[0].to_i == 0)
                                         redirect_to root_url(:protocol => "https", :host => "#{params[:co_postal_code]}.#{request.subdomain}.#{request.domain}#{request.port_string}")
                                 else
-                                        redirect_to root_url(:protocol => "https", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
+                                        redirect_to root_url(:protocol => "https", :host => "#{params[:co_postal_code]}.#{all_subs[all_subs.size-1]}.#{request.domain}#{request.port_string}")
                                 end
                         end
                 elsif params[:co_postal_code] && params[:co_postal_code].blank?
