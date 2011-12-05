@@ -72,6 +72,24 @@ $j(document).ready(function() {
 	    });
 	});
 	
+	$j("#co_postal_code").css("color", inactive_color);
+	var default_values2 = new Array();
+	$j("#co_postal_code").focus(function() {
+	    if (!default_values2[this.id]) {
+	      default_values2[this.id] = this.value;
+	    }
+	    if (this.value == default_values2[this.id]) {
+	      this.value = '';
+	      this.style.color = active_color;
+	    }
+	    $j(this).blur(function() {
+	      if (this.value == '') {
+	        this.style.color = inactive_color;
+	        this.value = default_values2[this.id];
+	      }
+	    });
+	});
+	
 	$j("#overlay-intro").overlay({
 		top: 200,
 		left: 400,

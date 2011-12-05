@@ -86,6 +86,23 @@ fr:
     Il devient alors un moyen de renforcer leur pouvoir en receuillant l'assentiment du peuple lorsqu'ils sont surs de l'avoir. </br>
     Au contraire, les référendums initiés par les citoyens leur permettent d'opposer un vrai contre-pouvoir à leurs représentants politiques."
     
+    info_future_website: "Il y aura trois différences importantes dans le site web définitif du parti. 
+        <ul>
+            <li>Vous vous identifierez au moyen de votre carte d'identité électronique, pour un maximum de sécurité.</li> 
+            <li>Les votes seront mieux sécurisés grâce à un système appelé <a href='http://heliosvoting.org/'>Helios</a>, qui permet de garantir
+            que personne ne puisse voir comment vous avez voté, mais offre en même temps un maximum de traçabilité des votes.</li>
+            <li>Ce qui sera décidé sur le site web déterminera ensuite l'agenda du parti!</li>
+        </ul>"
+    
+    info_candidate: "Nos candidats prendront part aux élections communales en 2012. S'ils sont élus, ils promettent de respecter la décision des citoyens,
+        c'est à dire qu'ils voteront au conseil communal <em>strictement</em> en accord avec les résultats obtenus sur le site web. En d'autres termes, vous décidez 
+        et ils parlent pour vous.</br></br>
+        Nous avons besoin de candidats donc n'hésitez surtout pas <a href='mailto:zenon.alex@gmail.com'> à vous proposer! </a> Dans le futur, les candidats seront
+        sélectionnés par <a href= 'http://fr.wikipedia.org/wiki/Stochocratie'>tirage au sort</a> mais pour notre première participation aux élections, 
+        nous avons décidé d'accepter comme candidat, toute personne remettant une candidature valide."
+    
+    commune_search: "Entrez ici le code postal de la commune à laquelle vous voulez vous connecter. Vous ne verrez alors plus que les propositions correspondant 
+    à cette commune particulière et les propositions au niveau fédéral."
     private_vote_num: "Nombre de votes anonymes"
     public_vote_num: "Nombre de votes soumis en tant que délégué"
     submitted_bill_num: "Nombre de propositions soumises (propositions originales ou propositions alternatives)"

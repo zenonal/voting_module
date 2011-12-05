@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
         protect_from_forgery
         
         helper_method :filter_index
+        before_filter :set_postal_code
         before_filter :set_mode
         before_filter :set_locale
         before_filter {|c| Authorization.current_user = c.current_user}
@@ -10,6 +11,22 @@ class ApplicationController < ActionController::Base
         before_filter :mailer_set_url_options
         before_filter :jumpback
         before_filter :find_subdomain
+        
+        def set_postal_code
+                if params[:co_postal_code] && !params[:co_postal_code].blank?
+                        unless ENV['RAILS_ENV']=="production" 
+                                redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
+                        else
+                                redirect_to root_url(:protocol => "https", :host => "#{params[:co_postal_code]}.#{request.subdomain}#{request.domain}#{request.port_string}")
+                        end
+                elsif params[:co_postal_code] && params[:co_postal_code].blank?
+                                unless ENV['RAILS_ENV']=="production" 
+                                        redirect_to root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}")
+                                else
+                                        redirect_to root_url(:protocol => "https", :host => "#{request.subdomain}#{request.domain}#{request.port_string}")
+                                end
+                end
+        end
 
         def find_subdomain
                 subdom = request.subdomains.first
@@ -30,6 +47,10 @@ class ApplicationController < ActionController::Base
                                         @province_ids = Array.new(size=c_ids.count, obj=nil) + p_ids + Array.new(size=r_ids.count, obj=nil)
                                         @region_ids = Array.new(size=c_ids.count, obj=nil) + Array.new(size=p_ids.count, obj=nil) + r_ids
                                 end
+                                if @commune_codes.blank?
+                                        c = Commune.all
+                                        @commune_codes = c.map(&:postal_code).map(&:to_s)
+                                end
                                 i = @level_names.index subdom.downcase
                                 if i && @commune_ids[i]
                                         @subdom_level = Commune.find(@commune_ids[i])
@@ -40,7 +61,12 @@ class ApplicationController < ActionController::Base
                                            if i && @region_ids[i]
                                                    @subdom_level = Region.find(@region_ids[i])
                                            else
-                                                   @subdom_level = nil
+                                                   i = @commune_codes.index subdom
+                                                   if i && @commune_ids[i]
+                                                           @subdom_level = Commune.find(@commune_ids[i])
+                                                   else
+                                                           @subdom_level = nil
+                                                   end
                                            end
                                    end
                                 end
@@ -100,7 +126,7 @@ class ApplicationController < ActionController::Base
                                 
                                 if @subdom_level.blank?
                                         if params[:filter] && level && !(level == 0)
-                                                if params[:user_level] == "off" || current_user.commune.nil?
+                                                if params[:user_level] == "off" || (current_user && current_user.commune.nil?)
                                                         @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
                                                         @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{level}")
                                                 else
@@ -133,7 +159,8 @@ class ApplicationController < ActionController::Base
                                         end
                                 else
                                        @bills = bills.subdom_level(@subdom_level).all(:order => "created_at DESC")
-                                       @geo = @subdom_level.name
+                                       @bills = @bills + bills.user_geographical_level(current_user,4).all(:order => "created_at DESC")
+                                       @geo = @subdom_level.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4")
                                 end
                                 if phase && phase >= 0
                                         @bills = bills[0].class.filter_phase(@bills,phase)
@@ -196,7 +223,9 @@ class ApplicationController < ActionController::Base
         end
         def jumpback
             session[:jumpback] = session[:jumpcurrent]
-            session[:jumpcurrent] = request.request_uri
+            unless params[:controller] == "Language" || params[:controller] == "Authentication"
+                    session[:jumpcurrent] = request.request_uri
+            end
           end  
 
          def rescue_action_in_public(exception)
@@ -207,5 +236,23 @@ class ApplicationController < ActionController::Base
              else
                super
              end
+          end
+          
+          private 
+          def stored_location_for(resource_or_scope)
+            scope = Devise::Mapping.find_scope!(resource_or_scope)
+            if !current_user.commune.blank? && !current_user.commune.postal_code.nil?
+                      scope = current_user.commune.postal_code.to_s + "." + "#{scope}"
+            end
+            session.delete("#{scope}_return_to")
+          end
+          def signed_in_root_path(resource_or_scope)
+                  scope = Devise::Mapping.find_scope!(resource_or_scope)
+                  if !current_user.commune.blank? && !current_user.commune.postal_code.nil?
+                          home_path = current_user.commune.postal_code.to_s + "." + "#{scope}_root_path"
+                  else
+                          home_path = "#{scope}_root_path"
+                  end
+                  respond_to?(home_path, true) ? send(home_path) : root_path
           end
 end

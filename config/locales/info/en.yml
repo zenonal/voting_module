@@ -83,6 +83,15 @@ en:
         <li>What will be decided on the website will then determine the agenda of the party!</li>
     </ul>"
     
+    info_candidate: "Our candidates will take part to the 2012 communal elections. If they get elected, they pledge to respect the will of the people, i.e.
+    they will vote in the communal assembly <em>strictly</em> in accordance with the results of the vote obtained on the website. In other words, you decide and 
+    they speak for you.</br></br>
+    We need candidates so don't hesitate to  <a href='mailto:zenon.alex@gmail.com'> propose yourself! </a> In the future, candidates will be selected by 
+    <a href= 'http://en.wikipedia.org/wiki/Sortition'>sortition</a> 
+    but for our first participation to the elections, the first ones to propose a valid candidacy will be chosen."
+    
+    commune_search: "Enter the postal code of the commune you want to connnect to. You will then see only proposals for this particular commune in addition to 
+    federal proposals."
     private_vote_num: "Number of votes you casted privately."
     public_vote_num: "Number of votes you casted as a delegate."
     submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."

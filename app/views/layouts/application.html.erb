@@ -35,7 +35,7 @@
 				
 				</span>
 					
-					<% if !@subdom_level.candidates.blank? %>
+					<% unless @subdom_level.candidates.blank? %>
 						<table class="candidate">
 							
 							<tr><td>
@@ -47,14 +47,24 @@
 								<%= link_to @subdom_level.candidates[0].name, @subdom_level.candidates[0], :class => "link" %>
 							</td></tr>						
 							<tr><td style="width: 100px;">
-								<%= t('candidates.candidate_for') %><%= @subdom_level.name %>
+								<%= t('candidates.candidate_for') %><%= @subdom_level.name %><%= info_help('info_candidate') %>
 							</td></tr>
 						</table>
+					<% else %>
+					<table class="candidate" style="border: 1px solid #ccc;"><tr><td>
+						<%= raw t('layout.no_candidate') %><%= info_help('info_candidate') %>
+					</td></tr></table>
 					<% end %>
+					
 					<br/><br/>
-				<% end %>
+			<% end %>
 			
 			<div id="language-header">
+			<span id="postal_code_form">
+					<form>
+						<%= text_field_tag :co_postal_code, t("layout.commune_search"), :title => t("info.commune_search") %>
+					</form>
+			</span>
 			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "18x18"), language_fra_url %></span>
 			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "18x18"), language_ndl_url %></span>
 			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "18x18"), language_eng_url %></span>
@@ -115,7 +125,6 @@
 	      		<% end %>
 			</div>
 			<div id="content">
-				
 				<%= yield %>
 			</div>
 		  	<div id="sidebar-right">

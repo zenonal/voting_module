@@ -177,15 +177,29 @@ table.candidate tr td {
 
 #language-header {
 	position: absolute;
-	right: 100px;
+	right: 120px;
 	top: 0px;
-	width: 200px;
+	width: 280px;
 }
 
 #lang {
 	position: relative;
 	padding: 10px;
 	top: 0px;
+}
+
+#co_postal_code {
+	position: relative;
+	padding: 3px;
+	top: 3px;
+	width: 80px;
+}
+
+#postal_code_form {
+margin-right: 10px;
+	form {
+	display: inline;
+	}
 }
 
 

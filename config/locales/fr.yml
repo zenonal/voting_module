@@ -144,6 +144,8 @@ fr:
     intro_checkbox: "Cochez cette case si vous ne voulez plus que cette fenêtre apparaisse."
     intro_close_button: "Fermer"
     no_bill: "Il n'y a encore aucune proposition dans votre langue"
+    no_candidate: "Il n'y a pas encore de candidat pour les élections communales 2012 pour cette commune. Vous voulez vous proposer comme candidat? <a href='mailto:zenon.alex@gmail.com'> Contactez nous! </a>"
+    commune_search: "Code postal"
 
   arguments: 
       index_title: "Exemples d'opinion sur des propositions courantes"

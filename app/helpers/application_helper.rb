@@ -35,7 +35,7 @@ module ApplicationHelper
         def info_help(id,size=20)
                 if cookies[:info_active] == "true"
                         output="<span class=\"info_help\">"
-                        output+=image_tag("i.png",:size => "#{size}x#{size}", :class => "info_help_img", :title=>t("info.#{id}"))
+                        output+=image_tag("i.png",:size => "#{size}x#{size}", :class => "info_help_img", :title=> t("info.#{id}"))
                         output+="</span>"
                         output = raw(output)
                 else

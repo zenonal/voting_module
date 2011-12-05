@@ -41,6 +41,7 @@ fr:
     geographical_level: "Niveau géographique"
     current_phase: "Initiatives actuellement en phase"
     current_category: "Initiatives appartenant à la catégorie"
+    category_default: "Toutes les catégories"
     no_geo: "Il n'y a pas de restriction géographique"
     phase0: "la validation a échoué"
     phase1: "en cours d'édition"

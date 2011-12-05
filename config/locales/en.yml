@@ -115,6 +115,8 @@ en:
       intro_checkbox: "Check this box if you don't want this intro to show again."
       intro_close_button: "Close"
       no_bill: "No bill has been submitted in your language yet"
+      no_candidate: "There is no candidate for the 2012 communal elections for this commune yet. Do you want to become one? <a href='mailto:zenon.alex@gmail.com'> Contact us! </a>"
+      commune_search: "Postal code"
       
   arguments: 
       index_title: "Examples of opinions on current bills"
