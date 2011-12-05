@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
         
         helper_method :filter_index
         before_filter :set_postal_code
-        before_filter :set_mode
         before_filter :set_locale
+        before_filter :set_mode
         before_filter {|c| Authorization.current_user = c.current_user}
         before_filter :set_featured
         before_filter :mailer_set_url_options
@@ -236,23 +236,5 @@ class ApplicationController < ActionController::Base
              else
                super
              end
-          end
-          
-          private 
-          def stored_location_for(resource_or_scope)
-            scope = Devise::Mapping.find_scope!(resource_or_scope)
-            if !current_user.commune.blank? && !current_user.commune.postal_code.nil?
-                      scope = current_user.commune.postal_code.to_s + "." + "#{scope}"
-            end
-            session.delete("#{scope}_return_to")
-          end
-          def signed_in_root_path(resource_or_scope)
-                  scope = Devise::Mapping.find_scope!(resource_or_scope)
-                  if !current_user.commune.blank? && !current_user.commune.postal_code.nil?
-                          home_path = current_user.commune.postal_code.to_s + "." + "#{scope}_root_path"
-                  else
-                          home_path = "#{scope}_root_path"
-                  end
-                  respond_to?(home_path, true) ? send(home_path) : root_path
           end
 end

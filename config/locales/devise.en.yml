@@ -1,78 +1,78 @@
 en:
   errors:
     messages:
-      not_found: "n'a pas été trouvé"
-      already_confirmed: "a déjà été confirmé"
-      not_locked: "n'a pas été bloqué"
+      not_found: "not found"
+      already_confirmed: "was already confirmed"
+      not_locked: "was not locked"
 
   devise:
-    back: 'retour'
-    confirm: 'Etes-vous sur?'  
+    back: 'back'
+    confirm: 'Are you sure?'  
     failure:
-      unauthenticated: 'Vous devez vous inscrire ou vous identifier pour pouvoir continuer.'
-      unconfirmed: 'Vous devez confirmer votre profil avant de pouvoir continuer.'
-      locked: 'Votre profil est bloqué.'
-      invalid: 'Email ou mot de passe invalide.'
-      invalid_token: "Jeton d'identification invalide."
-      timeout: 'Votre session a expiré, identifiez-vous à nouveau pour continuer.'
-      inactive: "Votre profil n'a pas encore été activé."
+      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Invalid email or password.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'Your account was not activated yet.'
     sessions:
-      intro: 'Veuillez entre votre email et votre mot de passe ci-dessous'
-      title: 'Login'
+      intro: 'Please enter your email and password below'
+      title: 'Sign in'
       email: 'email'
-      pwd: 'mot de passe'
-      pwd_conf: 'confirmation de mot de passe'
-      remember: 'me maintenir identifié'
-      signed_in: 'Identification réussie.'
-      signed_out: 'Désidentification réussie.'
+      pwd: 'password'
+      pwd_conf: 'password confirmation'
+      remember: 'remember me'
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
     passwords:
-      title: 'Changer votre mot de passe'
-      forgot: 'Mot de passe oublié?'    
-      pwd: 'mot de passe'
-      pwd_conf: 'confirmation de mot de passe'
-      submit: 'Envoyez-moi les instructions pour obtenir un nouveau mot de passe'
-      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment obtenir un nouveau mot de passe dans quelques minutes.'
-      updated: 'Votre mot de passe a été changé. Vous êtes maintenant identifié.'
+      title: 'Change your password'
+      forgot: 'Forgot your password?'    
+      pwd: 'password'
+      pwd_conf: 'password confirmation'
+      submit: 'Send me reset password instructions'
+      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'Your password was changed successfully. You are now signed in.'
     confirmations:
-      title: 'Renvoyer les instructions de confirmation'    
-      no_instructions: "Vous n'avez pas reçu les instructions de confirmation?"
-      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment confirmer votre profil dans quelques minutes.'
-      confirmed: 'Votre profil a été confirmé avec succès. Vous êtes maintenant identifié.'
+      title: 'Resend confirmation instructions'    
+      no_instructions: "Didn't receive confirmation instruction?"
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      intro: 'Entrez vos informations ci-dessous'
-      edit: 'Votre profil'    
-      title: 'Inscrivez-vous'    
+      intro: 'Enter your information below'
+      edit: 'Your account'    
+      title: 'Sign up'    
       email: 'email'
       photo: "Photo"
-      name: 'nom'
-      pwd: 'mot de passe'
-      pwd_conf: 'confirmation de mot de passe'
-      pwd_i: "laissez blanc si vous ne voulez pas le changer"
-      cur_pwd: 'mot de passe actuel'
-      cur_pwd_i: 'nous avons besoin de votre mot de passe actuel pour confirmer les changements'
-      update: 'Mettre à jour'
-      cancel: 'Supprimer mon profil'
-      unhappy: 'Mécontent?'
-      signed_up: 'Identification réussie.'
-      updated: 'Mise à jour de profil réussie.'
-      destroyed: 'Au revoir! Votre profil a été supprimé. Nous espérons vous revoir bientôt.'
-      update_name_text: 'Veuillez choisir le nom que vous utiliserez sur ce site web.'
-      postalcode: "Votre code postal"
+      name: 'name'
+      pwd: 'password'
+      pwd_conf: 'password confirmation'
+      pwd_i: "leave blank if you don't want to change it"
+      cur_pwd: 'current password'
+      cur_pwd_i: 'we need your current password to confirm your changes'
+      update: 'Update'
+      cancel: 'Cancel my account'
+      unhappy: 'Unhappy?'
+      signed_up: 'You have signed up successfully.'
+      updated: 'You updated your account successfully.'
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      update_name_text: 'Please choose the name you want to use on this website.'
+      postalcode: "Your postal code"
     unlocks:
-      title: 'Renvoyer les instructions de déblocage'
-      no_instruction: "Vous n'avez pas reçu les instructions de déblocage?"    
-      send_instructions: 'Vous allez recevoir un email avec les instructions sur comment débloquer votre profil dans quelques minutes.'
-      unlocked: 'Votre profil a été débloqué avec succès. Vous êtes maintenant identifié.'
+      title: 'Resend unlock instructions'
+      no_instruction: "Didn't receive unlock instructions?"    
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
     mailer:
-      welcome: 'Bienvenue'   
-      hello: 'Bonjour'
-      confirm_text: 'Vous pouvez confirmer votre profil en cliquant sur le lien ci-dessous' 
-      confirm_button: 'Confirmer votre profil'
-      confirmation_instructions: 'Instructions de confirmation'
-      reset_text: 'Changez votre mot de passe en cliquant sur le lien ci-dessous'
-      reset_button: 'Changer de mot de passe'
-      reset_text2_html:   "<p>Si ce n'est pas vous qui avez fait cette demande, ignorez cet email.</p><p>Votre mot de passe ne changera que si vous cliquez sur le lien ci-dessous et entrez un nouveau mot de passe.</p>"
-      reset_password_instructions: 'Instructions pour changer de mot de passe'
-      unlock_text_html: "<p>Votre profil a été bloqué en raison d'un nombre excessif de tentative infructeuses d'identification.</p><p>Cliquez sur le lien ci-dessous pour débloquer votre profil:</p>"
-      unlock_button: 'Débloquer mon profil'
-      unlock_instructions: 'Instructions de déblocage'
+      welcome: 'Welcome'   
+      hello: 'Hello'
+      confirm_text: 'You can confirm your account through the link below' 
+      confirm_button: 'Confirm my account'
+      confirmation_instructions: 'Confirmation instructions'
+      reset_text: 'Someone has requested a link to change your password, and you can do this through the link below.'
+      reset_button: 'Change my password'
+      reset_text2_html:   "<p>If you didn't request this, please ignore this email.</p><p>Your password won't change until you access the link above and create a new one.</p>"
+      reset_password_instructions: 'Reset password instructions'
+      unlock_text_html: "<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p><p>Click the link below to unlock your account:</p>"
+      unlock_button: 'Unlock my account'
+      unlock_instructions: 'Unlock Instructions'
