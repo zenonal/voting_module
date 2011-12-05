@@ -68,7 +68,7 @@
 			<span id="lang"><%= link_to image_tag("bt_fr.png",:size => "18x18"), language_fra_url %></span>
 			<span id="lang"><%= link_to image_tag("bt_nl.png",:size => "18x18"), language_ndl_url %></span>
 			<span id="lang"><%= link_to image_tag("bt_en.png",:size => "18x18"), language_eng_url %></span>
-			<% if cookies[:info_active] == "true" %>
+			<% unless cookies[:info_active] == "false" %>
 				<span id="lang">
 					<%= link_to image_tag("bt_noti.png",:size => "18x27"), language_info_url, :title => t('info.disactivate_info') %>
 				</span>
@@ -107,7 +107,7 @@
 		<div class="clear"></div>
 		
 		<div id="container2">
-			<% if (cookies[:choose_lang] == "true") %>
+			<% unless (cookies[:choose_lang] == "false") %>
 			<div id="overlay-intro">
 				<h2><%= image_tag("hand_white.png", :size => "30x45") %> &nbsp;&nbsp; <%= t('layout.intro_title') %></h2>
 				

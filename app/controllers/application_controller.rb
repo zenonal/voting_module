@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
                                 redirect_to root_url(:protocol => "https", :host => "#{params[:co_postal_code]}.#{request.subdomain}.#{request.domain}#{request.port_string}")
                         end
                 elsif params[:co_postal_code] && params[:co_postal_code].blank?
-                                unless ENV['RAILS_ENV']=="production" 
-                                        redirect_to root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}")
-                                else
-                                        redirect_to root_url(:protocol => "https", :host => "#{request.subdomain}.#{request.domain}#{request.port_string}")
-                                end
+                        unless ENV['RAILS_ENV']=="production" 
+                                redirect_to root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}")
+                        else
+                                redirect_to root_url(:protocol => "https", :host => "#{request.subdomain}.#{request.domain}#{request.port_string}")
+                        end
                 end
         end
 
@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
                         cookies[:info_active] = true
                 end
                 if cookies[:choose_lang].blank?
-                        cookies[:choose_lang] = true
+                        cookies.permanent[:choose_lang] = true
                 end
         end
 
