@@ -125,8 +125,8 @@
 	      		<% end %>
 			</div>
 			<div id="content">
-				<%=  request %>
-				<%= "#{request.subdomain}.#{request.domain}" %>
+				<%=  "#{request.subdomain}" %>
+				<%= "#{request.domain}" %>
 				<%= yield %>
 			</div>
 		  	<div id="sidebar-right">
