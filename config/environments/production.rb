@@ -54,5 +54,5 @@ VotingModule::Application.configure do
   
   Sass::Plugin.options[:never_update] = true
   
-  config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
+  # config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
 end
