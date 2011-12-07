@@ -4,7 +4,7 @@ class LanguageController < ApplicationController
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
                         cookies[:choose_lang] = {
-                                :value => false,
+                                :value => "false",
                                 :domain => ".heroku.com",
                                 :expires => 10.years.from_now
                         }
@@ -19,7 +19,7 @@ class LanguageController < ApplicationController
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
                         cookies[:choose_lang] = {
-                                :value => false,
+                                :value => "false",
                                 :domain => ".heroku.com",
                                 :expires => 10.years.from_now
                         }
@@ -34,7 +34,7 @@ class LanguageController < ApplicationController
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
                         cookies[:choose_lang] = {
-                                :value => false,
+                                :value => "false",
                                 :domain => ".heroku.com",
                                 :expires => 10.years.from_now
                         }

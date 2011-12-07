@@ -100,12 +100,12 @@ class ApplicationController < ActionController::Base
                 if cookies[:choose_lang].blank?
                         if ENV['RAILS_ENV']=="production" 
                                 cookies[:choose_lang] = {
-                                        :value => true,
+                                        :value => "blabla",
                                         :domain => ".heroku.com",
                                         :expires => 10.years.from_now
                                 }
                         else
-                                cookies.permanent[:choose_lang] = true
+                                cookies.permanent[:choose_lang] = "blabla"
                         end
                 end
         end
