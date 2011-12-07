@@ -3,10 +3,9 @@ class LanguageController < ApplicationController
                 I18n.locale = :fr
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
-                        cookies[:choose_lang] = {
-                                :value => "false",
-                                :domain => ".heroku.com",
-                                :expires => 10.years.from_now
+                        cookies.permanent[:choose_lang] = {
+                                :value => false,
+                                :domain => ".votingmodule.heroku.com"
                         }
                 else
                         cookies.permanent[:choose_lang] = false
@@ -18,10 +17,9 @@ class LanguageController < ApplicationController
                 I18n.locale = :en
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
-                        cookies[:choose_lang] = {
-                                :value => "false",
-                                :domain => ".heroku.com",
-                                :expires => 10.years.from_now
+                        cookies.permanent[:choose_lang] = {
+                                :value => false,
+                                :domain => ".votingmodule.heroku.com"
                         }
                 else
                         cookies.permanent[:choose_lang] = false
@@ -33,10 +31,9 @@ class LanguageController < ApplicationController
                 I18n.locale = :nl
                 Rails.cache.write("locales_page", true)
                 if ENV['RAILS_ENV']=="production" 
-                        cookies[:choose_lang] = {
+                        cookies.permanent[:choose_lang] = {
                                 :value => "false",
-                                :domain => ".heroku.com",
-                                :expires => 10.years.from_now
+                                :domain => ".votingmodule.heroku.com"
                         }
                 else
                         cookies.permanent[:choose_lang] = false
