@@ -98,7 +98,14 @@ class ApplicationController < ActionController::Base
                         cookies[:info_active] = true
                 end
                 if cookies[:choose_lang].blank?
-                        cookies.permanent[:choose_lang] = true
+                        if ENV['RAILS_ENV']=="production" 
+                                cookies.permanent[:choose_lang] = {
+                                        :value => true,
+                                        :domain => "." + VotingModule::Application.config.action_mailer.default_url_options[:host]
+                                }
+                        else
+                                cookies.permanent[:choose_lang] = true
+                        end
                 end
         end
 
