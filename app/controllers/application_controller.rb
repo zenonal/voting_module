@@ -101,7 +101,7 @@ class ApplicationController < ActionController::Base
                         if ENV['RAILS_ENV']=="production" 
                                 cookies[:choose_lang] = {
                                         :value => "true",
-                                        :domain => "votingmodule.heroku.com",
+                                        :domain => ".heroku.com",
                                         :expires => 10.years.from_now
                                 }
                         else
