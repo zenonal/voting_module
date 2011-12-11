@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
         def set_postal_code
                 if params[:co_postal_code] && !params[:co_postal_code].blank?
                         unless ENV['RAILS_ENV']=="production" 
-                                redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
+                                redirect_to root_url(:protocol => "http", :host => "code#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
                         else
                                 all_subs = request.subdomain.split(".")
                                 if all_subs.blank? || all_subs[all_subs.size-1] != "votingmodule"
-                                        redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
+                                        redirect_to root_url(:protocol => "http", :host => "code#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
                                 elsif all_subs[all_subs.size-1] == "votingmodule"
-                                        redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{all_subs[all_subs.size-1]}.#{request.domain}#{request.port_string}")
+                                        redirect_to root_url(:protocol => "http", :host => "code#{params[:co_postal_code]}.#{all_subs[all_subs.size-1]}.#{request.domain}#{request.port_string}")
                                 end
                         end
                 elsif params[:co_postal_code] && params[:co_postal_code].blank?
@@ -66,6 +66,8 @@ class ApplicationController < ActionController::Base
                                            if i && @region_ids[i]
                                                    @subdom_level = Region.find(@region_ids[i])
                                            else
+                                                   sub = subdom.split("code")
+                                                   subdom = sub[sub.size-1]
                                                    i = @commune_codes.index subdom
                                                    if i && @commune_ids[i]
                                                            @subdom_level = Commune.find(@commune_ids[i])
