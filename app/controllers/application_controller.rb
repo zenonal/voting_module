@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
                                 redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
                         else
                                 all_subs = request.subdomain.split(".")
-                                if (all_subs[0].to_i == 0)
-                                        redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.subdomain}.#{request.domain}#{request.port_string}")
-                                else
+                                if all_subs.blank? || all_subs[all_subs.size-1] != "votingmodule"
+                                        redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{request.domain}#{request.port_string}")
+                                elsif all_subs[all_subs.size-1] == "votingmodule"
                                         redirect_to root_url(:protocol => "http", :host => "#{params[:co_postal_code]}.#{all_subs[all_subs.size-1]}.#{request.domain}#{request.port_string}")
                                 end
                         end
@@ -99,15 +99,15 @@ class ApplicationController < ActionController::Base
                 end
                 if cookies[:choose_lang].blank?
                         if ENV['RAILS_ENV']=="production" 
-                                if request.domain == "heroku"
+                                if request.domain == "heroku.com"
                                         dom = ".votingmodule.heroku.com"
                                         val = true
-                                elsif request.domain == "jegouverne"
+                                elsif request.domain == "jegouverne.be"
                                         dom = ".jegouverne.be"
                                         I18n.locale = :fr
                                         Rails.cache.write("locales_page", true)
                                         val = false
-                                elsif request.domain == "ikbestuur"
+                                elsif request.domain == "ikbestuur.be"
                                         dom = ".ikbestuur.be"
                                         I18n.locale = :nl
                                         Rails.cache.write("locales_page", true)

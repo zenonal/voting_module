@@ -61,13 +61,13 @@ class LanguageController < ApplicationController
         
         private
         def set_domain
-                if request.domain == "heroku"
+                if request.domain == "heroku.com"
                         dom = ".votingmodule.heroku.com"
                         return dom
-                elsif request.domain == "jegouverne"
+                elsif request.domain == "jegouverne.be"
                         dom = ".jegouverne.be"
                         return dom
-                elsif request.domain == "ikbestuur"
+                elsif request.domain == "ikbestuur.be"
                         dom = ".ikbestuur.be"
                         return dom
                 end
