@@ -99,12 +99,26 @@ class ApplicationController < ActionController::Base
                 end
                 if cookies[:choose_lang].blank?
                         if ENV['RAILS_ENV']=="production" 
+                                if request.domain == "heroku"
+                                        dom = ".votingmodule.heroku.com"
+                                        val = true
+                                elsif request.domain == "jegouverne"
+                                        dom = ".jegouverne.be"
+                                        I18n.locale = :fr
+                                        Rails.cache.write("locales_page", true)
+                                        val = false
+                                elsif request.domain == "ikbestuur"
+                                        dom = ".ikbestuur.be"
+                                        I18n.locale = :nl
+                                        Rails.cache.write("locales_page", true)
+                                        val = false
+                                end
                                 cookies.permanent[:choose_lang] = {
-                                        :value => true,
-                                        :domain => ".votingmodule.heroku.com"
+                                        :value => val,
+                                        :domain => dom
                                 }
                         else
-                                cookies.permanent[:choose_lang] = "blabla"
+                                cookies.permanent[:choose_lang] = true
                         end
                 end
         end

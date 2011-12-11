@@ -5,7 +5,7 @@ class LanguageController < ApplicationController
                 if ENV['RAILS_ENV']=="production" 
                         cookies.permanent[:choose_lang] = {
                                 :value => false,
-                                :domain => ".votingmodule.heroku.com"
+                                :domain => set_domain
                         }
                 else
                         cookies.permanent[:choose_lang] = false
@@ -19,7 +19,7 @@ class LanguageController < ApplicationController
                 if ENV['RAILS_ENV']=="production" 
                         cookies.permanent[:choose_lang] = {
                                 :value => false,
-                                :domain => ".votingmodule.heroku.com"
+                                :domain => set_domain
                         }
                 else
                         cookies.permanent[:choose_lang] = false
@@ -33,7 +33,7 @@ class LanguageController < ApplicationController
                 if ENV['RAILS_ENV']=="production" 
                         cookies.permanent[:choose_lang] = {
                                 :value => "false",
-                                :domain => ".votingmodule.heroku.com"
+                                :domain => set_domain
                         }
                 else
                         cookies.permanent[:choose_lang] = false
@@ -56,5 +56,20 @@ class LanguageController < ApplicationController
                         cookies[:show_intro] = true
                 end
                 redirect_to session[:jumpback] 
+        end
+        
+        
+        private
+        def set_domain
+                if request.domain == "heroku"
+                        dom = ".votingmodule.heroku.com"
+                        return dom
+                elsif request.domain == "jegouverne"
+                        dom = ".jegouverne.be"
+                        return dom
+                elsif request.domain == "ikbestuur"
+                        dom = ".ikbestuur.be"
+                        return dom
+                end
         end
 end
