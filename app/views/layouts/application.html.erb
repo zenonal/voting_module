@@ -129,6 +129,7 @@
 			</div>
 		  	<div id="sidebar-right">
 					</br>
+					<%= Rails.env['HTTP_HOST'] %>
 					<div id="user_info">
 						<h3><%= info_help('your_profile_title') %><%= t("layout.user_info") %> 
 							<% if user_signed_in? %><% if current_user.photo.blank? %>
