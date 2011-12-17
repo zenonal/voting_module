@@ -4,7 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         if ENV['RAILS_ENV'] == 'development'
                 provider :facebook, '202977543065805', '7d528a25c5c42fea923abe4cc32d02a7' 
         else
-                provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5',
+                provider :facebook, '287319927971980', 'a6f58a5519f19c3033b8d5b6b7655374',
                         {:scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
         end
   provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :domain => 'gmail.com'
