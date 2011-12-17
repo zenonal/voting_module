@@ -12,3 +12,19 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :open_id, OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
   provider :linked_in, 'm4rA1MJuUuxTjMfLVWYSReXhaf8sPQCjRPbHJCORebTuQs93BII0a25PmHQrL8oA', 'hXsbcCZe-jtpbhLVq7JvQq1wAFrxhDtt5E73FkWEqtLJJGkCJDsqPvvXDNfh-ZPO'
 end
+
+class OmniAuth::Strategies::Facebook
+  def callback_phase
+    env['REQUEST_METHOD'] = 'GET'
+    openid = Rack::Facebook.new(lambda{|env| [200,{},[]]}, @store)
+    openid.call(env)
+    @openid_response = env.delete('rack.facebook.response')
+    ActiveRecord::Base.logger.debug "###########" + @openid_response.to_yaml + "#########"
+
+    if @openid_response && @openid_response.status == :success
+      super
+    else
+      fail!(:invalid_credentials)
+    end
+  end
+end
