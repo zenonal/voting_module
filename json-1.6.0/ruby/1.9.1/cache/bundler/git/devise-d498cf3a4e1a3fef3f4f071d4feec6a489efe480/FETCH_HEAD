@@ -1,10 +1,12 @@
-c1d14d02cb908407a1ca9fb41f4388adcc82f5af		branch 'issue-email-uniqueness' of git://github.com/plataformatec/devise
-08a8d7bf51784acd9e242402118278a49809245f		branch 'master' of git://github.com/plataformatec/devise
+538c16cd00bad70ecb4ad2a3059b3db74ee925c0		branch 'adding-ci-status-to-readme' of git://github.com/plataformatec/devise
+5a245b3d55bb00d1a99b08a27255efaa122c4368		branch 'master' of git://github.com/plataformatec/devise
 efc42d7662f3eebbc199965cfd546d0360738a18		branch 'v1.0' of git://github.com/plataformatec/devise
 8e0d517cdb07e1c7326923155947706e030fc992		branch 'v1.1' of git://github.com/plataformatec/devise
 5ce5843888b827ac76ef0c4cf21c4f6e2f79fb74		branch 'v1.2' of git://github.com/plataformatec/devise
 c42a86957ae3ce5955e9da2eaf604e1e3125693e		branch 'v1.2.oauth' of git://github.com/plataformatec/devise
 9f763d082a51d5b0c50c884b044a8900faada8bf		branch 'v1.3' of git://github.com/plataformatec/devise
+04999bdca84b020181456956ce21731dedd288c7		branch 'v1.4' of git://github.com/plataformatec/devise
+fbb5c2af5c1d373bc212c1e6d2a2d3342cc3d580		branch 'v1.5' of git://github.com/plataformatec/devise
 7c67388a90afc7f356e7b3217df91400001d1043	not-for-merge	tag 'v0.7.5' of git://github.com/plataformatec/devise
 d00c31314d6dc8692ee1697c3ed6516b74672636	not-for-merge	tag 'v0.8.0' of git://github.com/plataformatec/devise
 c4764c931ab1d7a0ceacc6ac0cb6fdf6d019e97d	not-for-merge	tag 'v0.8.1' of git://github.com/plataformatec/devise
@@ -55,3 +57,12 @@ dba8f91f99dce0e102ad2e6aa78b142a92833bc3	not-for-merge	tag 'v1.4.0' of git://git
 ef4eb47d5016b710a628187e4765ac4606ed69ae	not-for-merge	tag 'v1.4.3' of git://github.com/plataformatec/devise
 071f54ac59502c42ff616b9bea2b1895d6155d64	not-for-merge	tag 'v1.4.4' of git://github.com/plataformatec/devise
 ede06b083fc7f697bbe3bc42beee8a9ee34cf430	not-for-merge	tag 'v1.4.5' of git://github.com/plataformatec/devise
+08a8d7bf51784acd9e242402118278a49809245f	not-for-merge	tag 'v1.4.6' of git://github.com/plataformatec/devise
+e4902af15a572843716aef2affab5a768cc473df	not-for-merge	tag 'v1.4.7' of git://github.com/plataformatec/devise
+c698e44d10cc1cd4a6f687ab41d3be84e0545b5a	not-for-merge	tag 'v1.4.8' of git://github.com/plataformatec/devise
+04999bdca84b020181456956ce21731dedd288c7	not-for-merge	tag 'v1.4.9' of git://github.com/plataformatec/devise
+a71319a080ca78a691152c96acda97f75bef43ad	not-for-merge	tag 'v1.5.0' of git://github.com/plataformatec/devise
+301e24c06c85e04c286daa06db9d7684a4660ff7	not-for-merge	tag 'v1.5.0.rc' of git://github.com/plataformatec/devise
+301e24c06c85e04c286daa06db9d7684a4660ff7	not-for-merge	tag 'v1.5.0.rc1' of git://github.com/plataformatec/devise
+99040535d7e13433f206fce6643c9f7d8d9347b3	not-for-merge	tag 'v1.5.1' of git://github.com/plataformatec/devise
+442beefa9b1f7d4623ded34278dc91a9d69dab24	not-for-merge	tag 'v1.5.2' of git://github.com/plataformatec/devise

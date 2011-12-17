@@ -1,0 +1,392 @@
+{<img src="https://secure.travis-ci.org/kidpollo/tanker.png" />}[https://secure.travis-ci.org/kidpollo/tanker.png]
+
+= Tanker - IndexTank integration to your favorite orm
+
+IndexTank is a great search indexing service, this gem tries to make
+that any orm stays in sync with IndexTank easily. It has a simple
+yet powerful approach to integrate IndexTank with any ORM and
+also supports pagination using {WillPaginate}[https://github.com/mislav/will_paginate] (default)
+or {Kaminari}[https://github.com/amatsuda/kaminari].
+
+Very little is needed to make it work,
+basically, all you need is that the orm instance respond to +id+, +all+, +find+ and any attributes
+you wish to index.
+
+== Installation
+    gem install tanker
+
+If you are using Rails 3 its better to add Tanker to your +GEMFILE+
+
+    gem 'tanker'
+
+And run
+
+    bundle install
+
+== Initialization
+If you're using Rails, config/initializers/tanker.rb is a good place for this:
+
+    YourAppName::Application.config.index_tank_url = 'http://:xxxxxxxxx@xxxxx.api.indextank.com'
+
+If you are not using rails you can put this somewhere before you load your models
+
+    Tanker.configuration = {:url => 'http://:xxxxxxxxx@xxxxx.api.indextank.com' }
+
+You would probably want to have fancier configuration depending on
+your environment. Be sure to copy and paste the correct url provided
+by the IndexTank Dashboard
+
+=== Pagination
+
+WillPaginate is used by default and you don't have to add any extra settings to use that. If you
+want to use Kaminari you have to add the following:
+
+    YourAppName::Application.config.index_tank_url = 'http://...'
+    YourAppName::Application.config.tanker_pagination_backend = :kaminari  
+
+or
+
+    Tanker.configuration = {:url => 'http://...', :pagination_backend => :kaminari }
+
+== Example
+    
+    class Topic < ActiveRecord::Base
+      acts_as_taggable
+      has_many :authors
+      
+      # just include the Tanker module
+      include Tanker
+      
+      # define a scope
+      scope :awesome, :conditions => {:title => 'Awesome'}
+
+      # define the index by supplying the index name and the fields to index
+      # this is the index name you create in the Index Tank dashboard
+      # you can use the same index for various models Tanker can handle
+      # indexing searching on different models with a single Index Tank index
+      tankit 'my_index' do
+        indexes :title
+        indexes :content
+        indexes :id
+        indexes :tag_list #NOTICE this is an array of Tags! Awesome!
+        indexes :category, :category => true # make attributes also be categories (facets)
+
+        # you may also dynamically retrieve field data
+        indexes :author_names do
+          authors.map {|author| author.name }
+        end
+        
+        # you cal also dynamically set categories
+        category :content_length do
+          content.length 
+        end
+
+        # to pass in a list of variables with your document,
+        # supply a hash with the variable integers as keys:
+        variables do
+          {
+            0 => authors.first.id, # these will be available in your queries
+            1 => id                # as doc.var[0] and doc.var[1]
+          }
+        end
+
+        # You may defined some server-side functions that can be
+        # referenced in your queries. They're always referenced by
+        # their integer key:
+        functions do
+          {
+            1 => '-age',
+            2 => 'doc.var[0] - doc.var[1]'
+          }
+        end
+      end
+      
+      # define the callbacks to update or delete the index
+      # these methods can be called whenever or wherever
+      # this varies between ORMs
+      after_save :update_tank_indexes
+      after_destroy :delete_tank_indexes
+
+      # Note! Will Paginate pagination, thanks mislav!
+      def self.per_page
+        5
+      end
+
+    end
+
+Create Topics
+
+    Topic.create(:title => 'Awesome Topic', :content => 'blah, blah', :tag_list => 'tag1, tag2')
+    Topic.create(:title => 'Bad Topic', :content => 'blah, blah', :tag_list => 'tag1')
+    Topic.create(:title => 'Cool Topic', :content => 'blah, blah', :tag_list => 'tag3, tag2')
+
+Search Topics
+
+    @topics = Topic.search_tank('Topic', :page => 1, :per_page => 10) # Gets 3 results!
+    @topics = Topic.search_tank('blah',  :conditions => {:tag_list => 'tag1'}) # Gets 2 results!
+    @topics = Topic.search_tank('blah',  :conditions => {:title => 'Awesome', :tag_list => 'tag1'}) # Gets 1 result!
+
+Search with scope (Only tested on ActiveRecord)
+
+    @topics = Topic.awesome.search_tank('blah') # Gets 1 result!
+    
+Search with wildcards!
+
+    @topics = Topic.search_tank('Awe*', :page => 1, :per_page => 10) # Gets 1 result!
+
+Search multiple models
+
+    @results = Tanker.search([Topic, Post], 'blah') # Gets any Topic OR Post results that match!
+
+Search with negative conditions
+
+    @topics = Topic.search_tank('keyword',  :conditions => {'tag_list' => 'tag1'}) # Gets 1 result!
+    @topics = Topic.search_tank('keyword',  :conditions => {'-id' => [5,9]}) # Ignores documents with ids of '5' or '9'
+
+Search with query variables
+
+    @topics = Topic.search_tank('keyword',  :variables => {0 => 5.6}) # Makes 5.6 available server-side as q[0]
+
+Paginate Results
+
+    <%= will_paginate @topics %> for WillPaginate 
+    <%= paginate @topics %> for Kaminari
+
+
+== Fetching attributes and snippets
+
+As of version 1.1 Tanker supports fetching attributes and snippets directly from the Index. If you use either of these search options
+your Model instances will be instanced from the attributes coming from the index not by making another trip to the database.
+
+This can represent a major speed increase for your queries but it also means that you will only have available the attributes
+you indexed in your model. There are edge cases that are not tested so please help us have this feature be super stable and
+have everyone benefit from the speed this entails.
+
+Example:
+  
+    @very_long_sting = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    Product.create(:name => @very_long_sting, :href => 'http://google.com' )
+    
+    @products = Product.search_tank('quis exercitation', :snippets => [:name], :fetch => [:href])
+    @products[0].name_snippet 
+    # => 'Ut enim ad minim veniam, <b>quis</b> nostrud <b>exercitation</b> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla' 
+    @products[0].href
+    # => 'http://google.com'
+    @products[0].any_other_attribute
+    # => nil
+
+Notice that to get the snippeted value that Index Tank sends you get it via the '_snippet' method generated on the fly.
+
+The attributes that are requested to be fetched are set as attributes as new instances of your model objects and no Database Query is executed. NEAT!
+    
+== Geospatial Search Example
+
+IndexTank and the Tanker gem support native geographic calculations. All you need is to define two document variables with your latitude and your longitude
+ 
+    class Restaurant < ActiveRecord::Base
+      include Tanker
+
+      tankit 'my_index' do
+        indexes :name
+
+        # You may define lat/lng at any variable number you like, as long
+        # as you refer to them consistently with the same integers
+        variables do
+          {
+            0 => lat
+            1 => lng
+          }
+        end
+
+        functions do
+          {
+            # This function is good for sorting your results. It will
+            # rank relevant, close results higher and irrelevant, distant results lower
+            1 => "relevance / miles(d[0], d[1], q[0], q[1])",
+
+            # This function is useful for limiting the results that your query returns.
+            # It just calculates the distance of each document in miles, which you can use
+            # in your query. Notice that we're using 0 and 1 consistently as 'lat' and 'lng'
+            2 => "miles(d[0], d[1], q[0], q[1])"
+          }
+        end
+      end
+    end
+    
+    # When searching, you need to provide a latitude and longitude in the query so that
+    # these variables are accessible on the server.
+    Restaurant.search("tasty",
+                      :var0 => 47.689948,
+                      :var1 => -122.363684,
+                      # And we'll return all results sorted by distance
+                      :function => 1)
+
+    # Or we can use just function 2 to return results in the default order, while
+    # limiting the total results to just those within 50 miles from our lat/lng:
+    Restaurant.search("tasty",
+                      :var0 => 47.689948,
+                      :var1 => -122.363684,
+                      # the following is a fancy way of saying "return all results where
+                      the result of function 2 is at least anything and less than 50"
+                      :filter_functions => {2 => [['*', 50]]})
+    # And we can combine these two function calls to return only results within 50 miles
+    # and sort them by relevance / distance:
+    Restaurant.search("tasty",
+                      :var0 => 47.689948,
+                      :var1 => -122.363684,
+                      :function => 1,
+                      :filter_functions => {2 => [['*', 50]]})
+
+== Extend your index definitions
+
+If you have a bunch of models with a lot of overlapping indexed fields,
+variables, or categories, you might want to abstract those out into a module
+that you can include and then extend in the including classes. Something like:
+
+    module TankerDefaults
+      def self.included(base)
+        base.send(:include, ::Tanker) # include the actual Tanker module
+
+        # provide a default index name
+        base.tankit 'my_index' do
+          # index some common fields
+          indexes :tag_list
+
+          # set some common variables
+          variables do
+            {
+              0 => view_count
+              1 => foo
+            }
+          end
+        end
+      end
+    end
+
+    class SuperModel
+      include TankerDefaults
+
+      # no need to respecify the index if it's the same
+      # (but you can override it)
+      tankit do
+        # `indexes :tag_list` is inherited
+        indexes :name
+        indexes :boyfriend_names do
+          boyfriends.map(&:name)
+        end
+
+        # set some more specific variables
+        variables do
+          {
+            # `0 => view_count` is inherited
+            1 => iq,                 # overwrites "foo"
+            2 => endorsements.count  # adds new variables
+          }
+        end
+      end
+    end
+
+You currently can't remove previously defined stuff, though.
+
+=== Single table inheritance
+
+If you are using tanker with STI models and want the different models to be indexed
+as the same type, you can provide the base model name with an +:as+ option to +tankit+.
+
+    module TankerPetDefaults
+      def self.included(base)
+        base.send(:include, ::Tanker)
+
+        base.tankit 'my_index', :as => 'Pet' do
+          indexes :skills
+        end
+      end
+    end
+
+    class Pet < ActiveRecord::Base
+    end
+
+    class Cat < Pet 
+      include TankerPetDefaults
+    end
+
+    class Monkey < Pet 
+      include TankerPetDefaults
+    end
+
+    # Search using the base model
+    Pet.search('stealth')
+
+== Reindex your data
+
+If you are using rails 3 there are of couple of rake tasks included in your project
+
+    rake tanker:clear_indexes
+
+This task deletes all your indexes and recreates empty indexes, if you have not created
+the indexes in the Index Tank interface this task creates them for you provided
+you have enough available indexes in your account.
+
+    rake tanker:reindex
+
+This task pushes any functions you've defined in your tankit() blocks to indextank.com
+
+    rake tanker:functions
+    
+This task re-indexes all the your models that have the Tanker module included.
+Usually you will only need a single Index Tank index but if you want to separate
+your indexes please use different index names in the tankit method call in your models
+
+To reindex just one class rather than all the classes in your application just call:
+
+    Model.tanker_reindex
+
+And if you'd like to specify a custom number of records to PUT with each call to indextank.com you may specify it as the first argument:
+
+    Model.tanker_reindex(:batch_size => 1000) # defaults to batch size of 200
+
+Or you can restrict indexing to a subset of records. This is particularly helpful for massive datasets where only a small portion of the records is useful.
+
+    Model.tanker_reindex(:batch_size => 1000, :scope => :not_deleted) # will call Model.not_deleted.all internally
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Note on testing
+
+Tanker is has a full suite of unit tests that cover configuration and the api of the library but it also inludes a battery of Integration tests! 
+These tests spec the behabiero between  Index Tank and an ActiveRecord model with a Sqlite3 Backend.
+
+If you want to run the specs you will need to provide an Index Tank Api key and user in the +spec/integration_spec_conf.rb+ file. 
+This file is ignored from the repo but you'll find an example file in the same path.
+
+== Acknowledgements
+The gem is based on a couple of projects:
+
+* {redis-textsearch}[http://github.com/nateware/redis-textsearch]
+* {mongomapper}[http://github.com/jnunemaker/mongomapper]
+* {thinkingtank}[http://github.com/flaptor/thinkingtank]
+* {will_paginate}[http://github.com/mislav/will_paginate]
+
+Kudos to this awesome projects and developers
+
+There is a growing list of colabrators to this Gem so I would briefly mention them so if you know them and use this gem buy them a beer!
+
+* {@JackDanger}[http://github.com/JackDanger]
+* {@edgarjs}[http://github.com/edgarjs]
+* {@slothbear}[http://github.com/slothbear]
+* {@dabit}[http://github.com/dabit]
+* {@coryschires}[http://github.com/coryschires]
+* {@arvida}[http://github.com/arvida]
+* {@joeljunstrom}[http://github.com/joeljunstrom]
+
+== Copyright
+
+Copyright (c) 2011 @kidpollo. See LICENSE for details.
