@@ -55,9 +55,9 @@ class AuthenticationsController < ApplicationController
                   elsif request.domain == "heroku.com"
                             request.env['omniauth.strategy'].client_id = '112773305478994'
                             request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
-                            render :text => "Setup complete.", :status => 404 
+                            
                   end
-                  render :text => request.domain
+                  render :text => "Setup complete.", :status => 404 
           end
       
   end
