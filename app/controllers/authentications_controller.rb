@@ -47,15 +47,18 @@ class AuthenticationsController < ApplicationController
           unless ENV['RAILS_ENV'] == 'development'
                   if request.domain == "jegouverne.be"
                           request.env['omniauth.strategy'].client_id = '287319927971980'
-                          request.env['omniauth.strategy'].client_secret = '14b5f11808c907a16815014f7421c344'
+                          request.env['omniauth.strategy'].client_secret = 'a6f58a5519f19c3033b8d5b6b7655374'
+                          
                   elsif request.domain == "ikbestuur.be"
                           request.env['omniauth.strategy'].client_id = '112773305478994'
                           request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
                   elsif request.domain == "heroku.com"
                             request.env['omniauth.strategy'].client_id = '112773305478994'
                             request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
+                            render :text => "Setup complete.", :status => 404 
                   end
+                  render :text => request.domain
           end
-      render :text => "Setup complete.", :status => 404 
+      
   end
 end
