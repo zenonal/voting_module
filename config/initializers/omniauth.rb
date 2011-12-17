@@ -1,20 +1,11 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   
-        fpath = "heroku.com"
         provider :twitter, '0gri1SFWIKogZJ3maGfPEQ', 'FqwS7NtvTb5H0eWttQ2w6PRtQjgLXBdzqKaBeptZQ'
         if ENV['RAILS_ENV'] == 'development'
                 provider :facebook, '202977543065805', '7d528a25c5c42fea923abe4cc32d02a7' 
         else
-                if fpath == "jegouverne.be"
-                        provider :facebook, '287319927971980', '14b5f11808c907a16815014f7421c344',
+                provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5',
                         {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-                elsif fpath == "ikbestuur.be"
-                        provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5',
-                        {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-                elsif fpath == "heroku.com"
-                        provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5',
-                        {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-                end
         end
   provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :domain => 'gmail.com'
   provider :open_id, OpenID::Store::Filesystem.new('/tmp')

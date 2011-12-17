@@ -42,4 +42,17 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = t('devise.sessions.signed_out')
     redirect_to authentications_url
   end
+  
+  def facebook_setup
+          unless ENV['RAILS_ENV'] == 'development'
+                  if request.domain == "jegouverne.be"
+                          request.env['omniauth.strategy'].client_id = '287319927971980'
+                          request.env['omniauth.strategy'].client_secret = '14b5f11808c907a16815014f7421c344'
+                  elsif request.domain == "ikbestuur.be"
+                          request.env['omniauth.strategy'].client_id = '112773305478994'
+                          request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
+                  end
+          end
+      render :text => "Setup complete.", :status => 404 
+  end
 end
