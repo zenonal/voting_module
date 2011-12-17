@@ -45,22 +45,19 @@ class AuthenticationsController < ApplicationController
   
   def facebook_setup
           unless ENV['RAILS_ENV'] == 'development'
-                  if false
                   if request.domain == "jegouverne.be"
-                          request.env['omniauth.strategy'].client_id = '287319927971980'
-                          request.env['omniauth.strategy'].client_secret = 'a6f58a5519f19c3033b8d5b6b7655374'
+                          request.env['omniauth.strategy'].consumer_key = '287319927971980'
+                          request.env['omniauth.strategy'].consumer_secret = 'a6f58a5519f19c3033b8d5b6b7655374'
                           
                   elsif request.domain == "ikbestuur.be"
-                          request.env['omniauth.strategy'].client_id = '112773305478994'
-                          request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
+                          request.env['omniauth.strategy'].consumer_key = '112773305478994'
+                          request.env['omniauth.strategy'].consumer_secret = 'dca7a2c9691e5f513909f89efbd190a5'
                   elsif request.domain == "heroku.com"
-                            request.env['omniauth.strategy'].client_id = '112773305478994'
-                            request.env['omniauth.strategy'].client_secret = 'dca7a2c9691e5f513909f89efbd190a5'
+                            request.env['omniauth.strategy'].consumer_key = '112773305478994'
+                            request.env['omniauth.strategy'].consumer_secret = 'dca7a2c9691e5f513909f89efbd190a5'
                             
                   end
-                 end
-                  #render :text => "Setup complete.", :status => 404 
-                  render :text => request.env['omniauth.strategy'].client_id + request.env['omniauth.strategy'].client_secret
+                  render :text => "Setup complete.", :status => 404 
           end
       
   end
