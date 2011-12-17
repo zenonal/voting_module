@@ -46,7 +46,7 @@ class AuthenticationsController < ApplicationController
   def facebook_setup
           unless ENV['RAILS_ENV'] == 'development'
                   if request.domain == "jegouverne.be"
-                          request.env['omniauth.strategy'].client_id = '287319927971980'
+                          request.env['omniauth.strategy'].client_id = '28731992797198'
                           request.env['omniauth.strategy'].client_secret = '14b5f11808c907a16815014f7421c344'
                   elsif request.domain == "ikbestuur.be"
                           request.env['omniauth.strategy'].client_id = '112773305478994'
