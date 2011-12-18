@@ -250,23 +250,19 @@ class ApplicationController < ActionController::Base
                 (cookies[:tutorial] == "true") ? "tutorial" : "application"
         end
         def jumpback
-                tmp = session[:jumpcurrent].split('?')
+                tmp = session[:jumpcurrent]
+                if !tmp.blank?
+                        tmp = tmp.split('?')
+                else
+                        tmp = '/'
+                end
                 session[:jumpback_no_locale] = tmp[0]
                 session[:jumpback] = session[:jumpcurrent]
                 unless params[:controller] == "Language" || params[:controller] == "Authentication"
                         session[:jumpcurrent] = request.request_uri
                 end
         end  
-        def jumpback_no_locale
-                tmp = session[:jumpcurrent]
-                tmp = tmp.split('?')
-                tmp = tmp[0]
-                session[:jumpback] = tmp
-                unless params[:controller] == "Language" || params[:controller] == "Authentication"
-                        session[:jumpcurrent] = request.request_uri
-                end
-        end
-
+        
         def rescue_action_in_public(exception)
                 case exception
                 when ::ActionController::RedirectBackError
