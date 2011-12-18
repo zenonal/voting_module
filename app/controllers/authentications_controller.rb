@@ -58,6 +58,10 @@ class AuthenticationsController < ApplicationController
                             
                   end
                   render :text => "Setup complete.", :status => 404 
+          else
+                 request.env['omniauth.strategy'].client_id = '202977543065805'
+                 request.env['omniauth.strategy'].client_secret = '7d528a25c5c42fea923abe4cc32d02a7'
+                 render :text => "Setup complete.", :status => 404 
           end
       
   end
