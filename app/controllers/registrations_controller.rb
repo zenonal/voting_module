@@ -14,6 +14,11 @@ def create
         if @user.uploadedPhoto?
                 @user.update_attribute(:photo, @user.uploadedPhoto.url("small"))
         end
+        
+        rescue ActiveRecord::RecordNotUnique
+           flash[:notice] = "You can't have multiple logins. Try to sign in with your usual account"
+           redirect_to root_url
+        end
 end
 
   def update
