@@ -1,0 +1,18 @@
+nl:
+  candidates:
+    title: 'Lijst van onze kandidaten'
+    show: "toon"
+    edit: 'wijzig'
+    destroy: 'wis'
+    new: 'nieuwe kandidaat'
+    back: 'terug'
+    votes: 'stem'
+    approval: 'goedgekeurd'
+    index: 'Lijst van kandidatens'
+    level4: "Kandidaat op Federaal niveau"
+    level3: "Kandidaat op Regionaal niveau"
+    level2: "Kandidaat op Provinciaal niveau"
+    level1: "Kandidaat op Gemeentelijk niveau"
+    candidate_for: "Kandidaat voor "
+    created: 'Kandidatuur opgenomen.'
+    updated: 'De kandidatuur is aangepast.'
