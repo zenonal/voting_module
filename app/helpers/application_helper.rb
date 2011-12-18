@@ -69,7 +69,7 @@ module ApplicationHelper
                 unless ENV['RAILS_ENV']=="production" 
                         return root_url(:protocol => "http", :host => "#{request.domain}#{request.port_string}")
                 else
-                        return root_url(:protocol => "https", :host => "#{request.subdomain}#{request.domain}#{request.port_string}")
+                        return root_url(:protocol => "https", :host => "#{request.domain}#{request.port_string}")
                 end
         end
 
