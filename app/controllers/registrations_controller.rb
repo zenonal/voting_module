@@ -16,7 +16,7 @@ def create
         end
         
         rescue ActiveRecord::RecordNotUnique
-           flash[:notice] = "You can't have multiple logins. Try to sign in with your usual account"
+           flash[:notice] = t('errors.messages.record_not_unique')
            redirect_to root_url
         end
 end
