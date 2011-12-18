@@ -4,6 +4,7 @@ fr:
       not_found: "n'a pas été trouvé"
       already_confirmed: "a déjà été confirmé"
       not_locked: "n'a pas été bloqué"
+      not_unique: "Vous ne pouvez pas avoir plusieurs identifications différentes. Utilisez la méthode d'identification que vous utilisez d'habitude."
 
   devise:
     back: 'retour'
