@@ -1,0 +1,31 @@
+<div id="intro_text">
+	<h3>Une vraie démocratie en Belgique?</h3></br></br>
+		<p>
+			<table style="line-height: 150%;"><tr>
+				<td style="text-align: justify;text-justify: newspaper;position: relative; top:-40px;">
+				Dans une <a href='http://fr.wikipedia.org/wiki/Démocratie_directe' target='_blank'>vraie démocratie</a>, le peuple décide lui-même comment gouverner son pays au lieu de <a href='http://www.dailymotion.com/video/xhm97w_entretien-avec-etienne-chouard-3-le-systeme-electif_news' target='_blank'> reléguer son pouvoir aux professionnels de la politique</a>,  <a href='http://fr.wikipedia.org/wiki/Particratie' target='_blank'> qui ne défendent pas réellement ses intérêts </a> et sans garder <a href='http://fr.wikipedia.org/wiki/Mandat_impératif#Gouvernements_f.C3.A9d.C3.A9raux' target='_blank'> aucun moyen de contrôle.</a>
+			        <a href='http://www.democratie-directe.be' target='_blank'>Notre objectif </a> est d'apporter <a href='http://fr.wikipedia.org/wiki/Démocratie_directe' target='_blank'> la démocratie directe </a> en Belgique, 
+			        c'est à dire, <a href='http://fr.wikipedia.org/wiki/Initiative_populaire' target='_blank'> l'initiative populaire </a><%= info_help('info_initiative') %> et le <a href='http://fr.wikipedia.org/wiki/Référendum' target='_blank'>  référendum initié par le peuple </a><%= info_help('info_referendum') %>.
+			        Cela signifie que les citoyens votent directement sur les propositions de loi et proposent eux-même de nouvelles lois. Ce n'est pas du tout impossible, <a href='http://fr.wikipedia.org/wiki/Démocratie_directe#Les_D.C3.A9mocraties_directes_dans_le_monde' target='_blank'> étant donné que ce système existe déjà dans certains pays </a>, parfois depuis plus de 150 ans.</br></br>
+			        			
+			De plus, <a href='http://www.democratie-directe.be' target='_blank'> nous </a> proposons ce qu'on appelle <a href='http://www.communitywiki.org/cw/DémocratieLiquide' target='_blank'> la démocratie liquide </a> (voir image à droite).</br>
+			
+			        Ce système permet à un voteur de choisir à tout moment entre le contrôle total sur la politique du pays (voter sur chaque proposition de loi) et le confort de la délégation de pouvoir (le délégué qu'il choisit vote à sa place quand il le désire). Le point crucial est que le voteur peut reprendre la main et voter lui-même sur les lois ou changer de délégué <strong> à tout moment.</strong>
+			<br><br>
+						Pour accomplir celà, nous avons créé un parti politique sans programme: c'est vous qui l'écrivez! 
+						Vous pouvez trouver plus d'info <%= link_to "ici", "http://www.democratie-directe.be" %> à ce sujet.<br>
+						Nous avons aussi une <%= link_to "liste de candidats", candidates_path %> pour les prochaines élections communales (2012). 
+						Nous avons besoin de plus de candidats. N'hésitez pas à<a href="mailto:zenon.alex@gmail.com">
+						nous contacter! </a> <br><br>
+						
+						
+						
+				</td>
+				<td><img src='/images/frliquid.jpg' height='500' width='500'/></td>
+			</tr></table>
+			
+		
+			        Ce site web est un exemple de comment notre parti pourrait fonctionner. Mais c'est aussi une opportunité pour proposer des idées et débattre entre citoyens. Vous pouvez explorer ce site web et utiliser les aides (les petits 'i' rouge) pour apprendre comment il fonctionne. Vous pouvez aussi regarder cette vidéo  <%= link_to "vidéo tutoriel", tutorial_video_url %>.</br>
+		</p>
+		
+	</div>

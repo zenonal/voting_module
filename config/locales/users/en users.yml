@@ -1,0 +1,35 @@
+en:
+  users: 
+    edit: "Edit user"
+    votes: "private vote"
+    add_postal_code: "provide your postal code"
+    delegates: 
+      index: "Index of delegates"
+      active_delegate: "Currently active as delegate"
+      create_delegate: "Become a delegate!"
+      created: "You are now a delegate."
+      destroy_delegate: "Cancel your delegate mandate"
+      vote: "vote as a delegate"
+      votes: "votes as a delegate"
+      comments: "comments"
+      point_of_view: "Posted view"
+      ref: "On"
+      confirm: "Are you sure? All your votes will become public!"
+      confirm_new: "Are you sure you want to delegate your votes to this user?"
+      choose: "Choose as delegate"
+      delegated_vote: "user delegated their vote to this delegate"
+      delegated_votes: "users delegated their vote to this delegate"
+      votes_delegated: "Votes currently delegated to "
+      votes_as_a_delegate: "Votes cast as a delegate"
+      already_added: 'User already added as delegate.'
+      delegation_successful: 'You have now delegated your votes to this user.'
+      choose_delegate: 'Choose a delegate'
+      change_delegate: 'Choose another delegate'
+      cancel_delegate: 'Cancel your delegation to this user'
+      current_delegate: 'Your votes are currently delegated to this user'
+      no_vote: "No vote as a delegate on this bill yet"
+      to_oneself: "You can't delegate your votes to yourself"
+      initiatives: "Submitted initiatives"
+      amendments: "Submitted amendments to other proposals"
+      not_active: "This user is no longer a delegate"
+      
