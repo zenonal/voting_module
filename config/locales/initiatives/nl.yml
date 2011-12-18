@@ -1,0 +1,66 @@
+nl:
+  initiatives:
+    title: 'Lijst van wetsvoorstellen van burgers'
+    title2: "Initiatieven"
+    show: "toon"
+    edit: 'wijzig'
+    edit_init: 'wijzig initiatief'
+    destroy: 'verwijder'
+    new: 'nieuw initiatief'
+    new_category: 'nieuwe categorie'
+    back: 'terug'
+    votes: 'stem'
+    approval: 'goedgekeurd'
+    author: 'Auteur'
+    private_vote: 'Stem'
+    delegate_vote: 'stem als volmachthouder'
+    delegate_no_vote: "Op dit wetsvoorstel is nog niet gestemd"
+    no_delegate: "U hebt geen volmachthouder"
+    vote_of_delegate: 'Uw volmachthouder heeft dit wetsvoorstel gerangschikt'
+    want_vote: 'Als u hierover wenst te stemmen'
+    want_initiative: 'Als u uw eigen initiatief wenst in te dienen'
+    want_amendment: 'Als u uw eigen amendement wenst in te dienen'
+    want_argument: 'Indien u uw eigen inzichten wenst in te dienen'
+    index_categories: 'Lijst van categorieën'
+    categories: 'Lijst van categorieën: kies een categorie'
+    created_at: 'Opgesteld op '
+    valid: 'Dit initiatief is gevalideerd'
+    validate: 'Valideer dit initiatief'
+    current_validations: "Aantal validaties"
+    index: "Toon de lijst van gevalideerde initiatieven"
+    index_drafts: "Toon de lijst van initiatieven die gevalideerd kunnen worden"
+    index_title: "Lijst van initiatieven"
+    index_drafts_title: "Lijst van initiatieven die gevalideerd kunnen worden"
+    preview: "preview"
+    modify: "wijzig"
+    level4: "Initiatief op federaal niveau"
+    level3: "Initiatief op regionaal niveau"
+    level2: "Initiatief op provinciaal niveau"
+    level1: "Initiatief op gemeentelijk niveau"
+    options: "Opties"
+    geographical_level: "Geografisch niveau"
+    current_phase: "Initiatieven momenteel in faze"
+    current_category: "Initiatieven behorende tot de categorie"
+    no_geo: "Er is geen geografische beperking"
+    phase0: "validatie mislukt"
+    phase1: "wordt momenteel aangepast"
+    phase2: "wordt momenteel gevalideerd"
+    phase3: "open voor amendementen"
+    phase4: "wordt momenteel ter stemming gelegd"
+    phase5: "reeds gestemd"
+    phase_default: "Alle fazen na de aanpassing fase"
+    category_default: "Alle categorieën "
+    wins: "Winnaar van de stemming"
+    lost: "Deze wetsontwerpen werden verworpen"
+    results: "Resultaten van de stemming"
+    all_defeated: "Alle wetsontwerpen zijn verworpen"
+    no_winner: "Geen van deze wetsontwerpen voldeden aan de criteria"
+    created: "Uw initiatief is ingediend"
+    updated: "Uw initiatief is aangepast"
+    destroyed: "Uw initiatief is verwijderd"
+    no_bill: "Er zijn momenteel geen initiatieven die overeenstemmen met de door u opgegeven criteria "
+    not_allowed: "Een volmachthouder kan zijn stem niet wijzigen na meer dan een dag na het indienen ervan"
+    search: "Zoeken in de initiatieven en amendementen:"
+    
+    form:
+      photo: "Kies een afbeelding voor uw voorstel"

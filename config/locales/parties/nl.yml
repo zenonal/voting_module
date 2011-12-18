@@ -1,0 +1,11 @@
+nl:
+  parties:
+    title: 'Lijst van de partijen'
+    show: "toon"
+    edit: 'wijzig'
+    destroy: 'verwijder'
+    new: 'nieuwe partij'
+    back: 'terug'
+    votes: 'stemmen'
+    approval: 'goedgekeurd'
+    index: 'Lijst van partijen'

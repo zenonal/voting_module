@@ -1,0 +1,11 @@
+nl:
+  politicians:
+    title: 'Lijst van onze politici'
+    show: "toon"
+    edit: 'wijzig'
+    destroy: 'verwijder'
+    new: 'niewe politieker'
+    back: 'terug'
+    votes: 'stem'
+    approval: 'goedgekeurd'
+    index: 'Lijst van politici'

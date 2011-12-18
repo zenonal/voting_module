@@ -1,0 +1,11 @@
+nl:
+  mailer:
+    bill_created: "ingediend"
+    your_bill: "Uw wetsontwerp"
+    was_created: "is succesvol ingediend"
+    you_can_access: "U heeft steeds toegang tot dit wetsontwerp "
+    reminder: "denk er aan dat u slechts één week hebt om wijzigingen aan te brengen aan uw wetsontwerp. Nadien kan het niet meer gewijzigd worden!"
+    thanks: "Bedankt voor het gebruiken van de Stem Module van de Burgers voor Directe Democratie"
+    link: "link"
+    
+    delegation_cancelled: "de volmacht is geschrapt"

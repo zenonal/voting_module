@@ -1,0 +1,60 @@
+nl:
+  referendums:
+    title: 'Lijst van voorstellen van politici'
+    title2: "Referenda"
+    show: "toon"
+    edit: 'wijzig'
+    destroy: 'verwijder'
+    new: 'nieuw referendum'
+    new_category: 'nieuwe categorie'
+    back: 'terug'
+    votes: 'stem'
+    approval: 'goedgekeurd'
+    author: 'Auteur'
+    private_vote: 'Uw stem'
+    delegate_vote: 'Uw stem als volmachthouder'
+    delegate_no_vote: "Nog geen stemming op dit wetsvoorstel"
+    no_delegate: "U hebt geen volmachthouder"
+    vote_of_delegate: 'Uw volmachthouder heeft gestemd'
+    want_vote: 'Indien u zelf op dit voorstel wil stemmen'
+    want_amendment: 'Indien u zelf een amendement wenst in te dienen'
+    want_argument: 'Indien u uw mening wenst in te dienen'
+    want_referendum: 'Indien u zelf uw referendum wenst in te dienen'
+    index_categories: 'Lijst van categorieën'
+    created_at: 'Gemaakt op'
+    index_title: 'Lijst van referenda'
+    current_validations: "Aantal lopende validaties"
+    level4: "Referendum op federaal niveau"
+    level3: "Referendum op regionaal niveau"
+    level2: "Referendum op provinciaal niveau"
+    level1: "Referendum op gemeentelijk niveau"
+    options: "Opties"
+    geographical_level: "Geografisch niveau"
+    current_phase: "Referenda in de fase"
+    current_category: "Referenda behorende tot de categorie"
+    no_geo: "Er is geen geografische beperking"
+    phase0: "validatie niet geslaagd"
+    phase1: "wordt momenteel gewijzigd"
+    phase2: "wordt momenteel gevalideerd"
+    phase3: "Kan geamendeerd worden"
+    phase4: "Wordt momenteel op gestemd"
+    phase5: "Reeds gestemd"
+    phase_default: "Alle fazen na de wijziging"
+    category_default: "Alle categorieën"
+    wins: "Winnaar van de stemming"
+    lost: "Deze voorstellen zijn afgewezen"
+    results: "Resultaten van de stemming"
+    all_defeated: "Alle voorstellen zijn afgewezen"
+    no_winner: "Geen enkele van de voorstellen voldeden aan de criteria"
+    categories: 'Lijst van categorieën: kies een categorie'
+    preview: "preview"
+    politician: "Kies de politici die dit wetsontwerp hebben ingediend"
+    created: "Uw referendum is ingediend"
+    updated: "Uw referendum is aangepast"
+    destroyed: "Uw referendum is verwijderd"
+    no_bill: "Er zijn momenteel geen referenda die voldoen aan de door u opgegeven criteria"
+    not_allowed: "Een volmachthouder kan zijn stem niet meer wijzigen een dag na het indienen ervan"
+    search: "Zoek in de referenda en de amendementen:"
+    
+    politicians:
+      title: "Lijst van voorstellen"

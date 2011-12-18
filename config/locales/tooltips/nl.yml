@@ -1,0 +1,18 @@
+nl:
+  tooltips:
+    layout: 
+      languages: "<p>Deze iconen laten u toe van taal te veranderen.</p>
+                <p>Opgelet! Veranderen van taal wijzigt ook de wetsontwerpen waar u toegang toe krijgt: enkel de wetsontwerpen in uw taal (of vertaald) zijn direct zichtbaar voor u.</p>"
+      user_info: "Hier hebt u toegang tot de informatie op uw profiel."
+      featured: "Hier kan u voorbeelden zien van willekeurig uitgekozen wetsvoorstellen."
+      index_options: "Klik hier om wetsontwerpen te selecteren volgens geselecteerde criteria."
+      bill_phase: "Hier ziet u de status van het wetsontwerp: in wijziging, open voor validatie, open voor stemming,... enz..."
+      bill_level: "Hier ziet u de geografische omschrijving van het wetsontwerp; gemeentelijk, provinciaal, regionaal of federaal."
+      bill_results: "Hier ziet u een kort overzicht van het stemresultaat voor dit wetsontwerp."
+              
+    vote_yes: "Stemmen voor het wetsontwerp"
+    vote_no: "Stemmen tegen het wetsontwerp"
+    choose_delegate: "Indien u zelf niet wenst te stemmen op elk wetsontwerp klik hier om een volmachthouder aan te duiden."
+    submit_amendment: "Is u van mening dat dit wetsontwerp kan verbeterd worden? Klik hier om uw eigen versie voor te stellen!"
+    submit_argument: "Laat uw ideeën kennen."
+    rank_matrix: "Elke waarde vertegenwoordigd het aantal keren dat het 'groene' wetsontwerp beter geacht wordt dan het 'rode' wetsontwerp in paarsgewijze vergelijking"
