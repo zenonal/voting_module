@@ -68,12 +68,12 @@ class AuthenticationsController < ApplicationController
   def twitter_setup
             unless ENV['RAILS_ENV'] == 'development'
                     if request.domain == "jegouverne.be"
-                            request.env['omniauth.strategy'].client_id = 'ObhPkGCJXF4QjYPEBqbA'
-                            request.env['omniauth.strategy'].client_secret = 'CjOWc4g4uTFOjUAEDeGSUzMa1HV8B0vutsY2WhKLmkI'
+                            request.env['omniauth.strategy'].consumer_key = 'ObhPkGCJXF4QjYPEBqbA'
+                            request.env['omniauth.strategy'].consumer_secret = 'CjOWc4g4uTFOjUAEDeGSUzMa1HV8B0vutsY2WhKLmkI'
 
                     elsif request.domain == "ikbestuur.be"
-                            request.env['omniauth.strategy'].client_id = 'tRZ0xhSBLUJeVYrNVmKHg'
-                            request.env['omniauth.strategy'].client_secret = 'UyyzfmQgPchbBorlbhDsP0FtOJno2oKWVGmcEABB3eA'
+                            request.env['omniauth.strategy'].consumer_key = 'tRZ0xhSBLUJeVYrNVmKHg'
+                            request.env['omniauth.strategy'].consumer_secret = 'UyyzfmQgPchbBorlbhDsP0FtOJno2oKWVGmcEABB3eA'
                     end
                     render :text => "Setup complete.", :status => 404 
             end
@@ -81,12 +81,12 @@ class AuthenticationsController < ApplicationController
     def linkedin_setup
             unless ENV['RAILS_ENV'] == 'development'
                         if request.domain == "jegouverne.be"
-                                request.env['omniauth.strategy'].client_id = 'wn09b4ip1mth'
-                                request.env['omniauth.strategy'].client_secret = 'lwUvn9smnqEBAkHc'
+                                request.env['omniauth.strategy'].consumer_key = 'wn09b4ip1mth'
+                                request.env['omniauth.strategy'].consumer_secret = 'lwUvn9smnqEBAkHc'
 
                         elsif request.domain == "ikbestuur.be"
-                                request.env['omniauth.strategy'].client_id = '8xh06kps8p52'
-                                request.env['omniauth.strategy'].client_secret = 'KmyqdbdZvHuHNhwy'
+                                request.env['omniauth.strategy'].consumer_key = '8xh06kps8p52'
+                                request.env['omniauth.strategy'].consumer_secret = 'KmyqdbdZvHuHNhwy'
                         end
                         render :text => "Setup complete.", :status => 404 
                 end
