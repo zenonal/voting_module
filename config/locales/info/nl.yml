@@ -12,14 +12,13 @@ nl:
     referendum_menu: "Bekijk en stem op een wetsvoorstel van politici"
     info_menu: "Meer info over ons project"
     tutorial_menu: "Video's over de praktische werking"
-    your_profile_title: "Hier kunt u inloggen en een overzicht bekijken van persoonlijke informatie. </br>
-    Klik op de links voor meer informatie of om uw persoonlijke gegevens te wijzigen."
+    your_profile_title: "Hier kunt u inloggen en een overzicht bekijken van persoonlijke informatie. </br>  Klik op de links voor meer informatie of om uw persoonlijke gegevens te wijzigen."
     featured_title: "Voorbeelden van wetsvoorstellen willekeurig voor u gekozen."
     options: "Filter de wetsvoorstellen geografisch, volgens categorie of hun ontwikkelingsfase"
     category: "Bepaal het domein tot dewelke de wetsvoorstellen behoren(b.v. economie, landbouw, enz...)."
     geography: "Bepaal het geografisch gebied van het wetsontwerp (gemeentelijk, provinciaal, Regionaal federaal).</br>
-
-        Als u een subdomein naam gebruikt zoals b.v. http://bruxelles.votingmodule.heroku.com dan zal het geografisch gebied automatisch "Brussel" zijn en u kan dit hier niet wijzigen. Als u toegang wenst tot wetsontwerpen van andere regio's dan kunt u een andere subdomein naam gebruiken (b.v. http://antwerpen.votingmodule.heroku.com) of zonder vermelding van subdomein (b.v. http://votingmodule.heroku.com)."
+        Als u een subdomein naam gebruikt zoals b.v. http://bruxelles.votingmodule.heroku.com dan zal het geografisch gebied automatisch 'Brussel' zijn en u kan dit hier niet wijzigen. 
+        Als u toegang wenst tot wetsontwerpen van andere regio's dan kunt u een andere subdomein naam gebruiken (b.v. http://antwerpen.votingmodule.heroku.com) of zonder vermelding van subdomein (b.v. http://votingmodule.heroku.com)."
     phase: "Bepaal de huidige ontwikkeling fase van het wetsontwerp:
             <ul><li>wordt momenteel gewijzigd: dit wetsontwerp wordt momenteel gewijzigd door de indiener</li>
             <li>wordt momenteel gevalideerd: dit wetsontwerp wordt momenteel gevalideerd door andere gebruikers. Het wetsontwerp moet gesteund worden door een minimum aantal gebruikers om naar de volgende fase te kunnen gaan.</li>
@@ -39,56 +38,58 @@ nl:
         Zal dit percentage op zich niet bepalend zijn voor het al dan niet aanvaarden van het wetsontwerp."
     average_ranking: "Dit toont hoe het wetsontwerp gemiddeld gewaardeerd werd in verhouding tot de andere wetsvoorstellen. Hoe hoger de score, des te beter de waardering tegenover de andere wetsontwerpen."
     rank_matrix: "Dit is een overzicht van de resultaten dat aangeeft met hoeveel stemmen elk wetsontwerp hoger gewaardeerd was dan de andere wetsontwerpen.</br>
-    Uit deze resultaten tabel wordt het voorstel met de meeste voorkeur berekend met de zogenaamde <ahref='http://en.wikipedia.org/w/index.php?title=Condorcet_method&oldid=454655093'>Condorcet methode</a>."
+        Uit deze resultaten tabel wordt het voorstel met de meeste voorkeur berekend met de zogenaamde <ahref='http://en.wikipedia.org/w/index.php?title=Condorcet_method&oldid=454655093'>Condorcet methode</a>."
     delegates_rankings: "Dit toont hoe elke volmachthouder stemde op dit wetsontwerp. Een volmachthouder is een burger die u gekozen hebt om u te vetegenwoordigen. </br>
         In dit geval stemt hij in uw plaats elke keer dat hij stemt op een wetsontwerp. U kan op elk ogenblik van volmachthouder veranderen of zelf stemmen als u dat wenst. </br>
         U kan ook uzelf voorstellen als volmachthouder. </br>Klik op uw gebruiker naam in de rechtse bovenhoek voor meer informatie."
     private_rankings: "Dit is de lijst van alle stemmen op dit wetsontwerp. </br>
-    Dit geeft de gebruikers de gelegenheid om na te gaan dat hun stem geteld is zonder echter de identiteit van de stemmers weer te geven."
+        Dit geeft de gebruikers de gelegenheid om na te gaan dat hun stem geteld is zonder echter de identiteit van de stemmers weer te geven."
     
     amendments_title: "Hier kunt u de alternatieve voorstellen van andere gebruikers zien. </br></br>
-    Zoals de andere wetsontwerpen moeten deze voorstellen gevalideerd worden. Zij moeten dus gesteund worden door voldoende stemgerechtigden.</br>
-    Voorstellen die nog onvoldoende steun hebben vind u onder 'Deze alternatieven zijn nog niet gevalideerd' Indien deze voorstellen u bevallen kunt u ze valideren.</br></br>
-    U kan ook zelf alternatieven voorstellen. Dit kan slechts gedurende een beperkte periode nadat het originele wetsontwerp gevalideerd is en voorafgaand aan de stemming!</br>  
-    Bij de stemming kunnen alle voorstellen naar voorkeur gerangschikt worden met inbegrip van het originele voorstel.</br>
-    Het winnende wetsontwerp is dat voorstel dat het meeste voorkeur geniet boven alle andere(Condorcet methode)."
+        Zoals de andere wetsontwerpen moeten deze voorstellen gevalideerd worden. Zij moeten dus gesteund worden door voldoende stemgerechtigden.</br>
+        Voorstellen die nog onvoldoende steun hebben vind u onder 'Deze alternatieven zijn nog niet gevalideerd' Indien deze voorstellen u bevallen kunt u ze valideren.</br></br>
+        U kan ook zelf alternatieven voorstellen. Dit kan slechts gedurende een beperkte periode nadat het originele wetsontwerp gevalideerd is en voorafgaand aan de stemming!</br>  
+        Bij de stemming kunnen alle voorstellen naar voorkeur gerangschikt worden met inbegrip van het originele voorstel.</br>
+        Het winnende wetsontwerp is dat voorstel dat het meeste voorkeur geniet boven alle andere(Condorcet methode)."
     
     argument_title: "Hier kunt u een relatief ruime commentaar leveren over wat u denkt over het wetsontwerp. Het is een soort mini krant.</br>
-    Om een overzicht te behouden hebben we de voor en tegen argumenten gescheiden.</br></br> Deze argumenten kunnen niet gecommentarieerd worden. "
+        Om een overzicht te behouden hebben we de voor en tegen argumenten gescheiden.</br></br> Deze argumenten kunnen niet gecommentarieerd worden. "
     
     discussion_title: "Deze sectie is voor debat. Hier kunt ge uw commentaar posten en antwoorden op de commentaar van anderen. </br>
-    Gelieve enkel commentaar te posten in verband met de discussie. Gelieve spam te melden."
+        Gelieve enkel commentaar te posten in verband met de discussie. Gelieve spam te melden."
     
-    delegation_title: "Deze sectie geeft informatie over mandatering. Deze mandatering of volmacht is de kern van "Fluid democracy".</br>
-    U kan iedereen die u wenst aanduiden als volmachthouder. Eens u een volmachthouder hebt aangeduid dan zal deze persoon ook in uw plaats stemmen.</br></br>
-    Anderzijds, wat het grote verschil is met de representatieve democratie, kan u ten allen tijde beslissen om zelf te stemmen op elk wetsontwerp dat u wenst.</br>
-    Als u beslist om zelf te stemmen dan vervalt de stem van uw volmachthouder. </br></br>Ook belangrijk is dat u steeds kan veranderen van volmachthouder als u dat wenst! </br>
-    Ook kan u uzelf voorstellen als volmachthouder. U hoeft enkel op de knop te drukken."
+    delegation_title: "Deze sectie geeft informatie over mandatering. Deze mandatering of volmacht is de kern van 'Fluid democracy'.</br>
+        U kan iedereen die u wenst aanduiden als volmachthouder. Eens u een volmachthouder hebt aangeduid dan zal deze persoon ook in uw plaats stemmen.</br></br>
+        Anderzijds, wat het grote verschil is met de representatieve democratie, kan u ten allen tijde beslissen om zelf te stemmen op elk wetsontwerp dat u wenst.</br>
+        Als u beslist om zelf te stemmen dan vervalt de stem van uw volmachthouder. </br></br>Ook belangrijk is dat u steeds kan veranderen van volmachthouder als u dat wenst! </br>
+        Ook kan u uzelf voorstellen als volmachthouder. U hoeft enkel op de knop te drukken."
     
     info_initiative: "Een initiatief is een wetsvoorstel voorgesteld door een burger of groep van burgers. Iedereen kan een initiatief lanceren. <br>
-    Eens ingediend moet het initiatief een aantal handtekeningen verzamelen om het maatschappelijk draagvlak aan te tonen. In dat geval wordt het ter stemming gelegd. 
-    Als het een gemeentelijke wet betreft dan kunnen enkel de burgers van de gemeente stemmen, als het een federale wet is kunnen alle landgenoten stemmen."    
+        Eens ingediend moet het initiatief een aantal handtekeningen verzamelen om het maatschappelijk draagvlak aan te tonen. In dat geval wordt het ter stemming gelegd. 
+        Als het een gemeentelijke wet betreft dan kunnen enkel de burgers van de gemeente stemmen, als het een federale wet is kunnen alle landgenoten stemmen."    
     
     info_referendum: "Een referendum is een stemming die georganiseerd wordt om een wet die door politici voorgesteld wordt goed of af te keuren.
-    Er zijn twee cruciale eigenschappen aan het referendum dat er een echt democratisch instrument van maken voor de burgers. <br>
-    Het referendum moet bindend zijn, ttz. Het resultaat is wetgevend. Niemand kan het afwijzen (uitgezonderd de burgers zelf door bij voorbeeld een initiatief). 
-    Het referendum moet door de burgers opgestart zijn. In vele landen beslissen de politici over het al dan niet houden van een referendum. Op deze wijze wordt de macht van de politici in de hand gewerkt. Dit in tegenstelling met door burgers opgestartte referenda waar de burgers een werkelijk tegengewicht kunnen vormen voor de politici."
+        Er zijn twee cruciale eigenschappen aan het referendum dat er een echt democratisch instrument van maken voor de burgers. <br>
+        Het referendum moet bindend zijn, ttz. Het resultaat is wetgevend. Niemand kan het afwijzen (uitgezonderd de burgers zelf door bij voorbeeld een initiatief). 
+        Het referendum moet door de burgers opgestart zijn. In vele landen beslissen de politici over het al dan niet houden van een referendum. Op deze wijze wordt de macht van de politici in de hand gewerkt. 
+        Dit in tegenstelling met door burgers opgestartte referenda waar de burgers een werkelijk tegengewicht kunnen vormen voor de politici."
     
     info_future_website: "Op de professionele website, in tegenstelling met deze demo, zullen drie belangrijke verschillen gerealiseerd worden. 
-    <ul>
-        <li>U zal uzelf kunnen identificeren met de elektronische ID kaart, die zal instaan voor een beveiligde identificatie.</li> 
-        <li>De geheimhouding van de stemming zal beveiligd worden door het <a href='http://heliosvoting.org/'>Helios</a> stem systeem</li>
-        <li>De beslissingen zullen bindend zijn voor het partijstandpunt!</li>
-    </ul>"
+        <ul>
+                <li>U zal uzelf kunnen identificeren met de elektronische ID kaart, die zal instaan voor een beveiligde identificatie.</li> 
+                <li>De geheimhouding van de stemming zal beveiligd worden door het <a href='http://heliosvoting.org/'>Helios</a> stem systeem</li>
+                <li>De beslissingen zullen bindend zijn voor het partijstandpunt!</li>
+        </ul>"
     
     info_candidate: "Onze kandidaten zullen deelnemen aan de gemeentelijke verkiezingen van 2012. Indien zij verkozen worden dienen zij zich te verbinden om de wensen van de burgers te respecteren:
-    Zij zullen in de gemeenteraad stemmen <em>, zonder onderscheid,</em> in overeenstemming met de resultaten van de stemmingen op de website. In andere woorden, u beslist en zij vertegenwoordigen u.</br></br>
-    Indien u mee wil helpen aan dit initiatief en u zich kandidaat wil stellen voor de verkiezingen <a href='mailto:zenon.alex@gmail.com'> stel uzelf dan voor! </a> In de toekomst zullen kandidaten aangeduid worden door loting  
-    <a href= 'http://en.wikipedia.org/wiki/Sortition'>sortition</a> 
-    maar voor de eerste deelname aan de verkiezingen zullen de eerste personendie een geldige kandidatuur indienen op de kieslijsten staan. 
-    Verkozenen die tijdens de legislatuur goed presteren kunnen op een verkiesbare plaats bevestigd worden door de leden."
+            Zij zullen in de gemeenteraad stemmen <em>, zonder onderscheid,</em> in overeenstemming met de resultaten van de stemmingen op de website. In andere woorden, u beslist en zij vertegenwoordigen u.</br></br>
+            Indien u mee wil helpen aan dit initiatief en u zich kandidaat wil stellen voor de verkiezingen <a href='mailto:zenon.alex@gmail.com'> stel uzelf dan voor! </a> In de toekomst zullen kandidaten aangeduid worden door loting  
+            <a href= 'http://en.wikipedia.org/wiki/Sortition'>sortition</a> 
+            maar voor de eerste deelname aan de verkiezingen zullen de eerste personendie een geldige kandidatuur indienen op de kieslijsten staan. 
+            Verkozenen die tijdens de legislatuur goed presteren kunnen op een verkiesbare plaats bevestigd worden door de leden."
     
-    commune_search: "Vul hier de postcode in van de gemeente waarvan u geïnformeerd wenst te worden zonder dat u andere opties moet aanduiden. U zal dan enkel de wetsvoorstellen van deze gemeente te zien krijgen samen met de federale voorstellen."
+    commune_search: "Vul hier de postcode in van de gemeente waarvan u geïnformeerd wenst te worden zonder dat u andere opties moet aanduiden. 
+        U zal dan enkel de wetsvoorstellen van deze gemeente te zien krijgen samen met de federale voorstellen."
     private_vote_num: "aantal stemmen dat u zelf hebt uitgebracht."
     public_vote_num: "Aantal stemmen dat u als volmachthouder hebt uitgebracht."
     submitted_bill_num: "Aantal wetsontwerpen die u hebt ingezonden. Dit kunnen zowel initiatieven zijn als amendementen op andere voorstellen."
