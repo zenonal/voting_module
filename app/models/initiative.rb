@@ -1,5 +1,5 @@
 class Initiative < ActiveRecord::Base
-  validates_length_of :content_en, :content_fr, :content_nl, :maximum=>4000
+  validates_length_of :content_en, :content_fr, :content_nl, :maximum=>50000
   acts_as_voteable
   if Rails.env=="development"
     has_attached_file :photo, :styles => {:small => "150x150>", :thumbnail => "80x80>"}
