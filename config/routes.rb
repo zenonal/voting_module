@@ -5,6 +5,7 @@ VotingModule::Application.routes.draw do
   match '/auth/:provider/callback' => 'authentications#create'
   #match '/auth/facebook', :to => 'authentications#facebook_setup'
   match '/auth/facebook/setup', :to => 'authentications#facebook_setup'
+  match '/auth/twitter/setup', :to => 'authentications#twitter_setup'
 
   devise_for :users, :controllers => {:registrations => 'registrations'} 
   
