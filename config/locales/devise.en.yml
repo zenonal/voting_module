@@ -4,7 +4,6 @@ en:
       not_found: "not found"
       already_confirmed: "was already confirmed"
       not_locked: "was not locked"
-      not_unique: "You can't have multiple logins. Try to sign in with your usual account"
 
   devise:
     back: 'back'
