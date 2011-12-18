@@ -1,0 +1,52 @@
+nl:
+  amendments:
+    title: 'Lijst van alternatieven voorgesteld door andere burgers'
+    show: "Toon"
+    edit: 'wijzig'
+    edit_init: 'wijzig het alternatief'
+    destroy: 'verwijder'
+    new: 'Uw eigen alternatief voor dit wetsontwerp'
+    new_category: 'nieuwe categorie'
+    back: 'terug naar het origineel wetsontwerp'
+    votes: 'stem'
+    approval: 'goedgekeurd'
+    author: 'Auteur'
+    private_vote: 'Uw stem'
+    delegate_vote: 'Uw stem als volmachthouder'
+    delegate_no_vote: "Nog geen stem voor dit wetsontwerp voor het ogenblik"
+    no_delegate: "U hebt geen volmachthouder"
+    vote_of_delegate: 'Uw volmachthouder heeft gestemd'
+    want_vote: 'Indien u zelf wenst te stemmen over dit onderwerp'
+    index_categories: 'Index van categorieën'
+    categories: 'Lijst van categorieën: kies een categorie'
+    created_at: 'Gemaakt op '
+    valid: 'Dit alternatief is gevalideerd'
+    validate: 'Valideer dit initiatief'
+    current_validations: "Aantal gevalideerde initiatieven"
+    index: "Toon mij de lijst van gevalideerde alternatieven"
+    index_drafts: "Toon mij de lijst van alternatieven die wachten op validatie"
+    index_title: "Lijst van gevalideerde initiatieven"
+    index_drafts_title: "Lijst van alternatieven die wachten op validatie"
+    preview: "preview"
+    modify: "wijzig"
+    validated: "Deze alternatieven zijn reeds gevalideerd"
+    not_validated: "Deze alternatieven zijn nog niet gevalideerd"
+    none: "Voor dit wetsontwerp zijn er momenteel geen alternatieven voorgesteld"
+    original_bill: "Origineel wetsontwerp"
+    phase0: "validatie mislukt"
+    phase1: "wordt momenteel bewerkt"
+    phase2: "wordt momenteel gevalideerd"
+    phase3: "wacht momenteel op het aflopen van de periode dat een amendement kan voorgesteld worden"
+    phase4: "wordt momenteel gestemd"
+    phase5: "reeds gestemd"
+    phase_default: "bewerking periode voorbij"
+    wins: "Winnaar van de stemming"
+    lost: "Deze wetsontwerpen zijn verworpen"
+    results: "Resultaten van de stemming"
+    all_defeated: "Al deze wetsontwerpen zijn verworpen"
+    no_winner: "Geen van deze wetsontwerpen beantwoorden aan de criteria om aanvaard te worden"
+    created: "Uw amendement is aanvaard"
+    updated: "Uw amendement is aangepast"
+    destroyed: "Uw amendement is verwijderd"
+    not_destroyed: "U hebt geen toestemming om dit amendement te verwijderen"
+    

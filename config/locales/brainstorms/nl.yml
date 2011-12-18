@@ -1,0 +1,27 @@
+nl:
+  brainstorms: 
+    idea_succesful: "Uw voorstel is toegevoegd!"
+    idea_unsuccesful: "Sorry er is een fout opgetreden, gelieve opnieuw te proberen."
+    propose_ideas: "Uw voorstel"
+    new_idea: "U kan uw voorstel anoniem posten(max 500 karakters)."
+    add_idea: "Post uw voorstel"
+    ready: "Uw voorstellen zijn geformuleerd zoals u het wenst"
+    next_stage: "Ga verder"
+    previous_stage: "Ga terug naar mijn voorstellen"
+    or: "of"
+    back: "Ga terug naar het originele wetsvoorstel"
+    select_title: "Bekijk en stem over voorstellen van andere gebruikers"
+    no_ideas: "Sorry maar u bent de eerste die een voorstel lanceert. Er zijn geen andere voorstellen."
+    delete: "Verwijderen"
+    delete_it: "Verwijderen!"
+    vote_ready: "U hebt gestemd op alle voorstellen?"
+    all_index: "Lijst van alle voorstellen over dit wetsontwerp"
+    middle_stage: "Terug"
+    not_own_bill: "U kan niet stemmen op uw eigen voorstel"
+    brainstorm: "Brainstorm"
+    for: "voor"
+    best_idea: "Beste brainstorm idee voor dit wetsontwerp"
+    own_idea: "Dit is een idee van uzelf. Als u denkt dat het een dubbel is druk "
+    index_title: "Brainstorms momenteel aan de gang"
+
+

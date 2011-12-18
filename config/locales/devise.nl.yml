@@ -1,0 +1,80 @@
+nl:
+  errors:
+    messages:
+      not_found: "niet gevonden"
+      already_confirmed: "reeds bevestigd"
+      not_locked: "was niet geblokkeerd"
+      not_unique: "Je kunt niet verschillende identificaties hebben. Gebruik maken van de methode van identificatie dat u normaal gebruikt."
+
+  devise:
+    back: 'terug'
+    confirm: 'bevestig'  
+    failure:
+      unauthenticated: 'U moet inloggen of inschrijven alvorens verder te gaan.'
+      unconfirmed: 'U moet uw account bevestigen alvorens verder te gaan.'
+      locked: 'Uw account is geblokkeerd.'
+      invalid: 'Ongeldig e-mail adres of paswoord.'
+      invalid_token: 'Ongeldige identificatie.'
+      timeout: 'Uw sessie is verlopen, gelieve terug in te loggen om verder te gaan.'
+      inactive: 'Uw account is nog niet geactiveerd.'
+    sessions:
+      intro: 'Gelieve uw e-mail adres en paswoord hieronder in te vullen'
+      title: 'Aanmelden'
+      email: 'e-mail'
+      pwd: 'paswoord'
+      pwd_conf: 'paswoord bevestigen'
+      remember: 'mij herinneren'
+      signed_in: 'Succesvol aangemeld.'
+      signed_out: Succesvol afgemeld.'
+    passwords:
+      title: 'Wijzig uw paswoord'
+      forgot: 'Paswoord vergeten?'    
+      pwd: 'paswoord'
+      pwd_conf: 'paswoord bevestigen'
+      submit: 'Zend mij instructies om het paswoord terug in te stellen'
+      send_instructions: 'Een e-mail met instructies om uw paswoord terug in te stellen wordt verzonden binnen enkele minuten.'
+      updated: 'Uw paswoord is gewijzigd. U kan nu inloggen.'
+    confirmations:
+      title: 'Verzenden van bevestigingen'    
+      no_instructions: "Hebt u geen mail ontvangen met instructies om uw account te bevestigen?"
+      send_instructions: 'Binnen enkele minuten ontvangt u een e-mail met instructies om uw account te bevestigen.'
+      confirmed: 'Uw account is bevestigd. U bent nu ingeschreven.'
+    registrations:
+      intro: 'Vul hieronder uw gegevens in'
+      edit: 'Uw account'    
+      title: 'Inschrijven'    
+      email: 'e-mail'
+      photo: "Foto"
+      name: 'naam'
+      pwd: 'paswoord'
+      pwd_conf: 'paswoord bevestigen'
+      pwd_i: "niet invullen indien u niets wenst te wijzigen"
+      cur_pwd: 'huidig paswoord'
+      cur_pwd_i: 'gelieve uw huidig paswoord te geven om uw wijzigingen te bevestigen'
+      update: 'Vernieuwen'
+      cancel: 'Schrap mijn account'
+      unhappy: 'Niet tevreden?'
+      signed_up: 'U bent ingeschreven.'
+      updated: 'U hebt uw account gewijzigd.'
+      destroyed: 'Daag! Uw account is verwijderd. We hopen u snel terug te zien.'
+      update_name_text: 'Gelieve de naam te kiezen die u op deze website wenst te gebruiken.'
+      postalcode: "Uw postcode"
+    unlocks:
+      title: 'Gelieve instructies te zenden om mijn account terug vrij te geven'
+      no_instruction: "Hebt u geen gegevens ontvangen om uw account terug vrij te geven?"    
+      send_instructions: 'Binnen enkele minuten ontvangt u een e-mail met instructies om uw account terug vrij te geven.'
+      unlocked: 'Uw account is terug vrijgegeven. U kan nu terug inschrijven.'
+    mailer:
+      welcome: 'Welkom'   
+      hello: 'Hello'
+      confirm_text: 'U kan uw account bevestigen met de link onderaan te activeren' 
+      confirm_button: 'Bevestig mijn account'
+      confirmation_instructions: 'Bevestiging instructies'
+      reset_text: 'Iemand heft gevraagd om uw paswoord te vervangen, u kan dit doen via de link hieronder.'
+      reset_button: 'Verander mijn paswoord'
+      reset_text2_html:   "<p>Als u geen wijziging hebt aangevraagd gelieve dan deze mail te negeren.</p><p>Uw paswoord kan niet veranderen tenzij via de link hierboven en uzelf een nieuw paswoord opgeeft.</p>"
+      reset_password_instructions: 'Reset paswoord instructies'
+      unlock_text_html: "<p>Uw account is geblokkeerd wegens een abnormaal aantal mislukte pogingen om in te loggen.</p><p>Klik op de onderstaande link om uw account te deblokkeren:</p>"
+      unlock_button: 'Deblokkeer mijn account'
+      unlock_instructions: 'Deblokkeer instructies'
+
