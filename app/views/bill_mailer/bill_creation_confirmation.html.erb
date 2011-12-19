@@ -1,4 +1,10 @@
-<p><%= @user.displayName %>,</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<p><%= @user.displayName %>,</p>
 
 <p><%= t('mailer.your_bill') %> "<%= eval("@bill.name_#{I18n.locale}") %>" <%= t('mailer.was_created') %></p>
 
@@ -7,3 +13,5 @@
 <p><%= t('mailer.reminder') %></p>
 
 <p><%= t('mailer.thanks') %></p>
+</body>
+</html>

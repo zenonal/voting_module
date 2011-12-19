@@ -1,0 +1,5 @@
+<%= @user.displayName %>,
+<%= t('mailer.your_bill') %> "<%= eval("@bill.name_#{I18n.locale}") %>" <%= t('mailer.was_created') %>
+<%= t('mailer.you_can_access') %>: <%= link_to t("mailer.link"), eval("#{@bill.class.name.downcase}_url(@bill)") %>
+<%= t('mailer.reminder') %>
+<%= t('mailer.thanks') %>
