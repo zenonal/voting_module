@@ -108,7 +108,6 @@ class Referendum < ActiveRecord::Base
 
         scope :all_not_validated, where(["validated = ?", false])
 
-        
         def validation_threshold
                 t = MIN_VALIDATION_THRESHOLD
                 start = self.created_at
