@@ -298,4 +298,14 @@ class ReferendumsController < ApplicationController
      redirect_to(@referendum)
   end
   
+  def validate
+      @ref = Referendum.find(params[:id])
+      if @ref.current_phase == 2
+        unless !@ref.validations.find_by_user_id(current_user.id).nil?
+          Validation.create(:user_id => current_user.id, :validable_type => "Referendum",:validable_id => @ref.id)
+        end
+      end
+      redirect_to(@ref)
+    end
+  
 end

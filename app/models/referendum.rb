@@ -145,11 +145,11 @@ class Referendum < ActiveRecord::Base
         end
 
         def editing_time_elapsed
-                time_elapsed
+                BILL_EDITING_DURATION+time_elapsed
         end
 
         def validating_time_elapsed
-                time_elapsed-BILL_EDITING_DURATION
+                editing_time_elapsed-BILL_EDITING_DURATION
         end
 
         def amending_time_elapsed
