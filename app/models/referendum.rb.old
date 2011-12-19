@@ -25,7 +25,7 @@ class Referendum < ActiveRecord::Base
         has_one :result, :as => :resultable, :dependent => :destroy
         has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
         belongs_to :category
-
+          
         attr_accessible :name_en, :name_fr, :name_nl, :content_en, :content_fr, :content_nl, :photo, :level, :level_code
 
         #tanker
@@ -49,9 +49,9 @@ class Referendum < ActiveRecord::Base
 
                 functions do
 
-                        {
-                                1 => 'relevance / age'
-                        }
+                {
+                        1 => 'relevance / age'
+                }
                 end
 
         end
@@ -59,24 +59,24 @@ class Referendum < ActiveRecord::Base
         after_destroy :delete_tank_indexes
 
         LEVELS = ["", I18n.t("referendums.level1"), I18n.t("referendums.level2"), I18n.t("referendums.level3"), I18n.t("referendums.level4")]
-        PHASES = ["", I18n.t("referendums.phase0"), I18n.t("referendums.phase1"),I18n.t("referendums.phase2"),I18n.t("referendums.phase3"),I18n.t("referendums.phase4"),I18n.t("referendums.phase5")]
+        PHASES = ["", , I18n.t("initiatives.phase0"), I18n.t("initiatives.phase2"),I18n.t("referendums.phase3"),I18n.t("referendums.phase4"),I18n.t("referendums.phase5")]
         
         scope :subdom_level, lambda { |subdom_level|
-                if subdom_level.class.name == "Commune"
-                        where(["level = ? AND level_code = ?", "Communal", subdom_level.postal_code])
-                else 
-                        if subdom_level.class.name == "Province"
-                                where(["level = ? AND level_code = ?", "Provincial", subdom_level.code])
-                        else
-                                if subdom_level.class.name == "Region"
-                                        where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
-                                else
-                                        nil
-                                end
-                        end
-                end 
-        }
-
+                  if subdom_level.class.name == "Commune"
+                          where(["level = ? AND level_code = ?", "Communal", subdom_level.postal_code])
+                  else 
+                          if subdom_level.class.name == "Province"
+                                  where(["level = ? AND level_code = ?", "Provincial", subdom_level.code])
+                          else
+                                  if subdom_level.class.name == "Region"
+                                          where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
+                                  else
+                                          nil
+                                  end
+                          end
+                  end 
+            }
+            
         scope :user_geographical_level, lambda { |user, level|
                 if level == 1
                         where(["level = ? AND level_code = ?", level.to_s, user.commune.postal_code])
@@ -103,71 +103,60 @@ class Referendum < ActiveRecord::Base
         }
 
         scope :not_blank, lambda { where(["content_#{I18n.locale} != ?", ""]) }
-
+        
         scope :all_validated, where(["validated = ?", true])
 
         scope :all_not_validated, where(["validated = ?", false])
 
+        attr_readonly :validations_count
+        
         
         def validation_threshold
-                t = MIN_VALIDATION_THRESHOLD
-                start = self.created_at
-                i = self
-                level = i.level
-                code = i.level_code
-                if level.nil?
-                        t = (3*(User.logged_in_between(start-2.months.ago,start).count/100.0)).ceil
-                end
-                if level == "communal"
-                        c = Commune.find_by_postal_code(code)
-                        t = (3*(User.from_commune(c).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
-                end
-                if level == "provincial"
-                        p = Province.find_by_code(code)
-                        t = (3*(User.from_province(p).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
-                end
-                if level == "regional"
-                        r = Region.find_by_code(code)
-                        t = (3*(User.from_region(r).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
-                end
-                return [MIN_VALIDATION_THRESHOLD,t].max
-        end
+            t = MIN_VALIDATION_THRESHOLD
+            start = self.created_at
+            i = self
+            level = i.level
+            code = i.level_code
+            if level.nil?
+              t = (3*(User.logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+            end
+            if level == "communal"
+              c = Commune.find_by_postal_code(code)
+              t = (3*(User.from_commune(c).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+            end
+            if level == "provincial"
+              p = Province.find_by_code(code)
+              t = (3*(User.from_province(p).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+            end
+            if level == "regional"
+              r = Region.find_by_code(code)
+              t = (3*(User.from_region(r).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+            end
+            return [MIN_VALIDATION_THRESHOLD,t].max
+          end
 
         def time_elapsed
                 Time.now()-self.created_at
         end
 
-        def time_elapsed_since_validation
-                if self.validation_date
-                        return Time.now()-self.validation_date
-                else
-                        return time_elapsed
-                end
-        end
-
         def editing_time_elapsed
                 time_elapsed
         end
-
+        
         def validating_time_elapsed
+            time_elapsed-BILL_EDITING_DURATION
+          end
+
+        def amending_time_elapsed
                 time_elapsed-BILL_EDITING_DURATION
         end
 
-        def amending_time_elapsed
-                time_elapsed_since_validation
-        end
-
         def voting_time_elapsed
-                time_elapsed_since_validation-BILL_AMENDMENTS_DURATION
+                time_elapsed-(BILL_EDITING_DURATION+BILL_AMENDMENTS_DURATION)
         end
-
 
         def time_left_to_edit
                 BILL_EDITING_DURATION-self.editing_time_elapsed
-        end
-
-        def time_left_to_validate
-                BILL_VALIDATION_DURATION-self.validating_time_elapsed
         end
 
         def time_left_to_amend
@@ -177,19 +166,19 @@ class Referendum < ActiveRecord::Base
         def time_left_to_vote
                 BILL_VOTING_DURATION-self.voting_time_elapsed
         end
+        
+        def time_elapsed_since_validation
+                if self.validation_date
+                        return Time.now()-self.validation_date
+                else
+                        return time_elapsed
+                end
+        end
 
 
         def current_phase
-                unless self.validated?
-                        if editing_time_elapsed < BILL_EDITING_DURATION
-                                return 1
-                        else
-                                if validating_time_elapsed < BILL_VALIDATION_DURATION
-                                        return 2
-                                else
-                                        return 0
-                                end
-                        end
+                if editing_time_elapsed < BILL_EDITING_DURATION
+                        return 1
                 else
                         if amending_time_elapsed < BILL_AMENDMENTS_DURATION
                                 return 3
@@ -202,7 +191,6 @@ class Referendum < ActiveRecord::Base
                         end
                 end
         end
-
 
         def self.filter_category(ar,*categ)
                 list = []
@@ -240,4 +228,7 @@ class Referendum < ActiveRecord::Base
                 Commune.find_by_postal_code(self.user.postal_code).province.region.name
         end
 
+        def validated?
+                true
+        end
 end

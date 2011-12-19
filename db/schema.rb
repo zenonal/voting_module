@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120115318) do
+ActiveRecord::Schema.define(:version => 20111219210055) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(:version => 20111120115318) do
     t.integer  "category_id"
     t.string   "level"
     t.integer  "level_code"
+    t.integer  "validations_count",  :default => 0
   end
 
   create_table "regions", :force => true do |t|
