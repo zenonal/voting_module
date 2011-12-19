@@ -7,6 +7,7 @@ authorization do
     has_permission_on [:initiatives, :referendums, :amendments, :comments, :arguments, :users, :politicians, :candidates, :parties, :categories, :ideas], :to => [:index, :show, :new, :create, :edit, :update, :destroy]
     has_permission_on [:initiatives, :referendums, :amendments, :ideas], :to => [:aye,:nay, :vote, :ranking, :show_results]
     has_permission_on [:initiatives, :amendments], :to => [:validate, :index_drafts]
+    has_permission_on [:referendums], :to => [:validate]
     has_permission_on :user, :to => [:show]
     has_permission_on :arguments, :to => [:aye,:nay,:exclude_argument,:edit, :update,:destroy]
     has_permission_on :comments, :to => [:reply_to_comment, :create_reply,:exclude_comment,:edit, :update,:destroy]
@@ -25,7 +26,7 @@ authorization do
           if_attribute :user_id => is { user.id }
         end
         has_permission_on [:initiatives, :amendments], :to => [:index, :index_drafts, :show, :aye,:nay, :vote, :ranking, :show_results]
-        has_permission_on [:initiatives, :amendments], :to => [:validate] do
+        has_permission_on [:initiatives, :amendments, :referendums], :to => [:validate] do
           if_attribute :user_id => is_not { user.id }
         end
         has_permission_on [:users, :ideas], :to => [:edit, :update,:destroy] do
