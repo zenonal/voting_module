@@ -1,0 +1,113 @@
+nl:
+  tutorial:
+    title: "Tutorial"
+    pages:
+      homepage: "<p>Welcome to the voting module!</p>
+                <p>This little window is here to provide you valuable information to start using this website.
+                You can deactivate it at anytime by clicking on the TUTORIAL link in the main menu.</p>
+                <p>The objective of this website is twofold: allowing you to vote on propositions of 
+                laws or policies recently put forth by our politicians, and allowing you to submit your own proposals and vote on
+                proposals of other citizens.</p>
+                <p>Please feel free to explore this website, vote and share your ideas!</p>"
+    
+    user:
+      show: "<p>Here you can see all the public activity of users. Public activity includes initiatives, amendments and points 
+                of views that have been posted. It does not include the private votes of course.</p>
+            <p>If this is the profile of a user that has chosen to become a delegate, you will be able to see how this user
+             voted as a delegate on all the proposals. You can then choose to delegate your votes to this user if you want to.
+            By doing that, you won't have to vote on each proposal anymore. Each time the delegate will vote, 
+            you will vote automatically the same. <br/> Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
+            You can also cancel your delegation or change your delegate at any time. Finally, you can also choose to become a delegate yourself.
+            </p>"    
+    
+    initiatives:
+        index: "<p>Here you can see all the initiatives recently proposed by other citizens.
+                  <br />You can extend or narrow down the selection of initiatives that are shown here by clicking on the \"options\" button.</p>
+                <p>Click on one of the proposals to see the details and vote.</p>"
+               
+        show: "<p>Here you have all the details on one of the proposals recently submitted by another citizen.</p>
+                <p>A citizen initiative will pass successively through 5 stages:
+                <p>The first stage is the editing stage, during which the authors of the bill 
+                have one week to edit the content of the bill until it suits them. Other users can leave messages to help them improve their draft.</p>
+                <p>The second stage is the validation stage. During this period, users can validate the bill by clicking on the checkmark on the left of this page. 
+                Once the validation threshold is reached (3% of the currently active users), the bill passes to the next phase. If the bill does not
+                reach validation in 2 weeks, it is eliminated.</p>
+                <p>The third stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
+                <p>During the fourth stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p>
+                <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
+        vote: "<p>This page allows you to vote on the bill.</p>
+                <p>Drag and drop the bills that you don't like in the red box.</p>
+                <p>Drag and drop the bills that you do like in the green box.</p>
+                <p>Inside each box, the bills must be sorted in order of your preference.</p>"
+        show_results: "<p>This page shows you the result of the vote on this bill.</p>
+                        <p>Because it is based on ranking, the procedure used to determine who wins the vote is a little more complicated than just counting the number of votes...</p>
+                        <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a>. 
+                        Briefly, it determines which of the bills wins against all the other ones in one-to-one matches.</p>
+                        <p>To allow anyone to double check that we picked the winner correctly, we provide a detail of all the results.</p>
+                        <p>For info, we also indicate the percentage of approval and the average ranking for each bill, even though
+                        these values are not directly user to reach a decision.</p>"
+      
+    referendums:
+      index: "<p>Here you can see all the propositions recently put forth by politicians.
+              <p>Click on one of them to see the details and vote.</p>"
+    
+      show: "<p>Here you have all the details on one of the proposals recently put forth by politicians.
+                <p>A referendum will pass successively through 3 stages:
+                <p>The first stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
+                <p>During the third stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
+                <p>Finally, when the voting period is over, the results of the vote are shown.</p><br />
+                <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
+                
+      vote: "<p>This page allows you to vote on the bill.</p>
+                        <p>Drag and drop the bills that you don't like in the red box.</p>
+                        <p>Drag and drop the bills that you do like in the green box.</p>
+                        <p>Inside each box, the bills must be sorted in order of your preference.</p>"
+      
+      show_results: "<p>This page shows you the result of the vote on this bill.</p>
+                                <p>Because it is based on ranking, the procedure used to determine who wins the vote is a little more complicated than just counting the number of votes...</p>
+                                <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a>. 
+                                Briefly, it determines which of the bills wins against all the other ones in one-to-one matches.</p>
+                                <p>To allow anyone to double check that we picked the winner correctly, we provide a detail of all the results.</p>
+                                <p>For info, we also indicate the percentage of approval and the average ranking for each bill, even though
+                                these values are not directly user to reach a decision.</p>"
+                                
+    amendments:
+  
+       show: "<p>Here you have all the details on one of the proposals recently put forth by politicians.
+              <p>A referendum will pass successively through 3 stages:
+              <p>The first stage is the amendment phase. During this phase, other users can propose alternative bills, called amendments. </p>
+              <p>During the third stage, you can (at last) vote on the bill and rank it in comparison to all the other proposed amendments. </p>
+              <p>Finally, when the voting period is over, the results of the vote are shown.</p><br />
+              <p>Oh and something else... You can also participate in a brainstorm on this bill! </p>"
+              
+       vote: "<p>This page allows you to vote on the bill.</p>
+                      <p>Drag and drop the bills that you don't like in the red box.</p>
+                      <p>Drag and drop the bills that you do like in the green box.</p>
+                      <p>Inside each box, the bills must be sorted in order of your preference.</p>"
+    
+       show_results: "<p>This page shows you the result of the vote on this bill.</p>
+                              <p>Because it is based on ranking, the procedure used to determine who wins the vote is a little more complicated than just counting the number of votes...</p>
+                              <p>It is based on the so-called <a href='http://en.wikipedia.org/wiki/Schulze_method'>'Schulze method'</a>. 
+                              Briefly, it determines which of the bills wins against all the other ones in one-to-one matches.</p>
+                              <p>To allow anyone to double check that we picked the winner correctly, we provide a detail of all the results.</p>
+                              <p>For info, we also indicate the percentage of approval and the average ranking for each bill, even though
+                              these values are not directly user to reach a decision.</p>"
+                              
+             
+    delegates:
+      index: "<p>This is a list of all the users that have chosen to become a delegate. 
+                That means that you can delegate your votes to them.</p>
+                <p>If you do that, you don't have to vote on each proposal 
+                anymore. Each time the delegate will vote, you will vote automatically the same. <br/>
+                Of course if you decide to vote yourself, your own vote overrides the one from your delegate.<br/>
+                You can also change your delegate at any time.</p><p> Give it a try...</p>"
+                
+    authentications: 
+      index: "Here you can login by using either one of the featured social networks or by using a standard password-based method."
+      
+    ideas:
+      index: "<p>Welcome to the brainstorm!</p>
+                <p>Here you can submit anonymously your ideas regarding the bill. Try to propose ideas that either clarify the problem
+                that the bill is trying to solve or represent potential solutions to this problem.</p>
+                Then you will have the opportunity to see the ideas of other users and to vote on them."
