@@ -89,9 +89,13 @@
 			<%= link_to t(:delete_bill_str), bill, :method => :delete, :confirm => t('layout.delete_bill'), :class => "button" %>
 		<% end %>
 	<% end %>
-	
-	<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=235019189864862&amp;xfbml=1"></script><fb:like href='<%= url_for(bill) %>' send="true" width="450" show_faces="true" action="recommend" font="tahoma"></fb:like>
-	
+	<% if request.domain == "jegouverne.be" %>
+		<div class="fb-like" data-href="https://jegouverne.be" data-send="true" data-width="450" data-show-faces="true" data-action="recommend"></div>
+	<% elsif request.domain == "ikbestuur.be" %>
+		<div class="fb-like" data-href="https://ikbestuur.be" data-send="true" data-width="450" data-show-faces="true" data-action="recommend"></div>
+	<% elsif request.domain == "heroku.com" %>
+		<div class="fb-like" data-href="https://votingmodule.heroku.com" data-send="true" data-width="450" data-show-faces="true" data-action="recommend"></div>
+	<% end %>
 </div>
 </div>
 
