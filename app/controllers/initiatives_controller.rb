@@ -90,7 +90,7 @@ class InitiativesController < ApplicationController
     if @initiative && verify_recaptcha()
       flash.delete(:recaptcha_error)
       if params[:category] && !params[:category].empty?
-          @initiative.category = Category.find_by_name_en(params[:category])
+          @initiative.category = eval("Category.find_by_name_#{I18n.locale}(params[:category])")
       end
       
       @initiative.user = current_user
@@ -136,7 +136,7 @@ class InitiativesController < ApplicationController
                 params[:initiative].delete :photo
         end
         u = @initiative.update_attributes(params[:initiative])
-        @initiative.update_attribute(:category, Category.find_by_name_en(params[:category]))
+        @initiative.update_attribute(:category, eval("Category.find_by_name_#{I18n.locale}(params[:category])"))
 
         l=true
         if @initiative.level == "1"

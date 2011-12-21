@@ -94,7 +94,7 @@ class ReferendumsController < ApplicationController
           end
         end
         if params[:category] && !params[:category].empty?
-                @referendum.category = Category.find_by_name_en(params[:category])
+                @referendum.category = eval("Category.find_by_name_#{I18n.locale}(params[:category])")
         end
 
         if @referendum.level == "1"
@@ -144,7 +144,7 @@ class ReferendumsController < ApplicationController
            params[:referendum].delete :photo
         end
         u = @referendum.update_attributes(params[:referendum])
-        @referendum.update_attribute(:category, Category.find_by_name_en(params[:category]))
+        @referendum.update_attribute(:category, eval("Category.find_by_name_#{I18n.locale}(params[:category])"))
         @referendum.authorships = []
         for p in Politician.all
           if params[p.name]
