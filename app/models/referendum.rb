@@ -207,7 +207,7 @@ class Referendum < ActiveRecord::Base
                 list = []
                 ar.each do |a|
                         for cat in categ
-                                if eval("a.category.name_#{I18n.locale}") == cat
+                                if !a.category.blank? && eval("a.category.name_#{I18n.locale}") == cat
                                         list << a
                                 end
                         end
