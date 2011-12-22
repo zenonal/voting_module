@@ -26,7 +26,11 @@ module ApplicationHelper
                 output += "</div>"
         end
         def title(page_title, show_title = true)
-                content_for(:title) { t('layout.page_title') + ' - ' + page_title.to_s }
+                if page_title
+                        content_for(:title) { t('layout.page_title') + ' - ' + page_title.to_s }
+                else
+                        content_for(:title) { t('layout.page_title') }
+                end
                 if show_title
                         raw "<h2>#{page_title}</h2>"
                 end
