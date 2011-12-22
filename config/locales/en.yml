@@ -52,7 +52,7 @@ en:
     perm_denied: "Sorry, you are not allowed to access that page. Don't forget to sign in!"
     recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
   layout:
-      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>."
+      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> for a new political party without agenda participating to the 2012 communal elections."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
       sign_out: 'Sign out'
@@ -111,6 +111,7 @@ en:
       <a href='mailto:zenon.alex@gmail.com'> Contact us! </a>"
       head_title: "DIGITAL DIRECT DEMOCRAC"
       intro_title: "DIGITAL DIRECT DEMOCRACY"
+      page_title: "Digital Direct Democracy: A real democracy in Belgium?"
       intro_close: "To close, click the Close button or hit the ESC key."
       intro_checkbox: "Check this box if you don't want this intro to show again."
       intro_close_button: "Close"
