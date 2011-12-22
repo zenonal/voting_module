@@ -26,7 +26,7 @@
 	<% if bill.current_phase == 2 %>
 		<div id="bill-time">
 			<div id="time-spacer"></div>
-			<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_validate %></div><div class="passed_time"><%= bill.validating_time_elapsed %></div></div>
+			<div class="time_chart"><div class="remaining_time"><%= bill.time_left_to_validate %></div><div class="passed_time"><%= bill.validating_time_elapsed %></div></div><%= info_help('validation_help') %>
 			<div id="time-text">
 				<%= humanize_duration(bill.time_left_to_validate) %> <%= t(:left_to_validate)%>
 			</div>

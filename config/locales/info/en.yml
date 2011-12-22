@@ -97,4 +97,8 @@ en:
     submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."
     comments_num: "Number of comments you posted."
     points_of_view_num: "Number of points of view you posted."
-    
+    validation_help: "All the bills are not systematically voted on. They first need to gather a certain amount of social support. This support is evaluated by means
+        of validations. If you think a bill should be voted on, just click on the validate button. </br>
+        As soon as the criterion has been met (3% of the electorate in principle, but on this website, it is 3% of the users in the corresponding geographical level)
+        , the bill goes to the next stage. </br>
+        This is true also for referendum. When referendum are place on the website, they need first to be validated before they can be voted on."
