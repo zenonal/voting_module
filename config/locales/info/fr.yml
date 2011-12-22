@@ -108,3 +108,8 @@ fr:
     submitted_bill_num: "Nombre de propositions soumises (propositions originales ou propositions alternatives)"
     comments_num: "Nombre de commentaires postés"
     points_of_view_num: "Nombre de points de vue postés"
+    validation_help: "Toutes les propositions ne sont pas systématiquement votées. Elles doivent d'abord accumuler un certain niveau de support. Ce support est évalué
+        par l'intermédiaire des validations. Si vous pensez qu'une proposition doit être votée, cliquez sur le bouton de validation. </br>
+        Dès que le seuil est atteint (en principe 3% de l'électorat, mais sur ce site, 3% des utilisateurs dans la région géographique correspondante), 
+        la proposition passe à l'étape suivante. </br>
+        C'est également valable pour les référendums. Lorsqu'un référendum est placé sur le site, il doit d'abord être validé avant de pouvoir être voté."
