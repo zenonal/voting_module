@@ -54,6 +54,7 @@ border-image:url("/images/border.png") 4 round;
 // To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
 
+@include font-face("HeadTitles", font-files("aller_bd-webfont.ttf", truetype));
 @include font-face("Subtitles", font-files("colabreg-webfont.ttf", truetype));
 @include font-face("Titles", font-files("bebas-webfont.ttf", truetype));
 @include font-face("SubSubtitles", font-files("miso-webfont.ttf", truetype));
@@ -88,6 +89,12 @@ h2 {
 	font-family: "Titles", helvetica;
 	letter-spacing:3px;
 	color: #703;
+}
+
+h1 {
+	font-family: "HeadTitles", helvetica;
+	font-size: 32px;
+	color: #547;
 }
 
 .beige_text {

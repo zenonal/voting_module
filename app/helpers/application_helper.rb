@@ -32,7 +32,7 @@ module ApplicationHelper
                         content_for(:title) { t('layout.page_title') }
                 end
                 if show_title
-                        raw "<h2>#{page_title}</h2>"
+                        raw "<h1>#{page_title}</h1>"
                 end
         end
 
