@@ -1,5 +1,5 @@
 class BillMailer < ActionMailer::Base
-  default :from => "info@VotingModule.be"
+  default :from => "info@jegouverne.be"
  
     def bill_creation_confirmation(user,bill)
       @user = user

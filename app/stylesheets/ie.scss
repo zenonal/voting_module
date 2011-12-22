@@ -6,6 +6,62 @@
 //Recommended Blueprint configuration with scoping and semantic layout:
 body.bp {
   @include blueprint-ie(true);
+
+
+a.button {
+background-color: #888;
+border: 1px solid #aaa;
+text-decoration: none;
+padding: 5px;
+}
+
+a:hover.button {
+position: relative;
+padding-top: 7px;
+padding-bottom: 3px;
+}
+
+
+#menu {
+font-family: helvetica;
+position: relative;
+background-color: #666;
+top: -15px;
+left: 5px;
+height: 25px;
+@include column($blueprint-grid-columns,true); 
+border-bottom: 1px solid #888;
+	a {
+		text-align: center;
+		text-decoration: none;
+		padding: 0px;
+		margin: 0px;
+		#menu-item {
+			@include column(ceil($blueprint-grid-columns/4)); 
+			padding: 0px;
+			padding-top: 3px;
+			margin: 0px;
+ 			#menu-title {
+				font-style: normal;
+				display:inline;
+				font-size: 16px;
+				text-decoration: none;
+				color: white;
+			}
+		}
+	}
+	a:hover {
+		#menu-item {
+			color: #ddf;
+		}
+	}
+	.selected_item {
+		background-color: #444;
+	}
+}
+
+
+
   // Note: Blueprint centers text to fix IE6 container centering.
   // This means all your texts will be centered under all version of IE by default.
   // If your container does not have the .container class, don't forget to restore
