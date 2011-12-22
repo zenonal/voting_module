@@ -53,6 +53,7 @@ en:
     recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
   layout:
       keywords: "democracy, direct, communal elections, Belgium, politics"
+      description: "Website of a new political party for the 2012 Belgian elections whose agenda is defined by the citizens and whose objective is Direct Democracy"
       CFDD: "Citizens for Direct Democracy"
       preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>: a new political party for the 2012 Belgian elections whose agenda is defined by the citizens."
       sign_in_phrase: 'Signed in as'

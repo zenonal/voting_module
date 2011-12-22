@@ -82,6 +82,7 @@ fr:
     recaptcha_error: "Vous n'avez pas entré les deux mots de sécurité correctement. Essayez à nouveau."
   layout:
     keywords: "démocratie, directe, élections communales, Belgique, politique"
+    description: "Sit web d'un nouveau parti politique pour les élections communales 2012 en Belgique, dont le programme est défini par les citoyens et dont l'objectif est la démocratie directe"
     CFDD: "Citoyens pour la Démocratie Directe"
     preinfo: "Un projet de <a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a>: un nouveau parti politique participant aux élections communales 2012 en Belgique et dont le programme est défini par les citoyens."
     sign_in_phrase: 'Identification: '
