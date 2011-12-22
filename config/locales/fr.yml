@@ -81,6 +81,8 @@ fr:
     perm_denied: "Désolé mais vous ne pouvez pas accéder à cette page. N'oubliez pas de vous identifier!"
     recaptcha_error: "Vous n'avez pas entré les deux mots de sécurité correctement. Essayez à nouveau."
   layout:
+    keywords: "démocratie, directe, élections communales, Belgique, politique"
+    CFDD: "Citoyens pour la Démocratie Directe"
     preinfo: "Un projet de <a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a> pour un nouveau parti politique sans programme participant aux élections communales 2012."
     sign_in_phrase: 'Identification: '
     not_you: "Ce n'est pas vous?"

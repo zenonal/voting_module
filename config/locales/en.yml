@@ -52,6 +52,8 @@ en:
     perm_denied: "Sorry, you are not allowed to access that page. Don't forget to sign in!"
     recaptcha_error: "You didn't enter the 2 security words correctly. Please try again."
   layout:
+      keywords: "democracy, direct, communal elections, Belgium, politics"
+      CFDD: "Citizens for Direct Democracy"
       preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> for a new political party without agenda participating to the 2012 communal elections."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
