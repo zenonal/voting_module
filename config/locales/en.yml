@@ -54,7 +54,7 @@ en:
   layout:
       keywords: "democracy, direct, communal elections, Belgium, politics"
       CFDD: "Citizens for Direct Democracy"
-      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> for a new political party without agenda participating to the 2012 communal elections."
+      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>: a new political party for the 2012 Belgian elections whose agenda is defined by the citizens."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
       sign_out: 'Sign out'
@@ -107,10 +107,11 @@ en:
       old_delegate: "No longer active but represented "
       no_comment: "There is no comment yet in this discussion"
       amendment_of: "Amendment of "
-      footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> is at the origin of this website. 
-      It is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium.
-      <br>
-      <a href='mailto:zenon.alex@gmail.com'> Contact us! </a>"
+      footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> is at the origin of this website, whose purpose is to 
+                create a new political party in Belgium, participating to the 2012 communal elections, and whose agenda is entirely defined by the citizens.</br> 
+                Citizens for Direct Democracy is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium.
+                <br>
+                <a href='mailto:info@jegouverne.be'> Contact us! </a>"
       head_title: "DIGITAL DIRECT DEMOCRAC"
       intro_title: "DIGITAL DIRECT DEMOCRACY"
       page_title: "Digital Direct Democracy: A real democracy in Belgium?"

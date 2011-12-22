@@ -83,7 +83,7 @@ fr:
   layout:
     keywords: "démocratie, directe, élections communales, Belgique, politique"
     CFDD: "Citoyens pour la Démocratie Directe"
-    preinfo: "Un projet de <a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a> pour un nouveau parti politique sans programme participant aux élections communales 2012."
+    preinfo: "Un projet de <a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a>: un nouveau parti politique participant aux élections communales 2012 en Belgique et dont le programme est défini par les citoyens."
     sign_in_phrase: 'Identification: '
     not_you: "Ce n'est pas vous?"
     sign_out: "Quitter l'application"
@@ -136,8 +136,9 @@ fr:
     old_delegate: "Plus actif mais représentait "
     no_comment: "Il n'y a pas encore de commentaire dans cette discussion"
     amendment_of: "Amendement de "
-    footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a> est à l'origine de ce site web. 
-          C'est un groupe de travail de l'association <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, et son objectif est d'apporter la démocratie directe en Belgique.
+    footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citoyens pour la Démocratie Directe</a> est à l'origine de ce site web, </br>dont l'objectif est la création
+        d'un nouveau parti politique, participant aux élections communales 2012, et dont le programme est entièrement déterminé par les citoyens.</br>
+          Citoyens pour la Démocratie Directe est un groupe de travail de l'association <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, et son objectif est d'apporter la démocratie directe en Belgique.
           <br>
           <a href='mailto:zenon.alex@gmail.com'> Contactez nous! </a>"
     head_title: "DEMOCRATIE DIRECTE DIGITALE"

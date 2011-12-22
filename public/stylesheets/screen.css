@@ -529,7 +529,7 @@ body.main-layout #header-preinfo a {
 body.main-layout #language-header {
   position: absolute;
   right: 120px;
-  top: 0px;
+  top: 10px;
   width: 280px;
 }
 /* line 192, ../../app/stylesheets/screen.scss */
