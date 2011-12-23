@@ -107,3 +107,71 @@ body.bp button {
   position: relative;
   top: 0.25em;
 }
+/* line 11, ../../app/stylesheets/ie.scss */
+body.bp a.button {
+  background-color: #DDD;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  padding: 5px;
+}
+/* line 18, ../../app/stylesheets/ie.scss */
+body.bp a:hover.button {
+  position: relative;
+  padding-top: 7px;
+  padding-bottom: 3px;
+}
+/* line 25, ../../app/stylesheets/ie.scss */
+body.bp #menu {
+  font-family: helvetica;
+  position: relative;
+  background-color: #666;
+  top: -15px;
+  left: 5px;
+  height: 25px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
+  border-bottom: 1px solid #888;
+}
+/* line 147, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.bp #menu {
+  overflow-x: hidden;
+}
+/* line 34, ../../app/stylesheets/ie.scss */
+body.bp #menu a {
+  text-align: center;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 39, ../../app/stylesheets/ie.scss */
+body.bp #menu a #menu-item {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 230px;
+  padding: 0px;
+  padding-top: 3px;
+  margin: 0px;
+}
+/* line 147, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body.bp #menu a #menu-item {
+  overflow-x: hidden;
+}
+/* line 44, ../../app/stylesheets/ie.scss */
+body.bp #menu a #menu-item #menu-title {
+  font-style: normal;
+  display: inline;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+/* line 54, ../../app/stylesheets/ie.scss */
+body.bp #menu a:hover #menu-item {
+  color: #ddf;
+}
+/* line 58, ../../app/stylesheets/ie.scss */
+body.bp #menu .selected_item {
+  background-color: #444;
+}

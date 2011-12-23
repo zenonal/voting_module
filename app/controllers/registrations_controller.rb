@@ -18,7 +18,6 @@ class RegistrationsController < Devise::RegistrationsController
 
                 rescue ActiveRecord::RecordNotUnique
                         flash[:notice] = t('errors.messages.not_unique')
-                        redirect_to root_url
                 end
         end
 

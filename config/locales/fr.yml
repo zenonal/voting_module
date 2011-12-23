@@ -4,6 +4,9 @@ fr:
       not_found: "n'a pas été trouvé"
       already_confirmed: "a déjà été confirmé"
       not_locked: "n'a pas été bloqué"
+      not_saved:
+              one: "1 erreur a empêché ce %{resource} d'être sauvé"
+              other: "%{count} erreurs ont empêché ce %{resource} d'être sauvé:"
 
   devise:
     back: 'retour'
