@@ -1,5 +1,5 @@
 class DelegateMailer < ActionMailer::Base
-  default :from => "info@VotingModule.be"
+  default :from => "info@jegouverne.be"
   def delegation_forced_cancellation(user,delegate)
         @user = user
         @delegate = delegate

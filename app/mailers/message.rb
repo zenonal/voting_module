@@ -1,5 +1,5 @@
 class Message < ActionMailer::Base
-  default :from => "info@VotingModule.be"
+  default :from => "info@jegouverne.be"
 
       def feedback_message(user,mes)
         if user.nil?
