@@ -67,8 +67,8 @@ class LanguageController < ApplicationController
                 elsif request.domain == "jegouverne.be"
                         dom = ".jegouverne.be"
                         return dom
-                elsif request.domain == "ikbestuur.be"
-                        dom = ".ikbestuur.be"
+                elsif request.domain == "ikregeer.be"
+                        dom = ".ikregeer.be"
                         return dom
                 end
         end

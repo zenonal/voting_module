@@ -109,8 +109,8 @@ class ApplicationController < ActionController::Base
                                         I18n.locale = :fr
                                         Rails.cache.write("locales_page", true)
                                         val = false
-                                elsif request.domain == "ikbestuur.be"
-                                        dom = ".ikbestuur.be"
+                                elsif request.domain == "ikregeer.be"
+                                        dom = ".ikregeer.be"
                                         I18n.locale = :nl
                                         Rails.cache.write("locales_page", true)
                                         val = false

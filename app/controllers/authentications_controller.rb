@@ -49,7 +49,7 @@ class AuthenticationsController < ApplicationController
                           request.env['omniauth.strategy'].client_id = '287319927971980'
                           request.env['omniauth.strategy'].client_secret = 'a6f58a5519f19c3033b8d5b6b7655374'
                           
-                  elsif request.domain == "ikbestuur.be"
+                  elsif request.domain == "ikregeer.be"
                           request.env['omniauth.strategy'].client_id = '204872852931427'
                           request.env['omniauth.strategy'].client_secret = 'fc1ee3542c4f91b11a8b7b1099de2bf5'
                   elsif request.domain == "heroku.com"
@@ -71,7 +71,7 @@ class AuthenticationsController < ApplicationController
                             request.env['omniauth.strategy'].consumer_key = 'ObhPkGCJXF4QjYPEBqbA'
                             request.env['omniauth.strategy'].consumer_secret = 'CjOWc4g4uTFOjUAEDeGSUzMa1HV8B0vutsY2WhKLmkI'
 
-                    elsif request.domain == "ikbestuur.be"
+                    elsif request.domain == "ikregeer.be"
                             request.env['omniauth.strategy'].consumer_key = 'tRZ0xhSBLUJeVYrNVmKHg'
                             request.env['omniauth.strategy'].consumer_secret = 'UyyzfmQgPchbBorlbhDsP0FtOJno2oKWVGmcEABB3eA'
                     end
@@ -84,7 +84,7 @@ class AuthenticationsController < ApplicationController
                                 request.env['omniauth.strategy'].consumer_key = 'wn09b4ip1mth'
                                 request.env['omniauth.strategy'].consumer_secret = 'lwUvn9smnqEBAkHc'
 
-                        elsif request.domain == "ikbestuur.be"
+                        elsif request.domain == "ikregeer.be"
                                 request.env['omniauth.strategy'].consumer_key = '8xh06kps8p52'
                                 request.env['omniauth.strategy'].consumer_secret = 'KmyqdbdZvHuHNhwy'
                         end
