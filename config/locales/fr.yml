@@ -259,4 +259,4 @@ fr:
   devise:
        authentication:
           services: "Inscrivez-vous avec un de ces réseaux sociaux"
-          no_services: "Vous préférez vous inscrire de façon classique avec un mot de passe?"
+          no_services: "Si vous préférez vous inscrire de façon classique avec un mot de passe:"

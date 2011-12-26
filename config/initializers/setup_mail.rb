@@ -3,8 +3,8 @@ ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
   :domain               => "localhost",
-  :user_name            => "zenon.alex@gmail.com",
-  :password             => "rdls112a",
+  :user_name            => "info@jegouverne.be",
+  :password             => "28rM1000Bxl",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
@@ -13,8 +13,8 @@ else
           :address              => "smtp.gmail.com",
           :port                 => 587,
           :domain               => "votingmodule.heroku.com",
-          :user_name            => "zenon.alex@gmail.com",
-          :password             => "rdls112a",
+          :user_name            => "info@jegouverne.be",
+          :password             => "28rM1000Bxl",
           :authentication       => "plain",
           :enable_starttls_auto => true
         }
