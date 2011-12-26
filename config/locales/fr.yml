@@ -255,3 +255,8 @@ fr:
   message_sent: "Merci pour votre message. Votre avis est très important pour nous."
   message_sending_error: "Votre message n'a pu être envoyé car vous n'êtes pas identifié."
   feedback: "Votre avis"
+  
+  devise:
+       authentication:
+          services: "Inscrivez-vous avec un de ces réseaux sociaux"
+          no_services: "Vous préférez vous inscrire de façon classique avec un mot de passe?"

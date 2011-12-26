@@ -22,7 +22,7 @@
   <% end %>
   <p><strong>Add another service to sign in with:</strong></p>
 <% else %>
-  <strong>Sign in through one of these services:<%= info_help('sign_in_through_social_networks') %></strong>
+  <strong><%= t('devise.authentication.services') %>:<%= info_help('sign_in_through_social_networks') %></strong>
 <% end %>
 <div id="index-content">
 	<div id="login_logos">
@@ -52,8 +52,8 @@
 
 <% unless user_signed_in? %>
   <p>
-    <strong>Don't use these services?</strong>
+    <strong> <%= t('devise.authentication.no_services') %></strong>
     <%= link_to "Sign up", new_user_registration_path, :class => "button" %> or
-    <%= link_to "sign in", new_user_session_path, :class => "button" %> with a password.
+    <%= link_to "sign in", new_user_session_path, :class => "button" %>.
   </p>
 <% end %>

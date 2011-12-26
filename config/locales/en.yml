@@ -225,3 +225,9 @@ en:
   message_sent: "Thanks for sending your message. Your feedback is very important to us."
   message_sending_error: "Your message could not be sent because you are not logged in."
   feedback: "Your feedback"
+  
+  
+  devise:
+     authentication:
+        services: "Sign in through one of these services"
+        no_services: "You prefer to sign in the classic way, with a password?"
