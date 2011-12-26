@@ -1,7 +1,7 @@
 <br /><br />
 <% @loc = 'devise.passwords.' %>
 
-<% title(t(@loc+'title') %>
+<% title t(@loc+'title') %>
 
 <%= form_for(resource_name, resource, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
