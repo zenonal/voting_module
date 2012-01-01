@@ -13,30 +13,30 @@
 <% end %>
 
 <% if params[:controller] == "initiatives" && params[:action] == "show" %>
-<meta property="og:title" content='<%= eval("@initiative.name_#{I18n.locale}") %>'/>
+<meta property="og:title" content="<%= eval("@initiative.name_#{I18n.locale}") %>"/>
 <meta property="og:type" content="article"/>
-<meta property="og:url" content='<%= "#{@dd}#{url_for(@initiative)}" %>'/>
-<meta property="og:image" content='<%= @initiative.photo.url("small") %>'/>
+<meta property="og:url" content="<%= "#{@dd}#{url_for(@initiative)}" %>"/>
+<meta property="og:image" content="<%= @initiative.photo.url("small") %>"/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
 <meta property="og:description"
           content='<%= truncate(eval("@initiative.content_#{I18n.locale}"), :length => 200) %>'/>
 <% end %>
 <% if params[:controller] == "referendums" && params[:action] == "show" %>
-<meta property="og:title" content='<%= eval("@referendum.name_#{I18n.locale}") %>'/>
+<meta property="og:title" content="<%= eval("@referendum.name_#{I18n.locale}") %>"/>
 <meta property="og:type" content="article"/>
-<meta property="og:url" content='<%= "#{@dd}#{url_for(@referendum)}" %>'/>
-<meta property="og:image" content='<%= @referendum.photo.url("small") %>'/>
+<meta property="og:url" content="<%= "#{@dd}#{url_for(@referendum)}" %>"/>
+<meta property="og:image" content="<%= @referendum.photo.url("small") %>"/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
 <meta property="og:description"
           content='<%= truncate(eval("@referendum.content_#{I18n.locale}"), :length => 200) %>'/>
 <% end %>
 <% if params[:controller] == "amendments" && params[:action] == "show" %>
-<meta property="og:title" content='<%= eval("@amendment.name_#{I18n.locale}") %>'/>
+<meta property="og:title" content="<%= eval("@amendment.name_#{I18n.locale}") %>"/>
 <meta property="og:type" content="article"/>
-<meta property="og:url" content='<%= "#{@dd}#{url_for(@amendment)}" %>'/>
-<meta property="og:image" content='<%= @amendment.photo.url("small") %>'/>
+<meta property="og:url" content="<%= "#{@dd}#{url_for(@amendment)}" %>"/>
+<meta property="og:image" content="<%= @amendment.photo.url("small") %>"/>
 <meta property="og:site_name" content="<%= t('homepage.title') %>"/>
 <meta property="fb:admins" content="539329259"/>
 <meta property="og:description"
