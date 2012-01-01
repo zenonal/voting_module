@@ -11,6 +11,21 @@ class ApplicationController < ActionController::Base
         before_filter :mailer_set_url_options
         before_filter :jumpback
         before_filter :find_subdomain
+        before_filter :redirect_heroku
+        
+        def redirect_heroku
+                dd = request.domain
+                sd = request.subdomain.split(".")
+                if dd == "heroku.com" && sd[sd.size-1] == "votingmodule"
+                        if I18n.locale == :fr
+                                redirect_to "http://jegouverne.be" + request.fullpath
+                        elsif I18n.locale == :nl
+                                redirect_to "http://ikregeer.be" + request.fullpath
+                        else
+                                redirect_to "http://jegouverne.be" + request.fullpath
+                        end
+                end
+        end
 
         def set_postal_code
                 if params[:co_postal_code] && !params[:co_postal_code].blank?
