@@ -2203,12 +2203,16 @@ body.main-layout table.votes td.hed {
   font-weight: bold;
 }
 /* line 1226, ../../app/stylesheets/screen.scss */
+body.main-layout #social_links {
+  text-align: center;
+}
+/* line 1230, ../../app/stylesheets/screen.scss */
 body.main-layout #preview {
   border: 1px #ddd solid;
   margin: 10px;
   padding: 10px;
 }
-/* line 1230, ../../app/stylesheets/screen.scss */
+/* line 1234, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-header {
   display: inline;
   float: left;
@@ -2219,7 +2223,7 @@ body.main-layout #preview #preview-header {
 * html body.main-layout #preview #preview-header {
   overflow-x: hidden;
 }
-/* line 1233, ../../app/stylesheets/screen.scss */
+/* line 1237, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-content {
   display: inline;
   float: left;
@@ -2231,11 +2235,11 @@ body.main-layout #preview #preview-content {
 * html body.main-layout #preview #preview-content {
   overflow-x: hidden;
 }
-/* line 1239, ../../app/stylesheets/screen.scss */
+/* line 1243, ../../app/stylesheets/screen.scss */
 body.main-layout #comments-discussion {
   background-color: #fff;
 }
-/* line 1244, ../../app/stylesheets/screen.scss */
+/* line 1248, ../../app/stylesheets/screen.scss */
 body.main-layout .comment {
   display: inline;
   float: left;
@@ -2249,7 +2253,7 @@ body.main-layout .comment {
 * html body.main-layout .comment {
   overflow-x: hidden;
 }
-/* line 1251, ../../app/stylesheets/screen.scss */
+/* line 1255, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-header {
   display: inline;
   float: left;
@@ -2260,12 +2264,12 @@ body.main-layout .comment #comment-header {
 * html body.main-layout .comment #comment-header {
   overflow-x: hidden;
 }
-/* line 1255, ../../app/stylesheets/screen.scss */
+/* line 1259, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-content {
   font-size: 18px;
   text-align: left;
 }
-/* line 1262, ../../app/stylesheets/screen.scss */
+/* line 1266, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply {
   display: inline;
   float: left;
@@ -2278,7 +2282,7 @@ body.main-layout .comment-reply {
 * html body.main-layout .comment-reply {
   overflow-x: hidden;
 }
-/* line 1266, ../../app/stylesheets/screen.scss */
+/* line 1270, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-header {
   display: inline;
   float: left;
@@ -2289,12 +2293,12 @@ body.main-layout .comment-reply #comment-header {
 * html body.main-layout .comment-reply #comment-header {
   overflow-x: hidden;
 }
-/* line 1270, ../../app/stylesheets/screen.scss */
+/* line 1274, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-content {
   font-size: 18px;
   text-align: left;
 }
-/* line 1276, ../../app/stylesheets/screen.scss */
+/* line 1280, ../../app/stylesheets/screen.scss */
 body.main-layout .reply {
   position: relative;
   display: inline;
@@ -2314,7 +2318,7 @@ body.main-layout .reply {
 * html body.main-layout .reply {
   overflow-x: hidden;
 }
-/* line 1288, ../../app/stylesheets/screen.scss */
+/* line 1292, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-header {
   display: inline;
   float: left;
@@ -2325,14 +2329,14 @@ body.main-layout .reply #reply-header {
 * html body.main-layout .reply #reply-header {
   overflow-x: hidden;
 }
-/* line 1292, ../../app/stylesheets/screen.scss */
+/* line 1296, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-content {
   font-size: 18px;
   position: relative;
   text-align: left;
   width: 93%;
 }
-/* line 1300, ../../app/stylesheets/screen.scss */
+/* line 1304, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-options {
   display: inline;
   float: left;
@@ -2345,19 +2349,19 @@ body.main-layout .reply #reply-options {
 * html body.main-layout .reply #reply-options {
   overflow-x: hidden;
 }
-/* line 1307, ../../app/stylesheets/screen.scss */
+/* line 1311, ../../app/stylesheets/screen.scss */
 body.main-layout .comment_field {
   height: 50px;
 }
-/* line 1312, ../../app/stylesheets/screen.scss */
+/* line 1316, ../../app/stylesheets/screen.scss */
 body.main-layout .spacer {
   height: 30px;
 }
-/* line 1315, ../../app/stylesheets/screen.scss */
+/* line 1319, ../../app/stylesheets/screen.scss */
 body.main-layout .authentications {
   margin-bottom: 30px;
 }
-/* line 1319, ../../app/stylesheets/screen.scss */
+/* line 1323, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication {
   width: 130px;
   float: left;
@@ -2369,7 +2373,7 @@ body.main-layout .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 1331, ../../app/stylesheets/screen.scss */
+/* line 1335, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -2379,32 +2383,32 @@ body.main-layout .authentication .remove {
   padding: 2px 4px;
   font-size: 10px;
 }
-/* line 1341, ../../app/stylesheets/screen.scss */
+/* line 1345, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove:hover {
   color: #CCC;
   background-color: #777;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
 }
-/* line 1348, ../../app/stylesheets/screen.scss */
+/* line 1352, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 1353, ../../app/stylesheets/screen.scss */
+/* line 1357, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .provider {
   font-weight: bold;
 }
-/* line 1357, ../../app/stylesheets/screen.scss */
+/* line 1361, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .uid {
   color: #666;
   font-size: 11px;
 }
-/* line 1362, ../../app/stylesheets/screen.scss */
+/* line 1366, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider img {
   display: block;
 }
-/* line 1366, ../../app/stylesheets/screen.scss */
+/* line 1370, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider {
   float: left;
   text-decoration: none;
@@ -2412,7 +2416,7 @@ body.main-layout .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 1374, ../../app/stylesheets/screen.scss */
+/* line 1378, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2433,11 +2437,11 @@ body.main-layout .photo-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1385, ../../app/stylesheets/screen.scss */
+/* line 1389, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field label {
   color: #999999;
 }
-/* line 1391, ../../app/stylesheets/screen.scss */
+/* line 1395, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input {
   position: relative;
   -moz-box-shadow: 0px 2px 5px #aaaaaa;
@@ -2511,7 +2515,7 @@ body.main-layout .actions input:hover {
   border-color: #989898 #888888 #888888 #989898;
   color: #888888;
 }
-/* line 1406, ../../app/stylesheets/screen.scss */
+/* line 1410, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input:hover {
   -moz-box-shadow: inset 0px 2px 5px #aaaaaa;
   -webkit-box-shadow: inset 0px 2px 5px #aaaaaa;
@@ -2519,7 +2523,7 @@ body.main-layout .actions input:hover {
   box-shadow: inset 0px 2px 5px #aaaaaa;
   color: #fff;
 }
-/* line 1411, ../../app/stylesheets/screen.scss */
+/* line 1415, ../../app/stylesheets/screen.scss */
 body.main-layout .field, body.main-layout .checkboxes-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2540,11 +2544,11 @@ body.main-layout .field, body.main-layout .checkboxes-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1422, ../../app/stylesheets/screen.scss */
+/* line 1426, ../../app/stylesheets/screen.scss */
 body.main-layout .field .recaptcha, body.main-layout .checkboxes-field .recaptcha {
   padding-left: 90px;
 }
-/* line 1426, ../../app/stylesheets/screen.scss */
+/* line 1430, ../../app/stylesheets/screen.scss */
 body.main-layout .field input, body.main-layout .checkboxes-field input, body.main-layout .field textarea, body.main-layout .checkboxes-field textarea {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2559,7 +2563,7 @@ body.main-layout .field input, body.main-layout .checkboxes-field input, body.ma
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
   line-height: 150%;
 }
-/* line 1437, ../../app/stylesheets/screen.scss */
+/* line 1441, ../../app/stylesheets/screen.scss */
 body.main-layout .field input:hover, body.main-layout .checkboxes-field input:hover, body.main-layout .field textarea:hover, body.main-layout .checkboxes-field textarea:hover,
 body.main-layout .field input:focus,
 body.main-layout body.main-layout .checkboxes-field input:focus, body.main-layout
@@ -2570,27 +2574,27 @@ body.main-layout .checkboxes-field input:focus, body.main-layout .field textarea
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
   border-color: #C9C9C9;
 }
-/* line 1442, ../../app/stylesheets/screen.scss */
+/* line 1446, ../../app/stylesheets/screen.scss */
 body.main-layout .field label, body.main-layout .checkboxes-field label {
   color: #999999;
 }
-/* line 1447, ../../app/stylesheets/screen.scss */
+/* line 1451, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field {
   text-align: center;
   padding-bottom: 20px;
 }
-/* line 1451, ../../app/stylesheets/screen.scss */
+/* line 1455, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field .list {
   width: 300px;
   text-align: left;
   padding: auto;
   margin: auto;
 }
-/* line 1458, ../../app/stylesheets/screen.scss */
+/* line 1462, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] {
   display: none;
 }
-/* line 1462, ../../app/stylesheets/screen.scss */
+/* line 1466, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] + label {
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -2598,24 +2602,24 @@ body.main-layout .checkboxes-field input[type=checkbox] + label {
   padding-top: 12px;
   padding-bottom: 15px;
 }
-/* line 1469, ../../app/stylesheets/screen.scss */
+/* line 1473, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:checked + label {
   border: 2px #333 solid;
 }
-/* line 1474, ../../app/stylesheets/screen.scss */
+/* line 1478, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
 
-/* line 1481, ../../app/stylesheets/screen.scss */
+/* line 1485, ../../app/stylesheets/screen.scss */
 #feedback {
   position: relative;
   left: 94%;
   top: 40px;
 }
-/* line 1486, ../../app/stylesheets/screen.scss */
+/* line 1490, ../../app/stylesheets/screen.scss */
 #feedback #feedbackTag {
   position: absolute;
   writing-mode: tb-rl;
@@ -2630,7 +2634,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   padding: 5px;
   width: 120px;
 }
-/* line 1496, ../../app/stylesheets/screen.scss */
+/* line 1500, ../../app/stylesheets/screen.scss */
 #feedback #feedbackForm {
   position: absolute;
   left: -475px;
@@ -2640,7 +2644,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   padding: 10px;
 }
 
-/* line 1506, ../../app/stylesheets/screen.scss */
+/* line 1510, ../../app/stylesheets/screen.scss */
 #overlay-intro {
   display: none;
   width: 500px;
@@ -2649,7 +2653,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
 }
-/* line 1515, ../../app/stylesheets/screen.scss */
+/* line 1519, ../../app/stylesheets/screen.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
@@ -2657,7 +2661,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   border: 1px solid #4C4C4C;
 }
 
-/* line 1524, ../../app/stylesheets/screen.scss */
+/* line 1528, ../../app/stylesheets/screen.scss */
 #overlay-intro div {
   background-color: #FFF;
   width: 185px;
@@ -2669,7 +2673,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   font-size: 15px;
 }
 
-/* line 1535, ../../app/stylesheets/screen.scss */
+/* line 1539, ../../app/stylesheets/screen.scss */
 #overlay-intro h2 {
   margin-bottom: 0px;
   color: #fff;
