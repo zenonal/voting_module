@@ -129,6 +129,7 @@ body.bp #menu {
   top: -15px;
   left: 5px;
   height: 25px;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#555', Direction=0, Strength=1);
   display: inline;
   float: left;
   margin-right: 0;
@@ -139,14 +140,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 35, ../../app/stylesheets/ie.scss */
+/* line 36, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 40, ../../app/stylesheets/ie.scss */
+/* line 41, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -160,7 +161,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 45, ../../app/stylesheets/ie.scss */
+/* line 46, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -168,27 +169,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 55, ../../app/stylesheets/ie.scss */
+/* line 56, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   color: #ddf;
 }
-/* line 59, ../../app/stylesheets/ie.scss */
+/* line 60, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #444;
 }
 
-/* line 76, ../../app/stylesheets/ie.scss */
+/* line 77, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 78, ../../app/stylesheets/ie.scss */
+/* line 79, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 86, ../../app/stylesheets/ie.scss */
+/* line 87, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;

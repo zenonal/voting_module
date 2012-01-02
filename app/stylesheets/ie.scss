@@ -30,6 +30,7 @@ background-color: #666;
 top: -15px;
 left: 5px;
 height: 25px;
+filter: progid:DXImageTransform.Microsoft.Shadow(color='#555', Direction=0, Strength=1);
 @include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
 	a {
