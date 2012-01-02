@@ -168,7 +168,7 @@ body.bp #menu .selected_item {
 }
 /* line 69, ../../app/stylesheets/ie.scss */
 #feedback #feedbackTag {
-  font-size: 2em;
+  font-size: 3em;
   writing-mode: tb-rl;
   filter: flipv fliph;
   font-weight: normal;
