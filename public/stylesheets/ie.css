@@ -175,3 +175,27 @@ body.bp #menu a:hover #menu-item {
 body.bp #menu .selected_item {
   background-color: #444;
 }
+
+/* line 75, ../../app/stylesheets/ie.scss */
+#overlay-intro {
+  display: none;
+  width: 500px;
+  text-align: justify;
+  border: 10px solid #555;
+}
+/* line 80, ../../app/stylesheets/ie.scss */
+#overlay-intro #intro-check {
+  color: #fff;
+  background-color: #6D6D6D;
+  padding: 5px 10px;
+  border: 1px solid #4C4C4C;
+}
+
+/* line 89, ../../app/stylesheets/ie.scss */
+#overlay-intro h2 {
+  margin-bottom: 0px;
+  color: #fff;
+  background-color: #555;
+  padding: 10px;
+  font-size: 25px;
+}
