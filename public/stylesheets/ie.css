@@ -168,23 +168,24 @@ body.bp #menu .selected_item {
 }
 /* line 69, ../../app/stylesheets/ie.scss */
 #feedback #feedbackTag {
+  font-size: 2em;
   writing-mode: tb-rl;
   filter: flipv fliph;
   font-weight: normal;
 }
 
-/* line 77, ../../app/stylesheets/ie.scss */
+/* line 78, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 79, ../../app/stylesheets/ie.scss */
+/* line 80, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 87, ../../app/stylesheets/ie.scss */
+/* line 88, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
