@@ -8,7 +8,7 @@ body.bp {
   @include blueprint-ie(true);
 
 a:hover img {
-border: 1px solid #aaa;
+border: 0px solid #aaa;
 }
 
 a.button {
@@ -39,11 +39,7 @@ position: relative;
 top: -15px;
 left: 5px;
 height: 25px;
-background-color: #888;
-width: 1210px;
-filter: 
-	progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccc', endColorstr='#999'); 
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccc', endColorstr='#999')"; /* IE8 */
+background-color: #99a;
 
 @include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
@@ -68,14 +64,11 @@ border-bottom: 1px solid #888;
 	}
 	a:hover {
 		#menu-item {
-		filter: 
-			progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#aaa', endColorstr='#888'); 
-		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#aaa', endColorstr='#888')"; /* IE8 */
-			
+			background-color: #778;
 		}
 	}
 	.selected_item {
-		background-color: #666;
+		background-color: #667;
 	}
 }
 

@@ -109,7 +109,7 @@ body.bp button {
 }
 /* line 10, ../../app/stylesheets/ie.scss */
 body.bp a:hover img {
-  border: 1px solid #aaa;
+  border: 0px solid #aaa;
 }
 /* line 14, ../../app/stylesheets/ie.scss */
 body.bp a.button {
@@ -140,11 +140,7 @@ body.bp #menu {
   top: -15px;
   left: 5px;
   height: 25px;
-  background-color: #888;
-  width: 1210px;
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccc', endColorstr='#999');
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccc', endColorstr='#999')";
-  /* IE8 */
+  background-color: #99a;
   display: inline;
   float: left;
   margin-right: 0;
@@ -155,14 +151,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 50, ../../app/stylesheets/ie.scss */
+/* line 46, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 55, ../../app/stylesheets/ie.scss */
+/* line 51, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -176,7 +172,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 60, ../../app/stylesheets/ie.scss */
+/* line 56, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -184,29 +180,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 70, ../../app/stylesheets/ie.scss */
+/* line 66, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#aaa', endColorstr='#888');
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#aaa', endColorstr='#888')";
-  /* IE8 */
+  background-color: #778;
 }
-/* line 77, ../../app/stylesheets/ie.scss */
+/* line 70, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
-  background-color: #666;
+  background-color: #667;
 }
 
-/* line 94, ../../app/stylesheets/ie.scss */
+/* line 87, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 96, ../../app/stylesheets/ie.scss */
+/* line 89, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 104, ../../app/stylesheets/ie.scss */
+/* line 97, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
