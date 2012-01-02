@@ -189,6 +189,7 @@ body.bp #menu .selected_item {
 
 /* line 85, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
+  font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
   background-color: #999;
 }
