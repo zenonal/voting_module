@@ -13,16 +13,12 @@ border: 0px solid #aaa;
 }
 
 a.button {
-background-color: #DDD;
+background-color: #ddd;
 border: 1px solid #aaa;
-text-decoration: none;
-padding: 5px;
 }
 
 a:hover.button {
-position: relative;
-padding-top: 7px;
-padding-bottom: 3px;
+background-color: #ccc;
 }
 
 .tooltip {

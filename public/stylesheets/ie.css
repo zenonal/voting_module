@@ -114,18 +114,14 @@ body.bp a:hover img {
 }
 /* line 15, ../../app/stylesheets/ie.scss */
 body.bp a.button {
-  background-color: #DDD;
+  background-color: #ddd;
   border: 1px solid #aaa;
-  text-decoration: none;
-  padding: 5px;
 }
-/* line 22, ../../app/stylesheets/ie.scss */
+/* line 20, ../../app/stylesheets/ie.scss */
 body.bp a:hover.button {
-  position: relative;
-  padding-top: 7px;
-  padding-bottom: 3px;
+  background-color: #ccc;
 }
-/* line 28, ../../app/stylesheets/ie.scss */
+/* line 24, ../../app/stylesheets/ie.scss */
 body.bp .tooltip {
   font-family: "Tooltips", helvetica;
   display: none;
@@ -135,36 +131,36 @@ body.bp .tooltip {
   padding: 15px;
   color: white;
 }
-/* line 38, ../../app/stylesheets/ie.scss */
+/* line 34, ../../app/stylesheets/ie.scss */
 body.bp #language-header {
   top: 12px;
 }
-/* line 42, ../../app/stylesheets/ie.scss */
+/* line 38, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   background-color: #99a;
   border-bottom: 1px solid #888;
 }
-/* line 47, ../../app/stylesheets/ie.scss */
+/* line 43, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #778;
 }
-/* line 51, ../../app/stylesheets/ie.scss */
+/* line 47, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 68, ../../app/stylesheets/ie.scss */
+/* line 64, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 70, ../../app/stylesheets/ie.scss */
+/* line 66, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 78, ../../app/stylesheets/ie.scss */
+/* line 74, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
