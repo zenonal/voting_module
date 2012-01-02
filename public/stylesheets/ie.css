@@ -108,7 +108,7 @@ body.bp button {
   top: 0.25em;
 }
 /* line 10, ../../app/stylesheets/ie.scss */
-body.bp container {
+body.bp #container {
   font-size: 12px;
 }
 /* line 14, ../../app/stylesheets/ie.scss */
