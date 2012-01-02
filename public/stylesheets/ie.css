@@ -162,24 +162,29 @@ body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 68, ../../app/stylesheets/ie.scss */
+/* line 67, ../../app/stylesheets/ie.scss */
+#feedback {
+  left: 98%;
+}
+/* line 69, ../../app/stylesheets/ie.scss */
 #feedback #feedbackTag {
   writing-mode: tb-rl;
   filter: flipv fliph;
+  font-weight: normal;
 }
 
-/* line 75, ../../app/stylesheets/ie.scss */
+/* line 77, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 77, ../../app/stylesheets/ie.scss */
+/* line 79, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 85, ../../app/stylesheets/ie.scss */
+/* line 87, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
