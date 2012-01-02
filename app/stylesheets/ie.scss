@@ -7,6 +7,9 @@
 body.bp {
   @include blueprint-ie(true);
 
+a:hover img {
+border: 1px solid #aaa;
+}
 
 a.button {
 background-color: #DDD;
@@ -34,8 +37,6 @@ padding-bottom: 3px;
 #menu {
 background-color: #888;
 filter: 
-	progid:DXImageTransform.Microsoft.Shadow(color='#ccc', Direction=90, Strength=1)
-	progid:DXImageTransform.Microsoft.Blur(pixelradius=1)
 	progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A'); 
 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A')"; /* IE8 */
 

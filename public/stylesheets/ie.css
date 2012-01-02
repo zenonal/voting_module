@@ -107,20 +107,24 @@ body.bp button {
   position: relative;
   top: 0.25em;
 }
-/* line 11, ../../app/stylesheets/ie.scss */
+/* line 10, ../../app/stylesheets/ie.scss */
+body.bp a:hover img {
+  border: 1px solid #aaa;
+}
+/* line 14, ../../app/stylesheets/ie.scss */
 body.bp a.button {
   background-color: #DDD;
   border: 1px solid #aaa;
   text-decoration: none;
   padding: 5px;
 }
-/* line 18, ../../app/stylesheets/ie.scss */
+/* line 21, ../../app/stylesheets/ie.scss */
 body.bp a:hover.button {
   position: relative;
   padding-top: 7px;
   padding-bottom: 3px;
 }
-/* line 24, ../../app/stylesheets/ie.scss */
+/* line 27, ../../app/stylesheets/ie.scss */
 body.bp .tooltip {
   font-family: "Tooltips", helvetica;
   display: none;
@@ -130,10 +134,10 @@ body.bp .tooltip {
   padding: 15px;
   color: white;
 }
-/* line 34, ../../app/stylesheets/ie.scss */
+/* line 37, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   background-color: #888;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#ccc', Direction=90, Strength=1) progid:DXImageTransform.Microsoft.Blur(pixelradius=1) progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A');
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A');
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A')";
   /* IE8 */
   display: inline;
@@ -146,14 +150,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 44, ../../app/stylesheets/ie.scss */
+/* line 45, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 49, ../../app/stylesheets/ie.scss */
+/* line 50, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -167,7 +171,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 54, ../../app/stylesheets/ie.scss */
+/* line 55, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -175,27 +179,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 64, ../../app/stylesheets/ie.scss */
+/* line 65, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #666;
 }
-/* line 68, ../../app/stylesheets/ie.scss */
+/* line 69, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #666;
 }
 
-/* line 85, ../../app/stylesheets/ie.scss */
+/* line 86, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 87, ../../app/stylesheets/ie.scss */
+/* line 88, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 95, ../../app/stylesheets/ie.scss */
+/* line 96, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
