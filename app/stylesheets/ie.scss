@@ -70,3 +70,26 @@ border-bottom: 1px solid #888;
   // .my-container
   //   text-align: left
 }
+
+
+#overlay-intro {
+		display:none;
+		width:500px;
+		text-align: justify;
+		border:10px solid #555;
+		#intro-check {
+			color:#fff;
+			background-color:#6D6D6D;
+			padding:5px 10px;
+			border:1px solid #4C4C4C;
+		}
+		
+	}
+
+	#overlay-intro h2 {
+		margin-bottom:0px;
+		color:#fff;
+		background-color: #555;
+		padding:10px;
+		font-size:25px;
+	}
