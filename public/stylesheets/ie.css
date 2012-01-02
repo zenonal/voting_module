@@ -113,23 +113,22 @@ body.bp a.button {
   border: 1px solid #aaa;
   text-decoration: none;
   padding: 5px;
-  behavior: url(javascripts/border-radius.htc);
 }
-/* line 19, ../../app/stylesheets/ie.scss */
+/* line 18, ../../app/stylesheets/ie.scss */
 body.bp a:hover.button {
   position: relative;
   padding-top: 7px;
   padding-bottom: 3px;
 }
-/* line 26, ../../app/stylesheets/ie.scss */
+/* line 25, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   font-family: helvetica;
   position: relative;
-  background-color: #666;
+  background-color: #888;
   top: -15px;
   left: 5px;
   height: 25px;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#555', Direction=0, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=45, Strength=1) progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=135, Strength=1) progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=215, Strength=1) progid:DXImageTransform.Microsoft.Blur(pixelradius=2);
   display: inline;
   float: left;
   margin-right: 0;
@@ -140,14 +139,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 36, ../../app/stylesheets/ie.scss */
+/* line 39, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 41, ../../app/stylesheets/ie.scss */
+/* line 44, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -161,7 +160,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 46, ../../app/stylesheets/ie.scss */
+/* line 49, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -169,27 +168,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 56, ../../app/stylesheets/ie.scss */
+/* line 59, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   color: #ddf;
 }
-/* line 60, ../../app/stylesheets/ie.scss */
+/* line 63, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #444;
 }
 
-/* line 77, ../../app/stylesheets/ie.scss */
+/* line 80, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 79, ../../app/stylesheets/ie.scss */
+/* line 82, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 87, ../../app/stylesheets/ie.scss */
+/* line 90, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;

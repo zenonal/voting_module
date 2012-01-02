@@ -2022,6 +2022,7 @@ body.main-layout a.button {
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  behavior: url(javascripts/border-radius.htc);
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e0e0e0));
   background-image: -webkit-linear-gradient(top, #ffffff, #e0e0e0);
   background-image: -moz-linear-gradient(top, #ffffff, #e0e0e0);
@@ -2065,7 +2066,7 @@ body.main-layout a.button:hover {
   border-color: #989898 #888888 #888888 #989898;
   color: #888888;
 }
-/* line 1103, ../../app/stylesheets/screen.scss */
+/* line 1104, ../../app/stylesheets/screen.scss */
 body.main-layout a:hover.button {
   -moz-box-shadow: inset 0px 1px 3px #dddddd;
   -webkit-box-shadow: inset 0px 1px 3px #dddddd;
@@ -2075,7 +2076,7 @@ body.main-layout a:hover.button {
   padding-top: 7px;
   padding-bottom: 3px;
 }
-/* line 1110, ../../app/stylesheets/screen.scss */
+/* line 1111, ../../app/stylesheets/screen.scss */
 body.main-layout a.brainstorm {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffcc36));
   background-image: -webkit-linear-gradient(top, #ffffff, #ffcc36);
@@ -2083,72 +2084,72 @@ body.main-layout a.brainstorm {
   background-image: -o-linear-gradient(top, #ffffff, #ffcc36);
   background-image: linear-gradient(top, #ffffff, #ffcc36);
 }
-/* line 1115, ../../app/stylesheets/screen.scss */
+/* line 1116, ../../app/stylesheets/screen.scss */
 body.main-layout a.link {
   text-decoration: none;
   font-weight: bold;
   font-size: 16px;
 }
-/* line 1121, ../../app/stylesheets/screen.scss */
+/* line 1122, ../../app/stylesheets/screen.scss */
 body.main-layout a.small {
   font-size: .6em;
   padding: 3px;
 }
-/* line 1126, ../../app/stylesheets/screen.scss */
+/* line 1127, ../../app/stylesheets/screen.scss */
 body.main-layout a:hover.small {
   padding-top: 5px;
   padding-bottom: 1px;
 }
-/* line 1131, ../../app/stylesheets/screen.scss */
+/* line 1132, ../../app/stylesheets/screen.scss */
 body.main-layout a:hover img {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
 }
-/* line 1136, ../../app/stylesheets/screen.scss */
+/* line 1137, ../../app/stylesheets/screen.scss */
 body.main-layout img {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   vertical-align: middle;
 }
-/* line 1141, ../../app/stylesheets/screen.scss */
+/* line 1142, ../../app/stylesheets/screen.scss */
 body.main-layout .user-image {
   background-color: #fff;
   padding: 5px;
   border: 1px solid #555;
 }
-/* line 1147, ../../app/stylesheets/screen.scss */
+/* line 1148, ../../app/stylesheets/screen.scss */
 body.main-layout div.meter {
   position: relative;
   left: 172.083px;
 }
-/* line 1151, ../../app/stylesheets/screen.scss */
+/* line 1152, ../../app/stylesheets/screen.scss */
 body.main-layout img.meter_bkg {
   position: absolute;
 }
-/* line 1154, ../../app/stylesheets/screen.scss */
+/* line 1155, ../../app/stylesheets/screen.scss */
 body.main-layout img.meter_front {
   position: absolute;
   left: 3px;
 }
-/* line 1159, ../../app/stylesheets/screen.scss */
+/* line 1160, ../../app/stylesheets/screen.scss */
 body.main-layout div.referendum_item {
   border: 1px solid #888;
 }
-/* line 1164, ../../app/stylesheets/screen.scss */
+/* line 1165, ../../app/stylesheets/screen.scss */
 body.main-layout .horiz-list {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
-/* line 1168, ../../app/stylesheets/screen.scss */
+/* line 1169, ../../app/stylesheets/screen.scss */
 body.main-layout .horiz-list li {
   margin-left: 2px;
   float: left;
   /*pour IE*/
 }
-/* line 1174, ../../app/stylesheets/screen.scss */
+/* line 1175, ../../app/stylesheets/screen.scss */
 body.main-layout .bill_support, body.main-layout .bill_nosupport {
   margin: 0px 15px 12px;
   display: block;
@@ -2159,28 +2160,28 @@ body.main-layout .bill_support, body.main-layout .bill_nosupport {
   overflow: hidden;
   height: 0;
 }
-/* line 1185, ../../app/stylesheets/screen.scss */
+/* line 1186, ../../app/stylesheets/screen.scss */
 body.main-layout .nay {
   background: url("/images/vote_squares2.png") no-repeat left -39px;
 }
-/* line 1188, ../../app/stylesheets/screen.scss */
+/* line 1189, ../../app/stylesheets/screen.scss */
 body.main-layout .nay.bill_support, body.main-layout a.nay:hover {
   background-position: -35px -39px;
 }
-/* line 1192, ../../app/stylesheets/screen.scss */
+/* line 1193, ../../app/stylesheets/screen.scss */
 body.main-layout .aye {
   background: url("/images/vote_squares2.png") no-repeat left 0px;
 }
-/* line 1195, ../../app/stylesheets/screen.scss */
+/* line 1196, ../../app/stylesheets/screen.scss */
 body.main-layout .aye.bill_support, body.main-layout a.aye:hover {
   background-position: -35px 0px;
 }
-/* line 1199, ../../app/stylesheets/screen.scss */
+/* line 1200, ../../app/stylesheets/screen.scss */
 body.main-layout #private_vote {
   border: 1px solid #888;
   padding: 10px;
 }
-/* line 1204, ../../app/stylesheets/screen.scss */
+/* line 1205, ../../app/stylesheets/screen.scss */
 body.main-layout table.votes {
   text-align: center;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -2192,7 +2193,7 @@ body.main-layout table.votes {
   border-collapse: collapse;
   border-spacing: 0px;
 }
-/* line 1216, ../../app/stylesheets/screen.scss */
+/* line 1217, ../../app/stylesheets/screen.scss */
 body.main-layout table.votes td.hed {
   background-color: #fff;
   color: #000;
@@ -2202,17 +2203,17 @@ body.main-layout table.votes td.hed {
   font-size: 12px;
   font-weight: bold;
 }
-/* line 1226, ../../app/stylesheets/screen.scss */
+/* line 1227, ../../app/stylesheets/screen.scss */
 body.main-layout #social_links {
   text-align: center;
 }
-/* line 1230, ../../app/stylesheets/screen.scss */
+/* line 1231, ../../app/stylesheets/screen.scss */
 body.main-layout #preview {
   border: 1px #ddd solid;
   margin: 10px;
   padding: 10px;
 }
-/* line 1234, ../../app/stylesheets/screen.scss */
+/* line 1235, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-header {
   display: inline;
   float: left;
@@ -2223,7 +2224,7 @@ body.main-layout #preview #preview-header {
 * html body.main-layout #preview #preview-header {
   overflow-x: hidden;
 }
-/* line 1237, ../../app/stylesheets/screen.scss */
+/* line 1238, ../../app/stylesheets/screen.scss */
 body.main-layout #preview #preview-content {
   display: inline;
   float: left;
@@ -2235,11 +2236,11 @@ body.main-layout #preview #preview-content {
 * html body.main-layout #preview #preview-content {
   overflow-x: hidden;
 }
-/* line 1243, ../../app/stylesheets/screen.scss */
+/* line 1244, ../../app/stylesheets/screen.scss */
 body.main-layout #comments-discussion {
   background-color: #fff;
 }
-/* line 1248, ../../app/stylesheets/screen.scss */
+/* line 1249, ../../app/stylesheets/screen.scss */
 body.main-layout .comment {
   display: inline;
   float: left;
@@ -2253,7 +2254,7 @@ body.main-layout .comment {
 * html body.main-layout .comment {
   overflow-x: hidden;
 }
-/* line 1255, ../../app/stylesheets/screen.scss */
+/* line 1256, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-header {
   display: inline;
   float: left;
@@ -2264,12 +2265,12 @@ body.main-layout .comment #comment-header {
 * html body.main-layout .comment #comment-header {
   overflow-x: hidden;
 }
-/* line 1259, ../../app/stylesheets/screen.scss */
+/* line 1260, ../../app/stylesheets/screen.scss */
 body.main-layout .comment #comment-content {
   font-size: 18px;
   text-align: left;
 }
-/* line 1266, ../../app/stylesheets/screen.scss */
+/* line 1267, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply {
   display: inline;
   float: left;
@@ -2282,7 +2283,7 @@ body.main-layout .comment-reply {
 * html body.main-layout .comment-reply {
   overflow-x: hidden;
 }
-/* line 1270, ../../app/stylesheets/screen.scss */
+/* line 1271, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-header {
   display: inline;
   float: left;
@@ -2293,12 +2294,12 @@ body.main-layout .comment-reply #comment-header {
 * html body.main-layout .comment-reply #comment-header {
   overflow-x: hidden;
 }
-/* line 1274, ../../app/stylesheets/screen.scss */
+/* line 1275, ../../app/stylesheets/screen.scss */
 body.main-layout .comment-reply #comment-content {
   font-size: 18px;
   text-align: left;
 }
-/* line 1280, ../../app/stylesheets/screen.scss */
+/* line 1281, ../../app/stylesheets/screen.scss */
 body.main-layout .reply {
   position: relative;
   display: inline;
@@ -2318,7 +2319,7 @@ body.main-layout .reply {
 * html body.main-layout .reply {
   overflow-x: hidden;
 }
-/* line 1292, ../../app/stylesheets/screen.scss */
+/* line 1293, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-header {
   display: inline;
   float: left;
@@ -2329,14 +2330,14 @@ body.main-layout .reply #reply-header {
 * html body.main-layout .reply #reply-header {
   overflow-x: hidden;
 }
-/* line 1296, ../../app/stylesheets/screen.scss */
+/* line 1297, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-content {
   font-size: 18px;
   position: relative;
   text-align: left;
   width: 93%;
 }
-/* line 1304, ../../app/stylesheets/screen.scss */
+/* line 1305, ../../app/stylesheets/screen.scss */
 body.main-layout .reply #reply-options {
   display: inline;
   float: left;
@@ -2349,19 +2350,19 @@ body.main-layout .reply #reply-options {
 * html body.main-layout .reply #reply-options {
   overflow-x: hidden;
 }
-/* line 1311, ../../app/stylesheets/screen.scss */
+/* line 1312, ../../app/stylesheets/screen.scss */
 body.main-layout .comment_field {
   height: 50px;
 }
-/* line 1316, ../../app/stylesheets/screen.scss */
+/* line 1317, ../../app/stylesheets/screen.scss */
 body.main-layout .spacer {
   height: 30px;
 }
-/* line 1319, ../../app/stylesheets/screen.scss */
+/* line 1320, ../../app/stylesheets/screen.scss */
 body.main-layout .authentications {
   margin-bottom: 30px;
 }
-/* line 1323, ../../app/stylesheets/screen.scss */
+/* line 1324, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication {
   width: 130px;
   float: left;
@@ -2373,7 +2374,7 @@ body.main-layout .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 1335, ../../app/stylesheets/screen.scss */
+/* line 1336, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -2383,32 +2384,32 @@ body.main-layout .authentication .remove {
   padding: 2px 4px;
   font-size: 10px;
 }
-/* line 1345, ../../app/stylesheets/screen.scss */
+/* line 1346, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .remove:hover {
   color: #CCC;
   background-color: #777;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
 }
-/* line 1352, ../../app/stylesheets/screen.scss */
+/* line 1353, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 1357, ../../app/stylesheets/screen.scss */
+/* line 1358, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .provider {
   font-weight: bold;
 }
-/* line 1361, ../../app/stylesheets/screen.scss */
+/* line 1362, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication .uid {
   color: #666;
   font-size: 11px;
 }
-/* line 1366, ../../app/stylesheets/screen.scss */
+/* line 1367, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider img {
   display: block;
 }
-/* line 1370, ../../app/stylesheets/screen.scss */
+/* line 1371, ../../app/stylesheets/screen.scss */
 body.main-layout .auth_provider {
   float: left;
   text-decoration: none;
@@ -2416,7 +2417,7 @@ body.main-layout .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 1378, ../../app/stylesheets/screen.scss */
+/* line 1379, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2437,11 +2438,11 @@ body.main-layout .photo-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1389, ../../app/stylesheets/screen.scss */
+/* line 1390, ../../app/stylesheets/screen.scss */
 body.main-layout .photo-field label {
   color: #999999;
 }
-/* line 1395, ../../app/stylesheets/screen.scss */
+/* line 1396, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input {
   position: relative;
   -moz-box-shadow: 0px 2px 5px #aaaaaa;
@@ -2515,7 +2516,7 @@ body.main-layout .actions input:hover {
   border-color: #989898 #888888 #888888 #989898;
   color: #888888;
 }
-/* line 1410, ../../app/stylesheets/screen.scss */
+/* line 1411, ../../app/stylesheets/screen.scss */
 body.main-layout .actions input:hover {
   -moz-box-shadow: inset 0px 2px 5px #aaaaaa;
   -webkit-box-shadow: inset 0px 2px 5px #aaaaaa;
@@ -2523,7 +2524,7 @@ body.main-layout .actions input:hover {
   box-shadow: inset 0px 2px 5px #aaaaaa;
   color: #fff;
 }
-/* line 1415, ../../app/stylesheets/screen.scss */
+/* line 1416, ../../app/stylesheets/screen.scss */
 body.main-layout .field, body.main-layout .checkboxes-field {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2544,11 +2545,11 @@ body.main-layout .field, body.main-layout .checkboxes-field {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 1426, ../../app/stylesheets/screen.scss */
+/* line 1427, ../../app/stylesheets/screen.scss */
 body.main-layout .field .recaptcha, body.main-layout .checkboxes-field .recaptcha {
   padding-left: 90px;
 }
-/* line 1430, ../../app/stylesheets/screen.scss */
+/* line 1431, ../../app/stylesheets/screen.scss */
 body.main-layout .field input, body.main-layout .checkboxes-field input, body.main-layout .field textarea, body.main-layout .checkboxes-field textarea {
   -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
@@ -2563,7 +2564,7 @@ body.main-layout .field input, body.main-layout .checkboxes-field input, body.ma
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
   line-height: 150%;
 }
-/* line 1441, ../../app/stylesheets/screen.scss */
+/* line 1442, ../../app/stylesheets/screen.scss */
 body.main-layout .field input:hover, body.main-layout .checkboxes-field input:hover, body.main-layout .field textarea:hover, body.main-layout .checkboxes-field textarea:hover,
 body.main-layout .field input:focus,
 body.main-layout body.main-layout .checkboxes-field input:focus, body.main-layout
@@ -2574,27 +2575,27 @@ body.main-layout .checkboxes-field input:focus, body.main-layout .field textarea
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
   border-color: #C9C9C9;
 }
-/* line 1446, ../../app/stylesheets/screen.scss */
+/* line 1447, ../../app/stylesheets/screen.scss */
 body.main-layout .field label, body.main-layout .checkboxes-field label {
   color: #999999;
 }
-/* line 1451, ../../app/stylesheets/screen.scss */
+/* line 1452, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field {
   text-align: center;
   padding-bottom: 20px;
 }
-/* line 1455, ../../app/stylesheets/screen.scss */
+/* line 1456, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field .list {
   width: 300px;
   text-align: left;
   padding: auto;
   margin: auto;
 }
-/* line 1462, ../../app/stylesheets/screen.scss */
+/* line 1463, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] {
   display: none;
 }
-/* line 1466, ../../app/stylesheets/screen.scss */
+/* line 1467, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox] + label {
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -2602,24 +2603,24 @@ body.main-layout .checkboxes-field input[type=checkbox] + label {
   padding-top: 12px;
   padding-bottom: 15px;
 }
-/* line 1473, ../../app/stylesheets/screen.scss */
+/* line 1474, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:checked + label {
   border: 2px #333 solid;
 }
-/* line 1478, ../../app/stylesheets/screen.scss */
+/* line 1479, ../../app/stylesheets/screen.scss */
 body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
 
-/* line 1485, ../../app/stylesheets/screen.scss */
+/* line 1486, ../../app/stylesheets/screen.scss */
 #feedback {
   position: relative;
   left: 94%;
   top: 40px;
 }
-/* line 1490, ../../app/stylesheets/screen.scss */
+/* line 1491, ../../app/stylesheets/screen.scss */
 #feedback #feedbackTag {
   position: absolute;
   writing-mode: tb-rl;
@@ -2634,7 +2635,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   padding: 5px;
   width: 120px;
 }
-/* line 1500, ../../app/stylesheets/screen.scss */
+/* line 1501, ../../app/stylesheets/screen.scss */
 #feedback #feedbackForm {
   position: absolute;
   left: -475px;
@@ -2644,7 +2645,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   padding: 10px;
 }
 
-/* line 1510, ../../app/stylesheets/screen.scss */
+/* line 1511, ../../app/stylesheets/screen.scss */
 #overlay-intro {
   display: none;
   width: 500px;
@@ -2653,7 +2654,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
 }
-/* line 1519, ../../app/stylesheets/screen.scss */
+/* line 1520, ../../app/stylesheets/screen.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
@@ -2661,7 +2662,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   border: 1px solid #4C4C4C;
 }
 
-/* line 1528, ../../app/stylesheets/screen.scss */
+/* line 1529, ../../app/stylesheets/screen.scss */
 #overlay-intro div {
   background-color: #FFF;
   width: 185px;
@@ -2673,7 +2674,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
   font-size: 15px;
 }
 
-/* line 1539, ../../app/stylesheets/screen.scss */
+/* line 1540, ../../app/stylesheets/screen.scss */
 #overlay-intro h2 {
   margin-bottom: 0px;
   color: #fff;

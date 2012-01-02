@@ -1095,6 +1095,7 @@ a.button {
 @include button-active-colors;
 @include button-hover-colors;
 @include rounded(10px);
+behavior: url(javascripts/border-radius.htc);
 @include background-image(linear-gradient(top, white, darken(white, 12%)));
 border: 1px solid #aaa;
 text-decoration: none;

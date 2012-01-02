@@ -13,7 +13,6 @@ background-color: #DDD;
 border: 1px solid #aaa;
 text-decoration: none;
 padding: 5px;
-behavior: url(javascripts/border-radius.htc);
 }
 
 a:hover.button {
@@ -26,11 +25,15 @@ padding-bottom: 3px;
 #menu {
 font-family: helvetica;
 position: relative;
-background-color: #666;
+background-color: #888;
 top: -15px;
 left: 5px;
 height: 25px;
-filter: progid:DXImageTransform.Microsoft.Shadow(color='#555', Direction=0, Strength=1);
+filter: 
+	progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=45, Strength=1)
+	progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=135, Strength=1)
+	progid:DXImageTransform.Microsoft.Shadow(color='#aaa', Direction=215, Strength=1)
+	progid:DXImageTransform.Microsoft.Blur(pixelradius=2);
 @include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
 	a {
