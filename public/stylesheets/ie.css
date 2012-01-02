@@ -122,6 +122,16 @@ body.bp a:hover.button {
   background-color: #ccc;
 }
 /* line 24, ../../app/stylesheets/ie.scss */
+body.bp .actions input {
+  position: relative;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+}
+/* line 30, ../../app/stylesheets/ie.scss */
+body.bp .actions input:hover {
+  background-color: #ccc;
+}
+/* line 34, ../../app/stylesheets/ie.scss */
 body.bp .tooltip {
   font-family: "Tooltips", helvetica;
   display: none;
@@ -131,36 +141,36 @@ body.bp .tooltip {
   padding: 15px;
   color: white;
 }
-/* line 34, ../../app/stylesheets/ie.scss */
+/* line 44, ../../app/stylesheets/ie.scss */
 body.bp #language-header {
   top: 12px;
 }
-/* line 38, ../../app/stylesheets/ie.scss */
+/* line 48, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   background-color: #99a;
   border-bottom: 1px solid #888;
 }
-/* line 43, ../../app/stylesheets/ie.scss */
+/* line 53, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #778;
 }
-/* line 47, ../../app/stylesheets/ie.scss */
+/* line 57, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 64, ../../app/stylesheets/ie.scss */
+/* line 74, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 66, ../../app/stylesheets/ie.scss */
+/* line 76, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 74, ../../app/stylesheets/ie.scss */
+/* line 84, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;

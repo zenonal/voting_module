@@ -21,6 +21,16 @@ a:hover.button {
 background-color: #ccc;
 }
 
+.actions input {
+	position:relative;
+	background-color: #ddd;
+	border: 1px solid #aaa;
+	}
+	
+.actions input:hover {
+	background-color: #ccc;
+}
+
 .tooltip {
 	font-family: "Tooltips", helvetica;
 	display:none;
