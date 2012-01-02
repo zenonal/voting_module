@@ -32,15 +32,13 @@ padding-bottom: 3px;
 }
 
 #menu {
-font-family: helvetica;
-position: relative;
 background-color: #888;
-top: -15px;
-left: 5px;
-height: 25px;
 filter: 
 	progid:DXImageTransform.Microsoft.Shadow(color='#ccc', Direction=90, Strength=1)
-	progid:DXImageTransform.Microsoft.Blur(pixelradius=1);
+	progid:DXImageTransform.Microsoft.Blur(pixelradius=1)
+	progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A'); 
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A')"; /* IE8 */
+
 @include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
 	a {

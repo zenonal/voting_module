@@ -132,13 +132,10 @@ body.bp .tooltip {
 }
 /* line 34, ../../app/stylesheets/ie.scss */
 body.bp #menu {
-  font-family: helvetica;
-  position: relative;
   background-color: #888;
-  top: -15px;
-  left: 5px;
-  height: 25px;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#ccc', Direction=90, Strength=1) progid:DXImageTransform.Microsoft.Blur(pixelradius=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#ccc', Direction=90, Strength=1) progid:DXImageTransform.Microsoft.Blur(pixelradius=1) progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ccd', endColorstr='#99A')";
+  /* IE8 */
   display: inline;
   float: left;
   margin-right: 0;
@@ -149,14 +146,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 46, ../../app/stylesheets/ie.scss */
+/* line 44, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 51, ../../app/stylesheets/ie.scss */
+/* line 49, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -170,7 +167,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 56, ../../app/stylesheets/ie.scss */
+/* line 54, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -178,27 +175,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 66, ../../app/stylesheets/ie.scss */
+/* line 64, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #666;
 }
-/* line 70, ../../app/stylesheets/ie.scss */
+/* line 68, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #666;
 }
 
-/* line 87, ../../app/stylesheets/ie.scss */
+/* line 85, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 89, ../../app/stylesheets/ie.scss */
+/* line 87, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 97, ../../app/stylesheets/ie.scss */
+/* line 95, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
