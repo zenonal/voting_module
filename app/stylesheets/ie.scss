@@ -6,7 +6,10 @@
 //Recommended Blueprint configuration with scoping and semantic layout:
 body.bp {
   @include blueprint-ie(true);
-	font-size: 12px;
+
+container {
+font-size: 12px;
+}
 
 a:hover img {
 border: 0px solid #aaa;
@@ -59,17 +62,15 @@ border-bottom: 1px solid #888;
 	}
 }
 
-
-
-  // Note: Blueprint centers text to fix IE6 container centering.
-  // This means all your texts will be centered under all version of IE by default.
-  // If your container does not have the .container class, don't forget to restore
-  // the correct behavior to your main container (but not the body tag!)
-  // Example:
-  // .my-container
-  //   text-align: left
 }
 
+#feedback {
+	#feedbackTag {
+	writing-mode: tb-rl;
+	filter: flipv fliph;
+	
+	}
+}
 
 #overlay-intro {
 		border:10px solid #999;

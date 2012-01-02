@@ -1,7 +1,6 @@
 /* line 7, ../../app/stylesheets/ie.scss */
 body.bp {
   text-align: center;
-  font-size: 12px;
 }
 /* line 44, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
 * html body.bp legend {
@@ -108,30 +107,34 @@ body.bp button {
   position: relative;
   top: 0.25em;
 }
-/* line 11, ../../app/stylesheets/ie.scss */
+/* line 10, ../../app/stylesheets/ie.scss */
+body.bp container {
+  font-size: 12px;
+}
+/* line 14, ../../app/stylesheets/ie.scss */
 body.bp a:hover img {
   border: 0px solid #aaa;
 }
-/* line 15, ../../app/stylesheets/ie.scss */
+/* line 18, ../../app/stylesheets/ie.scss */
 body.bp a.button {
   background-color: #ddd;
   border: 1px solid #aaa;
 }
-/* line 20, ../../app/stylesheets/ie.scss */
+/* line 23, ../../app/stylesheets/ie.scss */
 body.bp a:hover.button {
   background-color: #ccc;
 }
-/* line 24, ../../app/stylesheets/ie.scss */
+/* line 27, ../../app/stylesheets/ie.scss */
 body.bp .actions input {
   position: relative;
   background-color: #ddd;
   border: 1px solid #aaa;
 }
-/* line 30, ../../app/stylesheets/ie.scss */
+/* line 33, ../../app/stylesheets/ie.scss */
 body.bp .actions input:hover {
   background-color: #ccc;
 }
-/* line 34, ../../app/stylesheets/ie.scss */
+/* line 37, ../../app/stylesheets/ie.scss */
 body.bp .tooltip {
   font-family: "Tooltips", helvetica;
   display: none;
@@ -141,36 +144,42 @@ body.bp .tooltip {
   padding: 15px;
   color: white;
 }
-/* line 44, ../../app/stylesheets/ie.scss */
+/* line 47, ../../app/stylesheets/ie.scss */
 body.bp #language-header {
   top: 12px;
 }
-/* line 48, ../../app/stylesheets/ie.scss */
+/* line 51, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   background-color: #99a;
   border-bottom: 1px solid #888;
 }
-/* line 53, ../../app/stylesheets/ie.scss */
+/* line 56, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #778;
 }
-/* line 57, ../../app/stylesheets/ie.scss */
+/* line 60, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 74, ../../app/stylesheets/ie.scss */
+/* line 68, ../../app/stylesheets/ie.scss */
+#feedback #feedbackTag {
+  writing-mode: tb-rl;
+  filter: flipv fliph;
+}
+
+/* line 75, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 76, ../../app/stylesheets/ie.scss */
+/* line 77, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 84, ../../app/stylesheets/ie.scss */
+/* line 85, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
