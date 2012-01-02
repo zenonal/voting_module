@@ -6,7 +6,7 @@
 //Recommended Blueprint configuration with scoping and semantic layout:
 body.bp {
   @include blueprint-ie(true);
-	font-size: 16px;
+	font-size: 12px;
 
 a:hover img {
 border: 0px solid #aaa;
@@ -35,34 +35,14 @@ padding-bottom: 3px;
 	color:white;	
 }
 
+#language-header {
+	top: 12px;
+}
+
 #menu {
-position: relative;
-top: -15px;
-left: 5px;
-height: 25px;
 background-color: #99a;
-width: 1210px;
-@include column($blueprint-grid-columns,true); 
 border-bottom: 1px solid #888;
-	a {
-		text-align: center;
-		text-decoration: none;
-		padding: 0px;
-		margin: 0px;
-		#menu-item {
-			@include column(ceil($blueprint-grid-columns/4)); 
-			padding: 0px;
-			padding-top: 3px;
-			margin: 0px;
- 			#menu-title {
-				font-style: normal;
-				display:inline;
-				font-size: 16px;
-				text-decoration: none;
-				color: white;
-			}
-		}
-	}
+	
 	a:hover {
 		#menu-item {
 			background-color: #778;

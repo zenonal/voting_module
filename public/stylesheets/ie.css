@@ -1,7 +1,7 @@
 /* line 7, ../../app/stylesheets/ie.scss */
 body.bp {
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
 }
 /* line 44, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
 * html body.bp legend {
@@ -136,73 +136,35 @@ body.bp .tooltip {
   color: white;
 }
 /* line 38, ../../app/stylesheets/ie.scss */
+body.bp #language-header {
+  top: 12px;
+}
+/* line 42, ../../app/stylesheets/ie.scss */
 body.bp #menu {
-  position: relative;
-  top: -15px;
-  left: 5px;
-  height: 25px;
   background-color: #99a;
-  width: 1210px;
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 950px;
   border-bottom: 1px solid #888;
 }
-/* line 147, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body.bp #menu {
-  overflow-x: hidden;
-}
 /* line 47, ../../app/stylesheets/ie.scss */
-body.bp #menu a {
-  text-align: center;
-  text-decoration: none;
-  padding: 0px;
-  margin: 0px;
-}
-/* line 52, ../../app/stylesheets/ie.scss */
-body.bp #menu a #menu-item {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 230px;
-  padding: 0px;
-  padding-top: 3px;
-  margin: 0px;
-}
-/* line 147, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body.bp #menu a #menu-item {
-  overflow-x: hidden;
-}
-/* line 57, ../../app/stylesheets/ie.scss */
-body.bp #menu a #menu-item #menu-title {
-  font-style: normal;
-  display: inline;
-  font-size: 16px;
-  text-decoration: none;
-  color: white;
-}
-/* line 67, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #778;
 }
-/* line 71, ../../app/stylesheets/ie.scss */
+/* line 51, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 88, ../../app/stylesheets/ie.scss */
+/* line 68, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 90, ../../app/stylesheets/ie.scss */
+/* line 70, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 98, ../../app/stylesheets/ie.scss */
+/* line 78, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
