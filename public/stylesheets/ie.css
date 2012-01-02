@@ -1,6 +1,7 @@
 /* line 7, ../../app/stylesheets/ie.scss */
 body.bp {
   text-align: center;
+  font-size: 16px;
 }
 /* line 44, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
 * html body.bp legend {
@@ -107,24 +108,24 @@ body.bp button {
   position: relative;
   top: 0.25em;
 }
-/* line 10, ../../app/stylesheets/ie.scss */
+/* line 11, ../../app/stylesheets/ie.scss */
 body.bp a:hover img {
   border: 0px solid #aaa;
 }
-/* line 14, ../../app/stylesheets/ie.scss */
+/* line 15, ../../app/stylesheets/ie.scss */
 body.bp a.button {
   background-color: #DDD;
   border: 1px solid #aaa;
   text-decoration: none;
   padding: 5px;
 }
-/* line 21, ../../app/stylesheets/ie.scss */
+/* line 22, ../../app/stylesheets/ie.scss */
 body.bp a:hover.button {
   position: relative;
   padding-top: 7px;
   padding-bottom: 3px;
 }
-/* line 27, ../../app/stylesheets/ie.scss */
+/* line 28, ../../app/stylesheets/ie.scss */
 body.bp .tooltip {
   font-family: "Tooltips", helvetica;
   display: none;
@@ -134,13 +135,14 @@ body.bp .tooltip {
   padding: 15px;
   color: white;
 }
-/* line 37, ../../app/stylesheets/ie.scss */
+/* line 38, ../../app/stylesheets/ie.scss */
 body.bp #menu {
   position: relative;
   top: -15px;
   left: 5px;
   height: 25px;
   background-color: #99a;
+  width: 1210px;
   display: inline;
   float: left;
   margin-right: 0;
@@ -151,14 +153,14 @@ body.bp #menu {
 * html body.bp #menu {
   overflow-x: hidden;
 }
-/* line 46, ../../app/stylesheets/ie.scss */
+/* line 47, ../../app/stylesheets/ie.scss */
 body.bp #menu a {
   text-align: center;
   text-decoration: none;
   padding: 0px;
   margin: 0px;
 }
-/* line 51, ../../app/stylesheets/ie.scss */
+/* line 52, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item {
   display: inline;
   float: left;
@@ -172,7 +174,7 @@ body.bp #menu a #menu-item {
 * html body.bp #menu a #menu-item {
   overflow-x: hidden;
 }
-/* line 56, ../../app/stylesheets/ie.scss */
+/* line 57, ../../app/stylesheets/ie.scss */
 body.bp #menu a #menu-item #menu-title {
   font-style: normal;
   display: inline;
@@ -180,27 +182,27 @@ body.bp #menu a #menu-item #menu-title {
   text-decoration: none;
   color: white;
 }
-/* line 66, ../../app/stylesheets/ie.scss */
+/* line 67, ../../app/stylesheets/ie.scss */
 body.bp #menu a:hover #menu-item {
   background-color: #778;
 }
-/* line 70, ../../app/stylesheets/ie.scss */
+/* line 71, ../../app/stylesheets/ie.scss */
 body.bp #menu .selected_item {
   background-color: #667;
 }
 
-/* line 87, ../../app/stylesheets/ie.scss */
+/* line 88, ../../app/stylesheets/ie.scss */
 #overlay-intro {
   border: 10px solid #999;
 }
-/* line 89, ../../app/stylesheets/ie.scss */
+/* line 90, ../../app/stylesheets/ie.scss */
 #overlay-intro #intro-check {
   color: #fff;
   background-color: #6D6D6D;
   border: 1px solid #4C4C4C;
 }
 
-/* line 97, ../../app/stylesheets/ie.scss */
+/* line 98, ../../app/stylesheets/ie.scss */
 #overlay-intro h2 {
   font-family: tahoma,verdana,arial,sans-serif;
   color: #fff;
