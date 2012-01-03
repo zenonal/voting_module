@@ -26,9 +26,10 @@ authorization do
           if_attribute :user_id => is { user.id }
         end
         has_permission_on [:initiatives, :amendments], :to => [:index, :index_drafts, :show, :aye,:nay, :vote, :ranking, :show_results]
-        has_permission_on [:initiatives, :amendments, :referendums], :to => [:validate] do
+        has_permission_on [:initiatives, :amendments], :to => [:validate] do
           if_attribute :user_id => is_not { user.id }
         end
+        has_permission_on :referendums, :to => [:validate]
         has_permission_on [:users, :ideas], :to => [:edit, :update,:destroy] do
           if_attribute :id => is { user.id }
         end
