@@ -168,6 +168,7 @@ fr:
   homepage:
       title: 'Démocratie Directe Digitale'
 
+  eID: "Carte d'identité électronique"
   by: "par"
   on: "sur"
   headtitle: "Voting Module"

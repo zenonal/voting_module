@@ -6,6 +6,7 @@ VotingModule::Application.routes.draw do
   #match '/auth/facebook', :to => 'authentications#facebook_setup'
   match '/auth/facebook/setup', :to => 'authentications#facebook_setup'
   match '/auth/twitter/setup', :to => 'authentications#twitter_setup'
+  match '/auth/linkedin/setup', :to => 'authentications#linkedin_setup'
 
   devise_for :users, :controllers => {:registrations => 'registrations'} 
   
