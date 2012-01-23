@@ -22,11 +22,11 @@ nl:
     phase: "Bepaal de huidige ontwikkeling fase van het wetsontwerp:
             <ul><li>wordt momenteel gewijzigd: dit wetsontwerp wordt momenteel gewijzigd door de indiener</li>
             <li>wordt momenteel gevalideerd: dit wetsontwerp wordt momenteel gevalideerd door andere gebruikers. Het wetsontwerp moet gesteund worden door een minimum aantal gebruikers om naar de volgende fase te kunnen gaan.</li>
-            <li>validatie niet geslaagd: het wetsontwerp heft onvoldoende steun ontvangen binnen de gestelde tijd. Het kan niet naar een verder stadium.</li>
+            <li>validatie niet geslaagd: het wetsontwerp heeft onvoldoende steun ontvangen binnen de gestelde tijd. Het kan niet naar een verder stadium.</li>
             <li>momenteel beschikbaar voor amendering: Het wetsontwerp is beschikbaar voor amendering. Iedereen kan voorstellen indienen.</li>
             <li>wordt momenteel gestemd: men kan zijn stem uitbrengen over het wetsontwerp</li>
             <li>de stemming is voorbij: de stemperiode is voorbij. U kan de resultaten van de stemming zien. </li></ul>
-            Zonder bijkomende keuze kan u alle fasen zien behalve de wijziging fase."
+            Indien u geen bijzondere opties hebt aangeduid kunt u alle fasen zien met uitzondering van de 'wordt momenteel gewijzigd'"
     outside_geo: "Zonder bijkomende keuze kan u buiten de federale wetsontwerpen enkel de wetsontwerpen zien van uw eigen gemeente, provincie en regio.</br>
         U kan de wetsontwerpen van andere geografische omschrijvingen zien als u deze optie kiest."
     Log in via sociale netwerken: "U kan inloggen via een van deze sociale netwerken.</br>
