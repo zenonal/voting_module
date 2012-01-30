@@ -252,7 +252,7 @@ fr:
   name_nl: "Naam in het Nederlands"
   content_nl: "Text in het Nederlands"
   category_select: "Choisissez une catégorie"
-  recaptcha_error: "Il y eu une erreur avec les mots de sécurité recaptcha ci-dessous. Essayez de ré-entrer les codes et appuyez sur Publier"
+  recaptcha_error: "Il y eu une erreur avec les mots de sécurité recaptcha ci-dessous. Essayez de ré-entrer les codes et appuyez sur Créer une initiative"
   message_sent: "Merci pour votre message. Votre avis est très important pour nous."
   message_sending_error: "Votre message n'a pu être envoyé car vous n'êtes pas identifié."
   feedback: "Votre avis"
