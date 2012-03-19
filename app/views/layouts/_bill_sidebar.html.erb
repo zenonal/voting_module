@@ -34,7 +34,7 @@
 		<div id="bill-score">
 			<p><span style="display:inline-block; vertical-align:middle;">
 				<%= t("#{params[:controller]}.validate") %>: <%= link_to image_tag("valid.gif"), {:controller=> params[:controller], :action=>"validate", :id => bill.id} %></span></p>
-			<p><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %></p>
+			<p><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %>/<%= bill.validation_threshold %></p>
 		</div>
 	<% end %>
 	

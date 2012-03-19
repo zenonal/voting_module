@@ -90,7 +90,7 @@
 				</div>	
 			</div>
 			<div class="clear"></div>
-			<h5><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %></h5>
+			<h5><%= t("#{params[:controller]}.current_validations") %>: <%= bill.validations_count %>/<%= bill.validation_threshold %></h5>
 		</div>
 		<% end %>
 		
