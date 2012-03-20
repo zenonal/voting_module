@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
       :url => ':s3_domain_url',
       :s3_permissions => 'public-read',
       :s3_protocol => 'http',
-      :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
+      :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"},
+      :default_url => "/images/default_user_images/:style/missing.png"
   end
   
   # Include default devise modules. Others available are:
