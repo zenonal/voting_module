@@ -1,0 +1,19 @@
+<%= title "List of communities" %>
+<div id="index-content" style="margin-bottom: 50px;">
+	
+<% @communities.each do |community| %>
+	<div id="index-column">
+	</div>
+  	<div id="index-column">
+		<%= link_to image_tag(community.uploadedPhoto.url(:thumbnail)), community %>
+	</div>
+    <div id="index-column">
+		<%= link_to community.name, community, :class => "link" %>
+	</div>
+	<div class="clear"></div>
+<% end %>
+</div>
+
+<% if permitted_to? :create, Community.new %>
+<p><%= link_to 'New Community', new_community_path, :class => "button" %></p>
+<% end %>

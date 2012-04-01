@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219210709) do
+ActiveRecord::Schema.define(:version => 20120401100915) do
 
   create_table "amendments", :force => true do |t|
     t.string   "name_en"
@@ -131,6 +131,17 @@ ActiveRecord::Schema.define(:version => 20111219210709) do
     t.integer  "postal_code"
   end
 
+  create_table "communities", :force => true do |t|
+    t.string   "name"
+    t.string   "uploadedPhoto_file_name"
+    t.string   "uploadedPhoto_content_type"
+    t.integer  "uploadedPhoto_file_size"
+    t.datetime "uploadedPhoto_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "website_url"
+  end
+
   create_table "delegates", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -183,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20111219210709) do
     t.integer  "level_code"
     t.boolean  "validated",          :default => false
     t.datetime "validation_date"
+    t.integer  "community_id"
   end
 
   create_table "parties", :force => true do |t|
@@ -242,6 +254,7 @@ ActiveRecord::Schema.define(:version => 20111219210709) do
     t.integer  "validations_count",  :default => 0
     t.boolean  "validated",          :default => false
     t.datetime "validation_date"
+    t.integer  "community_id"
   end
 
   create_table "regions", :force => true do |t|

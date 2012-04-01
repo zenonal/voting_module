@@ -14,6 +14,7 @@ authorization do
     has_permission_on [:delegates, :delegations], :to => [:create, :update, :destroy, :index]
     has_permission_on [:brainstorms], :to => [:create, :show]
     has_permission_on [:ideas], :to => [:select_ideas, :index_all]
+    has_permission_on [:communities], :to => [:show, :new, :create, :update, :destroy, :index, :edit]
   end
   role :limited_user do
         has_permission_on [:comments,:arguments,:ideas], :to => [:index, :show, :new, :create]

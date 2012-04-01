@@ -92,6 +92,16 @@ class ApplicationController < ActionController::Base
                                                 end
                                         end
                                 end
+                                if @subdom_level.nil?
+                                        co = Community.all
+                                        com = co.map(&:name).map(&:parameterize)
+                                        i = com.index subdom.downcase
+                                        if i && co[i]
+                                                @subdom_level = co[i]
+                                        else
+                                                @subdom_level = nil
+                                        end
+                                end
                         else
                                 @subdom_level = nil
                         end
@@ -202,8 +212,12 @@ class ApplicationController < ActionController::Base
                                 end
                         else
                                 @bills = bills.subdom_level(@subdom_level).all(:order => "created_at DESC")
-                                @bills = @bills + bills.user_geographical_level(current_user,4).all(:order => "created_at DESC")
-                                @geo = @subdom_level.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4")
+                                if @subdom_level.class.name == "Community"
+                                        @geo = @subdom_level.name
+                                else
+                                        @bills = @bills + bills.user_geographical_level(current_user,4).all(:order => "created_at DESC")
+                                        @geo = @subdom_level.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4")
+                                end
                         end
                         if phase && phase >= 0
                                 @bills = bills[0].class.filter_phase(@bills,phase)

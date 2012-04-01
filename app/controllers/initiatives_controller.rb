@@ -92,6 +92,22 @@ class InitiativesController < ApplicationController
       if params[:category] && !params[:category].empty?
           @initiative.category = eval("Category.find_by_name_#{I18n.locale}(params[:category])")
       end
+      if @subdom_level.class.name == "Community"
+              c = Community.find_by_name(@subdom_level.name)
+              if !c.empty?
+                      @initiative.community = c
+              else
+                      c = Community.find_by_name("3D")
+                      if !c.empty?
+                              @initiative.community = c
+                      end
+              end
+      else
+              c = Community.find_by_name("3D")
+              if !c.empty?
+                      @initiative.community = c
+              end
+      end
       
       @initiative.user = current_user
       if @initiative.level == "1"

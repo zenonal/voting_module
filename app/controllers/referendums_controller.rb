@@ -96,6 +96,22 @@ class ReferendumsController < ApplicationController
         if params[:category] && !params[:category].empty?
                 @referendum.category = eval("Category.find_by_name_#{I18n.locale}(params[:category])")
         end
+        if @subdom_level.class.name == "Community"
+                c = Community.find_by_name(@subdom_level.name)
+                if !c.empty?
+                        @referendum.community = c
+                else
+                        c = Community.find_by_name("3D")
+                        if !c.empty?
+                                @referendum.community = c
+                        end
+                end
+        else
+                c = Community.find_by_name("3D")
+                if !c.empty?
+                        @referendum.community = c
+                end
+        end
 
         if @referendum.level == "1"
           @referendum.level_code = current_user.commune.postal_code

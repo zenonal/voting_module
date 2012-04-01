@@ -31,14 +31,19 @@
 			</div>
 			
 			<% unless @subdom_level.blank? %>
-				<span id="header-subtitle">
-					<%= @subdom_level.name %>
-				
-				</span>
-					
+				<% if @subdom_level.class.name == "Community" %>
+					<span id="header-subtitle">
+						<%= link_to image_tag(@subdom_level.uploadedPhoto.url(:thumbnail)), @subdom_level.website_url %>
+						<%= link_to @subdom_level.name, @subdom_level.website_url %>
+					</span>
+				<% else %>
+					<span id="header-subtitle">
+						<%= @subdom_level.name %>
+					</span>
+
 					<% unless @subdom_level.candidates.blank? %>
 						<table class="candidate">
-							
+
 							<tr><td>
 								<div>
 								<%= link_to image_tag(@subdom_level.candidates[0].photo.url(:thumbnail)), @subdom_level.candidates[0] %>
@@ -52,12 +57,13 @@
 							</td></tr>
 						</table>
 					<% else %>
-					<table class="candidate" style="border: 1px solid #ccc;"><tr><td>
-						<%= raw t('layout.no_candidate') %><%= info_help('info_candidate') %>
-					</td></tr></table>
+						<table class="candidate" style="border: 1px solid #ccc;"><tr><td>
+							<%= raw t('layout.no_candidate') %><%= info_help('info_candidate') %>
+						</td></tr></table>
 					<% end %>
-					
+
 					<br/><br/>
+				<% end %>
 			<% end %>
 			
 			<div id="language-header">

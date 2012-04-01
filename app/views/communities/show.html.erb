@@ -1,0 +1,22 @@
+<div id="bill-header">
+	<div id="bill-header-icon">
+		<%= link_to image_tag(@community.uploadedPhoto.url(:thumbnail)), @community.website_url %>
+	</div>
+	<div id="bill-header-name">
+		<%= link_to title(@community.name), @community.website_url %>
+	</div>
+</div>
+
+<div class="clear"></div>
+<% if permitted_to? :create, Community.new %>
+	<%= link_to "Create Community", new_community_path, :class => "button" %> |
+<% end %>
+<% if permitted_to? :edit, @community %>
+	<%= link_to "Edit community", edit_community_path(@community), :class => "button" %> |
+<% end %>
+<% if permitted_to? :destroy, @community %>
+	<%= link_to 'Destroy', @community, :method => :delete, :confirm => 'Are you sure?', :class => "button" %> |
+<% end %>
+<% if permitted_to? :index, @community %>
+<%= link_to "List of communities", communities_path, :class => "button" %>
+<% end %>

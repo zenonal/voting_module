@@ -26,6 +26,7 @@ class Referendum < ActiveRecord::Base
         has_one :result, :as => :resultable, :dependent => :destroy
         has_one :brainstorm, :as => :brainstormable, :dependent => :destroy
         belongs_to :category
+        belongs_to :community
 
         attr_accessible :name_en, :name_fr, :name_nl, :content_en, :content_fr, :content_nl, :photo, :level, :level_code
 
@@ -72,7 +73,12 @@ class Referendum < ActiveRecord::Base
                                 if subdom_level.class.name == "Region"
                                         where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
                                 else
-                                        nil
+                                        if subdom_level.class.name == "Community"
+                                                  joins(:community).
+                                                      where("communities.name = ?", subdom_level.name)
+                                          else
+                                                  nil
+                                          end
                                 end
                         end
                 end 
