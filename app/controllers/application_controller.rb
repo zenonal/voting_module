@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
         before_filter :set_locale
         before_filter :set_mode
         before_filter {|c| Authorization.current_user = c.current_user}
-        before_filter :set_featured
         before_filter :mailer_set_url_options
         before_filter :jumpback
         before_filter :find_subdomain
+        before_filter :set_featured
         before_filter :redirect_heroku
         
         def redirect_heroku
