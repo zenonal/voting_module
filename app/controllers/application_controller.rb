@@ -295,7 +295,7 @@ class ApplicationController < ActionController::Base
                 else
                         tmp = '/'
                 end
-                session[:jumpback_no_locale] = tmp[0]
+                session[:jumpback_no_locale] = tmp
                 session[:jumpback] = session[:jumpcurrent]
                 unless params[:controller] == "Language" || params[:controller] == "Authentication"
                         session[:jumpcurrent] = request.request_uri
