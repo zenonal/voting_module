@@ -2373,7 +2373,7 @@ body.main-layout .authentications {
 }
 /* line 1331, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication {
-  width: 130px;
+  width: 150px;
   float: left;
   background-color: #EEE;
   border: solid 1px #999;
@@ -2627,7 +2627,7 @@ body.main-layout .checkboxes-field input[type=checkbox]:hover + label {
 #feedback {
   position: relative;
   left: 92%;
-  top: 55px;
+  top: 60px;
 }
 /* line 1498, ../../app/stylesheets/screen.scss */
 #feedback #feedbackTag {
