@@ -9,8 +9,8 @@ class AuthenticationsController < ApplicationController
   # POST /authentications
   # POST /authentications.xml
   def create
-    #render :text => request.env["omniauth.auth"].to_yaml
-    #if false
+    render :text => request.env["omniauth.auth"].to_yaml
+    if false
     omniauth = request.env["omniauth.auth"]
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication
@@ -31,7 +31,7 @@ class AuthenticationsController < ApplicationController
         redirect_to new_user_registration_url
       end
     end
-  #end
+  end
   end
 
   # DELETE /authentications/1
