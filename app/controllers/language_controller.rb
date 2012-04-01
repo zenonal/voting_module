@@ -10,7 +10,11 @@ class LanguageController < ApplicationController
                 else
                         cookies.permanent[:choose_lang] = false
                 end
-                redirect_to session[:jumpback_no_locale]
+                unless session[:jumpback_no_locale].nil?
+                        redirect_to session[:jumpback_no_locale]
+                else
+                        redirect_to root
+                end
         end
 
         def eng
@@ -24,7 +28,11 @@ class LanguageController < ApplicationController
                 else
                         cookies.permanent[:choose_lang] = false
                 end
-                redirect_to session[:jumpback_no_locale]
+                unless session[:jumpback_no_locale].nil?
+                        redirect_to session[:jumpback_no_locale]
+                else
+                        redirect_to root
+                end
         end
 
         def ndl
@@ -38,7 +46,11 @@ class LanguageController < ApplicationController
                 else
                         cookies.permanent[:choose_lang] = false
                 end
-                redirect_to session[:jumpback_no_locale]
+                unless session[:jumpback_no_locale].nil?
+                        redirect_to session[:jumpback_no_locale]
+                else
+                        redirect_to root
+                end
         end
 
         def info
