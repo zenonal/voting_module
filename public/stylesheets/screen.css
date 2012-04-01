@@ -974,7 +974,7 @@ body.main-layout .filter_form textarea {
 body.main-layout #login_logos {
   margin: auto;
   padding: auto;
-  width: 580px;
+  width: 630px;
 }
 /* line 470, ../../app/stylesheets/screen.scss */
 body.main-layout #login_logos a {
@@ -2373,7 +2373,7 @@ body.main-layout .authentications {
 }
 /* line 1331, ../../app/stylesheets/screen.scss */
 body.main-layout .authentication {
-  width: 180px;
+  width: 130px;
   float: left;
   background-color: #EEE;
   border: solid 1px #999;
