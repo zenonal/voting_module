@@ -241,11 +241,13 @@ class ApplicationController < ActionController::Base
                                 @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
                         end
                         if !params[:search].blank?
-                                @bills = @bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
-                                @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
-                                a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
-                                a = a.find_all {|b| b.class.name == "Amendment" }
-                                @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == bills.first.class.name } ")
+                                unless @bills.nil?
+                                        @bills = @bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
+                                        @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
+                                        a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
+                                        a = a.find_all {|b| b.class.name == "Amendment" }
+                                        @bills = @bills + eval(" a.find_all {|b| b.amendmentable_type == bills.first.class.name } ")
+                                end
                         end
                 else
                         @bills = []
