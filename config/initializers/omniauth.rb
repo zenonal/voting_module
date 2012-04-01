@@ -9,7 +9,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
                 provider :facebook, '112773305478994', 'dca7a2c9691e5f513909f89efbd190a5',
                         {:setup => true, :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
         end
-  provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :domain => 'gmail.com'
+  provider :open_id, nil, :name => 'google_apps', :identifier => 'https://www.google.com/accounts/o8/id'
+  #provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :domain => 'gmail.com'
   provider :open_id, OpenID::Store::Filesystem.new('/tmp'), {:name => 'open_id', :identifier => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :required => []}
   #provider :google_apps, OpenID::Store::Filesystem.new('/tmp'), {:domain => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :name => 'google_apps', :identifier => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :required => []}
   provider :linked_in, 'm4rA1MJuUuxTjMfLVWYSReXhaf8sPQCjRPbHJCORebTuQs93BII0a25PmHQrL8oA', 'hXsbcCZe-jtpbhLVq7JvQq1wAFrxhDtt5E73FkWEqtLJJGkCJDsqPvvXDNfh-ZPO', 
