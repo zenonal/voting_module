@@ -5,6 +5,7 @@
 <br /><br />
 <%= title t('layout.sign_in') %>
 
+<% if false %>
 <% if @authentications %>
   <% unless @authentications.empty? %>
     <p><strong>You can sign in to this account using:</strong></p>
@@ -23,6 +24,7 @@
   <p><strong>Add another service to sign in with:</strong></p>
 <% else %>
   <strong><%= t('devise.authentication.services') %>:<%= info_help('sign_in_through_social_networks') %></strong>
+<% end %>
 <% end %>
 <div id="index-content">
 	<div id="login_logos">
