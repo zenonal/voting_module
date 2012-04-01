@@ -13,10 +13,12 @@
   <% if params[:preview_button] %>
 	<%= render :partial => "layouts/previews", :locals => { :bill => @initiative } %>
   <% end %>
-  <div class="field">
-	<%= f.label t('layout.choose_level') %><br />
-	<%= f.select :level, INITIATIVE_LEVELS.collect {|l| [l, INITIATIVE_LEVELS.index(l)]} %>
-  </div>
+  <% unless @subdom_level.class.name == "Community" %>
+    <div class="field">
+	  <%= f.label t('layout.choose_level') %><br />
+	  <%= f.select :level, INITIATIVE_LEVELS.collect {|l| [l, INITIATIVE_LEVELS.index(l)]} %>
+    </div>
+  <% end %>
 <br /><br /><br />
 <div class="photo-field">
 	<%= f.label t('layout.choose_photo') %><br />

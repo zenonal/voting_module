@@ -94,17 +94,17 @@ class InitiativesController < ApplicationController
       end
       if @subdom_level.class.name == "Community"
               c = Community.find_by_name(@subdom_level.name)
-              if !c.empty?
+              if !c.nil?
                       @initiative.community = c
               else
                       c = Community.find_by_name("3D")
-                      if !c.empty?
+                      if !c.nil?
                               @initiative.community = c
                       end
               end
       else
               c = Community.find_by_name("3D")
-              if !c.empty?
+              if !c.nil?
                       @initiative.community = c
               end
       end
