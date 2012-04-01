@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-VotingModule::Application.config.session_store :cookie_store, :key => '_voting_module_session', :domain => ".jegouverne.be"
+VotingModule::Application.config.session_store :cookie_store, :key => '_voting_module_session', :domain => "jegouverne.be"
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
