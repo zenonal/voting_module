@@ -32,7 +32,7 @@ class LanguageController < ApplicationController
                         redirect_to root_url
                 else
                         render :text => session[:jumpback_no_locale]
-                        redirect_to session[:jumpback_no_locale]
+                        #redirect_to session[:jumpback_no_locale]
                 end
         end
 
