@@ -152,13 +152,13 @@ class ApplicationController < ActionController::Base
 
         def set_featured
                 if !@subdom_level.nil?
-                        b = Initiative.subdom_level(@subdom_level).filter_phase(Initiative.not_blank,2,3,4,5)
+                        b = Initiative.filter_phase(Initiative.subdom_level(@subdom_level).not_blank,2,3,4,5)
                 else
                         b = Initiative.filter_phase(Initiative.not_blank,2,3,4,5)
                 end
                 @featured_bills = [b[rand(b.count)]]
                 if !@subdom_level.nil?
-                        b = Referendum.subdom_level(@subdom_level).filter_phase(Referendum.not_blank,2,3,4,5)
+                        b = Referendum.filter_phase(Referendum.subdom_level(@subdom_level).not_blank,2,3,4,5)
                 else
                         b = Referendum.filter_phase(Referendum.not_blank,2,3,4,5)
                 end
