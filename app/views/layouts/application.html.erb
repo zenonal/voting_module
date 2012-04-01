@@ -132,6 +132,9 @@
 	      		<% end %>
 			</div>
 			<div id="content">
+				<%= session[:jumpcurrent] %>
+				<%= session[:jumpback] %>
+				<%= session[:jumpback_no_locale] %>
 				<%= yield %>
 			</div>
 		  	<div id="sidebar-right">
