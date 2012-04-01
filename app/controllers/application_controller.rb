@@ -151,13 +151,13 @@ class ApplicationController < ActionController::Base
         end
 
         def set_featured
-                if @subdom_level
+                if !@subdom_level.nil?
                         b = Initiative.filter_phase(Initiative.not_blank,2,3,4,5).subdom_level(@subdom_level).all(:order => "created_at DESC")
                 else
                         b = Initiative.filter_phase(Initiative.not_blank,2,3,4,5)
                 end
                 @featured_bills = [b[rand(b.count)]]
-                if @subdom_level
+                if !@subdom_level.nil?
                         b = Referendum.filter_phase(Referendum.not_blank,2,3,4,5).subdom_level(@subdom_level).all(:order => "created_at DESC")
                 else
                         b = Referendum.filter_phase(Referendum.not_blank,2,3,4,5)
@@ -241,7 +241,7 @@ class ApplicationController < ActionController::Base
                                 @categ = t("#{bills[0].class.name.pluralize.downcase}.category_default")
                         end
                         if !params[:search].blank?
-                                @bills = bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
+                                @bills = @bills.first.class.name.constantize.search_tank(params[:search], :paginate => false, :function => 1)
                                 @bills = eval( "@bills.find_all {|b| b.content_#{I18n.locale} != ''}" )
                                 a = Amendment.search_tank(params[:search], :paginate => false, :function => 1)
                                 a = a.find_all {|b| b.class.name == "Amendment" }
