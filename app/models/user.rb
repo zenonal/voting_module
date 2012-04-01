@@ -110,10 +110,4 @@ class User < ActiveRecord::Base
         end
     end
     
-    def default_photo
-        if self.photo.nil? 
-           self.update_attribute(:photo, "/images/unknownUser.jpg")
-        end
-    end
-    
 end
