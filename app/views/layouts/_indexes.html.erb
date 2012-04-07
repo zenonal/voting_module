@@ -49,10 +49,14 @@
 		</h4>
 		</div>
 	<% end %>
+	
 	<div id="index-column">
 		<p><%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %></p>
+		
 		<div id="bill-phase">
-			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><%= info_help('phase',15) %></h4>
+			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><%= info_help('phase',15) %>
+				<%= raw bill_progression(bill) %></h4>
+			
 		</div>
 		<% if bill.current_phase == 1 || (user_signed_in? && current_user.roles.first.name == "admin") %>
 		<p><% if permitted_to? :edit, bill %>

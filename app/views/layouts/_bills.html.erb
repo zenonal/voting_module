@@ -40,7 +40,8 @@
 					<% end %>
 				<% end %>
 			<% else %>
-				<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><h4>
+				<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><%= info_help('phase',15) %>
+					<%= raw bill_progression(bill) %><h4>
 			<% end %>
 		</div>
 		<div id="bill-category">

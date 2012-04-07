@@ -12,7 +12,9 @@
 	<div id="featured-large-column" class="bill-text-link">
 		<%= link_to eval("bill.name_#{I18n.locale}"), bill, :class => "link" %>
 		<div id="bill-phase">
-			<h4><%= t("#{bill.class.name.downcase.pluralize}.phase#{bill.current_phase}") %></h4>
+			<h4><%= t("#{bill.class.name.downcase.pluralize}.phase#{bill.current_phase}") %><%= info_help('phase',15) %>
+				<%= raw bill_progression(bill) %></h4>
+			
 		</div>
 	</div>
 

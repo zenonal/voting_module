@@ -25,6 +25,37 @@ module ApplicationHelper
                 output += image_tag("meter/meter_front.png", :size => "#{level}x#{(size/5).round()}", :class=> "meter_front")
                 output += "</div>"
         end
+        def bill_progression(bill)
+                passedColor = "#AE8D8F"
+                futureColor = "#A7C6B2"
+                editColor = futureColor
+                validationColor = futureColor
+                amendColor = futureColor
+                voteColor = futureColor
+                if !bill.blank?
+                       if bill.current_phase >= 2
+                               editColor = passedColor
+                       end
+                       if bill.current_phase >= 3
+                               validationColor = passedColor
+                       end
+                       if bill.current_phase >= 4
+                               amendColor = passedColor
+                       end
+                       if bill.current_phase >= 5
+                               voteColor = passedColor
+                       end
+                end
+                if !bill.blank? && bill.current_phase < 5
+                        output = ""
+                        output += "<div style=\"width:100px;margin:auto;position:static;\">"
+                        output += "<div style=\"width:100px; height:10px; background-color:" + voteColor + ";\">"
+                        output += "<div style=\"width:77%; height:10px; background-color:" + amendColor + "; border-right:2px #FFF solid;\">"
+                        output += "<div style=\"width:70%; height:10px; background-color:" + validationColor + "; border-right:2px #FFF solid;\">"
+                        output += "<div style=\"width:14%; height:10px; background-color:" + editColor + "; border-right:2px #FFF solid;\">"
+                        output += "</div></div></div></div></div>"
+                end
+        end
         def title(page_title, show_title = true)
                 if page_title
                         content_for(:title) { t('layout.page_title') + ' - ' + page_title.to_s }
