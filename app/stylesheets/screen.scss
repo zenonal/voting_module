@@ -514,12 +514,14 @@ text-align: center;
 }
 
 #bill-time {
+	width: 120 px;
+	margin: auto;
 	.time_chart {
 		@include column(1);
 		width:span(1);
 		height:span(1);
 		margin: auto;
-		margin-left: 30px;
+		
 		}
 
 	#time-text {
