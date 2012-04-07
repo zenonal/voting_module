@@ -32,19 +32,16 @@ module ApplicationHelper
                 validationColor = futureColor
                 amendColor = futureColor
                 voteColor = futureColor
-                Info = t('initiatives.edition')
+                
                 if !bill.blank?
                        if bill.current_phase >= 2
                                editColor = passedColor
-                               Info = t('initiatives.validation')
                        end
                        if bill.current_phase >= 3
                                validationColor = passedColor
-                               Info = t('initiatives.amend')
                        end
                        if bill.current_phase >= 4
                                amendColor = passedColor
-                               Info = t('initiatives.votingphase')
                        end
                        if bill.current_phase >= 5
                                voteColor = passedColor
@@ -53,7 +50,7 @@ module ApplicationHelper
                 if !bill.blank? && bill.current_phase < 5
                         output = ""
                         output += "<div style=\"width:100px;margin:auto;position:static;\">"
-                        output += "<div style=\"width:100px; height:10px; background-color:" + voteColor + ";\" title=" + Info + ">"
+                        output += "<div style=\"width:100px; height:10px; background-color:" + voteColor + ";\">"
                         output += "<div style=\"width:77%; height:10px; background-color:" + amendColor + "; border-right:2px #FFF solid;\">"
                         output += "<div style=\"width:70%; height:10px; background-color:" + validationColor + "; border-right:2px #FFF solid;\">"
                         output += "<div style=\"width:14%; height:10px; background-color:" + editColor + "; border-right:2px #FFF solid;\">"
