@@ -26,8 +26,8 @@ module ApplicationHelper
                 output += "</div>"
         end
         def bill_progression(bill)
-                passedColor = "#AE8D8F"
-                futureColor = "#A7C6B2"
+                passedColor = "#A19EA0"
+                futureColor = "#B6CCB5"
                 editColor = futureColor
                 validationColor = futureColor
                 amendColor = futureColor
