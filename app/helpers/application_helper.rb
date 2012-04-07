@@ -32,6 +32,10 @@ module ApplicationHelper
                 validationColor = futureColor
                 amendColor = futureColor
                 voteColor = futureColor
+                editInfo = t('initiatives.edition')
+                validationInfo = t('initiatives.validation')
+                amendInfo = t('initiatives.amend')
+                voteInfo = t('initiatives.votingphase')
                 if !bill.blank?
                        if bill.current_phase >= 2
                                editColor = passedColor
@@ -49,10 +53,10 @@ module ApplicationHelper
                 if !bill.blank? && bill.current_phase < 5
                         output = ""
                         output += "<div style=\"width:100px;margin:auto;position:static;\">"
-                        output += "<div style=\"width:100px; height:10px; background-color:" + voteColor + ";\">"
-                        output += "<div style=\"width:77%; height:10px; background-color:" + amendColor + "; border-right:2px #FFF solid;\">"
-                        output += "<div style=\"width:70%; height:10px; background-color:" + validationColor + "; border-right:2px #FFF solid;\">"
-                        output += "<div style=\"width:14%; height:10px; background-color:" + editColor + "; border-right:2px #FFF solid;\">"
+                        output += "<div style=\"width:100px; height:10px; background-color:" + voteColor + ";\" title=" + voteInfo + ">"
+                        output += "<div style=\"width:77%; height:10px; background-color:" + amendColor + "; border-right:2px #FFF solid;\" title=" + amendInfo + ">"
+                        output += "<div style=\"width:70%; height:10px; background-color:" + validationColor + "; border-right:2px #FFF solid;\" title=" + validationInfo + ">"
+                        output += "<div style=\"width:14%; height:10px; background-color:" + editColor + "; border-right:2px #FFF solid;\" title=" + editInfo + ">"
                         output += "</div></div></div></div></div>"
                 end
         end
