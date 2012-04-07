@@ -1042,7 +1042,7 @@ body.main-layout #bill-time .time_chart {
   width: 40.417px;
   width: 40.417px;
   height: 40.417px;
-  margin: 10px;
+  margin: auto;
   margin-left: 30px;
 }
 /* line 147, ../../json-1.6.0/ruby/1.9.1/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
