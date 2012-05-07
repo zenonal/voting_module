@@ -70,19 +70,19 @@ class Initiative < ActiveRecord::Base
     level = i.level
     code = i.level_code
     if level.nil?
-      t = (3*(User.logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+      t = (3*(User.logged_in_between(start-2.months,start).count/100.0)).ceil
     end
     if level == "communal"
       c = Commune.find_by_postal_code(code)
-      t = (3*(User.from_commune(c).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+      t = (3*(User.from_commune(c).logged_in_between(start-2.months,start).count/100.0)).ceil
     end
     if level == "provincial"
       p = Province.find_by_code(code)
-      t = (3*(User.from_province(p).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+      t = (3*(User.from_province(p).logged_in_between(start-2.months,start).count/100.0)).ceil
     end
     if level == "regional"
       r = Region.find_by_code(code)
-      t = (3*(User.from_region(r).logged_in_between(start-2.months.ago,start).count/100.0)).ceil
+      t = (3*(User.from_region(r).logged_in_between(start-2.months,start).count/100.0)).ceil
     end
     return [MIN_VALIDATION_THRESHOLD,t].max
   end

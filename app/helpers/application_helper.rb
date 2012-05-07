@@ -57,6 +57,49 @@ module ApplicationHelper
                         output += "</div></div></div></div></div>"
                 end
         end
+        def bill_progression2(bill)
+                
+                passedColor = "#A19EA0"
+                futureColor = "#B6CCB5"
+                editColor = futureColor
+                validationColor = futureColor
+                amendColor = futureColor
+                voteColor = futureColor
+                currentColor = "#DCC"
+                
+                if !bill.blank?
+                       if bill.current_phase == 2
+                               editColor = passedColor
+                               t1 = bill.time_left_to_validate.to_i
+       			       t2 = bill.validating_time_elapsed.to_i
+       			       t1 = 5.00
+       			       t2 = 11.00
+       			       tt = t1+t2
+       			       t1 = (t1/tt)
+       			       t2 = (t2/tt)
+       			       passed_validation = (t2*70).to_i
+       			       elapsed_validation = (t1*70).to_i
+                       end
+                       if bill.current_phase >= 2
+                               validationColor = passedColor
+                               
+                       end
+                       if bill.current_phase >= 4
+                               amendColor = passedColor
+                       end
+                       if bill.current_phase >= 5
+                               voteColor = passedColor
+                       end
+                end
+                if !bill.blank?
+                        output = ""
+                        output += "<div style=\"width:100px;margin:auto;position:static;\">"
+                        output += "<div style=\"width:100px; height:10px; background-color:" + passedColor + ";\">"
+                        output += "<div style=\"width:" + passed_validation.to_s + "%; height:10px; background-color:" + currentColor + "; border-right:2px #FFF solid;\">"
+                        output += "<div style=\"width:" + elapsed_validation.to_s + "%; height:10px; background-color:" + futureColor + "; border-right:2px #FFF solid;\">"
+                        output += "</div></div></div></div>"
+                end
+        end
         def title(page_title, show_title = true)
                 if page_title
                         content_for(:title) { t('layout.page_title') + ' - ' + page_title.to_s }

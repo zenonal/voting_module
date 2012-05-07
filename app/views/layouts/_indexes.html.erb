@@ -55,7 +55,7 @@
 		
 		<div id="bill-phase">
 			<h4><%= t("#{params[:controller]}.phase#{bill.current_phase}") %><%= info_help('phase',15) %>
-				<%= raw bill_progression(bill) %></h4>
+				<%= raw bill_progression2(bill) %></h4>
 			
 		</div>
 		<% if bill.current_phase == 1 || (user_signed_in? && current_user.roles.first.name == "admin") %>
