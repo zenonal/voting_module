@@ -1,13 +1,14 @@
 <div class="clear"></div>
+<% if 0 %>
 <div id="index-search">
 	<form>
 		<%= text_field_tag :search, t("#{params[:controller]}.search") %>
 		<div class="input-image">
 		<%= image_tag("search_magnifier.png", :size => "30x30") %>
 		</div>
-	</form>
-	
+	</form>	
 </div>
+<% end %>
 
 <div class="clear"></div>
 <div class="spacer"></div>

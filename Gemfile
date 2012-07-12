@@ -19,7 +19,6 @@ gem "compass", '0.11.1'
 gem 'haml' # for SASS
 gem 'aws-s3'
 gem 'recaptcha'
-gem 'tanker'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'rack-ssl', :require => 'rack/ssl'
 
