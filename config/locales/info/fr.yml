@@ -102,7 +102,7 @@ fr:
         nous avons décidé d'accepter comme candidat, toute personne remettant une candidature valide."
     
     commune_search: "Entrez ici le code postal de la commune à laquelle vous voulez vous connecter. Vous ne verrez alors plus que les propositions correspondant 
-    à cette commune particulière et les propositions au niveau fédéral."
+    à cette commune particulière."
     private_vote_num: "Nombre de votes anonymes"
     public_vote_num: "Nombre de votes soumis en tant que délégué"
     submitted_bill_num: "Nombre de propositions soumises (propositions originales ou propositions alternatives)"

@@ -90,8 +90,7 @@ en:
     <a href= 'http://en.wikipedia.org/wiki/Sortition'>sortition</a> 
     but for our first participation to the elections, the first ones to propose a valid candidacy will be chosen."
     
-    commune_search: "Enter the postal code of the commune you want to connnect to. You will then see only proposals for this particular commune in addition to 
-    federal proposals."
+    commune_search: "Enter the postal code of the commune you want to connnect to. You will then see only proposals for this particular commune."
     private_vote_num: "Number of votes you casted privately."
     public_vote_num: "Number of votes you casted as a delegate."
     submitted_bill_num: "Number of bills you submitted. These can be either initiatives or amendments to other proposals."
