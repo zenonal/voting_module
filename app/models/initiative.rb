@@ -35,32 +35,32 @@ class Initiative < ActiveRecord::Base
   
   #tanker
   #include Tanker
-  if Rails.env=="development"
-          indexName = 'development_initiative_index'
-  else
-          indexName = 'production_initiative_index'
-  end
-  tankit indexName do
-      indexes :name_en
-      indexes :name_fr
-      indexes :name_nl
-      indexes :content_en
-      indexes :content_fr
-      indexes :content_nl
-      indexes :id
-      indexes :author_names do
-            user.nil? ? nil : user.displayName
-      end
+  #if Rails.env=="development"
+  #        indexName = 'development_initiative_index'
+  #else
+  #        indexName = 'production_initiative_index'
+  #end
+  #tankit indexName do
+  #    indexes :name_en
+  #    indexes :name_fr
+  #    indexes :name_nl
+  #    indexes :content_en
+  #    indexes :content_fr
+  #    indexes :content_nl
+  #    indexes :id
+  #    indexes :author_names do
+  #          user.nil? ? nil : user.displayName
+  #    end
       
-      functions do
-            {
-              1 => 'relevance / age'
-            }
-      end
+  #    functions do
+  #          {
+  #            1 => 'relevance / age'
+  #          }
+  #    end
       
-    end
-    after_save :update_tank_indexes
-    after_destroy :delete_tank_indexes
+   # end
+   # after_save :update_tank_indexes
+   # after_destroy :delete_tank_indexes
         
     
   def validation_threshold
