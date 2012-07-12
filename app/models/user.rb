@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   belongs_to :region
   belongs_to :party
   before_save :define_role
-  after_create :default_photo
   
   if Rails.env=="development"
     has_attached_file :uploadedPhoto, :styles => {:large => "128x128>", :small => "96x96>", :thumbnail => "64x64>", :verysmall => "48x48>"}
