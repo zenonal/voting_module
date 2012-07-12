@@ -31,7 +31,7 @@ class Referendum < ActiveRecord::Base
         attr_accessible :name_en, :name_fr, :name_nl, :content_en, :content_fr, :content_nl, :photo, :level, :level_code
 
         #tanker
-        include Tanker
+        #include Tanker
         if Rails.env=="development"
                 indexName = 'development_referendum_index'
         else

@@ -27,7 +27,7 @@ class Amendment < ActiveRecord::Base
   belongs_to :amendmentable, :polymorphic => true
   
   #tanker
-    include Tanker
+    #include Tanker
     if Rails.env=="development"
             indexName = 'development_initiative_index'
     else

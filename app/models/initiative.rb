@@ -34,7 +34,7 @@ class Initiative < ActiveRecord::Base
   
   
   #tanker
-  include Tanker
+  #include Tanker
   if Rails.env=="development"
           indexName = 'development_initiative_index'
   else
