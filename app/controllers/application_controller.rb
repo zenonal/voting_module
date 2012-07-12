@@ -223,8 +223,9 @@ class ApplicationController < ActionController::Base
                                 if @subdom_level.class.name == "Community"
                                         @geo = @subdom_level.name
                                 else
-                                        @bills = @bills + bills.user_geographical_level(current_user,4).all(:order => "created_at DESC")
-                                        @geo = @subdom_level.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4")
+                                        #@bills = @bills + bills.user_geographical_level(current_user,4).all(:order => "created_at DESC")
+                                        #@geo = @subdom_level.name + " " + t('and') + " " + t("#{bills[0].class.name.pluralize.downcase}.level4")
+                                
                                 end
                         end
                         if phase && phase >= 0
