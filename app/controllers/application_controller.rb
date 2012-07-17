@@ -187,7 +187,7 @@ class ApplicationController < ActionController::Base
 
                         if @subdom_level.blank?
                                 if params[:filter] && level && !(level == 0)
-                                        if params[:user_level] == "off" || (current_user && current_user.commune.nil?)
+                                        if params[:user_level] == "off" || (current_user && current_user.commune.nil?) || !current_user
                                                 @bills = bills.where(:level => level.to_s).all(:order => "created_at DESC")
                                                 @geo = t("#{bills[0].class.name.pluralize.downcase}.level#{level}")
                                         else
