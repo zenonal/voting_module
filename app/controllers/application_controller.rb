@@ -220,6 +220,7 @@ class ApplicationController < ActionController::Base
                                 end
                         else
                                 @bills = bills.subdom_level(@subdom_level).all(:order => "created_at DESC")
+                                @geo = @subdom_level.name
                                 if @subdom_level.class.name == "Community"
                                         @geo = @subdom_level.name
                                 else

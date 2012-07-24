@@ -65,13 +65,13 @@ class Referendum < ActiveRecord::Base
         
         scope :subdom_level, lambda { |subdom_level|
                 if subdom_level.class.name == "Commune"
-                        where(["level = ? AND level_code = ?", "Communal", subdom_level.postal_code])
+                        where(["level = ? AND level_code = ?", "1", subdom_level.postal_code])
                 else 
                         if subdom_level.class.name == "Province"
-                                where(["level = ? AND level_code = ?", "Provincial", subdom_level.code])
+                                where(["level = ? AND level_code = ?", "2", subdom_level.code])
                         else
                                 if subdom_level.class.name == "Region"
-                                        where(["level = ? AND level_code = ?", "Regional", subdom_level.code])
+                                        where(["level = ? AND level_code = ?", "3", subdom_level.code])
                                 else
                                         if subdom_level.class.name == "Community"
                                                   joins(:community).
