@@ -55,7 +55,7 @@ en:
       keywords: "democracy, direct, communal elections, Belgium, politics"
       description: "Website of a new political party for the 2012 Belgian elections whose agenda is defined by the citizens and whose objective is Direct Democracy"
       CFDD: "Citizens for Direct Democracy"
-      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>: a new political party for the 2012 Belgian elections whose agenda is defined by the citizens."
+      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
       sign_out: 'Sign out'
@@ -109,7 +109,7 @@ en:
       no_comment: "There is no comment yet in this discussion"
       amendment_of: "Amendment of "
       footer: "<a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a> is at the origin of the website ikbestuur.be, whose purpose is to 
-                create a new political party in Belgium, participating to the 2012 communal elections, and whose agenda is entirely defined by the citizens.</br> 
+                be used as an e-voting platform for the Pirate party. The party agenda will be determined by the citizens through this platform.</br> 
                 Citizens for Direct Democracy is a task force of <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, and its objective is to bring direct democracy in Belgium.
                 <br>
                 <a href='mailto:info@jegouverne.be'> Contact us! </a>"

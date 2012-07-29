@@ -1,6 +1,6 @@
 VotingModule::Application.routes.draw do
         
-  root :to => "info#homepage"
+  root :to => "initiatives#index"
         
   match '/auth/:provider/callback' => 'authentications#create'
   #match '/auth/facebook', :to => 'authentications#facebook_setup'

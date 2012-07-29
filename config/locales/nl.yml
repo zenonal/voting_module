@@ -53,7 +53,7 @@ nl:
       keywords: "democratie, direct, gemeentelijke verkiezingen, Belgi&#235;, politiek"
       description: "Website van een nieuwe politieke partij voor de gemeenteraad verkiezingen van 2012 in Belgi&#235; waarvan de agenda enkel is bepaald door de burgers zelf. Het objectief is Directe Democratie."
       CFDD: "Burgers voor Directe Democratie"
-      preinfo: "Een project van <a href='http://www.directdemocracy.be' target='_blank'>Burgers voor Directe Democratie</a>: Een nieuwe politieke partij voor de verkiezingen 2012 waarvan de agenda enkel bepaald wordt door de burgers."
+      preinfo: "Een project van <a href='http://www.directdemocracy.be' target='_blank'>Burgers voor Directe Democratie</a>."
       sign_in_phrase: 'Ingelogd als'
       not_you: 'Foutieve identiteit?'
       sign_out: 'Uitgelogd'
@@ -106,8 +106,7 @@ nl:
       old_delegate: "Niet langer actief maar heft volmacht verleend"
       no_comment: "Momenteel is er geen commentaar in deze discussie"
       amendment_of: "Amendment voor "
-      footer: "<a href='http://www.directdemocracy.be' target='_blank'>Burgers voor Directe Democratie</a> is de basis van de website www.ikbestuur.be, 
-                met als doel het cre&#239;ren van een nieuwe politieke partij in Belgi&#235;. Dit om deel te nemen aan de gemeentelijke verkiezingen van 2012. 
+      footer: "<a href='http://www.directdemocracy.be' target='_blank'>Burgers voor Directe Democratie</a> is de basis van de website www.ikregeer.be. 
                 De agenda van de partij wordt volledig bepaald door de burgers.</br> 
                 Burgers voor directe democratie is een werkgroep van <a href='http://www.democratie.nu' target='_blank'>Democratie.nu</a>, met als doel de instelling van een Directe Democratie in Belgi&#235;.
                 <br>
