@@ -23,14 +23,10 @@
 	<%= render 'layouts/open_graph2' %>  
 	<div id="container">
 		<div id="header">
-			<% if false %>
 			<div id="header-preinfo">
 				<%= raw t('layout.preinfo') %>
 			</div>
-			<% end %>
-			<div id="header-preinfo">
-				<%= link_to image_tag('/images/logo-parti-pirate.png',:size => "50x50"), "http://pirateparty.be/"  %>
-			</div>
+			
 			<div id="header-title">
 				<h2><%= link_to image_tag("new_title_#{I18n.locale}.png", :size => "500x60", :alt => t('layout.intro_title')), main_root %> beta</h2>
 			</div>

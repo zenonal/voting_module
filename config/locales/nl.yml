@@ -53,7 +53,7 @@ nl:
       keywords: "democratie, direct, gemeentelijke verkiezingen, Belgi&#235;, politiek"
       description: "Website van een nieuwe politieke partij voor de gemeenteraad verkiezingen van 2012 in Belgi&#235; waarvan de agenda enkel is bepaald door de burgers zelf. Het objectief is Directe Democratie."
       CFDD: "Burgers voor Directe Democratie"
-      preinfo: "Een project van <a href='http://www.directdemocracy.be' target='_blank'>Burgers voor Directe Democratie</a>."
+      preinfo: "This website is an e-voting platform used by the <a href='http://pirateparty.be/' target='_blank'> pirate party <img src='/images/logo-parti-pirate.png' height='32' width='32'/></a>."
       sign_in_phrase: 'Ingelogd als'
       not_you: 'Foutieve identiteit?'
       sign_out: 'Uitgelogd'

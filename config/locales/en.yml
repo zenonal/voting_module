@@ -55,7 +55,7 @@ en:
       keywords: "democracy, direct, communal elections, Belgium, politics"
       description: "Website of a new political party for the 2012 Belgian elections whose agenda is defined by the citizens and whose objective is Direct Democracy"
       CFDD: "Citizens for Direct Democracy"
-      preinfo: "A project of <a href='http://www.democratie-directe.be' target='_blank'>Citizens for Direct Democracy</a>."
+      preinfo: "This website is an e-voting platform used by the <a href='http://pirateparty.be/' target='_blank'> pirate party <img src='/images/logo-parti-pirate.png' height='32' width='32'/></a>."
       sign_in_phrase: 'Signed in as'
       not_you: 'Not you?'
       sign_out: 'Sign out'
