@@ -49,8 +49,8 @@ VotingModule::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  ENV['RECAPTCHA_PUBLIC_KEY'] = '6LeE-swSAAAAAErZtneQdd1FJ01Uh6awNETD7Vqp'
-  ENV['RECAPTCHA_PRIVATE_KEY'] = '6LeE-swSAAAAAPUd-8sA1Whd4O9pqMXCh3Zo5fHW'
+  ENV['RECAPTCHA_PUBLIC_KEY'] = ''
+  ENV['RECAPTCHA_PRIVATE_KEY'] = ''
   
   Sass::Plugin.options[:never_update] = true
   
