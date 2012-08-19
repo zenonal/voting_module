@@ -1,14 +1,14 @@
 development:
   access_key_id: 'AKIAJDCD46LYXKNBDTKQ'
-  secret_access_key: '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'
+  secret_access_key: ''
   bucket: 'votingmodule'
 
 test:
   access_key_id: 'AKIAJDCD46LYXKNBDTKQ'
-  secret_access_key: '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'
+  secret_access_key: ''
   bucket: 'votingmodule'
 
 production:
   access_key_id: 'AKIAJDCD46LYXKNBDTKQ'
-  secret_access_key: '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'
+  secret_access_key: ''
   bucket: 'votingmodule'
