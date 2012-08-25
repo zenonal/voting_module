@@ -11,7 +11,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         end
   provider :open_id, nil, :name => 'google_apps', :identifier => 'https://www.google.com/accounts/o8/id'
   #provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :domain => 'gmail.com'
-  provider :open_id, OpenID::Store::Filesystem.new('/tmp'), {:name => 'open_id', :identifier => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :required => []}
+  provider :open_id, OpenID::Store::Filesystem.new('./tmp'), {:name => 'open_id', :identifier => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth-ident', :required => [:fullname]}
   #provider :google_apps, OpenID::Store::Filesystem.new('/tmp'), {:domain => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :name => 'google_apps', :identifier => 'https://www.e-contract.be/eid-idp/endpoints/openid/auth', :required => []}
   provider :linked_in, 'm4rA1MJuUuxTjMfLVWYSReXhaf8sPQCjRPbHJCORebTuQs93BII0a25PmHQrL8oA', 'hXsbcCZe-jtpbhLVq7JvQq1wAFrxhDtt5E73FkWEqtLJJGkCJDsqPvvXDNfh-ZPO', 
                 :setup => true
